@@ -4,7 +4,7 @@
 
 ## Фаза −1. Окружение
 - [ ] T-01 👤 Установить софт из `docs/TOOLING.md` §1 (Godot 4.7.2, шаблоны экспорта, Git, JDK 17, Android Studio + SDK API 36, Node.js 20+, Python, uv, Aseprite 1.3.18)
-- [ ] T-02 👤 Создать приватный репозиторий `realchemy` на GitHub, клонировать, положить эти документы, первый коммит
+- [x] T-02 👤 Создать приватный репозиторий `realchemy` на GitHub, клонировать, положить эти документы, первый коммит
 - [x] T-03 👤 Положить старые документы (TDD v0.1, GDD v2, TASKS_PHASE0) в `docs/archive/`
 - [x] T-04 Создать Godot-проект в `game/` с настройками из `docs/TOOLING.md` §5, `.gitignore` для Godot
 - [ ] T-05 👤 Установить плагин godot-ai v3.2.1, нажать Configure для Claude Code (§4.1). Claude проверяет: читает дерево сцены

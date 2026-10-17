@@ -40,3 +40,13 @@
 ## 2026-10-17 · T-03 архив
 - Из истории GitHub-репозитория CellTimesCell/realchemy (коммит 2ce7cbb, 05.04.2026) восстановлены в docs/archive/: TDD v0.1, TASKS_PHASE0, CLAUDE.md, PROGRESS.md (с префиксом 2026-04_). GDD v2 (Unity) в репозитории не было.
 - Удалённый репозиторий: https://github.com/CellTimesCell/realchemy (ветка main, сейчас пустое дерево, 5 коммитов истории).
+
+## 2026-10-17 · Индекс без аддонов
+- Добавлен `.cbmignore` (`game/addons/`) — штатный механизм исключений codebase-memory-mcp. После переиндексации: 105 узлов, файлов аддонов в графе 0.
+
+## 2026-10-17 · T-02 репозиторий
+- `git init` в C:\Realchemy, ветка `main`, remote `origin` = https://github.com/CellTimesCell/realchemy. Локальная ветка поставлена поверх `origin/main` (mixed reset), 5 старых коммитов сохранены, без force push.
+- Добавлен `.gitattributes` (`* text=auto eol=lf`). `.gitignore` проверен `git check-ignore`: engine/, _to_delete/, furnace-*/, Aseprite-*/, game/.godot/ отсекаются.
+- Коммит `fe1ffdc` «docs+scaffold: …»: 560 файлов (33 проекта, включая docs/archive, + 527 аддонов godot_ai/gut), ~5 МБ. Push `40ce7bb..fe1ffdc` — fast-forward, локальная и удалённая ветки совпадают.
+- Git identity задан локально для репозитория (Alex, GitHub noreply из истории) — глобального не было.
+- Следующий шаг: T-07 (GUT-тест из командной строки).
