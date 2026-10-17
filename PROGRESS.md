@@ -1,0 +1,42 @@
+# PROGRESS — журнал сессий
+
+Формат записи: дата · задача · что сделано · как проверено · проблемы · следующий шаг.
+
+---
+
+## 2026-10-17 · Документация v1.0
+- Собраны README, CLAUDE.md, TASKS.md, docs/ (GAME_DESIGN, DATA_SCHEMA, TOOLING, ART_PIPELINE) на основе прошлых обсуждений (фев 2025 – окт 2026).
+- Ключевое новое решение: химия опирается на реальную науку, длительность таймеров берётся из реальных процессов.
+- Открытые вопросы — в README.
+- Следующий шаг: T-01 (установка софта) и ответы на открытые вопросы.
+
+## 2026-10-17 · Проверка версий
+- Сверены версии всего стека, добавлена матрица совместимости в `docs/TOOLING.md` §0.
+- Остаёмся на Godot 4.7.2 stable; 4.8 в beta 1 — переход после stable по правилу из §7.
+- Обновления: godot-ai v3.0.7 (требует 4.7+), GUT 9.7.0, GodotSteam 4.22, codebase-memory 0.12.1, Aseprite 1.3.18, claude-in-mobile → mcp-devices 4.2.0.
+- Google Play требует target API 36 с 31.08.2026. Node.js 20+ обязателен.
+
+## 2026-10-17 · T-04 каркас проекта
+- Создан `game/project.godot` (4.7, Compatibility, 480×270, canvas_items/expand/integer, Nearest, snap to pixel, landscape), структура папок, корневой `.gitignore`.
+- Аддоны: GUT 9.7.1 → `game/addons/gut` (включён), godot-ai 3.2.1 → `game/addons/godot_ai` (включить после установки uv).
+- Не проверено: открытие проекта в редакторе (нужен Godot 4.7.2).
+- В корне лежат исходники Aseprite, а не программа — нужна готовая сборка.
+
+## 2026-10-17 · T-04 проверено
+- Проект открылся в Godot 4.7.2.stable без ошибок, панель GUT появилась (плагин работает). Создана папка game/.godot (кэш, в git не идёт).
+
+## 2026-10-17 · T-01 установка софта (через tools/setup.ps1 + setup2.ps1)
+- Установлено и проверено: Git 2.55.0, Node 24.20 / npm 11.19, Python 3.12.10 + Pillow 13.0, Temurin JDK 17.0.20 (JAVA_HOME), uv 0.13.1, ADB 37.0.1 (ANDROID_HOME), Claude Code 2.1.302 (C:\Users\fishm\.local\bin, добавлен в PATH), Aseprite (C:\Program Files\Aseprite).
+- MCP подключены к Claude Code (user scope): codebase-memory-mcp 0.12.1 (из .local\bin) ✓, mobile (mcp-devices) ✓.
+- Мусор: старая копия codebase-memory-mcp 0.9.0 в AppData\Local\Programs\codebase-memory-mcp — удалить вручную.
+- Осталось: в Android SDK доставить платформу API 36, NDK, Command-line Tools, CMake; шаблоны экспорта Godot; включить плагин godot-ai.
+
+## 2026-10-17 · T-06 индексация codebase-memory-mcp
+- Проект проиндексирован (codebase-memory-mcp 0.12.1, проект `C-Realchemy`, mode full): 3838 узлов, 12038 рёбер.
+- `.gd` попадают в граф: 218 файлов (`game/addons/godot_ai` — 132, `game/addons/gut` — 86), ~2900 функций. Собственных `.gd` проекта пока нет.
+- Исключены как надо: `engine/`, `game/.godot`, исходники Aseprite, furnace, `_to_delete`.
+- Частичный парсинг (best-effort) в 8 файлах, напр. `godot_ai/mcp_dock.gd`, `godot_ai/plugin.gd`, `gut/error_tracker.gd` — это код аддонов, на наш код не влияет.
+
+## 2026-10-17 · T-03 архив
+- Из истории GitHub-репозитория CellTimesCell/realchemy (коммит 2ce7cbb, 05.04.2026) восстановлены в docs/archive/: TDD v0.1, TASKS_PHASE0, CLAUDE.md, PROGRESS.md (с префиксом 2026-04_). GDD v2 (Unity) в репозитории не было.
+- Удалённый репозиторий: https://github.com/CellTimesCell/realchemy (ветка main, сейчас пустое дерево, 5 коммитов истории).

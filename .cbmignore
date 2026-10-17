@@ -1,0 +1,2 @@
+# Third-party Godot addons: keep them out of the code graph
+game/addons/

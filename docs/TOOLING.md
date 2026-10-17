@@ -1,0 +1,173 @@
+# Инструменты и окружение (проверено 17.10.2026)
+
+Машина разработки: Lenovo LOQ 15 (Windows). Команды — для PowerShell.
+Раздел 0 — сводка версий. Перед установкой всё равно сверяй с официальной страницей.
+
+## 0. Матрица версий и совместимости
+
+| Компонент | Версия | Дата | Совместимость / заметки |
+|---|---|---|---|
+| **Godot** | **4.7.2 stable** | 18.08.2026 | Рабочая версия проекта |
+| Godot 4.8 | beta 1 | 15.10.2026 | Не брать до stable. Переход планируем после выхода (см. §7) |
+| Export Templates | 4.7.2 | — | Должны **точно** совпадать с версией редактора. В 4.7 можно качать только нужные платформы |
+| **JDK** | **17** (Eclipse Temurin) | — | Официальная документация Godot: OpenJDK 17. Новее (21) часто ломает Gradle |
+| Android target SDK | **API 36** (Android 16) | обяз. с 31.08.2026 | Требование Google Play для новых приложений и обновлений |
+| Android Studio | последняя stable | — | Нужна ради SDK, ADB и эмулятора |
+| **Node.js** | **20 LTS или новее** | — | Нужен для mcp-devices (≥20) и godot-mcp (≥18) |
+| Python | 3.12+ | — | Скрипты пайплайна (Pillow) |
+| uv | последняя | — | Нужен для godot-ai |
+| **godot-ai** (MCP-плагин) | **v3.2.1** (установлен) | 2026 | **Требует Godot 4.7+** — совпадает с нашей версией. 46 инструментов |
+| Coding-Solo/godot-mcp | npm latest | — | Node 18+, UID-функции требуют Godot 4.4+ |
+| **codebase-memory-mcp** | **0.12.1** | 2026 | У тебя стоит 0.9.0 — обновить |
+| **GUT** (тесты) | **9.7.1** (установлен) | — | Версия именно под Godot 4.7 |
+| **GodotSteam** | **4.22** | 22.08.2026 | Сборка под Godot 4.7.2. Репозиторий на Codeberg |
+| Google Play Billing (плагин) | master | — | Поддерживает Godot 4.2+ |
+| **Aseprite** | **1.3.18** | 22.07.2026 | Для обоих Aseprite-MCP нужна 1.3+ |
+| Furnace Tracker | 0.6.8.x | — | Музыка в стиле Sega Genesis |
+| **mcp-devices** (бывш. claude-in-mobile) | **4.2.0** | 08.2026 | Проект переименован. Node 20+, ADB |
+
+## 1. Обязательный софт
+
+| # | Программа | Зачем |
+|---|---|---|
+| 1 | **Godot 4.7.2** (godotengine.org → Download → Archive → 4.7.2). Лежит в `C:\Realchemy\engine\` (в git не попадает) | Движок |
+| 2 | **Export Templates 4.7.2** — Editor → Manage Export Templates (Android + Windows) | Сборки |
+| 3 | **Git** (git-scm.com) + приватный репозиторий на GitHub | История, откат |
+| 4 | **Claude Code** — обновить: `claude update` | Основной разработчик |
+| 5 | **JDK 17** (adoptium.net, Temurin 17) + переменная `JAVA_HOME` | Android-экспорт |
+| 6 | **Android Studio** → SDK Manager: Platform **API 36**, Build-Tools, Platform-Tools, Command-line Tools, NDK; Device Manager: эмулятор | Сборка и тест |
+| 7 | **Node.js 20 LTS+** (nodejs.org) | MCP-серверы на npm |
+| 8 | **Python 3.12+**, затем `pip install pillow` | Скрипты пайплайна |
+| 9 | **Aseprite 1.3.18** (Steam или aseprite.org, платный). Бесплатная замена — LibreSprite (но MCP под неё не гарантированы) | Пиксель-арт |
+
+Опционально: VS Code + `godot-tools`, ImageMagick.
+
+## 2. Звук (16-бит)
+| Программа | Зачем |
+|---|---|
+| **Furnace Tracker** (бесплатный) | Музыка с эмуляцией чипа Sega Genesis (YM2612) |
+| **jsfxr / ChipTone** (в браузере) | Ретро-звуки: шипение, искры, «плоп», победа |
+| **Audacity** | Обрезка, нормализация, экспорт `.ogg` |
+
+## 3. Godot-аддоны
+С версии 4.7 встроенный каталог называется **Asset Store** (раньше Asset Library), в нём есть рейтинги.
+
+| Аддон | Версия | Фаза | Зачем |
+|---|---|---|---|
+| **GUT** | 9.7.1 | 0 | Тесты ChemistryEngine и таймеров — Claude проверяет себя сам |
+| **godot-ai** | 3.2.1 | −1 | Связь Claude ↔ живой редактор |
+| **GodotSteam GDExtension** | 4.22 | 3 | Steam: достижения, облачные сохранения |
+| **Godot Google Play Billing** | master | 2 | Разовая покупка в Android |
+
+## 4. MCP-серверы
+
+Принцип экономии токенов: **постоянно подключены только 2** (godot-ai + codebase-memory). Остальные включать на время конкретной задачи.
+
+### 4.1 Godot — основной: `hi-godot/godot-ai` (v3.2.1, Godot 4.7+)
+Работает с **живым** редактором: 46 инструментов (сцены, узлы, скрипты, сигналы, UI, анимации, частицы).
+```powershell
+# 1. Установить uv
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+# 2. Скачать релиз с github.com/hi-godot/godot-ai/releases
+#    распаковать в C:\Realchemy\game\addons\godot_ai\  (внутри должен быть plugin.cfg)
+#    НЕ распаковывать новую версию поверх старой — сначала удалить старую папку
+# 3. Godot: Project → Project Settings → Plugins → включить Godot AI
+# 4. В доке Godot AI нажать "Configure" напротив Claude Code — он сам пропишет MCP
+#    (по умолчанию в user scope; для настройки только этого проекта:
+#     Editor Settings → Plugins → godot_ai/mcp_client_scope = project, затем Configure ещё раз)
+# 5. В папке проекта запустить `claude` и один раз одобрить сервер
+```
+Ручной вариант, если кнопка не сработала:
+```powershell
+claude mcp add --scope user --transport http godot-ai http://127.0.0.1:8000/mcp
+```
+
+### 4.2 Godot — запасной/лёгкий: `Coding-Solo/godot-mcp`
+Запуск проекта, отладочный вывод, создание сцен. Работает **без открытого редактора** — подходит для ночных прогонов.
+```powershell
+claude mcp add godot -e GODOT_PATH="C:\Realchemy\engine\Godot_v4.7.2-stable_win64_console.exe" -- cmd /c npx @coding-solo/godot-mcp
+```
+Одновременно держать включённым **только один** из 4.1/4.2.
+
+### 4.3 Индексация кода: `DeusData/codebase-memory-mcp` (0.12.1)
+Граф проекта (функции, вызовы, зависимости) — Claude ищет по графу вместо чтения файлов целиком.
+```powershell
+codebase-memory-mcp update          # 0.9.0 → 0.12.x
+codebase-memory-mcp config set auto_index true
+```
+Заявлено 159 языков через tree-sitter, но **GDScript явно не подтверждён** — проверяем в T-06. Если `.gd` не попадут в граф — ведём `docs/CODEMAP.md` вручную.
+
+### 4.4 Арт — PixelLab (официальный MCP, платный)
+Настоящий пиксель-арт: предметы, персонажи в 4/8 направлениях, анимации, тайлсеты.
+```powershell
+claude mcp add --transport http pixellab https://api.pixellab.ai/mcp --header "Authorization: Bearer ВАШ_ТОКЕН"
+```
+Токен — pixellab.ai/account. Никогда не коммитить токен в git. Тарифы проверить на сайте перед подпиской.
+
+### 4.5 Арт — Aseprite MCP (Aseprite 1.3+)
+Вариант A — headless, 76 инструментов, редактор открывать не нужно:
+```powershell
+npm install -g @letsagents/aseprite-mcp
+claude mcp add aseprite -e ASEPRITE_PATH="C:\Program Files\Aseprite\Aseprite.exe" -- cmd /c aseprite-mcp
+```
+Вариант B — рисует в открытом Aseprite в реальном времени (нужно расширение):
+```powershell
+claude mcp add aseprite -- uvx aseprite-mcp   # github.com/giangdvdotdev/aseprite-mcp
+```
+
+### 4.6 Тест на Android: `mcp-devices` 4.2.0 (бывший claude-in-mobile)
+Ставит сборку на эмулятор/телефон через ADB, жмёт, делает скриншоты.
+```powershell
+npm i -g mcp-devices @mcp-devices/plugin-android
+mcp-devices install android
+mcp-devices doctor                 # проверка Node, ADB
+claude mcp add mobile -- cmd /c mcp-devices
+```
+Старая команда `npx claude-in-mobile@latest` из июля устарела.
+
+### 4.7 Позже
+- **Higgsfield MCP** — видео для трейлера и TikTok (фаза 3).
+- Генераторы общего назначения (Nano Banana / Gemini и т.п.) — концепты, фоны, арт для страниц магазинов.
+
+### 4.8 Скиллы Claude Code для Godot
+Существуют наборы сообщества (например, `fenixnix/Godot-Skills`: формат .tscn, GDScript, autoload, сериализация), но они очень молодые и малоизвестные. **Не ставим.** Вместо этого по ходу разработки пишем свои скиллы в `.claude/skills/` (например, «добавить реакцию», «добавить кейс», «обработать ИИ-спрайт»).
+
+> Все MCP, кроме PixelLab, — проекты сообщества. Перед установкой смотреть дату последнего коммита и issues.
+
+## 5. Настройки проекта Godot (фаза −1)
+| Настройка | Значение |
+|---|---|
+| Renderer | Compatibility |
+| Display → Window → Viewport | 480 × 270 |
+| Window override (для ПК) | 1920 × 1080 |
+| Stretch Mode / Aspect | `canvas_items` / `expand` |
+| Scale Mode | `integer` |
+| Rendering → Textures → Default Texture Filter | `Nearest` |
+| Snap 2D transforms / vertices to pixel | вкл |
+| Android: Target SDK | **36** |
+| Android: Min SDK | 24 (Android 7.0) — проверить по шаблону |
+
+Нюанс 4.7: новое «nearest-neighbor масштабирование вьюпорта» работает **только для 3D**. Для нашего 2D пикселя всё делается настройками выше.
+
+## 6. Что полезного добавили в Godot 4.7 (используем)
+- `Tween.tween_await()` — твин ждёт сигнал. Удобно для цепочек «реакция → эффект → текст».
+- Смещения/повороты/масштаб у `Control` без конфликта с контейнерами — анимация карточек инвентаря.
+- `AtlasTexture` с тайлингом в `TextureRect` — экономия на UI-рамках.
+- Настройка сплэш-экрана Android прямо в экспорте; скачивание шаблонов только для нужных платформ.
+- Поиск в `PopupMenu` — для длинных списков (энциклопедия).
+
+## 7. Godot 4.8 — что ждём и когда переходить
+Сейчас beta 1 (15.10.2026), дата stable не объявлена. Полезное для нас:
+- **Редактор сам скачивает и настраивает Android SDK и Java** — проще сборка.
+- `auto_font_size` у `Label`/`RichTextLabel` — текст подгоняется под размер (локализация RU/EN/ES).
+- Редактирование узлов прямо в запущенной игре.
+- Подчёркивание ошибок GDScript точно в нужном месте.
+
+Ломающие изменения нас почти не задевают (нельзя наследовать собственный внутренний класс; на Android `OS.alert()` теперь блокирующий).
+**Правило перехода:** вышла 4.8 stable + godot-ai, GUT и GodotSteam выпустили совместимые версии → переходим в отдельной ветке, гоняем тесты, мержим.
+
+## 8. Ночные прогоны
+Ноутбук остаётся включённым → Claude Code берёт задачи из `TASKS.md`, после каждой гоняет GUT-тесты (`godot --headless`), пишет `PROGRESS.md`, коммитит. Задачи, требующие решения человека, помечает `[?]` и пропускает.
+
+## 9. Публикация (справка)
+Steam — $100 за игру, обязательна анкета об использовании ИИ-контента. Google Play — $25 разово, target API 36. iOS — $99/год + Mac, отложено.

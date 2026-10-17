@@ -1,0 +1,20 @@
+# Godot
+game/.godot/
+game/android/
+game/export_presets.cfg
+*.tmp
+# Builds
+builds/
+# OS / editors
+desktop.ini
+Thumbs.db
+.~lock*#
+# Local tools & trash (не часть проекта)
+engine/
+_to_delete/
+furnace-*/
+Aseprite-*/
+tools/setup*_log.txt
+# Secrets
+.env
+*.keystore
