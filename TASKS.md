@@ -7,7 +7,7 @@
 - [x] T-02 👤 Создать приватный репозиторий `realchemy` на GitHub, клонировать, положить эти документы, первый коммит
 - [x] T-03 👤 Положить старые документы (TDD v0.1, GDD v2, TASKS_PHASE0) в `docs/archive/`
 - [x] T-04 Создать Godot-проект в `game/` с настройками из `docs/TOOLING.md` §5, `.gitignore` для Godot
-- [ ] T-05 👤 Установить плагин godot-ai v3.2.1, нажать Configure для Claude Code (§4.1). Claude проверяет: читает дерево сцены
+- [x] T-05 👤 Установить плагин godot-ai v3.2.1, нажать Configure для Claude Code (§4.1). Claude проверяет: читает дерево сцены
 - [x] T-06 Обновить codebase-memory-mcp до 0.12.x, проиндексировать проект, проверить что `.gd` попадают в граф
 - [x] T-07 Установить GUT 9.7.1, написать один тест-пустышку, убедиться что тесты запускаются из командной строки (`godot --headless`)
 - [ ] T-08 👤 Настроить Android-экспорт (debug keystore, SDK path). target SDK 36. Claude собирает APK и ставит на эмулятор через mcp-devices

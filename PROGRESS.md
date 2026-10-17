@@ -56,3 +56,9 @@
 - Команда запуска записана в CLAUDE.md §4.1 (Godot console, `--headless`, `gut_cmdln.gd`, `-gdir=res://tests -ginclude_subdirs -gexit`). Пути с прямыми слэшами — работает и в PowerShell, и в Bash.
 - Проверено: 2/2 passed, exit 0; с временным падающим тестом — exit 1 (файл удалён).
 - Следующий шаг: T-08 👤 (Android-экспорт) или T-09 (`tools/validate_data.py`).
+
+## 2026-10-17 · T-05 связь с редактором через godot-ai
+- Плагин godot-ai включён в редакторе (`project.godot`: plugin.cfg + служебный autoload `_mcp_game_helper`). В Claude Code сервер `godot-ai` зарегистрирован (user scope), статус Connected.
+- Проверено (MCP по HTTP 127.0.0.1:8000, т.к. сессия Claude стартовала до настройки): `editor_state` → Godot 4.7.2-stable (official), проект «Realchemy»; `scene_get_hierarchy` → «No scene open», 0 узлов (сцен в проекте ещё нет — ожидаемо). Доступно 49 инструментов.
+- Расхождение версий: аддон в проекте 3.2.1, конфиг Claude закреплён на `godot-ai==3.2.1`, а сервер на порту 8000 отвечает версией 3.4.9. Работает, но стоит выровнять.
+- Открыт вопрос: оставлять ли `_mcp_game_helper` в релизных сборках (в CLAUDE.md его нет в списке autoload).
