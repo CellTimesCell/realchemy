@@ -23,6 +23,7 @@
 
 ## 3. Архитектура
 - Autoload-синглтоны: `EventBus`, `GameManager` (state machine), `TimeManager`, `SaveManager`, `ChemistryEngine`, `AudioManager`.
+- Служебный autoload `_mcp_game_helper` (плагин godot-ai) — только для редактора, в релизных сборках его быть не должно. Его вырезает сам плагин: `addons/godot_ai/export/mcp_export_plugin.gd` убирает запись из снимка настроек на время экспорта (`project.godot` на диске не меняется), в том числе при headless-экспорте. Не удалять его из `project.godot` руками — плагин вернёт. В пресетах экспорта исключать `addons/godot_ai/*`. При первой сборке (T-08) проверить, что в паке нет `_mcp_game_helper`.
 - Системы общаются через сигналы `EventBus`, а не прямыми ссылками друг на друга.
 - Одна сцена `CaseScene.tscn` для всех кейсов; кейс загружается из JSON.
 - UI собирается из переиспользуемых сцен-компонентов (`ItemSlot`, `Zone`, `TimerLabel`).
