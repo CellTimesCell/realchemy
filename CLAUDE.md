@@ -47,6 +47,11 @@ realchemy/
 ## 4.1 Где движок
 - Редактор: `C:\Realchemy\engine\Godot_v4.7.2-stable_win64.exe`
 - Для командной строки, тестов и headless: `C:\Realchemy\engine\Godot_v4.7.2-stable_win64_console.exe`
+- **Запуск тестов (всегда эта команда)** — работает из любой папки, в PowerShell и Bash (пути с прямыми слэшами — обязательно для Bash):
+  ```
+  C:/Realchemy/engine/Godot_v4.7.2-stable_win64_console.exe --headless --path C:/Realchemy/game -s res://addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit
+  ```
+  Тесты: `game/tests/**/test_*.gd`, `extends GutTest`. Код выхода 0 — всё зелёное, 1 — есть падения.
 
 ## 5. Правила работы
 1. Бери **одну** задачу из `TASKS.md`, сверху вниз. Не начинай следующую, пока текущая не проверена.

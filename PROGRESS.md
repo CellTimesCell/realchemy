@@ -50,3 +50,9 @@
 - Коммит `fe1ffdc` «docs+scaffold: …»: 560 файлов (33 проекта, включая docs/archive, + 527 аддонов godot_ai/gut), ~5 МБ. Push `40ce7bb..fe1ffdc` — fast-forward, локальная и удалённая ветки совпадают.
 - Git identity задан локально для репозитория (Alex, GitHub noreply из истории) — глобального не было.
 - Следующий шаг: T-07 (GUT-тест из командной строки).
+
+## 2026-10-17 · T-07 GUT из командной строки
+- Тест-пустышка `game/tests/test_smoke.gd`: GUT жив + базовое разрешение проекта 480×270.
+- Команда запуска записана в CLAUDE.md §4.1 (Godot console, `--headless`, `gut_cmdln.gd`, `-gdir=res://tests -ginclude_subdirs -gexit`). Пути с прямыми слэшами — работает и в PowerShell, и в Bash.
+- Проверено: 2/2 passed, exit 0; с временным падающим тестом — exit 1 (файл удалён).
+- Следующий шаг: T-08 👤 (Android-экспорт) или T-09 (`tools/validate_data.py`).

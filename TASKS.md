@@ -9,7 +9,7 @@
 - [x] T-04 Создать Godot-проект в `game/` с настройками из `docs/TOOLING.md` §5, `.gitignore` для Godot
 - [ ] T-05 👤 Установить плагин godot-ai v3.2.1, нажать Configure для Claude Code (§4.1). Claude проверяет: читает дерево сцены
 - [x] T-06 Обновить codebase-memory-mcp до 0.12.x, проиндексировать проект, проверить что `.gd` попадают в граф
-- [ ] T-07 Установить GUT 9.7.1, написать один тест-пустышку, убедиться что тесты запускаются из командной строки (`godot --headless`)
+- [x] T-07 Установить GUT 9.7.1, написать один тест-пустышку, убедиться что тесты запускаются из командной строки (`godot --headless`)
 - [ ] T-08 👤 Настроить Android-экспорт (debug keystore, SDK path). target SDK 36. Claude собирает APK и ставит на эмулятор через mcp-devices
 - [ ] T-09 Скрипт `tools/validate_data.py` (проверка JSON по `docs/DATA_SCHEMA.md`)
 - [ ] T-10 Скрипт `tools/pixelize.py` (фон → Nearest → палитра) — см. `docs/ART_PIPELINE.md` §3
