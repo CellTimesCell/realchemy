@@ -78,3 +78,23 @@
 }
 ```
 Все времена — Unix seconds (UTC).
+
+## v1.1 — дополнения (18.10.2026)
+**reactions.json** — новые поля:
+| Поле | Пример | Зачем |
+|---|---|---|
+| `modes` | `["cozy","classic","real"]` | в каких уровнях сложности доступна реакция; Cozy-ярлыки помечаются `["cozy"]` |
+| `flavor` | `"loc:rx_fried_meat_flavor"` | смешной текст результата (ключ локализации) |
+| `science_note` | `"loc:rx_fried_meat_science"` | реальный факт, теперь тоже ключ локализации |
+| `action` | `"grind"`, `"heat"`, `"mine"` | какую анимацию рук проигрывать в крупном плане |
+
+**cases/<id>.json** — новые поля:
+| Поле | Зачем |
+|---|---|
+| `map` | путь к сцене карты (TileMapLayer) |
+| `hotspots` | точки интереса: `{id, pos, type: "pickup"/"craft"/"mine"/"inspect", payload}` |
+| `deadline` | `{mode: "real", seconds}` — только для Real Chemist |
+
+**save** — новое поле `difficulty`: `"cozy"` / `"classic"` / `"real"`.
+
+Все строки для игрока — ключи локализации (`loc:...`), сами тексты в `game/data/i18n/*.csv` (EN первым).
