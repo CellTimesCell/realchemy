@@ -95,3 +95,15 @@
 - Александр оформил подписку PixelLab Tier 1 «Pixel Apprentice» (2000 генераций/мес, общий лимит для сайта, Aseprite и MCP).
 - MCP подключать в **user scope** (токен не должен попасть в репозиторий через `.mcp.json`).
 - Следующее: проба стиля Дракулы (T-25) — можно начать раньше фазы 1, бюджет пробы ≤ 25 генераций.
+
+## 2026-10-18 · T-09 `tools/validate_data.py`
+- Только stdlib (jsonschema не установлен). Запуск: `python tools/validate_data.py [--data game/data]`, exit 0 — нет ошибок (предупреждения допустимы), 1 — есть ошибки.
+- Проверяет: substances (name, phase, tags по `tags.json`, is_zone/is_tool), reactions (ссылки inputs/outputs/consumes, `tag:` по `tags.json`, consumes ⊆ inputs, инструменты не расходуются, zone = вещество с `is_zone`, `game_seconds` ≥ 0, `fx`, `modes`, **обязательные `science_note` и `flavor`**, `verified:false` → предупреждение со списком), cases (id = имя файла, title/story, start_items/item_pool/zones/goals, `limit.type`, `deadline` только `real`, уникальность и тип hotspots, hints).
+- Тексты принимаются в обоих форматах: `"loc:key"` (v1.1) и `{lang: text}` (v1.0). Ключи `loc:` сверяются с `i18n/en.csv`, если он есть (появится в T-15). Нет `tags.json` → теги не проверяются (предупреждение).
+- Тесты: `python -m unittest discover -s tools/tests` — 14 тестов validate_data, OK. На реальной `game/data` сейчас exit 1: нет substances.json/reactions.json — ожидаемо до T-16.
+
+## 2026-10-18 · T-10 `tools/pixelize.py`
+- Pillow 13 (уже стоит). `python tools/pixelize.py SRC --size 32x32 [--keep-bg] [--palette FILE] [--out DIR]`: ключ-цвет #FF00FF → прозрачность (допуск 60) → центр-кроп под пропорции → Nearest → альфа 0/255 → палитра без дизеринга → `game/assets/_incoming/<имя>.png`. Предупреждает, если в спрайте > 16 цветов.
+- Палитра: `.png` или `.gpl`; по умолчанию `game/assets/palette.png` — её пока нет (T-26), шаг пропускается с предупреждением.
+- Тесты: 10 тестов pixelize, всего 24/24 OK. Сквозной прогон: 1024×1024 на пурпурном → 32×32 с прозрачным фоном; 1920×1080 → 480×270 (`--keep-bg`).
+- Ограничение: Nearest берёт один пиксель из блока — на «шумной» ИИ-картинке может выхватить случайный цвет. Если будет мешать — добавить режим «мода блока» или прогонять через `fix_pixel_art` (Retro Diffusion).

@@ -11,8 +11,8 @@
 - [x] T-06 Обновить codebase-memory-mcp до 0.12.x, проиндексировать проект, проверить что `.gd` попадают в граф
 - [x] T-07 Установить GUT 9.7.1, написать один тест-пустышку, убедиться что тесты запускаются из командной строки (`godot --headless`)
 - [ ] T-08 👤 Настроить Android-экспорт (debug keystore, SDK path). target SDK 36. Claude собирает APK и ставит на эмулятор через mcp-devices
-- [ ] T-09 Скрипт `tools/validate_data.py` (проверка JSON по `docs/DATA_SCHEMA.md`)
-- [ ] T-10 Скрипт `tools/pixelize.py` (фон → Nearest → палитра) — см. `docs/ART_PIPELINE.md` §3
+- [x] T-09 Скрипт `tools/validate_data.py` (проверка JSON по `docs/DATA_SCHEMA.md`)
+- [x] T-10 Скрипт `tools/pixelize.py` (фон → Nearest → палитра) — см. `docs/ART_PIPELINE.md` §3
 
 ## Фаза 0. Прототип на плейсхолдерах (GAME_DESIGN v1.1)
 - [ ] T-11 Autoload `EventBus` (item_picked, reaction_completed, reaction_failed, process_started, process_finished, hotspot_activated, case_won, case_lost)
