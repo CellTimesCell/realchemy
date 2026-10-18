@@ -15,6 +15,7 @@ _to_delete/
 furnace-*/
 Aseprite-*/
 tools/setup*_log.txt
+__pycache__/
 # Secrets
 .env
 *.keystore
