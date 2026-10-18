@@ -12,6 +12,7 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `count_adult_front_b.png` | `_incoming/style_test/round3/count_adult_front_b.png` | Count, front view; **style reference for all characters** | |
 | `hero_v7_a.png` | `_incoming/style_test/round6/hero_v7_a.png` | Hero base, front view | light slightly cooler than the count — align at T-26 |
 | `room_princess_boudoir.png` | `_incoming/rooms/princess_chamber/pano_center_a.png` | Boudoir — center room of the princess suite | |
+| `hero_pose_34.png` | `_incoming/hero_anim/pose34/pose_1802_fixed.png` | Hero base pose: 3/4, lowered arm, slippers recolored to v7 a (rows 57–63 copied from `hero_v7_a.png`) | animations not yet approved |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ---
@@ -396,3 +397,109 @@ Prompt 1511–1513:
 | `bow_1617.png` | 32×32 | 1617 | `4620093e-9be0-41bd-a738-55b3a9cc4869` | symmetric |
 
 Scene `game/tests/hybrid_bedroom.tscn` (box_1511 + view layers behind 2 windows + drapes in the center niche of the right bay + narrow arch to the boudoir + torch, sconce, 3 bows, 3 cobwebs + 5 PointLight2D) is instanced as `Bedroom` in `room_suite.tscn` instead of `suite_bedroom_a`. Screenshots: `game_hybrid_bedroom.png`, `game_boudoir.png`, `hybrid_vs_boudoir.png`.
+
+---
+
+## 2026-10-18 — Hero neutral pose, emote, bedroom layout v2 (not approved)
+
+Spent **22** (balance 1921 → 1899).
+
+**Neutral pose** (`_incoming/hero_anim/neutral/`): `edit_image_pro_flash`, method `text`, source `approved/hero_v7_a.png` (`upload:39eb2f26-d4ba-4f00-a8f2-992c2d80ee97`), 64×64, transparent. Cost 5 each.
+| File | Seed | Job ID | Prompt |
+|---|---|---|---|
+| `neutral_1701.png` | 1701 | `d4d0ad53-a4bd-4a68-96ff-540a62dd78ac` | change only the pose: both arms hanging relaxed straight down along the sides of the body, hands open at the hips, standing straight and upright facing the viewer, feet slightly apart. Keep exactly the same face, slight smile, messy brown hair, blue and white striped pajamas, slippers, colors, outline, shading and the same height. |
+| `neutral_1702.png` (my pick) | 1702 | `e0a4e9ce-c1fa-4382-a3cf-228ca7f437bb` | same as 1701 |
+| `neutral_1703.png` | 1703 | `7cf3600a-abd2-4634-a4e6-f4116f53ecb2` | neutral standing pose for a game character: arms relaxed down at the sides, straight upright posture, body facing straight toward the viewer, symmetric stance. Keep the same young man: same face with a slight smile, same messy brown hair, same blue and white striped pajamas and slippers, same colors, outline, shading and size. |
+
+**emote_scratch_head** (`_incoming/hero_anim/emote_scratch_head/`): `animate_character` mode `v3` on character `00659c7e-…` (hand-on-head pose), south, 6 frames + reference frame, action "sheepishly scratching the back of his head with one hand, slight confused smile, small head tilt, standing in place". Group `914003bb-7016-4945-a246-d8704b52dd38`. Cost 1. Frames came on a 92×92 canvas; cropped to 64×64 with feet aligned (`0–6.png`), raw in `raw_*.png`. Preview `emote_scratch_head.gif`.
+
+**Bedroom layout v2** (`_incoming/rooms/hybrid_bedroom/`), `create_image_pixen`, cost 1 each:
+| File | Size | Seed | Job ID | Note |
+|---|---|---|---|---|
+| `arch_floor_1711.png`, `arch_floor_1712.png` | 64×92 | 1711, 1712 | `89440ddb-b867-4c0d-8393-5f429691277c`, `f9291ea4-dd29-4742-ab01-2fdd484b6852` | rejected: corridor/steps + ivy |
+| `arch_floor_1721.png` | 64×92 | 1721 | `2c42f908-94c6-4918-b17b-18e19c789491` | rejected: open doors, ivy |
+| `arch_floor_1722.png` → `arch_floor.png` **(used)** | 64×92 | 1722 | `369f2646-dc9a-4d9a-93eb-ccd8f129f6b8` | dark opening with pale moonlight glow; ivy removed by script |
+| `drapes_niche_1713.png` **(used)**, `drapes_niche_1714.png` | 88×184 | 1713, 1714 | `ee69fce3-c6fd-4faa-94c0-bab6fa8a13c4`, `72de6b2a-59d3-4295-b9e6-e32c9f6c74e6` | fit inside the niche between pillars |
+
+Arch prompt 1721/1722: "doorway opening in a castle wall: a simple pointed gothic arch frame made of clean smooth cut lilac-grey stone blocks, front elevation, flat front view, the opening reaches the floor level, the inside of the opening is solid flat dark navy shadow with a faint pale blue glow in the middle, no vegetation, flat even lighting. 16-bit pixel art, dark colored outline, crisp pixels, no anti-aliasing, no blur. Avoid: ivy, vines, moss, plants, leaves, steps, stairs, corridor, door, perspective, background."
+
+Script edits (0 generations): `torch_unlit.png` (flame rows cut), `sconce_unlit.png` (flame pixels replaced by dark glass). Fire = `CPUParticles2D` (TorchFlame, CandleFlame) + PointLight2D.
+
+Layout (`game/tests/hybrid_bedroom.tscn`): two identical `window_narrow` at x 105 and 362 (y 170) with view layers; drapes in the center niche (457, 198); bows at y 96 over both windows and the niche; torch (401,170) and sconce (513,170) on the niche pillars; arch on the floor (548, 246, bottom at the floor line y≈292). Screenshot: `hybrid_bedroom_v2.png`. The static v7 a next to the hero was removed from `room_suite`.
+
+---
+
+## 2026-10-18 — Hero 3/4 pose, bedroom v3 «integration», sketch → rerender (not approved)
+
+Spent **70** (balance 1899 → 1829). Owner feedback: neutral poses 1701–1703 rejected (face the camera); bedroom v2 looked «pasted on».
+
+**Hero 3/4 pose** (`_incoming/hero_anim/pose34/`, sheet `hero_pose_variants.png`): `edit_image_pro_flash` text, source `approved/hero_v7_a.png`, 64×64, cost 5 each.
+| File | Seed | Job ID |
+|---|---|---|
+| `pose_1801.png` | 1801 | `80761a54-bcd0-4ef0-b33f-a8e05ec4405c` |
+| `pose_1802.png` (my pick) | 1802 | `22c5605a-460f-44b4-acb9-db178f00a50b` |
+| `pose_1803.png` | 1803 | `a1a70ee0-9b51-4551-836e-5751e21054a7` |
+Prompt 1801/1802: "change only one arm: the raised arm that scratches the back of the head is lowered and hangs relaxed down along the side of the body. Keep everything else exactly the same: the same three-quarter view, the same stance and leg position, the other hand resting on the hip, the same face with the slight smile, the same messy brown hair, blue and white striped pajamas, slippers, colors, outline, shading and size." 1803: "same character in the same relaxed three-quarter standing pose, but the hand is no longer on his head: that arm now hangs loosely down by his side with the hand open near the thigh. Keep the other hand on the hip, the same slight smile, the same face, messy brown hair, blue and white striped pajamas, slippers, colors, outline, shading and size."
+
+**Bedroom v3 pieces** (`_incoming/rooms/hybrid_bedroom/`), `create_image_pixen`, cost 1 each:
+| File | Size | Seed | Job ID | Note |
+|---|---|---|---|---|
+| `window_recess_1811.png`, `window_recess_1812.png` | 80×132 transp. | 1811, 1812 | `3fb16620-6bf3-4bf2-b89b-da4aae0e71db`, `ed3f8164-dfd5-4274-b2a9-86296fb34e23` | rejected: no real depth, opaque glass |
+| `window_wall_1821.png` | 96×144 opaque | 1821 | `f3b46218-7575-4329-a887-237f46a35231` | beige stone, rejected |
+| `window_wall_1822.png` → `window_recessed.png` **(used)** | 96×144 opaque | 1822 | `439d5482-dfad-41a8-a162-af8152685835` | lilac masonry patch, deep reveal, sill on corbels; black opening made transparent, masonry cut to an oval with an ordered-dither edge by script; `window_recessed_view.png` = night view inside the openings |
+| `cobwebs6_1813.png` → `web_*.png` | 384×96 transp. | 1813 | `83a4b29c-1116-4e82-ad5a-3ae4636c3d54` | cut into 7 (corner, hanging, round_big, torn, small, joint, sag), tinted lilac-grey, alpha ×0.72 |
+Window-wall prompt (1821/1822): "a rectangular patch of rough dusty lilac-grey castle stone wall with one tall narrow gothic pointed arch window set deep into the middle of it, front elevation, flat front view: very thick wall, deep stone reveals stepping inwards on both sides and around the arch, heavy protruding stone windowsill, thin dark stone mullion and tracery, the frame casts soft shadows into the deep reveal, the window opening itself is pure flat black with nothing inside. + style block. Avoid: glass, sky, moon, curtains, perspective, wallpaper, glow."
+
+Script work (0 generations): `box_v3.png` = box_1511 with the center niche cut into a dark passage (x 414–501, from the arch to the floor, dithered navy); contact shadows `shadow_window.png`, `shadow_drapes.png`, `shadow_torch.png` (dilated + blurred silhouettes, dark violet α≈0.5). Godot: `tests/cobweb_sway.gdshader` (whole-texel sideways sway growing from the anchor) + materials `cobweb_sway_{tl,tr,top}.tres`.
+
+Scene `game/tests/hybrid_bedroom_v3.tscn` (instanced as `Bedroom` in `room_suite.tscn`): passage with half-tied drapes (457,199) — the old small arch removed; two recessed windows at x 362 and 548 (symmetric to the passage); two identical torches (`torch_unlit` + CPUParticles2D flame + PointLight2D) on the passage pillars (401, 513); bows at y 74; 6 cobwebs on real corners (room corners, vault gap, pillar/arch joint, between left-bay capitals) with sway materials; moon light on the floor under the windows, blue glow in the passage. Screenshot `bedroom_v3_assembled.png`.
+
+**Sketch → rerender** (`create_image_pro`, 640×360, cost **25** each, 1 candidate): the only Tier 1 tool that takes a 640×360 reference; no strength control (influence set by the `usage` text). Sketch = in-game render of v3 without the hero, downscaled ×1/3 → `bedroom_v3_sketch.png` (`upload:3072b009-d489-4157-a372-d551e990206f`).
+| File | Seed | Job ID | Reference / style |
+|---|---|---|---|
+| `rerender_a_1901.png` | 1901 | `ef546c87-5414-497d-a637-d5a95d6ebf20` | sketch, usage "layout and composition: keep the positions of walls, pillars, windows, curtains, torches and the passage, but redraw everything as one coherent painting"; style_image = `approved/room_princess_boudoir.png` |
+| `rerender_b_1902.png` | 1902 | `a0b4bda3-47e1-4616-af4d-03c9bf3caf98` | sketch, usage "loose rough guide for where things are in the room; feel free to improve shapes, depth, lighting and integration" |
+Prompt (both): "gothic vampire castle bedroom interior at night, diorama view of the back wall facing the viewer: on the left an empty bay with faded torn pink rose wallpaper between stone pillars and a wide empty floor area; on the right a dark open passage between two stone pillars closed by heavy burgundy velvet curtains on a rod, tied back halfway with gold tassels; two identical tall narrow gothic windows deeply set into thick stone walls with heavy sills, moonlit night sky with clouds and castle towers outside; two lit wall torches on the pillars flanking the passage; three small neat pink bows above the windows and the passage; dusty cobwebs in the upper corners; dark wooden plank floor. Cool lilac moonlight against warm torch light. + §4 style block. No people, no furniture."
+Comparison: `bedroom_v3_rerender.png` (sketch | A | B). Both rerenders come out at 25 colors.
+
+---
+
+## 2026-10-18 — Hero 3/4 animations, bedroom v4, volumetric bows (not approved, except the pose)
+
+Spent **62** (balance 1829 → 1767): step 1 = 7, step 2 = 52, step 3 = 3. Status: `pose_1802` **APPROVED** (as `approved/hero_pose_34.png`); poses 1801/1803 **REJECTED**; everything else pending review.
+
+**0. Slippers fix** (0 gen): `pose34/pose_1802_fixed.png` = `pose_1802.png` with rows 57–63 (x 8–45) copied from `approved/hero_v7_a.png`; preview ×6 `pose34/hero_slippers_fix.png` (v7 a | 1802 | fixed).
+
+**1. Hero animation** (`_incoming/hero_anim/v34/`), character `866a2fb0-794b-40be-8cd5-c99e3a9480c2` (`create_character` v3, reference `pose_1802_fixed.png` = `upload:d43fb180-5741-4f0b-b32c-ca403fc3c733`, 4 directions, view `low top-down`; description "young man with messy brown hair, slight smile, blue and white vertical striped button-up pajamas with matching trousers, blue soft slippers, adult proportions, relaxed three-quarter stance with one hand on the hip"). Cost 1. Rotations `rot/*.png` — south keeps the 3/4 pose.
+
+| Animation | Mode | Group | Cost | Status |
+|---|---|---|---|---|
+| walk south/north/east (template `walking-6-frames`) → `walk_south_tpl/`, `walk_north/`, `walk_east/` | template | `ac76626e-c119-44de-8d6b-4872d624c3ab` | 3 | east used; south/north rejected (feet shuffle in place) |
+| `walk_south_v3/` — "walking toward the viewer with clear alternating steps, each leg lifts and moves forward, arms swing slightly, relaxed", 6 frames | v3 | `6094891b-28f9-412b-9e67-b4e5b7c20df2` | 1 | used |
+| `walk_north_v3/` — "walking away from the viewer with clear alternating steps, each leg lifts and moves forward, arms swing slightly, relaxed", 6 frames | v3 | `5c161e4c-a247-46a9-b6b8-2fb3c5fa5cef` | 1 | used |
+| `idle_south/` — "standing relaxed in place, gentle breathing, chest rises and falls slightly, tiny head movement", 4 frames | v3 | `20897c5c-7617-4345-8302-fd2e24adce3b` | 1 | used |
+
+v3 frames come on a 92×92 canvas; cropped to 64×64 with feet and body center aligned to the rotation (`raw_*.png` kept). Slipper colors checked in all used frames — not darkened, no recolor needed. West = east with `flip_h`. `emote_scratch_head` (from the previous character) on key **E**. Godot: `tests/hero_anim_frames.tres`, `tests/room_suite.gd`. Preview `v34/hero_walk.gif`.
+
+**2. Bedroom v4** (`_incoming/rooms/bedroom_v4/`), `create_image_pro` 640×360, cost 25 each. Reference = `rerender_a_1901.png` (`upload:d39dd0e7-b359-429d-b556-c9d8f792e33c`, usage "room layout and composition: keep the walls, pillars, vaults, floor and the positions of the windows, torches and the central passage; apply the changes from the description"), style_image = `approved/room_princess_boudoir.png` (`upload:4f86cc5e-c24d-45f1-af69-841f92a833e5`).
+
+| File | Seed | Job ID |
+|---|---|---|
+| `bedroom_v4_a_2001.png` (A, closer to the brief: dark arch) | 2001 | `876dd9da-4ea2-4656-85e1-aceea9b89a2a` |
+| `bedroom_v4_b_2002.png` (B, wider arch with a grey-lit interior) | 2002 | `8b1a0370-310a-4c7d-97ab-ba0de792f69b` |
+
+Prompt (both): "gothic vampire castle bedroom interior at night, diorama view of the back wall facing the viewer. Keep the room layout of the reference: on the left an empty bay with faded torn pink rose wallpaper between stone pillars and a completely empty wooden floor for a future bed; the left side wall may be visible. In the middle-right part a dark open pointed stone archway passage that starts at the floor, with soft cool moonlight glowing inside it, no curtains in the archway. Two identical tall narrow gothic windows on both sides of the archway showing the full moon and clouds, each window neatly framed by heavy burgundy velvet curtains on both sides, tied back, the curtains do not cover the glass. Two lit wall torches on the pillars beside the archway. Dusty cobwebs in the upper corners. The right edge of the image is open and continues into the next room, no right side wall. Dark wooden plank floor with moonlight beams from the windows. No bows, no ribbons, no furniture, no people, nothing on the floor. + §4 style block."
+
+Live layers (pixen, 1 each): `sky_raw_2021.png` (256×160, seed 2021, job `25e6ab52-d1ac-4b5b-943c-56e50149fc07`; came with a window frame — inner part cropped to `sky_window.png` 190×134), prompt "night sky backdrop seen from a castle window: deep blue-violet night sky with soft dithered gradient getting lighter toward the bottom, a big bright full moon in the upper left area, a few small stars, distant dark silhouettes of gothic castle towers and spires along the bottom edge. + style. Avoid: clouds, window frame, interior, text."; `clouds_2022.png` (256×64 transparent, seed 2022, job `90a93f11-cb72-43d6-8c18-11faf37c701e`), prompt "a horizontal strip of soft wispy night clouds, pale lilac and blue-grey moonlit clouds with lighter rims, scattered across the strip, transparent gaps between the clouds. + style. Avoid: sky background, moon, stars, buildings."
+
+Script work: glass made transparent by flood fill from seeds inside each lancet (`bedroom_v4_{a,b}_room.png`). Scene `game/tests/bedroom_v4.tscn`: SkyBG + SkyL/SkyR + scrolling Clouds (`tests/scroll_region.gd`) behind the room; particle flames + flickering PointLight2D (`tests/light_flicker.gd`) over the baked torches (400/515, 140); pulsing moon-beam light; arch glow; 2 swaying cobwebs; arch trigger (walk up into the arch → boudoir) in `room_suite.gd`. Screenshots `bedroom_v4_a.png`, `bedroom_v4_b.png`.
+
+**3. Volumetric bows** (pixen 48×48 transparent, view `side`, cost 1 each) — **RESERVE**: on the pillars they still look pasted on (too saturated against the room; the 3/4 reads almost frontal); the front one above the arch is tolerable.
+
+| File | Direction | Seed | Job ID | Note |
+|---|---|---|---|---|
+| `bow_front_2011.png` → `bow_front.png` | south | 2011 | `c8c64127-a29e-458a-9766-f3670ef9d17f` | good volume, folds, tails |
+| `bow_34left_2012.png` → `bow_34left.png` | south-west | 2012 | `9cc5881d-3c45-4f53-8e66-d72826125b99` | the model drew a column too; bow cut out by saturation |
+| `bow_34right_2013.png` → `bow_34right.png` | south-east | 2013 | `cf5ccfee-6e95-410e-a93e-cffe1fe11ad2` | ragged after cut-out; right pillar uses mirrored 34left |
+
+Prompts: front — "one voluminous pink satin ribbon bow hanging on a flat wall, seen from the front: puffy rounded loops with soft fabric folds and creases, a knotted center, two long ribbon tails hanging down with a slight twist, soft drop shadow falling on the wall behind it, light from the upper left. + style. Avoid: flat icon, wall texture, background."; 3/4 — "one voluminous pink satin ribbon bow tied around a round stone column, seen in three-quarter view from the left (right): the bow turns away to the right (left) following the curve of the column, puffy loops with fabric folds, the near loop larger than the far loop, two long ribbon tails hanging down, soft shadow on the column, light from the upper left. + style. Avoid: column, background, flat icon." Contact shadows `shadow_bow_*.png` by script. Screenshot `bows_test.png`; the `BowsTest` node in `bedroom_v4.tscn` is hidden.
