@@ -349,3 +349,50 @@ Budget 4, estimate 4, spent **4** (balance 1947 → 1943). Tool: `create_image_p
 Notes: bedroom_a — empty curtained alcove, rose-wallpaper bay with torches, moonlit arch on the right, a foreground balustrade with bows on its posts. bedroom_b — several curtained alcoves, many bows, a bed corner at bottom-left (furniture leaked in). dressing_a — arch on the left, open moonlit door + second door + spiral stairs, small rug, doors ≈140 px (too big), 256 colors. dressing_b — stairs in the left arch, big open door, carved door on the right, a small table (furniture leaked in), doors ≈135–170 px.
 
 Scene `game/tests/room_suite.tscn` + `room_suite.gd` (runs without errors; screenshots `suite_bed.png`, `suite_boudoir.png`, `suite_dressing.png`, 1920×1080): bedroom_a | boudoir (pano_center_a) | dressing_a at x 0/640/1280, hero v7 a with shadow, arrow-key walking, camera slides 0.4 s between rooms, CanvasModulate night, 3 moon lights + 7 torch/sconce lights.
+
+---
+
+## 2026-10-18 — Experiment 1: hero animation (not approved)
+
+Folder: `game/assets/_incoming/hero_anim/`. Spent **5** generations.
+
+- Character: `create_character` mode `v3`, `reference_image_url` = `approved/hero_v7_a.png` (`upload:39eb2f26-d4ba-4f00-a8f2-992c2d80ee97`), `n_directions: 4`, view `low top-down`, 64×64. ID `00659c7e-2e4b-4a22-b2d8-6c20c8c2018b`. Cost 1. Description: "young man, short full brown hair, no beard, slight smile, blue-and-white vertical striped button-up pajamas with matching trousers, soft slippers, adult proportions 1:5, upright posture". Files: `rot/{south,east,north,west}.png`.
+- `animate_character` template `walk`, directions south/north/east, 6 frames each (group `9f4cbc0a-0b60-44df-b9cb-691b0978229c`). Cost 3. Files: `walk_{south,north,east}/0–5.png`. West = east with `flip_h`.
+- `animate_character` template `breathing-idle`, south, 4 frames (group `5d222397-1ac2-4410-9d9a-f37aa46a1bed`). Cost 1. Files: `idle_south/0–3.png`.
+- Godot: `game/tests/hero_anim_frames.tres` (SpriteFrames), `Hero/Anim` AnimatedSprite2D in `room_suite.tscn`, logic in `room_suite.gd`.
+- Comparison: `hero_anim_compare.png` (rows: v7 a + idle, walk south, walk east, walk north, walk west mirrored; bottom: in-game idle next to static v7 a, in-game walk west).
+- Notes: identity (face, hair, pajamas, slippers) holds. The reference pose (hand on the back of the head) is baked into the rotations, so in walk south/north the arm stays up and the legs barely stride; walk east strides well but the arm is hidden. Walk frames are ~59 px tall vs 63 px for v7 a and slightly narrower.
+
+## 2026-10-18 — Experiment 2: hybrid bedroom (not approved)
+
+Folder: `game/assets/_incoming/rooms/hybrid_bedroom/`. Spent **17** generations, all `create_image_pixen` (1 each). For these pieces the §4 style block was used WITHOUT "warm key light against cool purple-blue shadows" (conflicts with the flat/even lighting requirement; light comes from Godot).
+
+**Room box** (640×360, view `high top-down`, outline `selective`, detail `highly detailed`):
+| File | Seed | Job ID | Result |
+|---|---|---|---|
+| `box_1501.png`, `box_1502.png`, `box_1503.png` | 1501–1503 | `31416707-7351-448c-ad67-b15d3735c469`, `8579cc1f-07e2-4282-96ff-a46c34a4ddcb`, `128d4665-c71c-4453-86fe-6792eb000773` | prompt with "bedroom" → beds, candles, bows, curtains, doors leaked in |
+| `box_1511.png` **(used)**, `box_1512.png` | 1511, 1512 | `931dc805-b92b-4ee8-a8ae-d005310f8646`, `ebf40582-a583-4edb-98d6-31d017df74cf` | 1511 fully empty (two bays, the right one split by pillars into 3 niches); 1512 has bows, sconces, a curtain |
+| `box_1513.png` | 1513 (view `side`) | `77703a22-8e01-4fb3-adc9-bfe941078f78` | almost empty (one candle, small bows) |
+
+Prompt 1501–1503 (owner's text):
+> empty gothic castle bedroom interior, diorama view, back wall facing the viewer straight-on, short side walls, dark wooden plank floor with depth, vaulted ceiling edge at top, faded torn pink rose wallpaper on the back wall between stone pillars, dusty lilac-grey stone, dark wood, completely empty: no windows, no doors, no arches, no furniture, no bows, no candles, no torches, nothing on the floor, soft even light. + style block. Avoid: windows, doors, arches, furniture, bed, curtains, bows, ribbons, candles, torches, glow, strong shadows, characters, text, blurry, photorealistic.
+
+Prompt 1511–1513:
+> bare empty stone room shell in a gothic castle, unfurnished, diorama view, one single wide back wall facing the viewer straight-on, short side walls at the left and right edges, dark wooden plank floor with depth in the lower third, vaulted ceiling edge at top, faded torn pink rose wallpaper panels on the back wall between dusty lilac-grey stone pillars, dark wood wainscoting, plain bare walls and plain bare floor, soft even ambient light. + style block. Avoid: bed, furniture, table, nightstand, bench, chair, curtains, drapes, windows, doors, arches, bows, ribbons, candles, torches, lamps, glow, strong shadows, characters, text, blurry, photorealistic.
+
+**Kit pieces** (transparent background unless noted; all prompts end with the reduced style block and an Avoid list — exact text in the job records):
+| File | Size | Seed | Job ID | Note |
+|---|---|---|---|---|
+| `window_narrow_1601.png` → `window_narrow.png` | 48×108 | 1601 | `517f5657-6a29-4f6b-bc88-622b83ca3895` | panes came out transparent |
+| `window_wide_1602.png` → `window_wide.png` | 84×112 | 1602 | `e86fe67c-af6f-4775-b8f1-225ff83a493b` | glass made transparent by script (bluish pixels removed) |
+| `window_view_1603_raw.png` → `window_view.png` | 256×128 opaque | 1603 | `576b3a90-1316-4c53-8301-39f4de3426dc` | came with a frame; cropped to the sky (165×91). Per-window view layers `window_*_view.png` = view pixels only inside each window's openings |
+| `arch_narrow_1604.png` | 64×100 | 1604 | `0ed13423-5d0a-47fa-b118-ecc34499c5a0` | rejected: open doors + ivy inside |
+| `arch_narrow_1611.png` **(used)** | 64×100 | 1611 | `460d9108-5cfa-44e4-b533-c791a71e400f` | dark opening, some ivy |
+| `arch_wide_1612.png` | 104×104 | 1612 | `055380e2-2a51-4e7d-9eef-448c5d373e15` | clean, dark |
+| `drapes_1613.png` | 160×160 | 1613 | `7caac8a1-d612-4659-938b-bd4c48524b2c` | burgundy, gold tiebacks, rod |
+| `torch_1614.png` | 32×48 | 1614 | `df01ef70-e769-4a58-8b67-bba665dc1cd1` | drew a small flame despite "unlit" |
+| `sconce_1615.png` | 32×48 | 1615 | `78108650-e041-440d-a5ef-b69cb41d98f4` | small lit candle despite "unlit" |
+| `cobwebs_1616.png` → `cobweb_corner/small/hanging.png` | 192×64 | 1616 | `48fca1e1-90fa-436d-ad84-058f3478183c` | cut into 3 by script |
+| `bow_1617.png` | 32×32 | 1617 | `4620093e-9be0-41bd-a738-55b3a9cc4869` | symmetric |
+
+Scene `game/tests/hybrid_bedroom.tscn` (box_1511 + view layers behind 2 windows + drapes in the center niche of the right bay + narrow arch to the boudoir + torch, sconce, 3 bows, 3 cobwebs + 5 PointLight2D) is instanced as `Bedroom` in `room_suite.tscn` instead of `suite_bedroom_a`. Screenshots: `game_hybrid_bedroom.png`, `game_boudoir.png`, `hybrid_vs_boudoir.png`.
