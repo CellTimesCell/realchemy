@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo8xqkce4n4op"
-path="res://.godot/imported/2.png-418d68323be0ee922ce37d43f84811fd.ctex"
+uid="uid://b7akgd3ry8kuc"
+path="res://.godot/imported/2.png-88c40b39c5200b3ec03e24062db7a191.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/hero/interact/interact_mid_south/2.png"
-dest_files=["res://.godot/imported/2.png-418d68323be0ee922ce37d43f84811fd.ctex"]
+source_file="res://assets/approved/hero/interact/interact_mid_south/2.png"
+dest_files=["res://.godot/imported/2.png-88c40b39c5200b3ec03e24062db7a191.ctex"]
 
 [params]
 

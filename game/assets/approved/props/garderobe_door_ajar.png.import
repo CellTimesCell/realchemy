@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byhrk6wfw5fdg"
-path="res://.godot/imported/wardrobe_princess_ajar.png-8b4586b68c411ba5396b14adf6068317.ctex"
+uid="uid://cfki1n5fol2gm"
+path="res://.godot/imported/garderobe_door_ajar.png-141cf05787e70f3fd0dc3a65d8ef0f40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/wardrobe_princess_ajar.png"
-dest_files=["res://.godot/imported/wardrobe_princess_ajar.png-8b4586b68c411ba5396b14adf6068317.ctex"]
+source_file="res://assets/approved/props/garderobe_door_ajar.png"
+dest_files=["res://.godot/imported/garderobe_door_ajar.png-141cf05787e70f3fd0dc3a65d8ef0f40.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dectgd0u5f5ia"
-path="res://.godot/imported/1.png-18359beee5ccc1b7fe99e107eb107776.ctex"
+uid="uid://sx1gmklnttfl"
+path="res://.godot/imported/garderobe_door_open.png-6647a1b83cc6db69aa10ec4c00b195ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/hero/interact/interact_low_south/1.png"
-dest_files=["res://.godot/imported/1.png-18359beee5ccc1b7fe99e107eb107776.ctex"]
+source_file="res://assets/approved/props/garderobe_door_open.png"
+dest_files=["res://.godot/imported/garderobe_door_open.png-6647a1b83cc6db69aa10ec4c00b195ad.ctex"]
 
 [params]
 
