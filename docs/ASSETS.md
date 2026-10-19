@@ -36,6 +36,7 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `room_princess_bedroom.png` (v3) | approved bedroom + 2 inpaints (wall instead of the side door; curtains + small door in the arch) | Bedroom | approved 19.10.2026 (the old version is in git history) |
 | `props/garderobe_arch_{ajar,open}.png` | edits of the arch crop | Arch door states | approved 19.10.2026 |
 | `rooms/garderobe/garderobe_bg.png`, `hand_{point,grab}.png` | garderobe a, hand cursor | First-person garderobe | approved 19.10.2026; b rejected |
+| `props/{painting_count(+_eyes),painting_madam,tiger_skin_rug,bedside_rug,chest(+_ajar,_open),folding_screen,harp34,x_chair,plush_bear,cello,oval_rug,still_life,dress_form,laundry_basket,full_length_mirror,worn_rug,coat_stand}.png` | suite furniture picks (a/b per Alexander) + fixes: portrait regenerated 60×72, tiger regenerated 136×56, bedside rug b muted, basket b darker | Suite furniture | approved 19.10.2026; other variants rejected |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
@@ -43,6 +44,13 @@ Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval 
 
 | File | What |
 |---|---|
+| `pending/rooms/room_princess_bedroom.png` | bedroom with the big ornate garderobe door (inpaint) — replaces `approved/room_princess_bedroom.png` in the scene |
+| `pending/props/garderobe_door_v2_{ajar,open}.png` | the ornate door's states (door area only) |
+| `pending/props/dressing_gate.png` | gate bars (rattles) |
+| `pending/garderobe/posters/*`, `nail.png`, `tape.png`, `toilet_paper.png` (holder on a bracket + roll + hanging end) | garderobe |
+| `pending/suite/{floor_candelabra,music_stand,sheet_music}.png` | boudoir music corner + 5-candle candelabra |
+
+---|---|
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
 | `pending/garderobe/posters/poster_*.png` | 6 parody posters v2 (64×84, no text) |
 | `pending/garderobe/{nail,tape}.png` | poster fixtures |
@@ -890,3 +898,21 @@ Nail / tape: `create_image_pixen` 16×16, seeds 3212 / 3211 ("a single small iro
 Script work (0 generations): nightstand_L = mirrored nightstand; Count eyes = eye-white pixels of the portrait as an overlay (`painting_count_eyes.png`); madam framed with a generated frame.
 
 Screenshots: `_incoming/garderobe/{garderobe_a_v2,garderobe_poster_moved_v2,posters_sheet}.png`; `_incoming/layouts/layout_bedroom_v3.png`; `_incoming/suite/shots/{bedroom_full,boudoir_full,dressing_full}.png`, `eyes_follow.gif`, `<item>_{a,b}.png`, `variants_overview.png`.
+
+## 2026-10-19 (8) — Fix batch (budget 40)
+
+Spent **38** (balance 1045 → 1007). After this: pause until 18.11.2026 (CLAUDE.md §5.8).
+
+| Output (`_incoming/batch8/`) | Tool | Seed / job | Cost |
+|---|---|---|---|
+| `arch_door_0.png` — ornate door in the arch | `inpaint_image_pro_flash` on the arch crop (400,72)+120×192 (`upload:ece478d3-…`), mask (38,72,44,94): "between the tied-back curtains: a pompous ornate closed door standing on the floor, dark carved wood with gilded trim, gold scrollwork and a big gold ring handle, a pointed top that fits the arch; a small blank wooden plaque hangs on a thin chain from the handle (the plaque has no text). Front view, same lighting as the surrounding wall." | 3601 / `1e80009e-cb9f-4c28-ae10-832ad47c8486` | 6 |
+| `arch_ajar_0.png`, `arch_open_0.png` | `edit_image_pro_flash` of `arch_door_0` (`upload:0e86a7a3-…`): "…the ornate gilded door between the curtains is slightly ajar…" / "…is wide open: the door leaf swung inward, the doorway shows a warm candle-lit tiny stone room inside…" | 3611 `4666341e-…`, 3612 `3830d592-…` | 12 |
+| `portrait_{0..8}.png` — Count 60×72 (a = 0, b = 6) | `create_image_pro`, style = bedroom, reference = count: "an oil portrait painting of a pale vampire count in an ornate gilded gothic frame … the eyes look straight at the viewer: clearly visible white eyeballs with small black pupils …" | 3602 / `09dc2013-42ec-4081-98be-650b20a57c16` | 15 |
+| `tiger_0.png` 136×56 | `create_image_pixen`: "a cartoonish tiger skin rug lying flat on a wooden floor seen from a high front camera angle … head at the front with comically open jaws and fangs, slightly moth-eaten" | 3603 / `e7d46b46-…` | 1 |
+| `candelabra_0.png` 44×72 | pixen: "a tall ornate wrought-iron floor candelabra as tall as a person, five white candles on curled arms, curled tripod feet, gothic scrollwork … no flames" | 3604 / `a2937bd7-…` | 1 |
+| `music_stand_0.png` 32×56 | pixen: "a gothic wrought-iron music stand with curled scrollwork on a tripod base, an open sheet of music paper on it, turned three-quarters to the left" | 3605 / `44446b7e-…` | 1 |
+| `sheet_music_0.png` 24×24 | pixen: "a single loose old sheet of music paper with staves and notes lying flat on a floor, seen from above at a steep angle, slightly yellowed" | 3606 / `f990fc8c-…` | 1 |
+| `paper_holder_0.png` 32×40 | pixen: "a wall-mounted toilet paper holder: a small brass bracket screwed to a stone wall with a short horizontal rod, a white roll of toilet paper on the rod, the loose end of the paper hanging down a little, seen at an angle on a wall that recedes to the right" | 3607 / `d7fbde7b-…` | 1 |
+
+Script work: Count eye band (rows 33–37) as the eyes overlay; bedside rug b desaturated/darkened; basket b darkened; door pasted into the bedroom, state overlays = door area only. Old small-door overlays (`approved/props/garderobe_arch_*`) deleted.
+Screenshots: `_incoming/garderobe/garderobe_v3.png`; `_incoming/batch8/shots/{bedroom_full_v3,boudoir_full_v3,dressing_full_v3}.png`, `eyes_follow_v2.gif`; `_incoming/layouts/layout_boudoir_v3.png`.
