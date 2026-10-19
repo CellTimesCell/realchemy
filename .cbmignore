@@ -1,2 +1,9 @@
 # Third-party Godot addons: keep them out of the code graph
 game/addons/
+# Raw AI art, Godot cache, engine binaries and local tools (not project code)
+game/assets/_incoming/
+game/.godot/
+engine/
+Aseprite-*/
+furnace-*/
+_to_delete/
