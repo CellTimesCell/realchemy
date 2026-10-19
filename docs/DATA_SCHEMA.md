@@ -104,3 +104,60 @@
 - **es** (ES-419) — позже, отдельной колонкой в том же CSV.
 - **ru** — нет. Русские строки в игровых данных не хранить; поля вида `{"ru": ...}` в примерах выше устарели — вместо них ключ `loc:...`.
 - Формат CSV: первая колонка `keys`, затем `en` (`game/data/i18n/strings.csv`). Ключи: `UI_*` — интерфейс и хотспоты, `HS_*` — особые подписи хотспотов, `SAY_*` — реплики героя, `LETTER_*` — письма и записки.
+
+## v1.2 — персонажи и предметы сцены (19.10.2026)
+
+### data/character_reactions.json
+```json
+{
+  "reactions": { "<character>": { "<reaction>": {"anim": "react_cheer", "emote": "sparkle"} } },
+  "events":    { "<character>": { "<EventBus signal>": "<reaction>" } }
+}
+```
+- `anim` — имя анимации в SpriteFrames персонажа (пусто — только значок); `emote` — имя значка из `data/emotes.json`.
+- Событие — имя сигнала `EventBus`; аргументы сигнала игнорируются.
+
+### data/emotes.json
+```json
+{
+  "icons": {
+    "<icon>": {
+      "flip": true,
+      "shade": false,
+      "places": [ {"anchor": "temple_face", "offset": [6, -2], "scale": 1.0, "frame_shift": 0} ]
+    }
+  },
+  "characters": {
+    "<character>": { "face_side": "right", "anim_head_offset": {"<anim>": [0, 18]} }
+  }
+}
+```
+- `anchor`: `head_top` | `forehead` | `temple_face` | `temple_back` (лицо — сторона, куда смотрит персонаж; маркеры `Temple_L/R` — по неотражённому спрайту).
+- `offset` — центр значка от точки, px; `x` положительный = к лицу (зеркалится при flip).
+- `scale` — 1 (пиксель-арт), не меньше 0,5. `flip` — отражать сам значок, когда персонаж смотрит влево. `shade` — ступенчатая тень на верх лица (gloom). Несколько `places` — несколько копий (sparkle), `frame_shift` сдвигает кадр копии.
+- `face_side` — куда смотрит неотражённый спрайт; `anim_head_offset` — смещение головы в анимации (присед).
+
+### data/interactables.json (`components/interactable.gd`)
+```json
+{
+  "<id>": {
+    "pose": "interact_mid",
+    "anim": "states",
+    "closable": false,
+    "sfx": {"start": "creak", "end": "open", "close": "close", "locked": "locked"},
+    "fx": "dust", "fx_once": true,
+    "item": {"id": "orange", "count": 3, "color": "#f08a20", "letter": "o"},
+    "line_key": "SAY_ORANGE_TAKEN", "empty_line_key": "SAY_ORANGE_EMPTY",
+    "locked": false, "locked_line_key": "",
+    "prompt_after": "", "prompt_after_empty": "UI_INSPECT"
+  }
+}
+```
+- `pose` — поза героя: `interact_low` | `interact_mid` | `interact_high` | пусто.
+- `anim` — анимация предмета: `none` | `states` (текстуры закрыт → приоткрыт → открыт из сцены) | `slide` (выезжает `moving_part`, тело меняет текстуру на «пустой проём»).
+- `sfx` — имена звуков `AudioManager` (open, close, locked, pickup, creak, chirp).
+- `fx` — `dust` | пусто; `fx_once` — только при первом открытии.
+- `item` — найденный предмет: `id` уходит в `EventBus.item_found`, `count` — сколько раз можно взять, `color`/`letter` — плейсхолдер вылетающего значка.
+- `line_key` / `empty_line_key` / `locked_line_key` — ключи строк (en, `data/i18n/strings.csv`).
+- `prompt_after` — подсказка после открытия; `prompt_after_empty` — когда предметы кончились.
+- Узлы (спрайт, текстуры состояний, выдвижная часть, точка эффекта, содержимое) задаются в сцене экспортами компонента.

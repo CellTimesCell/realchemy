@@ -26,13 +26,24 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `hero/emotions/{cheer,facepalm,notice,disgust,thinking,dizzy}/` | `_incoming/hero_emotions/clean/` | Hero reaction animations (south), in `hero/hero_frames.tres` as `react_*` | approved 19.10.2026; `startled` is still in `pending/hero/startled/` |
 | `characters/ghost_grandma/emotions/{idle,lecture,angry,startled,thinking,facepalm}/` + `ghost_frames.tres` | `_incoming/characters/ghost_v2/anim/clean/` | Ghost grandma animations; look = `shaders/ghost.gdshader` v2 | approved 19.10.2026 |
 | `ui/emotes/<icon>/` + `emote_frames.tres`, `source/` | `_incoming/emotes/frames_a/`, `style_a/` | Manpu icons, style A (white + dark outline; colour only by meaning: anger red, sweat light blue). Drawn on `EmoteLayer` above the night tint | approved 19.10.2026; style B rejected |
+| `hero/emotions/startled/` | `_incoming/hero_emotions/clean/startled/` + landing (frames 5–7 = 2, 1, 0) | Hero startled with landing | approved 19.10.2026 |
+| `props/boudoir/{birdcage,birdcage_bars,orange_tree,harp,vanity}.png` | birdcage_2701_0, orange_tree_2711_0, harp_2721_0, vanity_2731_2 (b) | Boudoir furniture | approved 19.10.2026; other variants rejected; harp and vanity scale kept |
+| `props/boudoir/canary/` + `canary_frames.tres` | canary_2743 + preen / alarm | Canary (sit, preen, alarm) | approved 19.10.2026 |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
-Files the working scene already uses while they wait for an OK. On approval they move to `approved/`.
+Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → deleted.
 
-| Folder | What | Source |
+| File | What | Source |
 |---|---|---|
+| `pending/props/wardrobe_princess_ajar.png` | wardrobe half-open (state 2 of 3) | `edit_image_pro_flash` from the approved closed wardrobe |
+| `pending/props/secretary_princess_ajar.png` | secretary lid half-open | `edit_image_pro_flash` from the approved closed secretary |
+| `pending/props/garderobe_door_{ajar,open}.png` | garderobe door overlays (only the changed area of a 60×136 crop of the bedroom at (216,136)) | `edit_image_pro_flash` of the crop |
+| `pending/props/nightstand_slot.png`, `nightstand_drawer.png` | nightstand with an empty drawer slot + the drawer front (cut from the original pixels) | `edit_image_pro_flash` + script |
+| `pending/props/dressing_gate.png` | gate bars cut from `approved/room_princess_dressing.png` (532,214)–(570,298), rattles | script, 0 generations |
+| `pending/hero/interact/{interact_low,interact_mid,interact_high}_{south,east}/` | hero interaction poses, 5 frames (0 = reference) | `animate_character` v3 + `tools/emotion_cleanup.py` |
+
+---|---|---|
 | `pending/boudoir/` | birdcage, orange tree, harp, vanity: variant a is in the scene, variant b next to it; `birdcage_*_bars.png` = front bars layer | `_incoming/props/{birdcage,orange_tree,harp,vanity}/` |
 | `pending/boudoir/canary/` | canary sprite + `canary_frames.tres` (sit, preen, alarm) | `_incoming/props/birdcage/` |
 | `pending/hero/startled/` | hero startled with landing (frames 5-7 = frames 2, 1, 0 reused) | `_incoming/hero_emotions/clean/startled/` |
@@ -743,3 +754,33 @@ Post: `tools/prop_tools.py clean` (detached specks), `bars` (front bars of the c
 **Sound placeholders** (`assets/audio/sfx_placeholder/`, synthesized by `tools/placeholder_sfx.py`, 0 generations): `canary_chirp.wav`, `harp_note_{0..3}.wav` (C5 E5 G5 C6). Replace at T-27.
 
 Screenshots: `_incoming/props/{birdcage,orange_tree,harp,vanity}/<prop>_{a,b}.png` (×3, hero for scale), `boudoir_furnished.png` (a), `boudoir_furnished_b.png`, `birdcage/canary.gif` (idle: hops, preening; then alarm).
+
+## 2026-10-19 (5) — Emote anchors, transitions, interactable props, poses, half-open frames, layouts
+
+Spent **34** (balance 1501 → 1467): hero poses 6, wardrobe ajar 6, secretary ajar 5, nightstand slot 5, garderobe door ajar 6 + open 6.
+
+**Approved from the last batch:** startled with landing → `approved/hero/emotions/startled/`; boudoir birdcage a, canary, orange tree a, vanity b, harp a → `approved/props/boudoir/`; other variants rejected (deleted from `pending/`).
+
+**Hero interaction poses** (`_incoming/hero_interact/{raw,clean_south,clean_east}/`, pending): `animate_character` mode v3 on character `866a2fb0-794b-40be-8cd5-c99e3a9480c2`, directions south + east, 4 frames + reference, canvas 92×92 (south) / 88×88 (east), 1 per direction. Cleanup `tools/emotion_cleanup.py` (slippers checked against `hero_v7_a.png`).
+
+| Animation | Group | Action |
+|---|---|---|
+| interact_low | `9aa22746-2066-4d4d-9474-bbb254af9201` | "crouches down low bending the knees and reaches one hand toward the floor in front of him to pick something up, then holds the crouch, feet stay in place" |
+| interact_mid | `5656fc21-9bf5-46ed-8880-9971c10a4963` | "leans forward slightly and stretches one arm straight out in front of him at chest height to touch or take something from a table, then holds the pose, feet stay in place" |
+| interact_high | `a250d6fd-7975-4d00-a050-d873d8af7d5f` | "rises onto his tiptoes and reaches one arm high up above his head to pick something from a branch, then holds the pose, feet stay in place" |
+
+**Half-open frames** (`edit_image_pro_flash`, `use_color_palette_correction`):
+
+| Output | Source upload | Seed | Job | Cost | Prompt |
+|---|---|---|---|---|---|
+| `_incoming/props/wardrobe/wardrobe_ajar_2801_0.png` | `upload:a589e18c-c283-44bd-801a-fd36ebbbe1aa` (closed wardrobe) | 2801 | `8ca3aae6-a67a-4165-8d44-7c3d1464e321` | 6 | "the same wardrobe with both doors only slightly ajar, each door swung open just a little (a narrow dark gap in the middle, about one fifth of the way open), the dark interior barely visible through the gap. Keep the same wardrobe frame, carvings, painted flowers, colors, size, outline and lighting." |
+| `_incoming/props/secretary/secretary_ajar_2811_0.png` | `upload:5d03cc28-3c8c-4c9e-a5c1-023ad8cceb5a` | 2811 | `996924f2-1009-4d0e-8454-abc169afac96` | 5 | "the same writing desk with the slanted fold-down lid half open, tilted forward about halfway down, a dark gap showing the shadowy interior with pigeonholes barely visible. Keep the same desk body, drawers, inkwell and quill, colors, size, outline and lighting." |
+| `_incoming/props/nightstand/nightstand_slot_2821_0.png` | `upload:4b95e439-d124-464a-acd5-1f2987f5619f` | 2821 | `a00632fa-0577-4797-975f-a847967dce76` | 5 | "the same small nightstand, but its upper front drawer is pulled out and missing, leaving an empty dark rectangular drawer slot in the upper part of the front face. Keep the same candle, colors, size, outline and lighting." |
+| `_incoming/props/door/door_ajar_2831_0.png` | `upload:ab5cefee-289b-433e-aa0c-58738a18283f` (bedroom crop 216,136–276,272) | 2831 | `eee5f248-a7be-4908-8460-e051ec472c9c` | 6 | "the narrow wooden door in the side wall is slightly ajar: it has swung open a little, a thin dark gap appears along its edge with deep darkness behind it. Keep everything else exactly the same: the stone pillar, the wall, the wallpaper, the floor, colors and lighting." |
+| `_incoming/props/door/door_open_2832_0.png` | same | 2832 | `9b55cfc8-a8ff-47b1-bf6b-55d9e429c10e` | 6 | "the narrow wooden door in the side wall is wide open: the door leaf is swung fully open against the wall, the doorway is an empty pitch-dark opening. Keep everything else exactly the same: …" |
+
+**Sound placeholders** added (synthesized, `tools/placeholder_sfx.py`, 0 generations): `open.wav`, `close.wav`, `locked.wav`, `pickup.wav`, `creak.wav`.
+
+Found-item icon = placeholder (coloured square + letter, `components/item_pop.gd`); WIP garderobe room = grey rectangles + label.
+
+Screenshots / GIFs: `_incoming/emotes/emotes_placement.png`; `_incoming/feel/{door_transition,iris,wardrobe_open_anim,drawer,look_under_bed,pick_orange}.gif`; `_incoming/layouts/layout_{bedroom,boudoir,dressing}.png`.
