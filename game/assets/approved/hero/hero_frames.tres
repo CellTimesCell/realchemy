@@ -47,7 +47,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_south",
-"speed": 5.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,

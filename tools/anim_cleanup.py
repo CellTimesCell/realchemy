@@ -21,7 +21,10 @@ from PIL import Image
 
 ROOT = sys.argv[1]
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, 'clean')
-HEAD_ROWS = 17               # head height from the top of the hair
+HEAD_ROWS = 19               # head + neck height from the top of the hair
+# Rule: the neck moves together with the head, so the collar of a bobbing
+# body never rises over the chin ("double chin").
+BREATH_SETS = {'idle_south'}  # rebuilt from one frame: chest/shoulders +1px
 
 SETS = {  # name: (folder, frame count, best frame)
     'idle_south': ('idle_south', 4, 0),
@@ -156,6 +159,18 @@ def transplant(src, dst):
     return out, (dx, dy)
 
 
+def chest_up(im):
+    """Inhale frame: rows from the collar to the belt move up 1px."""
+    top = top_of(im)
+    out = im.copy()
+    src = im.load()
+    dst = out.load()
+    for y in range(top + HEAD_ROWS, top + 36):
+        for x in range(64):
+            dst[x, y] = src[x, y + 1]
+    return out
+
+
 def drop_islands(im, max_size=4):
     """Remove tiny detached pixel clusters (e.g. a floating hand)."""
     px = im.load()
@@ -191,6 +206,17 @@ def main():
         fixed = fix_head(head, name)
         os.makedirs(os.path.join(OUT, name), exist_ok=True)
         log = []
+        if name in BREATH_SETS:
+            # Idle: head and neck never move; only shoulders/chest rise 1px.
+            frames = [head, head, chest_up(head), chest_up(head)]
+            for i, fr in enumerate(frames):
+                fr.save(os.path.join(OUT, name, f'{i}.png'))
+            print(name, 'best', best, 'head fixes', fixed, 'breathing frames', len(frames))
+            for stale in range(len(frames), count):
+                path = os.path.join(OUT, name, f'{stale}.png')
+                if os.path.exists(path):
+                    os.remove(path)
+            continue
         for i, fr in enumerate(frames):
             new, off = transplant(head, fr)
             islands = drop_islands(new)
