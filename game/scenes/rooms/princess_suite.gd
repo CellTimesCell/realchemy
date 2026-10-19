@@ -1,7 +1,8 @@
 extends Node2D
 ## Princess suite: three 640x360 rooms in a row (bedroom | boudoir | dressing
 ## room). The camera stays on one room and slides to the next when the hero
-## crosses into it; walking up into the bedroom arch leads to the boudoir.
+## crosses into it. The bedroom leads to the boudoir only through its right
+## edge (the central arch is the garderobe door now).
 ## Rooms behind doors sit in further rows below (y >= 360): a door fades the
 ## screen, so the camera jumps there without sliding.
 
@@ -12,9 +13,6 @@ const CAMERA_SLIDE_TIME: float = 0.4
 @export var hero: Hero
 @export var camera: Camera2D
 @export var room_count: int = 3
-## Walking up into this rect (world coords) moves the hero through the arch.
-@export var arch_rect: Rect2 = Rect2(430, 245, 54, 22)
-@export var arch_target: Vector2 = Vector2(700, 290)
 
 var _room_index: Vector2i = Vector2i(-1, -1)
 var _tween: Tween
@@ -25,8 +23,6 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_up") and arch_rect.has_point(hero.position):
-		hero.position = arch_target
 	_update_room(false)
 
 

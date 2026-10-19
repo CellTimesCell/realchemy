@@ -3,7 +3,10 @@ extends Node2D
 ## A door to another room. ui_accept in the hotspot: the door opens (closed ->
 ## ajar -> open), the hero steps into the doorway, the screen fades out, the
 ## hero appears at `exit_point` on the other side, the screen fades in. The
-## door closes behind. A locked door rattles and says `locked_line_key`.
+## door closes behind. A locked door rattles and says `locked_line_key`;
+## with `locked_first_time` only the first try rattles, then it opens.
+## With `first_person_view` set, the door opens onto that screen instead of
+## another room; when the view closes the hero steps back out.
 ## Arches inside a suite do not use this: the camera just slides.
 
 const STEP_TIME: float = 0.12
@@ -21,9 +24,13 @@ const RATTLE_STEP_TIME: float = 0.04
 ## Point in this doorway the hero walks to before the fade (local).
 @export var step_in: Vector2 = Vector2(0, -6)
 @export var locked: bool = false
+## Rattle on the first try only ("Locked. From the inside?"), then open.
+@export var locked_first_time: bool = false
 @export var locked_line_key: String = ""
+@export var first_person_view: FirstPersonView
 
 var busy: bool = false
+var _tried: bool = false
 
 
 func _ready() -> void:
@@ -34,20 +41,46 @@ func _unhandled_input(event: InputEvent) -> void:
 	if busy or not hotspot.is_active() or not event.is_action_pressed("ui_accept"):
 		return
 	get_viewport().set_input_as_handled()
-	if locked:
+	if locked or (locked_first_time and not _tried):
+		_tried = true
 		_rattle()
+	elif first_person_view:
+		look_inside(hotspot.hero)
 	else:
 		go_through(hotspot.hero)
 
 
-func go_through(hero: Hero) -> void:
+## Opens the door onto a first-person screen; the hero steps back out after.
+func look_inside(hero: Hero) -> void:
 	busy = true
 	EventBus.set_modal_ui(true)
+	await _open_door()
+	var start: Vector2 = hero.global_position if hero else Vector2.ZERO
+	if hero:
+		await hero.walk_to(global_position + step_in, STEP_IN_TIME)
+	await first_person_view.open()
+	await first_person_view.closed_view
+	_set_state(0)
+	AudioManager.play_sfx("close")
+	if hero:
+		hero.global_position = start
+		hero.face("south")
+	EventBus.set_modal_ui(false)
+	busy = false
+
+
+func _open_door() -> void:
 	AudioManager.play_sfx("creak")
 	for i: int in range(1, state_textures.size()):
 		_set_state(i)
 		await get_tree().create_timer(STEP_TIME).timeout
 	AudioManager.play_sfx("open")
+
+
+func go_through(hero: Hero) -> void:
+	busy = true
+	EventBus.set_modal_ui(true)
+	await _open_door()
 	if hero:
 		await hero.walk_to(global_position + step_in, STEP_IN_TIME)
 	await transition.fade_out()

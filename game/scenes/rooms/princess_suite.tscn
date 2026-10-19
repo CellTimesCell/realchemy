@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/rooms/fx/scroll_region.gd" id="4"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_l.png" id="5"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_r.png" id="6"]
-[ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/pending/rooms/room_princess_bedroom_garderobe.png" id="7"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir.png" id="8"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_tracery.png" id="9"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing.png" id="10"]
@@ -59,12 +59,13 @@
 [ext_resource type="Shader" path="res://shaders/iris.gdshader" id="58"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_ajar.png" id="59"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/secretary_princess_ajar.png" id="60"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_door_ajar.png" id="61"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_door_open.png" id="62"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_arch_ajar.png" id="61"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_arch_open.png" id="62"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_drawer_closed.png" id="63"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_drawer_open.png" id="64"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate.png" id="65"]
 [ext_resource type="Script" path="res://components/speech_bubble.gd" id="66"]
+[ext_resource type="PackedScene" path="res://scenes/first_person/garderobe_view.tscn" id="67"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -510,33 +511,32 @@ initial_velocity_min = 5.0
 initial_velocity_max = 9.0
 color_ramp = SubResource("Gradient_6")
 
-[node name="GarderobeDoor" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "door_sprite", "transition", "exit_point")]
-position = Vector2(250, 255)
+[node name="GarderobeArch" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "door_sprite", "transition", "first_person_view")]
+position = Vector2(458, 252)
 script = ExtResource("56")
 hotspot = NodePath("Hotspot")
 door_sprite = NodePath("Door")
 state_textures = Array[Texture2D]([null, ExtResource("61"), ExtResource("62")])
 transition = NodePath("../../ScreenTransition")
-exit_point = NodePath("../../GarderobeWIP/Arrival")
-step_in = Vector2(-4, -8)
+first_person_view = NodePath("../../GarderobeView")
+step_in = Vector2(0, -6)
+locked_first_time = true
+locked_line_key = "HS_GARDEROBE_LOCKED"
 
-[node name="Arrival" type="Marker2D" parent="Props/GarderobeDoor"]
-position = Vector2(6, 34)
-
-[node name="Door" type="Sprite2D" parent="Props/GarderobeDoor"]
-position = Vector2(-34, -119)
+[node name="Door" type="Sprite2D" parent="Props/GarderobeArch"]
+position = Vector2(-58, -180)
 centered = false
 
-[node name="Hotspot" type="Area2D" parent="Props/GarderobeDoor" node_paths=PackedStringArray("prompt")]
+[node name="Hotspot" type="Area2D" parent="Props/GarderobeArch" node_paths=PackedStringArray("prompt")]
 script = ExtResource("15")
 prompt = NodePath("Prompt")
 prompt_text = "UI_OPEN"
 
-[node name="Shape" type="CollisionShape2D" parent="Props/GarderobeDoor/Hotspot"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_12")
+[node name="Shape" type="CollisionShape2D" parent="Props/GarderobeArch/Hotspot"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_43")
 
-[node name="Prompt" type="Label" parent="Props/GarderobeDoor/Hotspot"]
+[node name="Prompt" type="Label" parent="Props/GarderobeArch/Hotspot"]
 offset_left = -90.0
 offset_top = -110.0
 offset_right = 90.0
@@ -1013,82 +1013,6 @@ anim = NodePath("../Anim")
 emote = NodePath("../Emote")
 idle_animation = "idle_south"
 
-[node name="GarderobeWIP" type="Node2D" parent="."]
-position = Vector2(0, 360)
-
-[node name="Backdrop" type="ColorRect" parent="GarderobeWIP"]
-offset_right = 640.0
-offset_bottom = 360.0
-color = Color(0.62, 0.62, 0.66, 1)
-
-[node name="Floor" type="ColorRect" parent="GarderobeWIP"]
-offset_top = 240.0
-offset_right = 640.0
-offset_bottom = 360.0
-color = Color(0.5, 0.48, 0.52, 1)
-
-[node name="Title" type="Label" parent="GarderobeWIP"]
-offset_left = 120.0
-offset_top = 120.0
-offset_right = 520.0
-offset_bottom = 144.0
-horizontal_alignment = 1
-text = "WIP_GARDEROBE"
-
-[node name="DoorPlaceholder" type="ColorRect" parent="GarderobeWIP"]
-offset_left = 306.0
-offset_top = 196.0
-offset_right = 334.0
-offset_bottom = 242.0
-color = Color(0.42, 0.26, 0.2, 1)
-
-[node name="Arrival" type="Marker2D" parent="GarderobeWIP"]
-position = Vector2(320, 296)
-
-[node name="Walls" type="StaticBody2D" parent="GarderobeWIP"]
-
-[node name="Top" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
-position = Vector2(320, 240)
-shape = SubResource("RectangleShape2D_40")
-
-[node name="Bottom" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
-position = Vector2(320, 356)
-shape = SubResource("RectangleShape2D_40")
-
-[node name="Left" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
-position = Vector2(-10, 300)
-shape = SubResource("RectangleShape2D_41")
-
-[node name="Right" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
-position = Vector2(650, 300)
-shape = SubResource("RectangleShape2D_41")
-
-[node name="BackDoor" type="Node2D" parent="GarderobeWIP" node_paths=PackedStringArray("hotspot", "transition", "exit_point")]
-position = Vector2(320, 252)
-script = ExtResource("56")
-hotspot = NodePath("Hotspot")
-transition = NodePath("../../ScreenTransition")
-exit_point = NodePath("../../Props/GarderobeDoor/Arrival")
-step_in = Vector2(0, -8)
-
-[node name="Hotspot" type="Area2D" parent="GarderobeWIP/BackDoor" node_paths=PackedStringArray("prompt")]
-script = ExtResource("15")
-prompt = NodePath("Prompt")
-prompt_text = "UI_OPEN"
-
-[node name="Shape" type="CollisionShape2D" parent="GarderobeWIP/BackDoor/Hotspot"]
-position = Vector2(0, 14)
-shape = SubResource("RectangleShape2D_43")
-
-[node name="Prompt" type="Label" parent="GarderobeWIP/BackDoor/Hotspot"]
-offset_left = -90.0
-offset_top = -80.0
-offset_right = 90.0
-offset_bottom = -56.0
-horizontal_alignment = 1
-autowrap_mode = 3
-text = "UI_OPEN"
-
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1
 
@@ -1308,3 +1232,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="GarderobeView" parent="." node_paths=PackedStringArray("transition") instance=ExtResource("67")]
+transition = NodePath("../ScreenTransition")
