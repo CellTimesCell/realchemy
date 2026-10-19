@@ -29,6 +29,12 @@ signal player_blunder
 signal combination_failed
 ## Something nearby fizzed or popped (a failed reaction, never a goal).
 signal loud_event
+## The player started a reaction with a dangerous by-product (a warning, never
+## a goal). The canary in the boudoir gets anxious.
+signal danger_reaction_started(reaction_id: String)
+## A harp string was played (index into the harp's notes). Groundwork for a
+## music puzzle.
+signal harp_note_played(note_index: int)
 
 var modal_ui_active: bool = false
 

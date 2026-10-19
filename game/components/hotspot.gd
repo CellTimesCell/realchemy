@@ -30,9 +30,22 @@ func _unhandled_input(event: InputEvent) -> void:
 	if say_key.is_empty() or not _hero_inside or not is_visible_in_tree() or EventBus.modal_ui_active:
 		return
 	if event.is_action_pressed("ui_accept") and prompt:
-		prompt.text = say_key
 		get_viewport().set_input_as_handled()
-		await get_tree().create_timer(SAY_TIME).timeout
+		say(say_key)
+
+
+## True while the hero stands in the area and nothing modal is open.
+func is_active() -> bool:
+	return _hero_inside and is_visible_in_tree() and not EventBus.modal_ui_active
+
+
+## Shows a line in place of the prompt for a few seconds.
+func say(key: String) -> void:
+	if not prompt:
+		return
+	prompt.text = key
+	await get_tree().create_timer(SAY_TIME).timeout
+	if prompt.text == key:
 		prompt.text = prompt_text
 
 

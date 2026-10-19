@@ -9,3 +9,10 @@ SAY_SKELETON,"Well. Someone never left the dressing room."
 LETTER_PREDECESSOR,"If you're reading this, the Count mixed up the windows again. I'm only 97 and still quite lovely, but my prince never came. Don't eat his pies. And don't touch the wardrobe.
 
 — Your predecessor, Princess R."
+UI_PICK_ORANGE,Pick an orange
+UI_PLAY,Play
+SAY_CANARY,"A canary. It watches me like it knows something I don't."
+SAY_ORANGE_TAKEN,"An orange. Still fresh, somehow."
+SAY_ORANGE_EMPTY,No ripe ones left.
+SAY_HAIRPIN_TAKEN,"A hairpin. Bent just right for... something."
+SAY_VANITY,"Powder, perfume and a very old hairbrush."

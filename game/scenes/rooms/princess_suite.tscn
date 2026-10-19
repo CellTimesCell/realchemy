@@ -40,6 +40,21 @@
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir_pillar.png" id="38"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_pillar.png" id="39"]
 [ext_resource type="Script" path="res://scenes/rooms/fx/light_flicker.gd" id="40"]
+[ext_resource type="SpriteFrames" path="res://assets/approved/ui/emotes/emote_frames.tres" id="41"]
+[ext_resource type="Texture2D" path="res://assets/pending/boudoir/birdcage_2701_0.png" id="42"]
+[ext_resource type="Texture2D" path="res://assets/pending/boudoir/birdcage_2701_0_bars.png" id="43"]
+[ext_resource type="SpriteFrames" path="res://assets/pending/boudoir/canary/canary_frames.tres" id="44"]
+[ext_resource type="Script" path="res://components/canary.gd" id="45"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/canary_chirp.wav" id="46"]
+[ext_resource type="Texture2D" path="res://assets/pending/boudoir/orange_tree_2711_0.png" id="47"]
+[ext_resource type="Script" path="res://components/pickup_prop.gd" id="48"]
+[ext_resource type="Texture2D" path="res://assets/pending/boudoir/harp_2721_0.png" id="49"]
+[ext_resource type="Script" path="res://components/harp.gd" id="50"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_0.wav" id="51"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_1.wav" id="52"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_2.wav" id="53"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_3.wav" id="54"]
+[ext_resource type="Texture2D" path="res://assets/pending/boudoir/vanity_2731_0.png" id="55"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -150,6 +165,30 @@ size = Vector2(56, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28"]
 size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_29"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30"]
+size = Vector2(56, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31"]
+size = Vector2(34, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32"]
+size = Vector2(64, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33"]
+size = Vector2(36, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34"]
+size = Vector2(64, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35"]
+size = Vector2(64, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36"]
+size = Vector2(84, 26)
 
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
 y_sort_enabled = true
@@ -514,6 +553,195 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_OPEN"
 
+[node name="Birdcage" type="Node2D" parent="Props"]
+position = Vector2(1035, 264)
+
+[node name="Shadow" type="Sprite2D" parent="Props/Birdcage"]
+position = Vector2(0, -2)
+scale = Vector2(0.3, 0.5)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Birdcage"]
+texture = ExtResource("42")
+centered = false
+offset = Vector2(-28, -99)
+
+[node name="Canary" type="AnimatedSprite2D" parent="Props/Birdcage" node_paths=PackedStringArray("chirp")]
+sprite_frames = ExtResource("44")
+animation = &"sit"
+centered = false
+offset = Vector2(-8, -14)
+script = ExtResource("45")
+perches = Array[Vector2]([Vector2(-4, -53), Vector2(5, -48)])
+chirp = NodePath("../Chirp")
+min_pause = 1.0
+max_pause = 2.5
+debug_keys = true
+
+[node name="Bars" type="Sprite2D" parent="Props/Birdcage"]
+texture = ExtResource("43")
+centered = false
+offset = Vector2(-28, -99)
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Props/Birdcage"]
+position = Vector2(0, -50)
+stream = ExtResource("46")
+volume_db = -8.0
+
+[node name="Body" type="StaticBody2D" parent="Props/Birdcage"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Birdcage/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_29")
+
+[node name="Hotspot" type="Area2D" parent="Props/Birdcage" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_CANARY"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Birdcage/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_30")
+
+[node name="Prompt" type="Label" parent="Props/Birdcage/Hotspot"]
+offset_left = -90.0
+offset_top = -122.0
+offset_right = 90.0
+offset_bottom = -98.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="OrangeTree" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot")]
+position = Vector2(1172, 264)
+script = ExtResource("48")
+hotspot = NodePath("Hotspot")
+item_id = "orange"
+count = 3
+taken_say_key = "SAY_ORANGE_TAKEN"
+empty_say_key = "SAY_ORANGE_EMPTY"
+
+[node name="Shadow" type="Sprite2D" parent="Props/OrangeTree"]
+position = Vector2(0, -2)
+scale = Vector2(0.45, 0.6)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/OrangeTree"]
+texture = ExtResource("47")
+centered = false
+offset = Vector2(-32, -82)
+
+[node name="Body" type="StaticBody2D" parent="Props/OrangeTree"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/OrangeTree/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_31")
+
+[node name="Hotspot" type="Area2D" parent="Props/OrangeTree" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_PICK_ORANGE"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/OrangeTree/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_32")
+
+[node name="Prompt" type="Label" parent="Props/OrangeTree/Hotspot"]
+offset_left = -90.0
+offset_top = -106.0
+offset_right = 90.0
+offset_bottom = -82.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_PICK_ORANGE"
+
+[node name="Harp" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "player")]
+position = Vector2(792, 264)
+script = ExtResource("50")
+hotspot = NodePath("Hotspot")
+player = NodePath("Strings")
+notes = Array[AudioStream]([ExtResource("51"), ExtResource("52"), ExtResource("53"), ExtResource("54")])
+
+[node name="Shadow" type="Sprite2D" parent="Props/Harp"]
+position = Vector2(0, -2)
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Harp"]
+texture = ExtResource("49")
+centered = false
+offset = Vector2(-32, -91)
+
+[node name="Strings" type="AudioStreamPlayer2D" parent="Props/Harp"]
+position = Vector2(0, -45)
+
+[node name="Body" type="StaticBody2D" parent="Props/Harp"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Harp/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_33")
+
+[node name="Hotspot" type="Area2D" parent="Props/Harp" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_PLAY"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Harp/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_34")
+
+[node name="Prompt" type="Label" parent="Props/Harp/Hotspot"]
+offset_left = -90.0
+offset_top = -114.0
+offset_right = 90.0
+offset_bottom = -90.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_PLAY"
+
+[node name="Vanity" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot")]
+position = Vector2(686, 258)
+script = ExtResource("48")
+hotspot = NodePath("Hotspot")
+item_id = "hairpin"
+taken_say_key = "SAY_HAIRPIN_TAKEN"
+empty_say_key = "SAY_VANITY"
+
+[node name="Shadow" type="Sprite2D" parent="Props/Vanity"]
+position = Vector2(0, -2)
+scale = Vector2(0.65, 0.7)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Vanity"]
+texture = ExtResource("55")
+centered = false
+offset = Vector2(-48, -97)
+
+[node name="Body" type="StaticBody2D" parent="Props/Vanity"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Vanity/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_35")
+
+[node name="Hotspot" type="Area2D" parent="Props/Vanity" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Vanity/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_36")
+
+[node name="Prompt" type="Label" parent="Props/Vanity/Hotspot"]
+offset_left = -90.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -96.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
 [node name="LetterScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("text_label", "next_arrow")]
 layer = 10
 script = ExtResource("28")
@@ -565,9 +793,12 @@ autoplay = "idle"
 [node name="EmoteAnchor" type="Marker2D" parent="Props/Ghost"]
 position = Vector2(0, -66)
 
-[node name="Emote" type="AnimatedSprite2D" parent="Props/Ghost/EmoteAnchor"]
-script = ExtResource("30")
+[node name="Emote" type="AnimatedSprite2D" parent="Props/Ghost/EmoteAnchor" node_paths=PackedStringArray("overlay")]
+sprite_frames = ExtResource("41")
+animation = &"question"
 offset = Vector2(0, -12)
+script = ExtResource("30")
+overlay = NodePath("../../../../EmoteLayer")
 
 [node name="Reactions" type="Node" parent="Props/Ghost" node_paths=PackedStringArray("anim", "emote")]
 script = ExtResource("31")
@@ -598,9 +829,12 @@ shape = SubResource("RectangleShape2D_19")
 [node name="EmoteAnchor" type="Marker2D" parent="Hero"]
 position = Vector2(0, -64)
 
-[node name="Emote" type="AnimatedSprite2D" parent="Hero/EmoteAnchor"]
-script = ExtResource("30")
+[node name="Emote" type="AnimatedSprite2D" parent="Hero/EmoteAnchor" node_paths=PackedStringArray("overlay")]
+sprite_frames = ExtResource("41")
+animation = &"question"
 offset = Vector2(0, -12)
+script = ExtResource("30")
+overlay = NodePath("../../../EmoteLayer")
 
 [node name="Reactions" type="Node" parent="Hero" node_paths=PackedStringArray("anim", "emote")]
 script = ExtResource("31")
@@ -801,3 +1035,7 @@ base_energy = 1.0
 amount = 0.12
 speed = 9.0
 irregular = true
+
+[node name="EmoteLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
