@@ -31,13 +31,25 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `props/boudoir/canary/` + `canary_frames.tres` | canary_2743 + preen / alarm | Canary (sit, preen, alarm) | approved 19.10.2026 |
 | `hero/interact/{interact_low,interact_mid}_{south,east}/` | `_incoming/hero_interact/clean_*` | Hero interaction poses | approved 19.10.2026 (interact_high redone, in pending) |
 | `props/{wardrobe,secretary}_princess_ajar.png` | edit from closed | Half-open state (3 states) | approved 19.10.2026 |
+| `hero/interact/interact_high_{south,east}/` | v2 (tiptoes) | Hero reaching up | approved 19.10.2026 |
+| `props/nightstand_drawer_{closed,open}.png` | padded + edit | Nightstand closed / drawer out | approved 19.10.2026 |
+| `room_princess_bedroom.png` (v3) | approved bedroom + 2 inpaints (wall instead of the side door; curtains + small door in the arch) | Bedroom | approved 19.10.2026 (the old version is in git history) |
+| `props/garderobe_arch_{ajar,open}.png` | edits of the arch crop | Arch door states | approved 19.10.2026 |
+| `rooms/garderobe/garderobe_bg.png`, `hand_{point,grab}.png` | garderobe a, hand cursor | First-person garderobe | approved 19.10.2026; b rejected |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
 Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → deleted.
 
-| File | What | Source |
-|---|---|---|
+| File | What |
+|---|---|
+| `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
+| `pending/garderobe/posters/poster_*.png` | 6 parody posters v2 (64×84, no text) |
+| `pending/garderobe/{nail,tape}.png` | poster fixtures |
+| `pending/garderobe/toilet_paper.png` | roll on the holder |
+| `pending/suite/<item>.png` + `<item>_b.png` | suite furniture by the layouts (a in the scene, b next to it): painting_count (+ `_eyes`), painting_madam, tiger_skin_rug, bedside_rug, chest (+ `_ajar`, `_open`), folding_screen, harp34, x_chair, plush_bear, cello, oval_rug, floor_candelabra, still_life, dress_form, laundry_basket, full_length_mirror, worn_rug, coat_stand |
+
+---|---|---|
 | `pending/hero/interact/interact_high_{south,east}/` | interact_high v2: tiptoes, both feet on the floor, arm up | `animate_character` v3 |
 | `pending/props/nightstand_drawer_{closed,open}.png` | nightstand on a 40×48 canvas: closed / drawer pulled out (dark inside) | original padded + `edit_image_pro_flash` |
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room, rattles | script |
@@ -832,3 +844,49 @@ Screenshots: `_incoming/feel/{drawer_v2,pick_orange_v2}.gif`, `text_size_{a,b}.p
 - Bedroom: `nightstand_2` — mirrored copy of the nightstand (0 generations). `tiger_skin` — "cartoonish tiger skin rug hung on the wall, slightly moth-eaten, comic flat head with a silly expression" (3/4, side wall). `bedside_rug` — "round faded pink rug, flat on the floor, seen from above at the room's camera angle". `chest` — "wooden chest with iron bands and a small brass combination lock with number wheels", 3 states closed / ajar / open (edits). `painting_count` — portrait of the Count, `count_adult_front_b.png` as the character reference, ornate frame; **eyes as a separate sprite** (pupils shift 1–2 px toward the hero's x). `painting_madam` — "stern old lady with a tiny fluffy lapdog in her lap, oil portrait in a gilded frame" (invented person). `still_life` — "still life painting: red apples and a clay jug, small gilded frame".
 - Boudoir: `x_chair` — "X-shaped curule chair, dark wood, faded pink cushion" (3/4); `plush_bear` (separate) — "worn plush teddy bear with tiny felt vampire fangs, sitting"; `cello` — "old cello leaning on its side, two broken strings, dusty" (3/4).
 - Dressing room: `dress_form` — "dress form mannequin wearing an old faded pink ball gown" (3/4); `laundry_basket` — "wicker laundry basket with silk stockings hanging over the edge" (hotspot "Take stockings" → `stockings`, second use: water filter); `full_length_mirror` — "tall full-length standing mirror in a carved frame, dusty glass, no reflection" (3/4, on the right side wall).
+
+## 2026-10-19 (7) — Posters v2, suite furniture
+
+Spent **292** (balance 1337 → 1045): posters 6 × 15 + nail/tape 2 = 92; furniture 200.
+
+**Posters v2** (`_incoming/garderobe/posters_v2/<name>/`, `create_image_pro` 64×84, 9 candidates each, 15 each, `no_background: false`). Each prompt: "a complete rectangular 1980s … concert poster filling the whole canvas edge to edge, parody of a made-up band: <idea>; colour scheme <…>; plain empty strips at the very top and at the very bottom for the band name. No text, no letters, no logos of real bands, no real people. Slightly faded paper. Storybook pixel art."
+
+| Poster | Idea | Seed / job | Pick |
+|---|---|---|---|
+| Rotley Glue | three rockers in black leather and silver chains, a GIANT tube of glue squeezing out a shiny blob like a logo; black, chrome, blood red | 3201 / `a138dc34-414c-4298-85e6-b775862796f6` | #4 |
+| Buns N' Noses | rockers with bandanas, giant bread buns stacked like amplifiers, red clown noses; golden brown, cream, red; jungle leaves | 3202 / `d67cd6df-fb94-44a5-80ad-7e5dd083788f` | #5 |
+| Squid Row | a big friendly purple squid with teased hair holding four guitars and a microphone, under water; deep sea blue, teal, purple | 3203 / `b6cda0b0-50d2-45c2-95c4-e5aaddcae909` | #4 |
+| Bon Jovial | a grinning guy in a cowboy hat and denim jacket, thumbs up, pink hearts, sunburst; sky blue, pink, white | 3204 / `ee6ba899-6f74-4578-8f94-8ab34c6ed519` | #4 |
+| Whitesnack | a white snake coiled around an open bag of chips eating a chip, a guitar; yellow, white, green | 3205 / `f01361c7-8e4d-4043-8546-eb355fb03403` | #6 |
+| Deaf Leopard | a roaring leopard with an old brass ear trumpet and huge headphones, lightning; hot orange, black, magenta | 3206 / `f8a62f64-4905-4f62-98cb-026a5b335175` | #3 |
+
+Nail / tape: `create_image_pixen` 16×16, seeds 3212 / 3211 ("a single small iron nail head hammered into a wall…", "a short strip of old yellowed masking tape…"), cropped.
+
+**Suite furniture** (`_incoming/suite/<name>/`, `create_image_pro`, style image = own room: bedroom `upload:9207f2f1-6ffd-4152-b9c3-ccfe8938e93d`, boudoir `upload:7992bcfd-528b-422e-9921-312e908144cd`, dressing `upload:0522591d-849d-4087-ac38-3236dcfc3364`). Picks a / b; offsets in the scene from the sprite bbox (sole = bbox bottom).
+
+| Item | Canvas | Seed / job | Cost | a / b | Prompt (subject) |
+|---|---|---|---|---|---|
+| painting_count | 40×48 (25) | 3301 / `87726c7a-b8d0-4d1f-8bc2-bae2265099d5` | 10 | 7 / 2 | oil portrait of a pale vampire count, gilded gothic frame, eyes with visible whites; reference `count_adult_front_b.png` (`upload:9bd77bc6-…`) |
+| painting_madam | 36×44 (36) | 3302 / `95810ad4-de34-4bde-ba01-4422bbc2045e` | 10 | 16 / 28 | invented stern old lady with a tiny fluffy lapdog; framed with the frame of painting_count #2 (script) |
+| tiger_skin_rug | 96×40 (16) | 3303 / `a920f35b-ff61-4544-a890-c4794116083d` | 10 | 12 / 14 | cartoonish tiger skin rug flat on the floor, head with open jaws, moth-eaten |
+| bedside_rug | 64×24 (36) | 3304 / `b6d6f1d3-ab74-4a99-b602-62f158952787` | 10 | 21 / 8 | round faded pink rug, flat |
+| chest | 56×40 (25) | 3305 / `f95ba4d2-cf80-4060-98d2-458667094980` | 10 | 2 / 16 | wooden chest, iron bands, small brass 4-wheel combination lock, 3/4 left |
+| chest ajar / open | 56×56 padded | 3311 `9bf0c674-…`, 3312 `f521cab3-…` | 10 | — | `edit_image_pro_flash` from chest #2 |
+| folding_screen | 64×88 (9) | 3306 / `bf9b7040-2f4c-499b-9756-8df76b6958ac` | 10 | 0 / 6 | gothic three-panel screen, painted roses and birds, 3/4 right |
+| harp34 | 64×96 (9) | 3401 / `81d3c5ec-6ec8-4846-9fc9-4c75c4e28bcb` | 10 | 0 / 5 | gilded harp turned three-quarters to the left |
+| x_chair | 40×40 (36) | 3402 / `45624d79-4f12-4fb1-b4dd-0e82f56434bb` | 15 | 1 / 24 | gothic X-frame chair, faded pink cushion, 3/4 right |
+| plush_bear | 24×24 (64) | 3403 / `cfaa570c-831e-44fb-963d-9a37eb20c8a2` | 10 | 6 / 19 | worn teddy bear, one button eye |
+| cello | 32×64 (25) | 3404 / `43e403ee-cf9e-47ea-901a-bee7f8c29bd5` | 10 | 21 / 5 | cello leaning on the wall, 3/4 right, one string loose |
+| oval_rug | 96×28 (4) | 3405 / `d05bfb8d-7828-4903-8c8a-03eb50557710` | 10 | 3 / 2 | oval dusty-pink rug, flat |
+| floor_candelabra | 24×80 (16) | 3406 / `1f840936-437b-4d02-ba48-6536fbe0ebf1` | 10 | 0 / 4 | wrought-iron floor candelabra, three candles (flames = particles + light in Godot) |
+| still_life | 28×24 (64) | 3407 / `e19ccef1-2bf2-4cb5-941f-ab40a09be314` | 10 | 36 / 28 | apples and a jug, gilded frame |
+| dress_form | 40×72 (16) | 3501 / `a38d32d5-ac09-4ea3-a7d7-2012914e7be1` | 10 | 3 / 13 | dress form in a faded pink ball gown, 3/4 left |
+| laundry_basket | 40×32 (49) | 3502 / `582ef7ed-ef82-4a51-9d91-1c62a18e546a` | 15 | 13 / 7 | wicker basket, linen, stockings over the edge, 3/4 right |
+| full_length_mirror | 36×80 (16) | 3503 / `dba09120-deeb-42f8-bd19-941345d02418` | 10 | 2 / 15 | standing mirror against the right side wall, 3/4 left, dusty glass, no reflection |
+| worn_rug | 112×32 (4) | 3504 / `8a05f6cd-7a72-4fed-b846-52251c4f85fa` | 10 | 0 / 1 | worn burgundy rug with fringe, flat |
+| coat_stand | 32×84 (16) | 3505 / `a946d6af-024c-4f46-bad2-d7fe88662387` | 10 | 5 / 2 | coat stand with a pink feather boa |
+(The first bear/cello/rug/candelabra/still life calls hit the 8-jobs limit and were not charged.)
+
+Script work (0 generations): nightstand_L = mirrored nightstand; Count eyes = eye-white pixels of the portrait as an overlay (`painting_count_eyes.png`); madam framed with a generated frame.
+
+Screenshots: `_incoming/garderobe/{garderobe_a_v2,garderobe_poster_moved_v2,posters_sheet}.png`; `_incoming/layouts/layout_bedroom_v3.png`; `_incoming/suite/shots/{bedroom_full,boudoir_full,dressing_full}.png`, `eyes_follow.gif`, `<item>_{a,b}.png`, `variants_overview.png`.

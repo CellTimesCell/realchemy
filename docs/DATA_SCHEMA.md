@@ -197,3 +197,9 @@
 - `needs_moved` — хотспот доступен только после сдвига этого узла; `once` — исчезает после `take`.
 - `action`: `say` (по умолчанию) | `move` (`offset`, `rotate` — градусы вокруг начала узла) | `fx` (CPUParticles2D) | `take` (спрятать узел, ItemPop, `EventBus.item_found`) | `closeup` (кнопки из `closeups`).
 - `target` — путь узла внутри `Content` сцены; `verb`, `line_key` — ключи строк (en). `label` в `closeups` — надпись на предмете, не переводится.
+
+### Добавления (19.10.2026, партия 7)
+- `first_person`: хотспот может вместо `rect` иметь `rect_from` — путь к `WallPoster` внутри `Content`; область берётся из текущих границ постера (следует за ним при «Move poster»). Для `WallPoster` действие `move` поворачивает постер на `rotate` градусов вокруг гвоздя **в плоскости стены**.
+- `WallPoster` (сцена): `wall_quad` (4 точки стены на экране: TL, TR, BR, BL), `wall_size` (размер стены в «стенных» пикселях), `rect` (место постера на стене), `texture`, `title_top` / `title_bottom` (ключи строк), `body_text` (нацарапанное), `nail`, `tape`, `has_shadow`.
+- `interactables.json`: `chest` (заперт, `locked_line_key`), `laundry_basket` (`item` stockings).
+- `user://settings.cfg` (`SaveManager`): `[ui] text_size = "small" | "large"`; по умолчанию small на ПК, large на Android.

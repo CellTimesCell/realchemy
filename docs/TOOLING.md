@@ -100,6 +100,13 @@ codebase-memory-mcp config set auto_index true
 ```
 Заявлено 159 языков через tree-sitter, но **GDScript явно не подтверждён** — проверяем в T-06. Если `.gd` не попадут в граф — ведём `docs/CODEMAP.md` вручную.
 
+### 4.3b Статус индексации (19.10.2026)
+- Проект `C-Realchemy`: 64 файла, 872 узла (227 функций, 52 метода, 138 переменных, 302 раздела документов), 1773 связи (CALLS 414, USAGE 108, TESTS 33).
+- В графе: `.gd`, `.py`, `.ps1`, `data/*.json`, `strings.csv`, документы. **Не разбираются инструментом:** `.gdshader`, `.tscn`, `.tres` — по ним искать текстом (Grep).
+- GDScript `class_name` не становится узлом Class, вызовы сигналов `EventBus.x.emit()` не связываются ребрами — поиск по классам/сигналам: `search_graph(file_pattern=...)` или Grep. Вызовы функций (`set_modal_ui`, `play_reaction`) связаны.
+- `.cbmignore` (корень): `game/addons/`, `game/assets/_incoming/`, `game/.godot/`, `engine/`, `Aseprite-*/`, `furnace-*/`, `_to_delete/`.
+- Переиндексация: MCP `index_repository(repo_path="C:/Realchemy", mode="full")`; проверка — `index_status(project="C-Realchemy")`, `check_index_coverage(paths=[...])`. Граф следит за git (watch, опрос 7 с) и обновляется сам после коммитов.
+
 ### 4.4 Арт — PixelLab (официальный MCP, платный)
 **План:** Tier 1 «Pixel Apprentice» (~$12/мес, 2000 генераций). Фоны 640×360 — через `create_image_pixen`: на Tier 1 до 512×512 **по площади** (262 144 px ≥ 230 400 px) — ответ поддержки 18.10.2026. Tier 2 (5000/мес) — только если упрёмся в лимит. Подписка — с фазы 1 (T-25). До этого — бесплатные 40 генераций на пробу стиля (MCP на пробе недоступен).
 ✅ Вызовы через API/MCP входят в лимит подписки (см. ниже).
