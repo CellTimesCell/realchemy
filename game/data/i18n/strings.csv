@@ -66,3 +66,23 @@ POSTER_WHITESNACK_1,WHITE
 POSTER_WHITESNACK_2,SNACK
 POSTER_DEAF_1,DEAF
 POSTER_DEAF_2,LEOPARD
+UI_TAKE_STOCKINGS,Take stockings
+SAY_NIGHTSTAND_L,Another nightstand. This one keeps its secrets to itself.
+SAY_PAINTING_COUNT,The Count. His eyes follow me. I'm choosing to believe it's the painting.
+SAY_PAINTING_MADAM,A stern lady and a tiny dog. Both of them are judging me.
+SAY_TIGER_RUG,A tiger. Flat. Somebody had a very bad day.
+SAY_BEDSIDE_RUG,A bedside rug. It has seen things.
+SAY_CHEST_LOCKED,A combination lock. Four little wheels. I don't know the code... yet.
+SAY_SCREEN,"A folding screen. Perfect for changing. Or hiding. Mostly hiding."
+SAY_X_CHAIR,An X-shaped chair. Comfortable for exactly nobody.
+SAY_BEAR,A teddy bear with one button eye. It has seen better days. And worse nights.
+SAY_CELLO,A cello. One string has given up. I understand.
+SAY_OVAL_RUG,A rug under a chair. Very coordinated. The Count must be proud.
+SAY_CANDELABRA,"Three candles, no fire. The Count saves on candles. And on fire."
+SAY_STILL_LIFE,Apples and a jug. The only fresh food in this castle is painted.
+SAY_DRESS_FORM,A dress form in a ball gown. Better posture than me.
+SAY_STOCKINGS_TAKEN,"Silk stockings. Clean ones, I hope. Might come in handy."
+SAY_BASKET_EMPTY,Just linen now.
+SAY_MIRROR,A full-length mirror. I look tired. The mirror looks older.
+SAY_COAT_STAND,A coat stand in a feather boa. It's more dressed up than I am.
+SAY_WORN_RUG,Generations of princesses walked on this rug. Mostly in circles.

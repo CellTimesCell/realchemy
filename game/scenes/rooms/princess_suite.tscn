@@ -68,6 +68,28 @@
 [ext_resource type="PackedScene" path="res://scenes/first_person/garderobe_view.tscn" id="67"]
 [ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="68"]
 [ext_resource type="Script" path="res://components/long_press_show_all.gd" id="69"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/painting_count.png" id="70"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/painting_count_eyes.png" id="71"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/painting_madam.png" id="72"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/tiger_skin_rug.png" id="73"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/bedside_rug.png" id="74"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/chest.png" id="75"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/chest_ajar.png" id="76"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/chest_open.png" id="77"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/folding_screen.png" id="78"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/harp34.png" id="79"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/x_chair.png" id="80"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/plush_bear.png" id="81"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/cello.png" id="82"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/oval_rug.png" id="83"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/floor_candelabra.png" id="84"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/still_life.png" id="85"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/dress_form.png" id="86"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/laundry_basket.png" id="87"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/full_length_mirror.png" id="88"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/worn_rug.png" id="89"]
+[ext_resource type="Texture2D" path="res://assets/pending/suite/coat_stand.png" id="90"]
+[ext_resource type="Script" path="res://components/following_eyes.gd" id="91"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -226,6 +248,51 @@ size = Vector2(75, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iris"]
 shader = ExtResource("58")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50"]
+size = Vector2(26, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51"]
+size = Vector2(40, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52"]
+size = Vector2(34, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53"]
+size = Vector2(44, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55"]
+size = Vector2(30, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56"]
+size = Vector2(60, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57"]
+size = Vector2(70, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58"]
+size = Vector2(20, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_59"]
+size = Vector2(36, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60"]
+size = Vector2(110, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61"]
+size = Vector2(90, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63"]
+size = Vector2(28, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64"]
+size = Vector2(64, 24)
 
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
 y_sort_enabled = true
@@ -392,6 +459,116 @@ texture = ExtResource("12")
 centered = false
 material = SubResource("ShaderMaterial_9")
 
+[node name="Rugs" type="Node2D" parent="."]
+
+[node name="TigerSkinRug" type="Node2D" parent="Rugs"]
+position = Vector2(468, 340)
+
+[node name="Sprite" type="Sprite2D" parent="Rugs/TigerSkinRug"]
+texture = ExtResource("73")
+centered = false
+offset = Vector2(-48, -38)
+
+[node name="Hotspot" type="Area2D" parent="Rugs/TigerSkinRug" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_TIGER_RUG"
+
+[node name="Shape" type="CollisionShape2D" parent="Rugs/TigerSkinRug/Hotspot"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_64")
+
+[node name="Prompt" type="Label" parent="Rugs/TigerSkinRug/Hotspot"]
+offset_left = -90.0
+offset_top = -70.0
+offset_right = 90.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="BedsideRug" type="Node2D" parent="Rugs"]
+position = Vector2(214, 326)
+
+[node name="Sprite" type="Sprite2D" parent="Rugs/BedsideRug"]
+texture = ExtResource("74")
+centered = false
+offset = Vector2(-32, -24)
+
+[node name="Hotspot" type="Area2D" parent="Rugs/BedsideRug" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BEDSIDE_RUG"
+
+[node name="Shape" type="CollisionShape2D" parent="Rugs/BedsideRug/Hotspot"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_53")
+
+[node name="Prompt" type="Label" parent="Rugs/BedsideRug/Hotspot"]
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -36.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="OvalRug" type="Node2D" parent="Rugs"]
+position = Vector2(800, 326)
+
+[node name="Sprite" type="Sprite2D" parent="Rugs/OvalRug"]
+texture = ExtResource("83")
+centered = false
+offset = Vector2(-50, -28)
+
+[node name="Hotspot" type="Area2D" parent="Rugs/OvalRug" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_OVAL_RUG"
+
+[node name="Shape" type="CollisionShape2D" parent="Rugs/OvalRug/Hotspot"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_64")
+
+[node name="Prompt" type="Label" parent="Rugs/OvalRug/Hotspot"]
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -36.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="WornRug" type="Node2D" parent="Rugs"]
+position = Vector2(1580, 342)
+
+[node name="Sprite" type="Sprite2D" parent="Rugs/WornRug"]
+texture = ExtResource("89")
+centered = false
+offset = Vector2(-56, -23)
+
+[node name="Hotspot" type="Area2D" parent="Rugs/WornRug" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_WORN_RUG"
+
+[node name="Shape" type="CollisionShape2D" parent="Rugs/WornRug/Hotspot"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_64")
+
+[node name="Prompt" type="Label" parent="Rugs/WornRug/Hotspot"]
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -36.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
 [node name="Props" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -467,7 +644,7 @@ autowrap_mode = 3
 text = "UI_LOOK_UNDER"
 
 [node name="Nightstand" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "sprite", "fx_point")]
-position = Vector2(222, 296)
+position = Vector2(226, 268)
 script = ExtResource("20")
 interactable_id = "nightstand"
 hotspot = NodePath("Hotspot")
@@ -768,7 +945,7 @@ autowrap_mode = 3
 text = "UI_PICK_ORANGE"
 
 [node name="Harp" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "player")]
-position = Vector2(792, 264)
+position = Vector2(1236, 270)
 script = ExtResource("50")
 hotspot = NodePath("Hotspot")
 player = NodePath("Strings")
@@ -780,9 +957,9 @@ scale = Vector2(0.4, 0.5)
 texture = ExtResource("23")
 
 [node name="Sprite" type="Sprite2D" parent="Props/Harp"]
-texture = ExtResource("49")
+texture = ExtResource("79")
 centered = false
-offset = Vector2(-32, -91)
+offset = Vector2(-34, -89)
 
 [node name="Strings" type="AudioStreamPlayer2D" parent="Props/Harp"]
 position = Vector2(0, -45)
@@ -885,6 +1062,520 @@ offset_bottom = -86.0
 horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_OPEN"
+
+[node name="PaintingCount" type="Node2D" parent="Props"]
+position = Vector2(132, 112)
+
+[node name="Sprite" type="Sprite2D" parent="Props/PaintingCount"]
+texture = ExtResource("70")
+centered = false
+offset = Vector2(-20, -47)
+
+[node name="Eyes" type="Sprite2D" parent="Props/PaintingCount" node_paths=PackedStringArray("target")]
+modulate = Color(2.2, 1.7, 1.7, 1)
+texture = ExtResource("71")
+centered = false
+offset = Vector2(-20, -47)
+script = ExtResource("91")
+target = NodePath("../../../Hero")
+
+[node name="Hotspot" type="Area2D" parent="Props/PaintingCount" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_PAINTING_COUNT"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PaintingCount/Hotspot"]
+position = Vector2(0, 168)
+shape = SubResource("RectangleShape2D_56")
+
+[node name="Prompt" type="Label" parent="Props/PaintingCount/Hotspot"]
+offset_left = -90.0
+offset_top = 22.0
+offset_right = 90.0
+offset_bottom = 46.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="PaintingMadam" type="Node2D" parent="Props"]
+position = Vector2(22, 200)
+
+[node name="Sprite" type="Sprite2D" parent="Props/PaintingMadam"]
+texture = ExtResource("72")
+centered = false
+offset = Vector2(-20, -48)
+
+[node name="Hotspot" type="Area2D" parent="Props/PaintingMadam" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_PAINTING_MADAM"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PaintingMadam/Hotspot"]
+position = Vector2(8, 82)
+shape = SubResource("RectangleShape2D_59")
+
+[node name="Prompt" type="Label" parent="Props/PaintingMadam/Hotspot"]
+offset_left = -90.0
+offset_top = 0.0
+offset_right = 90.0
+offset_bottom = 24.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="NightstandL" type="Node2D" parent="Props"]
+position = Vector2(38, 266)
+
+[node name="Sprite" type="Sprite2D" parent="Props/NightstandL"]
+texture = ExtResource("63")
+centered = false
+flip_h = true
+offset = Vector2(-22, -42)
+
+[node name="Flame" type="CPUParticles2D" parent="Props/NightstandL"]
+position = Vector2(2, -39)
+amount = 6
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_6")
+
+[node name="Hotspot" type="Area2D" parent="Props/NightstandL" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_NIGHTSTAND_L"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/NightstandL/Hotspot"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_55")
+
+[node name="Prompt" type="Label" parent="Props/NightstandL/Hotspot"]
+offset_left = -90.0
+offset_top = -70.0
+offset_right = 90.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Chest" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "sprite")]
+position = Vector2(568, 272)
+script = ExtResource("20")
+interactable_id = "chest"
+hotspot = NodePath("Hotspot")
+sprite = NodePath("Sprite")
+state_textures = Array[Texture2D]([ExtResource("75"), ExtResource("76"), ExtResource("77")])
+
+[node name="Shadow" type="Sprite2D" parent="Props/Chest"]
+position = Vector2(0, -2)
+scale = Vector2(0.32, 0.5)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Chest"]
+texture = ExtResource("75")
+centered = false
+offset = Vector2(-28, -52)
+
+[node name="Body" type="StaticBody2D" parent="Props/Chest"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Chest/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_52")
+
+[node name="Hotspot" type="Area2D" parent="Props/Chest" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_OPEN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Chest/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_53")
+
+[node name="Prompt" type="Label" parent="Props/Chest/Hotspot"]
+offset_left = -90.0
+offset_top = -76.0
+offset_right = 90.0
+offset_bottom = -52.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_OPEN"
+
+[node name="FoldingScreen" type="Node2D" parent="Props"]
+position = Vector2(34, 364)
+
+[node name="Sprite" type="Sprite2D" parent="Props/FoldingScreen"]
+texture = ExtResource("78")
+centered = false
+offset = Vector2(-32, -81)
+
+[node name="Hotspot" type="Area2D" parent="Props/FoldingScreen" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_SCREEN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/FoldingScreen/Hotspot"]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_51")
+
+[node name="Prompt" type="Label" parent="Props/FoldingScreen/Hotspot"]
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -76.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="XChair" type="Node2D" parent="Props"]
+position = Vector2(790, 298)
+
+[node name="Shadow" type="Sprite2D" parent="Props/XChair"]
+position = Vector2(0, -2)
+scale = Vector2(0.26, 0.45)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/XChair"]
+texture = ExtResource("80")
+centered = false
+offset = Vector2(-20, -36)
+
+[node name="Body" type="StaticBody2D" parent="Props/XChair"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/XChair/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_54")
+
+[node name="Hotspot" type="Area2D" parent="Props/XChair" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_X_CHAIR"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/XChair/Hotspot"]
+position = Vector2(-8, 12)
+shape = SubResource("RectangleShape2D_55")
+
+[node name="Prompt" type="Label" parent="Props/XChair/Hotspot"]
+offset_left = -90.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = -38.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="PlushBear" type="Node2D" parent="Props"]
+position = Vector2(792, 300)
+
+[node name="Sprite" type="Sprite2D" parent="Props/PlushBear"]
+texture = ExtResource("81")
+centered = false
+offset = Vector2(-12, -42)
+
+[node name="Hotspot" type="Area2D" parent="Props/PlushBear" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BEAR"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/PlushBear/Hotspot"]
+position = Vector2(14, 10)
+shape = SubResource("RectangleShape2D_62")
+
+[node name="Prompt" type="Label" parent="Props/PlushBear/Hotspot"]
+offset_left = -90.0
+offset_top = -86.0
+offset_right = 90.0
+offset_bottom = -62.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Cello" type="Node2D" parent="Props"]
+position = Vector2(856, 288)
+
+[node name="Shadow" type="Sprite2D" parent="Props/Cello"]
+position = Vector2(0, -2)
+scale = Vector2(0.18, 0.4)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Cello"]
+texture = ExtResource("82")
+centered = false
+offset = Vector2(-16, -59)
+
+[node name="Body" type="StaticBody2D" parent="Props/Cello"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Cello/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_58")
+
+[node name="Hotspot" type="Area2D" parent="Props/Cello" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_CELLO"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Cello/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_63")
+
+[node name="Prompt" type="Label" parent="Props/Cello/Hotspot"]
+offset_left = -90.0
+offset_top = -86.0
+offset_right = 90.0
+offset_bottom = -62.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="FloorCandelabra" type="Node2D" parent="Props"]
+position = Vector2(940, 366)
+
+[node name="Sprite" type="Sprite2D" parent="Props/FloorCandelabra"]
+texture = ExtResource("84")
+centered = false
+offset = Vector2(-12, -80)
+
+[node name="Flame0" type="CPUParticles2D" parent="Props/FloorCandelabra"]
+position = Vector2(-8, -74)
+amount = 5
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+color_ramp = SubResource("Gradient_6")
+
+[node name="Flame1" type="CPUParticles2D" parent="Props/FloorCandelabra"]
+position = Vector2(0, -79)
+amount = 5
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+color_ramp = SubResource("Gradient_6")
+
+[node name="Flame2" type="CPUParticles2D" parent="Props/FloorCandelabra"]
+position = Vector2(8, -74)
+amount = 5
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+color_ramp = SubResource("Gradient_6")
+
+[node name="Light" type="PointLight2D" parent="Props/FloorCandelabra"]
+position = Vector2(0, -76)
+color = Color(1, 0.72, 0.42, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_2")
+texture_scale = 0.5
+
+[node name="Hotspot" type="Area2D" parent="Props/FloorCandelabra" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_CANDELABRA"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/FloorCandelabra/Hotspot"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_63")
+
+[node name="Prompt" type="Label" parent="Props/FloorCandelabra/Hotspot"]
+offset_left = -90.0
+offset_top = -110.0
+offset_right = 90.0
+offset_bottom = -86.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="StillLife" type="Node2D" parent="Props"]
+position = Vector2(866, 206)
+
+[node name="Sprite" type="Sprite2D" parent="Props/StillLife"]
+texture = ExtResource("85")
+centered = false
+offset = Vector2(-15, -24)
+
+[node name="Hotspot" type="Area2D" parent="Props/StillLife" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_STILL_LIFE"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/StillLife/Hotspot"]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_63")
+
+[node name="Prompt" type="Label" parent="Props/StillLife/Hotspot"]
+offset_left = -90.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 32.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="DressForm" type="Node2D" parent="Props"]
+position = Vector2(1642, 322)
+
+[node name="Shadow" type="Sprite2D" parent="Props/DressForm"]
+position = Vector2(0, -2)
+scale = Vector2(0.26, 0.5)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/DressForm"]
+texture = ExtResource("86")
+centered = false
+offset = Vector2(-20, -66)
+
+[node name="Body" type="StaticBody2D" parent="Props/DressForm"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/DressForm/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_54")
+
+[node name="Hotspot" type="Area2D" parent="Props/DressForm" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_DRESS_FORM"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DressForm/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_59")
+
+[node name="Prompt" type="Label" parent="Props/DressForm/Hotspot"]
+offset_left = -90.0
+offset_top = -92.0
+offset_right = 90.0
+offset_bottom = -68.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="LaundryBasket" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
+position = Vector2(1394, 330)
+script = ExtResource("20")
+interactable_id = "laundry_basket"
+hotspot = NodePath("Hotspot")
+fx_point = NodePath("ItemPoint")
+
+[node name="Shadow" type="Sprite2D" parent="Props/LaundryBasket"]
+position = Vector2(0, -2)
+scale = Vector2(0.26, 0.45)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/LaundryBasket"]
+texture = ExtResource("87")
+centered = false
+offset = Vector2(-22, -28)
+
+[node name="ItemPoint" type="Marker2D" parent="Props/LaundryBasket"]
+position = Vector2(0, -24)
+
+[node name="Body" type="StaticBody2D" parent="Props/LaundryBasket"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/LaundryBasket/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_50")
+
+[node name="Hotspot" type="Area2D" parent="Props/LaundryBasket" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_TAKE_STOCKINGS"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/LaundryBasket/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_59")
+
+[node name="Prompt" type="Label" parent="Props/LaundryBasket/Hotspot"]
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -36.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_TAKE_STOCKINGS"
+
+[node name="FullLengthMirror" type="Node2D" parent="Props"]
+position = Vector2(1896, 306)
+
+[node name="Shadow" type="Sprite2D" parent="Props/FullLengthMirror"]
+position = Vector2(0, -2)
+scale = Vector2(0.22, 0.45)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/FullLengthMirror"]
+texture = ExtResource("88")
+centered = false
+offset = Vector2(-18, -73)
+
+[node name="Body" type="StaticBody2D" parent="Props/FullLengthMirror"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/FullLengthMirror/Body"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_58")
+
+[node name="Hotspot" type="Area2D" parent="Props/FullLengthMirror" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_MIRROR"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/FullLengthMirror/Hotspot"]
+position = Vector2(-6, 12)
+shape = SubResource("RectangleShape2D_63")
+
+[node name="Prompt" type="Label" parent="Props/FullLengthMirror/Hotspot"]
+offset_left = -90.0
+offset_top = -96.0
+offset_right = 90.0
+offset_bottom = -72.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="CoatStand" type="Node2D" parent="Props"]
+position = Vector2(1870, 366)
+
+[node name="Sprite" type="Sprite2D" parent="Props/CoatStand"]
+texture = ExtResource("90")
+centered = false
+offset = Vector2(-14, -83)
+
+[node name="Hotspot" type="Area2D" parent="Props/CoatStand" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_COAT_STAND"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/CoatStand/Hotspot"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_63")
+
+[node name="Prompt" type="Label" parent="Props/CoatStand/Hotspot"]
+offset_left = -90.0
+offset_top = -110.0
+offset_right = 90.0
+offset_bottom = -86.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
 
 [node name="LetterScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("text_label", "next_arrow")]
 layer = 10

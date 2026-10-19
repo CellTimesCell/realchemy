@@ -38,5 +38,17 @@
 		"pose": "interact_mid", "anim": "none", "locked": true,
 		"sfx": {"locked": "locked"},
 		"locked_line_key": "SAY_GATE_LOCKED"
+	},
+	"chest": {
+		"pose": "interact_low", "anim": "states", "locked": true,
+		"sfx": {"locked": "locked", "start": "creak", "end": "open"},
+		"locked_line_key": "SAY_CHEST_LOCKED",
+		"_note": "[?] combination 867-5309 / 5309 (garderobe); unlocking is game logic, later"
+	},
+	"laundry_basket": {
+		"pose": "interact_low", "anim": "none",
+		"item": {"id": "stockings", "count": 1, "color": "#e8b0c8", "letter": "s"},
+		"line_key": "SAY_STOCKINGS_TAKEN", "empty_line_key": "SAY_BASKET_EMPTY",
+		"prompt_after_empty": "UI_INSPECT"
 	}
 }
