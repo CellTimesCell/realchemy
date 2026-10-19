@@ -1,0 +1,28 @@
+{
+	"_doc": "Where each manpu icon sits on a character's head. anchor: head_top | forehead | temple_face | temple_back (face = the side the character looks at; mirrored when it turns). offset: icon center from the anchor in px, x toward the face. scale: keep 1 (pixel art), 0.5 at most. shade: dark gradient over the upper face (gloom). flip: mirror the icon itself when the character looks left. See docs/DATA_SCHEMA.md.",
+	"icons": {
+		"sweat": {"flip": true, "places": [{"anchor": "temple_face", "offset": [6, -2]}]},
+		"dots": {"flip": false, "places": [{"anchor": "temple_face", "offset": [12, -12]}]},
+		"anger": {"flip": true, "places": [{"anchor": "temple_face", "offset": [4, -12]}]},
+		"exclaim": {"flip": false, "places": [{"anchor": "head_top", "offset": [0, -13]}]},
+		"double": {"flip": false, "places": [{"anchor": "head_top", "offset": [0, -13]}]},
+		"question": {"flip": false, "places": [{"anchor": "head_top", "offset": [7, -13]}]},
+		"gloom": {"flip": false, "shade": true, "places": [{"anchor": "forehead", "offset": [0, -2]}]},
+		"sparkle": {"flip": true, "places": [
+			{"anchor": "temple_face", "offset": [12, -10]},
+			{"anchor": "temple_back", "offset": [-10, -4], "frame_shift": 2}
+		]},
+		"swirl": {"flip": false, "places": [{"anchor": "head_top", "offset": [0, -11]}]}
+	},
+	"characters": {
+		"hero": {
+			"face_side": "right",
+			"_anim_head_offset": "Head moves with these animations (crouch, jump).",
+			"anim_head_offset": {"interact_low_south": [0, 18], "interact_low_east": [4, 18]}
+		},
+		"ghost": {
+			"face_side": "left",
+			"anim_head_offset": {}
+		}
+	}
+}
