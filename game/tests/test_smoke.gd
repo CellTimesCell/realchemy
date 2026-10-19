@@ -9,4 +9,4 @@ func test_gut_runs() -> void:
 func test_project_base_resolution() -> void:
 	var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
-	assert_eq(Vector2i(width, height), Vector2i(480, 270), "Base resolution must be 480x270")
+	assert_eq(Vector2i(width, height), Vector2i(640, 360), "Base resolution must be 640x360")
