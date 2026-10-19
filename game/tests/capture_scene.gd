@@ -5,6 +5,7 @@ extends SceneTree
 ##   scene=res://... out=C:/path/shot.png hero=x,y wait=30
 ##   [react=scratch_head] [shots=6] [step=6] [scale=2] [call=Props/Node:method]
 ##   [tex=Props/A/Sprite>res://a.png;Props/B/Sprite>res://b.png] (swap textures)
+##   [face=east|west|north|south] [input=ui_accept] [key=I] (pressed after wait)
 
 var _args: Dictionary = {}
 
@@ -33,6 +34,17 @@ func _run() -> void:
 	if _args.has("call"):
 		var target: PackedStringArray = (_args["call"] as String).split(":")
 		scene.get_node(target[0]).call(target[1])
+	if hero and _args.get("hidehero", "0") == "1":
+		hero.visible = false
+	if hero and _args.has("face"):
+		hero.set("_facing", _args["face"])
+		hero.call("_update_animation", Vector2.ZERO)
+		for i: int in 2:
+			await process_frame
+	if _args.has("input"):
+		_press_action(_args["input"])
+	if _args.has("key"):
+		_press_key(OS.find_keycode_from_string(_args["key"]))
 	if hero and _args.has("react"):
 		hero.play_reaction(_args["react"])
 	var shots: int = int(_args.get("shots", "1"))
@@ -48,3 +60,20 @@ func _run() -> void:
 		var path: String = out if shots == 1 else out.replace(".png", "_%02d.png" % shot)
 		image.save_png(path)
 	quit()
+
+
+func _press_action(action: String) -> void:
+	for pressed: bool in [true, false]:
+		var event: InputEventAction = InputEventAction.new()
+		event.action = action
+		event.pressed = pressed
+		Input.parse_input_event(event)
+
+
+func _press_key(keycode: Key) -> void:
+	for pressed: bool in [true, false]:
+		var event: InputEventKey = InputEventKey.new()
+		event.physical_keycode = keycode
+		event.keycode = keycode
+		event.pressed = pressed
+		Input.parse_input_event(event)

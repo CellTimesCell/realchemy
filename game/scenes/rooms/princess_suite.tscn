@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess_shadow.png" id="17"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess.png" id="18"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_candle.png" id="19"]
-[ext_resource type="Script" path="res://components/openable_prop.gd" id="20"]
+[ext_resource type="Script" path="res://components/interactable.gd" id="20"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_closed.png" id="21"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_open.png" id="22"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_shadow.png" id="23"]
@@ -41,20 +41,29 @@
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_pillar.png" id="39"]
 [ext_resource type="Script" path="res://scenes/rooms/fx/light_flicker.gd" id="40"]
 [ext_resource type="SpriteFrames" path="res://assets/approved/ui/emotes/emote_frames.tres" id="41"]
-[ext_resource type="Texture2D" path="res://assets/pending/boudoir/birdcage_2701_0.png" id="42"]
-[ext_resource type="Texture2D" path="res://assets/pending/boudoir/birdcage_2701_0_bars.png" id="43"]
-[ext_resource type="SpriteFrames" path="res://assets/pending/boudoir/canary/canary_frames.tres" id="44"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/birdcage.png" id="42"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/birdcage_bars.png" id="43"]
+[ext_resource type="SpriteFrames" path="res://assets/approved/props/boudoir/canary/canary_frames.tres" id="44"]
 [ext_resource type="Script" path="res://components/canary.gd" id="45"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/canary_chirp.wav" id="46"]
-[ext_resource type="Texture2D" path="res://assets/pending/boudoir/orange_tree_2711_0.png" id="47"]
-[ext_resource type="Script" path="res://components/pickup_prop.gd" id="48"]
-[ext_resource type="Texture2D" path="res://assets/pending/boudoir/harp_2721_0.png" id="49"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/orange_tree.png" id="47"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/harp.png" id="49"]
 [ext_resource type="Script" path="res://components/harp.gd" id="50"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_0.wav" id="51"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_1.wav" id="52"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_2.wav" id="53"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx_placeholder/harp_note_3.wav" id="54"]
-[ext_resource type="Texture2D" path="res://assets/pending/boudoir/vanity_2731_0.png" id="55"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/vanity.png" id="55"]
+[ext_resource type="Script" path="res://components/door_transition.gd" id="56"]
+[ext_resource type="Script" path="res://components/screen_transition.gd" id="57"]
+[ext_resource type="Shader" path="res://shaders/iris.gdshader" id="58"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/wardrobe_princess_ajar.png" id="59"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/secretary_princess_ajar.png" id="60"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_door_ajar.png" id="61"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_door_open.png" id="62"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_slot.png" id="63"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_drawer.png" id="64"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate.png" id="65"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -189,6 +198,30 @@ size = Vector2(64, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36"]
 size = Vector2(84, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37"]
+size = Vector2(34, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38"]
+size = Vector2(50, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_39"]
+size = Vector2(46, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40"]
+size = Vector2(700, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41"]
+size = Vector2(20, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43"]
+size = Vector2(44, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44"]
+size = Vector2(75, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iris"]
+shader = ExtResource("58")
 
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
 y_sort_enabled = true
@@ -389,8 +422,8 @@ prompt_text = "UI_INSPECT"
 say_key = "SAY_BED"
 
 [node name="Shape" type="CollisionShape2D" parent="Props/Bed/Hotspot"]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_11")
+position = Vector2(-38, 10)
+shape = SubResource("RectangleShape2D_44")
 
 [node name="Prompt" type="Label" parent="Props/Bed/Hotspot"]
 offset_left = -90.0
@@ -401,13 +434,76 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="Nightstand" type="Node2D" parent="Props"]
+[node name="BedUnder" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
+position = Vector2(160, 298)
+script = ExtResource("20")
+interactable_id = "bed_under"
+hotspot = NodePath("Hotspot")
+fx_point = NodePath("ItemPoint")
+
+[node name="ItemPoint" type="Marker2D" parent="Props/BedUnder"]
+position = Vector2(4, -6)
+
+[node name="Hotspot" type="Area2D" parent="Props/BedUnder" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_LOOK_UNDER"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/BedUnder/Hotspot"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_38")
+
+[node name="Prompt" type="Label" parent="Props/BedUnder/Hotspot"]
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -76.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_LOOK_UNDER"
+
+[node name="Nightstand" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "sprite", "moving_part", "fx_point")]
 position = Vector2(222, 296)
+script = ExtResource("20")
+interactable_id = "nightstand"
+hotspot = NodePath("Hotspot")
+sprite = NodePath("Sprite")
+state_textures = Array[Texture2D]([ExtResource("19"), ExtResource("63")])
+moving_part = NodePath("Drawer")
+slide_offset = Vector2(-3, 5)
+fx_point = NodePath("ItemPoint")
 
 [node name="Sprite" type="Sprite2D" parent="Props/Nightstand"]
 texture = ExtResource("19")
 centered = false
 offset = Vector2(-16, -40)
+
+[node name="Drawer" type="Sprite2D" parent="Props/Nightstand"]
+texture = ExtResource("64")
+centered = false
+offset = Vector2(-16, -40)
+
+[node name="ItemPoint" type="Marker2D" parent="Props/Nightstand"]
+position = Vector2(-5, -16)
+
+[node name="Hotspot" type="Area2D" parent="Props/Nightstand" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_OPEN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Nightstand/Hotspot"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_37")
+
+[node name="Prompt" type="Label" parent="Props/Nightstand/Hotspot"]
+offset_left = -90.0
+offset_top = -70.0
+offset_right = 90.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_OPEN"
+
 
 [node name="Flame" type="CPUParticles2D" parent="Props/Nightstand"]
 position = Vector2(-2, -37)
@@ -420,13 +516,27 @@ initial_velocity_min = 5.0
 initial_velocity_max = 9.0
 color_ramp = SubResource("Gradient_6")
 
-[node name="GarderobeDoor" type="Node2D" parent="Props"]
+[node name="GarderobeDoor" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "door_sprite", "transition", "exit_point")]
 position = Vector2(250, 255)
+script = ExtResource("56")
+hotspot = NodePath("Hotspot")
+door_sprite = NodePath("Door")
+state_textures = Array[Texture2D]([null, ExtResource("61"), ExtResource("62")])
+transition = NodePath("../../ScreenTransition")
+exit_point = NodePath("../../GarderobeWIP/Arrival")
+step_in = Vector2(-4, -8)
+
+[node name="Arrival" type="Marker2D" parent="Props/GarderobeDoor"]
+position = Vector2(6, 34)
+
+[node name="Door" type="Sprite2D" parent="Props/GarderobeDoor"]
+position = Vector2(-34, -119)
+centered = false
 
 [node name="Hotspot" type="Area2D" parent="Props/GarderobeDoor" node_paths=PackedStringArray("prompt")]
 script = ExtResource("15")
 prompt = NodePath("Prompt")
-prompt_text = "HS_GARDEROBE_LOCKED"
+prompt_text = "UI_OPEN"
 
 [node name="Shape" type="CollisionShape2D" parent="Props/GarderobeDoor/Hotspot"]
 position = Vector2(0, 6)
@@ -439,17 +549,20 @@ offset_right = 90.0
 offset_bottom = -86.0
 horizontal_alignment = 1
 autowrap_mode = 3
-text = "HS_GARDEROBE_LOCKED"
+text = "UI_OPEN"
 
-[node name="Wardrobe" type="Node2D" parent="Props" node_paths=PackedStringArray("sprite", "inside", "hotspot")]
+[node name="Wardrobe" type="Node2D" parent="Props" node_paths=PackedStringArray("sprite", "inside", "hotspot", "fx_point")]
 position = Vector2(1738, 312)
 script = ExtResource("20")
+interactable_id = "wardrobe"
 sprite = NodePath("Sprite")
-closed_texture = ExtResource("21")
-open_texture = ExtResource("22")
+state_textures = Array[Texture2D]([ExtResource("21"), ExtResource("59"), ExtResource("22")])
 hotspot = NodePath("Hotspot")
-start_open = false
 inside = NodePath("Skeleton")
+fx_point = NodePath("DustPoint")
+
+[node name="DustPoint" type="Marker2D" parent="Props/Wardrobe"]
+position = Vector2(0, -70)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Wardrobe"]
 position = Vector2(0, -4)
@@ -513,9 +626,9 @@ text = "UI_INSPECT"
 [node name="Secretary" type="Node2D" parent="Props" node_paths=PackedStringArray("sprite", "hotspot", "letter_screen")]
 position = Vector2(1480, 296)
 script = ExtResource("25")
+interactable_id = "secretary"
 sprite = NodePath("Sprite")
-closed_texture = ExtResource("26")
-open_texture = ExtResource("27")
+state_textures = Array[Texture2D]([ExtResource("26"), ExtResource("60"), ExtResource("27")])
 hotspot = NodePath("Hotspot")
 letter_screen = NodePath("../../LetterScreen")
 
@@ -613,14 +726,15 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="OrangeTree" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot")]
+[node name="OrangeTree" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
 position = Vector2(1172, 264)
-script = ExtResource("48")
+script = ExtResource("20")
+interactable_id = "orange_tree"
 hotspot = NodePath("Hotspot")
-item_id = "orange"
-count = 3
-taken_say_key = "SAY_ORANGE_TAKEN"
-empty_say_key = "SAY_ORANGE_EMPTY"
+fx_point = NodePath("ItemPoint")
+
+[node name="ItemPoint" type="Marker2D" parent="Props/OrangeTree"]
+position = Vector2(6, -62)
 
 [node name="Shadow" type="Sprite2D" parent="Props/OrangeTree"]
 position = Vector2(0, -2)
@@ -700,13 +814,15 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_PLAY"
 
-[node name="Vanity" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot")]
+[node name="Vanity" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
 position = Vector2(686, 258)
-script = ExtResource("48")
+script = ExtResource("20")
+interactable_id = "vanity"
 hotspot = NodePath("Hotspot")
-item_id = "hairpin"
-taken_say_key = "SAY_HAIRPIN_TAKEN"
-empty_say_key = "SAY_VANITY"
+fx_point = NodePath("ItemPoint")
+
+[node name="ItemPoint" type="Marker2D" parent="Props/Vanity"]
+position = Vector2(10, -46)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Vanity"]
 position = Vector2(0, -2)
@@ -741,6 +857,37 @@ offset_bottom = -96.0
 horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
+
+[node name="DressingGate" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "sprite")]
+position = Vector2(1831, 298)
+script = ExtResource("20")
+interactable_id = "dressing_gate"
+hotspot = NodePath("Hotspot")
+sprite = NodePath("Bars")
+
+[node name="Bars" type="Sprite2D" parent="Props/DressingGate"]
+z_index = -1
+position = Vector2(-19, -84)
+texture = ExtResource("65")
+centered = false
+
+[node name="Hotspot" type="Area2D" parent="Props/DressingGate" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_OPEN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DressingGate/Hotspot"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_39")
+
+[node name="Prompt" type="Label" parent="Props/DressingGate/Hotspot"]
+offset_left = -90.0
+offset_top = -110.0
+offset_right = 90.0
+offset_bottom = -86.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_OPEN"
 
 [node name="LetterScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("text_label", "next_arrow")]
 layer = 10
@@ -790,21 +937,33 @@ sprite_frames = ExtResource("34")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="EmoteAnchor" type="Marker2D" parent="Props/Ghost"]
-position = Vector2(0, -66)
+[node name="Head" type="Node2D" parent="Props/Ghost"]
 
-[node name="Emote" type="AnimatedSprite2D" parent="Props/Ghost/EmoteAnchor" node_paths=PackedStringArray("overlay")]
+[node name="Head_Top" type="Marker2D" parent="Props/Ghost/Head"]
+position = Vector2(-1, -66)
+
+[node name="Forehead" type="Marker2D" parent="Props/Ghost/Head"]
+position = Vector2(-1, -54)
+
+[node name="Temple_L" type="Marker2D" parent="Props/Ghost/Head"]
+position = Vector2(-10, -52)
+
+[node name="Temple_R" type="Marker2D" parent="Props/Ghost/Head"]
+position = Vector2(8, -52)
+
+[node name="Emote" type="AnimatedSprite2D" parent="Props/Ghost" node_paths=PackedStringArray("head", "body")]
 sprite_frames = ExtResource("41")
 animation = &"question"
-offset = Vector2(0, -12)
 script = ExtResource("30")
-overlay = NodePath("../../../../EmoteLayer")
+character = "ghost"
+head = NodePath("../Head")
+body = NodePath("../Anim")
 
 [node name="Reactions" type="Node" parent="Props/Ghost" node_paths=PackedStringArray("anim", "emote")]
 script = ExtResource("31")
 character = "ghost"
 anim = NodePath("../Anim")
-emote = NodePath("../EmoteAnchor/Emote")
+emote = NodePath("../Emote")
 idle_animation = "idle"
 
 [node name="Hero" type="CharacterBody2D" parent="." node_paths=PackedStringArray("anim", "reactions")]
@@ -826,22 +985,110 @@ animation = &"idle_south"
 [node name="Feet" type="CollisionShape2D" parent="Hero"]
 shape = SubResource("RectangleShape2D_19")
 
-[node name="EmoteAnchor" type="Marker2D" parent="Hero"]
-position = Vector2(0, -64)
+[node name="Head" type="Node2D" parent="Hero"]
 
-[node name="Emote" type="AnimatedSprite2D" parent="Hero/EmoteAnchor" node_paths=PackedStringArray("overlay")]
+[node name="Head_Top" type="Marker2D" parent="Hero/Head"]
+position = Vector2(-8, -62)
+
+[node name="Forehead" type="Marker2D" parent="Hero/Head"]
+position = Vector2(-6, -53)
+
+[node name="Temple_L" type="Marker2D" parent="Hero/Head"]
+position = Vector2(-17, -52)
+
+[node name="Temple_R" type="Marker2D" parent="Hero/Head"]
+position = Vector2(0, -52)
+
+[node name="Emote" type="AnimatedSprite2D" parent="Hero" node_paths=PackedStringArray("head", "body")]
 sprite_frames = ExtResource("41")
 animation = &"question"
-offset = Vector2(0, -12)
 script = ExtResource("30")
-overlay = NodePath("../../../EmoteLayer")
+character = "hero"
+head = NodePath("../Head")
+body = NodePath("../Anim")
 
 [node name="Reactions" type="Node" parent="Hero" node_paths=PackedStringArray("anim", "emote")]
 script = ExtResource("31")
 character = "hero"
 anim = NodePath("../Anim")
-emote = NodePath("../EmoteAnchor/Emote")
+emote = NodePath("../Emote")
 idle_animation = "idle_south"
+
+[node name="GarderobeWIP" type="Node2D" parent="."]
+position = Vector2(0, 360)
+
+[node name="Backdrop" type="ColorRect" parent="GarderobeWIP"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.62, 0.62, 0.66, 1)
+
+[node name="Floor" type="ColorRect" parent="GarderobeWIP"]
+offset_top = 240.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.5, 0.48, 0.52, 1)
+
+[node name="Title" type="Label" parent="GarderobeWIP"]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 520.0
+offset_bottom = 144.0
+horizontal_alignment = 1
+text = "WIP_GARDEROBE"
+
+[node name="DoorPlaceholder" type="ColorRect" parent="GarderobeWIP"]
+offset_left = 306.0
+offset_top = 196.0
+offset_right = 334.0
+offset_bottom = 242.0
+color = Color(0.42, 0.26, 0.2, 1)
+
+[node name="Arrival" type="Marker2D" parent="GarderobeWIP"]
+position = Vector2(320, 296)
+
+[node name="Walls" type="StaticBody2D" parent="GarderobeWIP"]
+
+[node name="Top" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
+position = Vector2(320, 240)
+shape = SubResource("RectangleShape2D_40")
+
+[node name="Bottom" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
+position = Vector2(320, 356)
+shape = SubResource("RectangleShape2D_40")
+
+[node name="Left" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
+position = Vector2(-10, 300)
+shape = SubResource("RectangleShape2D_41")
+
+[node name="Right" type="CollisionShape2D" parent="GarderobeWIP/Walls"]
+position = Vector2(650, 300)
+shape = SubResource("RectangleShape2D_41")
+
+[node name="BackDoor" type="Node2D" parent="GarderobeWIP" node_paths=PackedStringArray("hotspot", "transition", "exit_point")]
+position = Vector2(320, 252)
+script = ExtResource("56")
+hotspot = NodePath("Hotspot")
+transition = NodePath("../../ScreenTransition")
+exit_point = NodePath("../../Props/GarderobeDoor/Arrival")
+step_in = Vector2(0, -8)
+
+[node name="Hotspot" type="Area2D" parent="GarderobeWIP/BackDoor" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_OPEN"
+
+[node name="Shape" type="CollisionShape2D" parent="GarderobeWIP/BackDoor/Hotspot"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_43")
+
+[node name="Prompt" type="Label" parent="GarderobeWIP/BackDoor/Hotspot"]
+offset_left = -90.0
+offset_top = -80.0
+offset_right = 90.0
+offset_bottom = -56.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_OPEN"
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1
@@ -1036,6 +1283,29 @@ amount = 0.12
 speed = 9.0
 irregular = true
 
-[node name="EmoteLayer" type="CanvasLayer" parent="."]
+[node name="AboveNight" type="CanvasLayer" parent="." groups=["above_night"]]
 layer = 2
 follow_viewport_enabled = true
+
+[node name="ScreenTransition" type="CanvasLayer" parent="." node_paths=PackedStringArray("fade_rect", "iris_rect", "iris_target")]
+layer = 20
+script = ExtResource("57")
+fade_rect = NodePath("Fade")
+iris_rect = NodePath("Iris")
+iris_target = NodePath("../Hero")
+debug_keys = true
+
+[node name="Fade" type="ColorRect" parent="ScreenTransition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="ScreenTransition"]
+material = SubResource("ShaderMaterial_iris")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

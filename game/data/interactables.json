@@ -1,0 +1,42 @@
+{
+	"_doc": "How props react when the hero uses them (components/interactable.gd). Scene nodes give the sprites; this file gives the behaviour. Strings are i18n keys. See docs/DATA_SCHEMA.md.",
+	"wardrobe": {
+		"pose": "interact_mid", "anim": "states", "closable": false,
+		"sfx": {"start": "creak", "end": "open"},
+		"fx": "dust", "fx_once": true,
+		"line_key": "", "prompt_after": ""
+	},
+	"secretary": {
+		"pose": "interact_mid", "anim": "states", "closable": false,
+		"sfx": {"start": "creak", "end": "open"},
+		"fx": "", "line_key": "", "prompt_after": "UI_READ_LETTER"
+	},
+	"nightstand": {
+		"pose": "interact_mid", "anim": "slide", "closable": true,
+		"sfx": {"start": "open", "close": "close"},
+		"item": {"id": "matches", "count": 1, "color": "#d8b070", "letter": "M"},
+		"line_key": "SAY_DRAWER_MATCHES", "empty_line_key": "SAY_DRAWER_EMPTY",
+		"prompt_after": "UI_CLOSE"
+	},
+	"bed_under": {
+		"pose": "interact_low", "anim": "none",
+		"item": {"id": "coin", "count": 1, "color": "#f0d040", "letter": "c"},
+		"line_key": "SAY_UNDER_BED_COIN", "empty_line_key": "SAY_UNDER_BED_EMPTY"
+	},
+	"orange_tree": {
+		"pose": "interact_high", "anim": "none",
+		"item": {"id": "orange", "count": 3, "color": "#f08a20", "letter": "o"},
+		"line_key": "SAY_ORANGE_TAKEN", "empty_line_key": "SAY_ORANGE_EMPTY",
+		"prompt_after_empty": "UI_INSPECT"
+	},
+	"vanity": {
+		"pose": "interact_mid", "anim": "none",
+		"item": {"id": "hairpin", "count": 1, "color": "#e0c060", "letter": "h"},
+		"line_key": "SAY_HAIRPIN_TAKEN", "empty_line_key": "SAY_VANITY"
+	},
+	"dressing_gate": {
+		"pose": "interact_mid", "anim": "none", "locked": true,
+		"sfx": {"locked": "locked"},
+		"locked_line_key": "SAY_GATE_LOCKED"
+	}
+}

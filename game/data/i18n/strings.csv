@@ -16,3 +16,10 @@ SAY_ORANGE_TAKEN,"An orange. Still fresh, somehow."
 SAY_ORANGE_EMPTY,No ripe ones left.
 SAY_HAIRPIN_TAKEN,"A hairpin. Bent just right for... something."
 SAY_VANITY,"Powder, perfume and a very old hairbrush."
+UI_LOOK_UNDER,Look under
+SAY_DRAWER_MATCHES,"Matches. Dry ones, even."
+SAY_DRAWER_EMPTY,Just dust now.
+SAY_UNDER_BED_COIN,"A coin! And a family of dust bunnies."
+SAY_UNDER_BED_EMPTY,Only the dust bunnies are left. They seem happy.
+SAY_GATE_LOCKED,Locked tight. The padlock looks older than the Count.
+WIP_GARDEROBE,garderobe — WIP
