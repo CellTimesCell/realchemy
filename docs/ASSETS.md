@@ -627,3 +627,27 @@ Prompts:
 - parchment — "a single sheet of old yellowed parchment paper seen flat from the front, slightly curled corners, faint stains and a small pink wax seal at the bottom, completely blank with no writing, soft even lighting."
 
 Screenshots: `skeleton_lying_{a,b}.png`, `wardrobe_open_with_skeleton.png` (props/wardrobe); `ghost_raw_{a,b,c}.png`, `ghost_in_room.png` (= a), `ghost_in_room_{b,c}.png` (characters/ghost); `secretary_{a,b,c}.png`, `secretary_open.png`, `secretary_in_room.png`, `letter_screen_press_start.png`, `letter_screen_tiny5.png` (props/secretary).
+
+---
+
+## 2026-10-19 (2) — Skeleton and secretary approved, letter, ghost v2
+
+Spent **6** (balance 1607 → 1601): ghost v2, 3 × `create_character` v3 = 2 each.
+
+**Approved:**
+- `skel_lying_2601_0` (a) → `approved/props/skeleton_princess_lying.png`; `skel_lying_2601_2` (b) **REJECTED**.
+- `secretary_2621_0` (a) → `approved/props/secretary_princess_closed.png`, `secretary_open_2641` → `approved/props/secretary_princess_open.png`; `secretary_2621_1` (b), `secretary_2621_3` (c) **REJECTED**.
+- `letter_parchment_2631` → `approved/ui/letter_princess.png`. Letter font: Press Start 2P (Tiny5 for letters **REJECTED**).
+
+**Ghost v1** — `ghost_2611_*` (a/b/c) **all REJECTED**: mush at small scale, face and crown unreadable (image 384 + style reference).
+
+**Ghost v2** (`_incoming/characters/ghost_v2/`), **pending**. Tool: `create_character` mode `v3`, size 64, view `low top-down`, outline `single color outline`, detail `high detail`, no reference (8 directions come with it). Cost 2 each.
+| Variant | Character ID | Figure height |
+|---|---|---|
+| a | `1f0c9d71-e969-423a-ac7e-1a72f77ca386` | 62 px |
+| b | `94ea04ee-a8e7-44c0-8ad5-1203e084a4eb` | 60 px |
+| c | `238ea9d6-d5bd-45ae-991d-7a432a1c80ea` | 62 px |
+Description: "elderly princess grandmother, adult realistic proportions (not chibi, head about 1/6 of height), clearly visible small golden crown on white hair in a bun, voluminous old-fashioned pink-lilac ball gown with puffed sleeves and white lace collar, grumpy but kind wrinkled face, one finger raised as if lecturing, other hand on hip, standing upright, 3/4 view, full body filling the canvas height".
+Files: `ghost_v2_{a,b,c}_south.png`, `ghost_v2_{a,b,c}_south-east.png`, `ghost_v2_{a,b,c}.png` (= south). Screenshots: `ghost_v2_compare.png` (×6 next to the hero and the count), `ghost_v2_in_room.png` (a with `shaders/ghost.gdshader`). Test scenes `tests/ghost_v2_{a,b,c}.tscn` (not committed).
+
+Screenshot: `_incoming/props/secretary/letter_final.png` (letter with margins, hotspot prompts hidden).
