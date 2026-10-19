@@ -177,6 +177,11 @@ func _give_item() -> void:
 	EventBus.item_found.emit(item.get("id", ""))
 	# The line comes after the item has flown to the corner, so the item never
 	# crosses the speech bubble.
+	if _items_left == 0 and config.get("hide_when_empty", false):
+		# Loose things (a sheet of music) are gone once picked up.
+		if sprite:
+			sprite.visible = false
+		_set_prompt("")
 	await ItemPop.spawn(get_tree(), from, Color(item.get("color", "#ffffff")), item.get("letter", "?"))
 	hotspot.say(config.get("line_key", ""))
 

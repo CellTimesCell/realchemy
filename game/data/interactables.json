@@ -50,5 +50,11 @@
 		"item": {"id": "stockings", "count": 1, "color": "#e8b0c8", "letter": "s"},
 		"line_key": "SAY_STOCKINGS_TAKEN", "empty_line_key": "SAY_BASKET_EMPTY",
 		"prompt_after_empty": "UI_INSPECT"
+	},
+	"sheet_music": {
+		"pose": "interact_low", "anim": "none", "hide_when_empty": true,
+		"item": {"id": "sheet_music", "count": 1, "color": "#efe2bf", "letter": "n"},
+		"line_key": "SAY_SHEET_TAKEN",
+		"_note": "groundwork for the harp puzzle [?]"
 	}
 }

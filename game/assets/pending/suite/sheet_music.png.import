@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fh34siwb0in1"
-path="res://.godot/imported/floor_candelabra_b.png-711cddc9a9e8eb983365e8bc9ce10a1d.ctex"
+uid="uid://cjh3bg1abwyc4"
+path="res://.godot/imported/sheet_music.png-34592d4c94ee4f08d86b538977b45934.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/floor_candelabra_b.png"
-dest_files=["res://.godot/imported/floor_candelabra_b.png-711cddc9a9e8eb983365e8bc9ce10a1d.ctex"]
+source_file="res://assets/pending/suite/sheet_music.png"
+dest_files=["res://.godot/imported/sheet_music.png-34592d4c94ee4f08d86b538977b45934.ctex"]
 
 [params]
 
