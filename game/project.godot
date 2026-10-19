@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 EventBus="*res://autoload/event_bus.gd"
 AudioManager="*res://autoload/audio_manager.gd"
+SaveManager="*res://autoload/save_manager.gd"
 
 [display]
 
@@ -57,6 +58,3 @@ show_all={
 ]
 }
 
-[realchemy]
-
-ui/text_variant="A"

@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/settings_menu.gd" id="1"]
+
+[node name="SettingsMenu" type="CanvasLayer" node_paths=PackedStringArray("panel", "text_size", "close_button")]
+layer = 12
+script = ExtResource("1")
+panel = NodePath("Panel")
+text_size = NodePath("Panel/Box/Row/TextSize")
+close_button = NodePath("Panel/Box/Close")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 200.0
+offset_top = 120.0
+offset_right = 440.0
+offset_bottom = 220.0
+
+[node name="Box" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/Box"]
+layout_mode = 2
+text = "UI_SETTINGS"
+horizontal_alignment = 1
+
+[node name="Row" type="HBoxContainer" parent="Panel/Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Box/Row"]
+layout_mode = 2
+text = "UI_TEXT_SIZE"
+
+[node name="TextSize" type="OptionButton" parent="Panel/Box/Row"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Panel/Box"]
+layout_mode = 2
+text = "UI_CLOSE"

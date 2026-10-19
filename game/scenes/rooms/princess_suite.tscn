@@ -66,6 +66,8 @@
 [ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate.png" id="65"]
 [ext_resource type="Script" path="res://components/speech_bubble.gd" id="66"]
 [ext_resource type="PackedScene" path="res://scenes/first_person/garderobe_view.tscn" id="67"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="68"]
+[ext_resource type="Script" path="res://components/long_press_show_all.gd" id="69"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -1235,3 +1237,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="GarderobeView" parent="." node_paths=PackedStringArray("transition") instance=ExtResource("67")]
 transition = NodePath("../ScreenTransition")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("68")]
+
+[node name="LongPressShowAll" type="Node" parent="."]
+script = ExtResource("69")

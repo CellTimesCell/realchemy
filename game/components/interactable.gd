@@ -171,11 +171,13 @@ func _open_animation() -> void:
 func _give_item() -> void:
 	var item: Dictionary = config["item"]
 	_items_left -= 1
-	var from: Vector2 = fx_point.global_position if fx_point else global_position + Vector2(0, -20)
-	ItemPop.spawn(get_tree(), from, Color(item.get("color", "#ffffff")), item.get("letter", "?"))
-	EventBus.item_found.emit(item.get("id", ""))
 	if _items_left == 0 and config.has("prompt_after_empty"):
 		hotspot.prompt_text = config["prompt_after_empty"]
+	var from: Vector2 = fx_point.global_position if fx_point else global_position + Vector2(0, -20)
+	EventBus.item_found.emit(item.get("id", ""))
+	# The line comes after the item has flown to the corner, so the item never
+	# crosses the speech bubble.
+	await ItemPop.spawn(get_tree(), from, Color(item.get("color", "#ffffff")), item.get("letter", "?"))
 	hotspot.say(config.get("line_key", ""))
 
 

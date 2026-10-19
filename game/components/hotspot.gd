@@ -44,6 +44,7 @@ func _ready() -> void:
 		# Anchor = bottom centre of the label rect set in the scene.
 		_prompt_anchor = Vector2((prompt.offset_left + prompt.offset_right) * 0.5, prompt.offset_bottom)
 		UiStyle.style_prompt(prompt)
+		EventBus.settings_changed.connect(func(_key: String) -> void: UiStyle.style_prompt(prompt))
 		var overlay: CanvasLayer = get_tree().get_first_node_in_group(OVERLAY_GROUP) as CanvasLayer
 		if overlay:
 			_prompt_moved = true

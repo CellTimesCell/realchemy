@@ -5,7 +5,6 @@ extends PanelContainer
 ## a line never covers an icon. Drawn on the "above_night" layer, kept inside
 ## the screen. Size and font follow UiStyle (variant A/B).
 
-const MAX_WIDTH: float = 168.0
 const SCREEN_MARGIN: float = 4.0
 const TAIL: PackedVector2Array = [Vector2(-3, 0), Vector2(3, 0), Vector2(0, 4)]
 
@@ -32,8 +31,8 @@ func _ready() -> void:
 	_tail.polygon = TAIL
 	_tail.color = UiStyle.BUBBLE_BORDER
 	add_child(_tail)
-	var s: float = UiStyle.text_scale()
-	scale = Vector2(s, s)
+	_apply_style()
+	EventBus.settings_changed.connect(func(_key: String) -> void: _apply_style())
 	var layer: Node = get_tree().get_first_node_in_group(&"above_night")
 	if layer:
 		reparent.call_deferred(layer, false)
@@ -49,9 +48,10 @@ func say(key: String, time: float = -1.0) -> void:
 	var text: String = tr(key)
 	var font: Font = _label.get_theme_font("font")
 	var width: float = font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, _label.get_theme_font_size("font_size")).x
-	if width > MAX_WIDTH:
+	var max_width: float = UiStyle.bubble_max_width()
+	if width > max_width:
 		_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_label.custom_minimum_size.x = MAX_WIDTH
+		_label.custom_minimum_size.x = max_width
 	else:
 		_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 		_label.custom_minimum_size.x = 0.0
@@ -61,6 +61,11 @@ func say(key: String, time: float = -1.0) -> void:
 	await get_tree().create_timer(show_time if time < 0.0 else time).timeout
 	if token == _token:
 		visible = false
+
+
+func _apply_style() -> void:
+	var s: float = UiStyle.text_scale()
+	scale = Vector2(s, s)
 
 
 func is_speaking() -> bool:

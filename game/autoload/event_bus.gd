@@ -36,6 +36,9 @@ signal danger_reaction_started(reaction_id: String)
 ## music puzzle.
 signal harp_note_played(note_index: int)
 
+## A player setting changed (SaveManager), e.g. "text_size".
+signal settings_changed(key: String)
+
 var modal_ui_active: bool = false
 
 
