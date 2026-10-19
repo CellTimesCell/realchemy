@@ -14,12 +14,17 @@
 [ext_resource type="Texture2D" path="res://assets/approved/fx/web_hanging.png" id="12"]
 [ext_resource type="Texture2D" path="res://assets/approved/fx/web_small.png" id="13"]
 [ext_resource type="Texture2D" path="res://assets/approved/fx/web_torn.png" id="14"]
-[ext_resource type="Script" path="res://components/hero.gd" id="15"]
-[ext_resource type="SpriteFrames" path="res://assets/approved/hero/hero_frames.tres" id="16"]
-[ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_pillar.png" id="17"]
-[ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir_pillar.png" id="18"]
-[ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_pillar.png" id="19"]
-[ext_resource type="Script" path="res://scenes/rooms/fx/light_flicker.gd" id="20"]
+[ext_resource type="Script" path="res://components/hotspot.gd" id="15"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess_blanket.png" id="16"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess_shadow.png" id="17"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess.png" id="18"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_candle.png" id="19"]
+[ext_resource type="Script" path="res://components/hero.gd" id="20"]
+[ext_resource type="SpriteFrames" path="res://assets/approved/hero/hero_frames.tres" id="21"]
+[ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_pillar.png" id="22"]
+[ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir_pillar.png" id="23"]
+[ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_pillar.png" id="24"]
+[ext_resource type="Script" path="res://scenes/rooms/fx/light_flicker.gd" id="25"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -74,33 +79,42 @@ shader_parameter/phase = 3.1
 shader_parameter/opacity = 0.75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10"]
-size = Vector2(14, 6)
+size = Vector2(126, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11"]
-size = Vector2(1280, 100)
+size = Vector2(150, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12"]
-size = Vector2(255, 100)
+size = Vector2(34, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13"]
-size = Vector2(385, 100)
+size = Vector2(14, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14"]
-size = Vector2(1920, 100)
+size = Vector2(1280, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15"]
-size = Vector2(100, 200)
+size = Vector2(255, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16"]
-size = Vector2(100, 200)
+size = Vector2(385, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17"]
-size = Vector2(56, 28)
+size = Vector2(1920, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18"]
-size = Vector2(56, 28)
+size = Vector2(100, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_19"]
+size = Vector2(100, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22"]
 size = Vector2(56, 28)
 
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
@@ -271,10 +285,92 @@ material = SubResource("ShaderMaterial_9")
 [node name="Props" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="BedBlanket" type="Sprite2D" parent="Props"]
+position = Vector2(132, 250)
+centered = false
+offset = Vector2(-84, -104)
+texture = ExtResource("16")
+
+[node name="Bed" type="Node2D" parent="Props"]
+position = Vector2(132, 298)
+
+[node name="Shadow" type="Sprite2D" parent="Props/Bed"]
+position = Vector2(0, -6)
+texture = ExtResource("17")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Bed"]
+texture = ExtResource("18")
+centered = false
+offset = Vector2(-84, -152)
+
+[node name="Body" type="StaticBody2D" parent="Props/Bed"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Bed/Body"]
+position = Vector2(1, -22)
+shape = SubResource("RectangleShape2D_10")
+
+[node name="Hotspot" type="Area2D" parent="Props/Bed" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "Осмотреть"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Bed/Hotspot"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_11")
+
+[node name="Prompt" type="Label" parent="Props/Bed/Hotspot"]
+offset_left = -60.0
+offset_top = -150.0
+offset_right = 60.0
+offset_bottom = -136.0
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 8
+text = "Осмотреть"
+
+[node name="Nightstand" type="Node2D" parent="Props"]
+position = Vector2(222, 296)
+
+[node name="Sprite" type="Sprite2D" parent="Props/Nightstand"]
+texture = ExtResource("19")
+centered = false
+offset = Vector2(-16, -40)
+
+[node name="Flame" type="CPUParticles2D" parent="Props/Nightstand"]
+position = Vector2(-2, -37)
+amount = 6
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_6")
+
+[node name="GarderobeDoor" type="Node2D" parent="Props"]
+position = Vector2(250, 255)
+
+[node name="Hotspot" type="Area2D" parent="GarderobeDoor" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "Заперто. Изнутри?"
+
+[node name="Shape" type="CollisionShape2D" parent="GarderobeDoor/Hotspot"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_12")
+
+[node name="Prompt" type="Label" parent="GarderobeDoor/Hotspot"]
+offset_left = -60.0
+offset_top = -110.0
+offset_right = 60.0
+offset_bottom = -96.0
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 8
+text = "Заперто. Изнутри?"
+
 [node name="Hero" type="CharacterBody2D" parent="." node_paths=PackedStringArray("anim")]
 position = Vector2(200, 300)
 motion_mode = 1
-script = ExtResource("15")
+script = ExtResource("20")
 anim = NodePath("Anim")
 
 [node name="Shadow" type="Sprite2D" parent="Hero"]
@@ -283,11 +379,11 @@ texture = SubResource("GradientTexture2D_4")
 
 [node name="Anim" type="AnimatedSprite2D" parent="Hero"]
 position = Vector2(0, -30)
-sprite_frames = ExtResource("16")
+sprite_frames = ExtResource("21")
 animation = &"idle_south"
 
 [node name="Feet" type="CollisionShape2D" parent="Hero"]
-shape = SubResource("RectangleShape2D_10")
+shape = SubResource("RectangleShape2D_13")
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1
@@ -295,55 +391,55 @@ z_index = 1
 [node name="Pillar1" type="Sprite2D" parent="Foreground"]
 position = Vector2(246, 140)
 centered = false
-texture = ExtResource("17")
+texture = ExtResource("22")
 
 [node name="Pillar2" type="Sprite2D" parent="Foreground"]
 position = Vector2(886, 140)
 centered = false
-texture = ExtResource("18")
+texture = ExtResource("23")
 
 [node name="Pillar3" type="Sprite2D" parent="Foreground"]
 position = Vector2(1526, 140)
 centered = false
-texture = ExtResource("19")
+texture = ExtResource("24")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="BackBedroomBoudoir" type="CollisionShape2D" parent="Walls"]
 position = Vector2(640, 200)
-shape = SubResource("RectangleShape2D_11")
+shape = SubResource("RectangleShape2D_14")
 
 [node name="BackDressingLeft" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1407, 200)
-shape = SubResource("RectangleShape2D_12")
+shape = SubResource("RectangleShape2D_15")
 
 [node name="BackDressingRight" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1727, 255)
-shape = SubResource("RectangleShape2D_13")
+shape = SubResource("RectangleShape2D_16")
 
 [node name="Front" type="CollisionShape2D" parent="Walls"]
 position = Vector2(960, 400)
-shape = SubResource("RectangleShape2D_14")
+shape = SubResource("RectangleShape2D_17")
 
 [node name="Left" type="CollisionShape2D" parent="Walls"]
 position = Vector2(-50, 300)
-shape = SubResource("RectangleShape2D_15")
+shape = SubResource("RectangleShape2D_18")
 
 [node name="Right" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1918, 300)
-shape = SubResource("RectangleShape2D_16")
+shape = SubResource("RectangleShape2D_19")
 
 [node name="PillarBedroom" type="CollisionShape2D" parent="Walls"]
 position = Vector2(278, 356)
-shape = SubResource("RectangleShape2D_17")
+shape = SubResource("RectangleShape2D_20")
 
 [node name="PillarBoudoir" type="CollisionShape2D" parent="Walls"]
 position = Vector2(918, 356)
-shape = SubResource("RectangleShape2D_18")
+shape = SubResource("RectangleShape2D_21")
 
 [node name="PillarDressing" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1558, 356)
-shape = SubResource("RectangleShape2D_19")
+shape = SubResource("RectangleShape2D_22")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(320, 180)
@@ -359,7 +455,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.9
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 1.2
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 1.2
 amount = 0.2
 speed = 9.0
@@ -371,7 +467,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.9
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 1.2
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 1.2
 amount = 0.2
 speed = 9.0
@@ -383,7 +479,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 1.8
 color = Color(0.7255, 0.7843, 1.0000, 1)
 energy = 0.5
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 0.5
 amount = 0.15
 speed = 0.8
@@ -416,7 +512,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.7
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 1.1
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 1.1
 amount = 0.15
 speed = 9.0
@@ -428,7 +524,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.7
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 1.1
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 1.1
 amount = 0.15
 speed = 9.0
@@ -440,7 +536,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.9
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 0.9
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 0.9
 amount = 0.15
 speed = 9.0
@@ -452,7 +548,7 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 0.9
 color = Color(1.0000, 0.6353, 0.3412, 1)
 energy = 0.9
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 0.9
 amount = 0.15
 speed = 9.0
@@ -464,8 +560,20 @@ texture = SubResource("GradientTexture2D_2")
 texture_scale = 1.4
 color = Color(0.7255, 0.7843, 1.0000, 1)
 energy = 0.5
-script = ExtResource("20")
+script = ExtResource("25")
 base_energy = 0.5
 amount = 0.12
 speed = 0.8
 irregular = false
+
+[node name="BedroomCandle" type="PointLight2D" parent="Lights"]
+position = Vector2(220, 259)
+texture = SubResource("GradientTexture2D_2")
+texture_scale = 1.0
+color = Color(1.0000, 0.6902, 0.3843, 1)
+energy = 1.0
+script = ExtResource("25")
+base_energy = 1.0
+amount = 0.12
+speed = 9.0
+irregular = true
