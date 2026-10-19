@@ -1,0 +1,11 @@
+keys,en
+UI_INSPECT,Inspect
+UI_OPEN,Open
+UI_READ_LETTER,Read letter
+UI_CLOSE,Close
+HS_GARDEROBE_LOCKED,Locked. From the inside?
+SAY_BED,"A canopy bed. Pink. Very, very pink."
+SAY_SKELETON,"Well. Someone never left the dressing room."
+LETTER_PREDECESSOR,"If you're reading this, the Count mixed up the windows again. I'm only 97 and still quite lovely, but my prince never came. Don't eat his pies. And don't touch the wardrobe.
+
+— Your predecessor, Princess R."
