@@ -13,6 +13,9 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `hero_v7_a.png` | `_incoming/style_test/round6/hero_v7_a.png` | Hero base, front view | light slightly cooler than the count — align at T-26 |
 | `room_princess_boudoir.png` | `_incoming/rooms/princess_chamber/pano_center_a.png` | Boudoir — center room of the princess suite | |
 | `hero_pose_34.png` | `_incoming/hero_anim/pose34/pose_1802_fixed.png` | Hero base pose: 3/4, lowered arm, slippers recolored to v7 a (rows 57–63 copied from `hero_v7_a.png`) | animations not yet approved |
+| `room_princess_bedroom.png` | `_incoming/rooms/bedroom_v4/bedroom_v4_a_room.png` (rerender A 2001, glass cut out, left mullion restored) | Princess bedroom (left room of the suite) | live layers: `window_view_tower.png`, `window_clouds.png` + flames/lights in scene |
+| `window_view_tower.png` | `_incoming/rooms/bedroom_v4/view_tower_2102.png` (center crop, lit windows painted out) | Shared window view for all suite windows | |
+| `window_clouds.png` | `_incoming/rooms/bedroom_v4/clouds_2022.png` | Scrolling cloud strip behind window glass | |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ---
@@ -494,7 +497,7 @@ Live layers (pixen, 1 each): `sky_raw_2021.png` (256×160, seed 2021, job `25e6a
 
 Script work: glass made transparent by flood fill from seeds inside each lancet (`bedroom_v4_{a,b}_room.png`). Scene `game/tests/bedroom_v4.tscn`: SkyBG + SkyL/SkyR + scrolling Clouds (`tests/scroll_region.gd`) behind the room; particle flames + flickering PointLight2D (`tests/light_flicker.gd`) over the baked torches (400/515, 140); pulsing moon-beam light; arch glow; 2 swaying cobwebs; arch trigger (walk up into the arch → boudoir) in `room_suite.gd`. Screenshots `bedroom_v4_a.png`, `bedroom_v4_b.png`.
 
-**3. Volumetric bows** (pixen 48×48 transparent, view `side`, cost 1 each) — **RESERVE**: on the pillars they still look pasted on (too saturated against the room; the 3/4 reads almost frontal); the front one above the arch is tolerable.
+**3. Volumetric bows** (pixen 48×48 transparent, view `side`, cost 1 each) — status: **reserve** (owner decision; not used in scenes): on the pillars they still look pasted on (too saturated against the room; the 3/4 reads almost frontal); the front one above the arch is tolerable.
 
 | File | Direction | Seed | Job ID | Note |
 |---|---|---|---|---|
@@ -503,3 +506,38 @@ Script work: glass made transparent by flood fill from seeds inside each lancet 
 | `bow_34right_2013.png` → `bow_34right.png` | south-east | 2013 | `cf5ccfee-6e95-410e-a93e-cffe1fe11ad2` | ragged after cut-out; right pillar uses mirrored 34left |
 
 Prompts: front — "one voluminous pink satin ribbon bow hanging on a flat wall, seen from the front: puffy rounded loops with soft fabric folds and creases, a knotted center, two long ribbon tails hanging down with a slight twist, soft drop shadow falling on the wall behind it, light from the upper left. + style. Avoid: flat icon, wall texture, background."; 3/4 — "one voluminous pink satin ribbon bow tied around a round stone column, seen in three-quarter view from the left (right): the bow turns away to the right (left) following the curve of the column, puffy loops with fabric folds, the near loop larger than the far loop, two long ribbon tails hanging down, soft shadow on the column, light from the upper left. + style. Avoid: column, background, flat icon." Contact shadows `shadow_bow_*.png` by script. Screenshot `bows_test.png`; the `BowsTest` node in `bedroom_v4.tscn` is hidden.
+
+---
+
+## 2026-10-18 — Hero cleanup, bedroom approved, dressing room v1
+
+Spent **56** (balance 1767 → 1711): window view 2, dressing shell 2, gate 2, dressing rerender 50. Hero cleanup 0.
+
+**Hero cleanup** (0 gen, script `_incoming/hero_anim/v34/clean/hero_cleanup.py`): for each direction the head of one best frame (idle 0, walk_south 2, walk_north 0, walk_east 0) is fixed (stray orange pixels in the left hair → hair color; ear on south/idle redrawn as 1×2 skin + outline) and transplanted into every frame at the frame's bob offset; detached fist removed in walk_east frames 1 and 4. Output `clean/<anim>/<i>.png`, sheets `clean/hero_<anim>.png` + `clean/hero_<anim>.aseprite` (Aseprite CLI). Compare `hero_cleanup_compare.png` (before/after, ×6); `hero_walk.gif` rebuilt from clean frames. Status: pending review (not in approved/).
+
+**Bedroom — APPROVED** (variant A, `bedroom_v4_a_2001.png`): left mullion restored from A (x 342–349); window view replaced by a tower view; cool fill light on the empty left bay (`Lights/LeftFill`, #8fa6e8, energy 0.35). Approved files listed in the table above. Screenshot `rooms/bedroom_v4/bedroom_final.png`. Variant B `bedroom_v4_b_2002.png` — rejected.
+
+Window view (pixen 256×160, cost 1 each), prompt: "night view from a high castle tower window, filling the whole image edge to edge: deep blue-violet night sky with a soft dithered gradient, a big bright full moon in the upper left, a few small stars, far below dark silhouettes of crenellated castle battlements and pointed slate tower roofs along the bottom, beyond them a distant dark forest on the horizon line with faint mist. + style. Avoid: window frame, curtains, interior, walls around the view, lit windows, houses, clouds, text."
+| File | Seed | Job ID | Status |
+|---|---|---|---|
+| `view_tower_2101.png` | 2101 | `a36dc3b2-0c9e-4e7c-b794-6725102de724` | rejected (drew a window frame, lit windows) |
+| `view_tower_2102.png` → `approved/window_view_tower.png` | 2102 | `ebf7a5e7-e2fd-4e05-857a-0413b9db0b16` | approved (curtain edges cropped, lit windows painted out) |
+
+**Dressing room v1** (`_incoming/rooms/dressing/`), pending review.
+Sketch pieces (pixen, cost 1 each):
+| File | Seed | Job ID | Note |
+|---|---|---|---|
+| `shell_2111.png` | 2111 | `85d52758-f8b2-4af5-ad5f-4cc2a432cc38` | rejected (stairs, curtain) |
+| `shell_2112.png` | 2112 | `3d239d00-b109-42a0-9d28-1a2a983e5c6c` | used as sketch base (open left, side wall right) |
+| `gate_2121.png` | 2121 | `99d51ffa-e38f-4699-a503-75684c39d60d` | used: gated spiral staircase with padlock |
+| `gate_2122.png` | 2122 | `77167e87-0ea9-41f6-a912-a9eed6ae4009` | rejected (open wooden door, ivy) |
+Shell prompt: "bare empty stone room shell in a gothic castle, unfurnished, diorama view, back wall facing the viewer straight-on with dusty lilac-grey stone pillars and faded torn pink rose wallpaper panels, dark wood wainscoting, dark wooden plank floor with depth in the lower third, vaulted ceiling edge at top, a solid stone side wall on the RIGHT edge of the image, the LEFT edge of the image is open and continues into the next room with no side wall, plain bare walls and plain bare floor, soft even ambient light. + style. Avoid: bed, furniture, wardrobe, desk, table, chair, curtains, windows, doors, arches, stairs, bows, ribbons, candles, torches, glow, characters, text, blurry, photorealistic." Gate prompt: "a doorway in a castle wall standing on the floor, front elevation: a pointed gothic stone arch frame of clean cut lilac-grey stone, through the opening a dark stone spiral staircase winding upward is visible, the opening is closed by a black wrought iron gate with vertical bars and curled scrollwork, a heavy old iron padlock hangs on the gate, flat even lighting. + style. Avoid: ivy, plants, wooden door, perspective, background, glow."
+Sketch `dressing_sketch.png` = shell_2112 + window_narrow + view + drapes_1613 + gate_2121 + 2 torches.
+
+Rerender (`create_image_pro` 640×360, cost 25 each), reference = sketch (`upload:a6d77839-8012-45cf-be73-48bb821c8270`, usage "room layout and composition: keep the walls, pillars, vaults, floor and the positions of the window with curtains, the two torches and the gated staircase doorway; redraw everything as one coherent painting"), style_image = boudoir (`upload:9668c9da-4821-4322-90fa-39bbc64d8ca2`).
+| File | Seed | Job ID | Note |
+|---|---|---|---|
+| `dressing_v1_a_2201.png` | 2201 | `81d08ecf-7a22-4286-b42b-1ca6d96f7c6b` | 3 torches (one extra on the left pillar), bright window, gate on the right |
+| `dressing_v1_b_2202.png` | 2202 | `82e270f6-28b2-4db3-8cff-c77e3150209c` | 2 torches as asked, window with moonbeam on the floor, gate on the right; darker, closer to the bedroom |
+Prompt (both): "gothic vampire castle dressing room interior at night, diorama view of the back wall facing the viewer. Keep the room layout of the reference. The LEFT edge of the image is open and continues into the next room, no left side wall; a solid stone side wall closes the RIGHT edge. In the right part of the back wall a pointed stone doorway standing on the floor, about one and a half times the height of a person, through it a dark stone spiral staircase winds upward, the doorway is closed by a black wrought iron gate locked with a heavy old padlock. The middle of the back wall between two stone pillars is a large empty wall space for a future wardrobe and writing desk. On the left part of the back wall one small gothic window showing the moonlit night sky, neatly framed by burgundy velvet curtains tied back on both sides. Two lit wall torches mounted symmetrically on the two pillars. Faded torn pink rose wallpaper, dusty lilac-grey stone, dark wood wainscoting, dark wooden plank floor, a few cobwebs in the upper corners. No bows, no ribbons, no furniture, no people, nothing on the floor. Cool lilac moonlight against warm torch light. + §4 style block."
+Live layers: glass cut out (`dressing_v1_{a,b}_room.png`), shared tower view + clouds behind, particle flames + flickering lights over the baked torches, pulsing moonbeam, 2 swaying cobwebs. Scenes `tests/dressing_v1_a.tscn`, `tests/dressing_v1_b.tscn` (room_suite currently uses B). Screenshots `dressing_v1_a.png`, `dressing_v1_b.png`.
