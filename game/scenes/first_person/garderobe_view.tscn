@@ -60,7 +60,7 @@ script = ExtResource("20")
 blank_size = Vector2i(60, 16)
 wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
 wall_size = Vector2(220, 200)
-rect = Rect2(94, 26, 60, 16)
+rect = Rect2(62, 26, 60, 16)
 body_text = "SCRATCH_NUMBER"
 body_font = ExtResource("13")
 has_shadow = false
@@ -89,9 +89,10 @@ rect = Rect2(122, 70, 64, 84)
 title_top = "POSTER_BUNS_1"
 title_bottom = "POSTER_BUNS_2"
 title_font = ExtResource("21")
-title_color = Color(0.85, 0.12, 0.12, 1)
+title_color = Color(1, 0.9, 0.85, 1)
 nail = ExtResource("22")
 tape = ExtResource("23")
+title_outline = Color(0.55, 0.05, 0.05, 1)
 
 [node name="Bonjovial" type="Node2D" parent="Content/Posters"]
 script = ExtResource("20")
@@ -124,7 +125,7 @@ script = ExtResource("20")
 texture = ExtResource("7")
 wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
 wall_size = Vector2(220, 200)
-rect = Rect2(88, 0, 64, 84)
+rect = Rect2(56, 2, 64, 84)
 title_top = "POSTER_DEAF_1"
 title_bottom = "POSTER_DEAF_2"
 title_font = ExtResource("21")
@@ -137,21 +138,23 @@ script = ExtResource("20")
 texture = ExtResource("8")
 wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
 wall_size = Vector2(220, 200)
-rect = Rect2(144, 96, 64, 84)
+rect = Rect2(98, 100, 64, 84)
 title_top = "POSTER_WHITESNACK_1"
 title_bottom = "POSTER_WHITESNACK_2"
 title_font = ExtResource("21")
-title_color = Color(0.12, 0.4, 0.1, 1)
+title_color = Color(1, 1, 1, 1)
 nail = ExtResource("22")
 tape = ExtResource("23")
-
-[node name="ToiletPaperShadow" type="Sprite2D" parent="Content"]
-modulate = Color(0, 0, 0, 0.35)
-position = Vector2(191, 238)
-texture = ExtResource("9")
+title_outline = Color(0.1, 0.35, 0.08, 1)
 
 [node name="ToiletPaper" type="Sprite2D" parent="Content"]
-position = Vector2(189, 235)
+position = Vector2(188, 228)
+texture = ExtResource("9")
+
+[node name="Shadow" type="Sprite2D" parent="Content/ToiletPaper"]
+show_behind_parent = true
+modulate = Color(0, 0, 0, 0.35)
+position = Vector2(2, 2)
 texture = ExtResource("9")
 
 [node name="Spray" type="CPUParticles2D" parent="Content"]
