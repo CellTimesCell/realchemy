@@ -28,6 +28,9 @@ const RATTLE_STEP_TIME: float = 0.04
 @export var locked_first_time: bool = false
 @export var locked_line_key: String = ""
 @export var first_person_view: FirstPersonView
+## Pose the hero takes in the doorway before the fade (ducking under a low
+## door: "interact_low").
+@export var entry_pose: String = ""
 
 var busy: bool = false
 var _tried: bool = false
@@ -58,6 +61,9 @@ func look_inside(hero: Hero) -> void:
 	var start: Vector2 = hero.global_position if hero else Vector2.ZERO
 	if hero:
 		await hero.walk_to(global_position + step_in, STEP_IN_TIME)
+		if not entry_pose.is_empty():
+			hero.face("north")
+			await hero.play_pose(entry_pose)
 	await first_person_view.open()
 	await first_person_view.closed_view
 	_set_state(0)

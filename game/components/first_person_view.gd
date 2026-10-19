@@ -112,8 +112,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ## The hotspot under a point of the 640x360 picture (empty if none).
 func hotspot_at(point: Vector2) -> Dictionary:
 	for entry: Dictionary in _hotspots:
-		var r: Array = entry.get("rect", [0, 0, 0, 0])
-		if Rect2(r[0], r[1], r[2], r[3]).has_point(point) and _is_available(entry):
+		if _entry_rect(entry).has_point(point) and _is_available(entry):
 			return entry
 	return {}
 
@@ -126,16 +125,21 @@ func run_verb(entry: Dictionary, verb: Dictionary) -> void:
 		"closeup":
 			_open_closeup(entry, verb.get("target", ""))
 		"move":
-			var node: Node2D = content.get_node_or_null(verb.get("target", "")) as Node2D
-			if node and not _used.has(verb.get("target", "")):
-				_used[verb["target"]] = true
-				var offset: Array = verb.get("offset", [0, 0])
-				var tween: Tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-				tween.tween_property(node, "position", node.position + Vector2(offset[0], offset[1]), MOVE_TIME)
-				# "rotate": swing around the node origin (a poster left on one nail).
-				if verb.has("rotate"):
-					tween.parallel().tween_property(node, "rotation_degrees", node.rotation_degrees + float(verb["rotate"]), MOVE_TIME)
+			var target: String = verb.get("target", "")
+			var node: Node2D = content.get_node_or_null(target) as Node2D
+			if node and not _used.has(target):
+				_used[target] = true
 				AudioManager.play_sfx(verb.get("sfx", "creak"))
+				if node is WallPoster:
+					# Posters move in their wall's plane (perspective kept).
+					(node as WallPoster).swing(float(verb.get("rotate", 0.0)), MOVE_TIME)
+				else:
+					var offset: Array = verb.get("offset", [0, 0])
+					var tween: Tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+					tween.tween_property(node, "position", node.position + Vector2(offset[0], offset[1]), MOVE_TIME)
+					# "rotate": swing around the node origin.
+					if verb.has("rotate"):
+						tween.parallel().tween_property(node, "rotation_degrees", node.rotation_degrees + float(verb["rotate"]), MOVE_TIME)
 		"fx":
 			var fx: CPUParticles2D = content.get_node_or_null(verb.get("target", "")) as CPUParticles2D
 			if fx:
@@ -164,6 +168,18 @@ func say(key: String) -> void:
 	await get_tree().create_timer(MONOLOGUE_TIME).timeout
 	if token == _say_token:
 		monologue.visible = false
+
+
+## A hotspot's area: "rect" [x, y, w, h], or the current bounds of a wall
+## poster named in "rect_from" (it follows the poster when it swings).
+func _entry_rect(entry: Dictionary) -> Rect2:
+	var from: String = entry.get("rect_from", "")
+	if not from.is_empty():
+		var poster: WallPoster = content.get_node_or_null(from) as WallPoster
+		if poster:
+			return poster.bounds()
+	var r: Array = entry.get("rect", [0, 0, 0, 0])
+	return Rect2(r[0], r[1], r[2], r[3])
 
 
 func _is_available(entry: Dictionary) -> bool:

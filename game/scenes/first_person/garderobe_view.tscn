@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://components/first_person_view.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/pending/garderobe/garderobe_bg_a.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/approved/rooms/garderobe/garderobe_bg.png" id="2"]
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_rotley.png" id="3"]
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_buns.png" id="4"]
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_bonjovial.png" id="5"]
@@ -9,22 +9,14 @@
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_deaf.png" id="7"]
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_whitesnack.png" id="8"]
 [ext_resource type="Texture2D" path="res://assets/pending/garderobe/toilet_paper.png" id="9"]
-[ext_resource type="Texture2D" path="res://assets/pending/garderobe/hand_point.png" id="10"]
-[ext_resource type="Texture2D" path="res://assets/pending/garderobe/hand_grab.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/approved/rooms/garderobe/hand_point.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/approved/rooms/garderobe/hand_grab.png" id="11"]
 [ext_resource type="FontFile" path="res://assets/fonts/dotgothic16/DotGothic16-Regular.ttf" id="12"]
 [ext_resource type="FontFile" path="res://assets/fonts/_reserve/tiny5/Tiny5.ttf" id="13"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_title"]
-font = ExtResource("13")
-font_size = 8
-font_color = Color(0.12, 0.05, 0.16, 1)
-line_spacing = -2.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_scratch"]
-font = ExtResource("13")
-font_size = 8
-font_color = Color(0.86, 0.82, 0.8, 0.85)
-line_spacing = -1.0
+[ext_resource type="Script" path="res://components/wall_poster.gd" id="20"]
+[ext_resource type="FontFile" path="res://assets/fonts/press_start_2p/PressStart2P-Regular.ttf" id="21"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/nail.png" id="22"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/tape.png" id="23"]
 
 [sub_resource type="Gradient" id="Gradient_spray"]
 colors = PackedColorArray(0.85, 0.95, 1, 1, 0.55, 0.8, 1, 0)
@@ -53,132 +45,113 @@ centered = false
 
 [node name="Scratches" type="Node2D" parent="Content"]
 
-[node name="Help" type="Label" parent="Content/Scratches"]
-offset_left = 270.0
-offset_top = 116.0
-offset_right = 320.0
-offset_bottom = 170.0
-text = "SCRATCH_HELP"
-label_settings = SubResource("LabelSettings_scratch")
+[node name="Help" type="Node2D" parent="Content/Scratches"]
+script = ExtResource("20")
+blank_size = Vector2i(56, 60)
+wall_quad = PackedVector2Array(232, 96, 408, 96, 408, 232, 232, 232)
+wall_size = Vector2(176, 136)
+rect = Rect2(26, 14, 56, 60)
+body_text = "SCRATCH_HELP"
+body_font = ExtResource("13")
+has_shadow = false
 
-[node name="Number" type="Label" parent="Content/Scratches"]
-offset_left = 530.0
-offset_top = 98.0
-offset_right = 576.0
-offset_bottom = 110.0
-text = "SCRATCH_NUMBER"
-label_settings = SubResource("LabelSettings_scratch")
+[node name="Number" type="Node2D" parent="Content/Scratches"]
+script = ExtResource("20")
+blank_size = Vector2i(60, 16)
+wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
+wall_size = Vector2(220, 200)
+rect = Rect2(94, 26, 60, 16)
+body_text = "SCRATCH_NUMBER"
+body_font = ExtResource("13")
+has_shadow = false
 
 [node name="Posters" type="Node2D" parent="Content"]
 
 [node name="Rotley" type="Node2D" parent="Content/Posters"]
-position = Vector2(104, 84)
-skew = 0.08
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Rotley"]
+script = ExtResource("20")
 texture = ExtResource("3")
-centered = false
-
-[node name="Title" type="Label" parent="Content/Posters/Rotley"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_ROTLEY"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+wall_quad = PackedVector2Array(40, 41, 210, 101, 210, 210, 40, 244)
+wall_size = Vector2(220, 200)
+rect = Rect2(40, 30, 64, 84)
+title_top = "POSTER_ROTLEY_1"
+title_bottom = "POSTER_ROTLEY_2"
+title_font = ExtResource("21")
+title_color = Color(0.92, 0.92, 0.95, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
 [node name="Buns" type="Node2D" parent="Content/Posters"]
-position = Vector2(148, 158)
-skew = 0.08
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Buns"]
+script = ExtResource("20")
 texture = ExtResource("4")
-centered = false
-
-[node name="Title" type="Label" parent="Content/Posters/Buns"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_BUNS"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+wall_quad = PackedVector2Array(40, 41, 210, 101, 210, 210, 40, 244)
+wall_size = Vector2(220, 200)
+rect = Rect2(122, 70, 64, 84)
+title_top = "POSTER_BUNS_1"
+title_bottom = "POSTER_BUNS_2"
+title_font = ExtResource("21")
+title_color = Color(0.85, 0.12, 0.12, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
 [node name="Bonjovial" type="Node2D" parent="Content/Posters"]
-position = Vector2(262, 108)
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Bonjovial"]
+script = ExtResource("20")
 texture = ExtResource("5")
-centered = false
-
-[node name="Title" type="Label" parent="Content/Posters/Bonjovial"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_BONJOVIAL"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+wall_quad = PackedVector2Array(232, 96, 408, 96, 408, 232, 232, 232)
+wall_size = Vector2(176, 136)
+rect = Rect2(22, 8, 64, 84)
+title_top = "POSTER_BONJOVIAL_1"
+title_bottom = "POSTER_BONJOVIAL_2"
+title_font = ExtResource("21")
+title_color = Color(1, 0.55, 0.8, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
 [node name="Squid" type="Node2D" parent="Content/Posters"]
-position = Vector2(330, 112)
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Squid"]
+script = ExtResource("20")
 texture = ExtResource("6")
-centered = false
-
-[node name="Title" type="Label" parent="Content/Posters/Squid"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_SQUID"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+wall_quad = PackedVector2Array(232, 96, 408, 96, 408, 232, 232, 232)
+wall_size = Vector2(176, 136)
+rect = Rect2(96, 14, 64, 84)
+title_top = "POSTER_SQUID_1"
+title_bottom = "POSTER_SQUID_2"
+title_font = ExtResource("21")
+title_color = Color(0.75, 1, 0.95, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
 [node name="Deaf" type="Node2D" parent="Content/Posters"]
-position = Vector2(520, 72)
-skew = -0.08
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Deaf"]
+script = ExtResource("20")
 texture = ExtResource("7")
-centered = false
-
-[node name="Title" type="Label" parent="Content/Posters/Deaf"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_DEAF"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
+wall_size = Vector2(220, 200)
+rect = Rect2(88, 0, 64, 84)
+title_top = "POSTER_DEAF_1"
+title_bottom = "POSTER_DEAF_2"
+title_font = ExtResource("21")
+title_color = Color(1, 0.95, 0.4, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
 [node name="Whitesnack" type="Node2D" parent="Content/Posters"]
-position = Vector2(552, 168)
-skew = -0.08
-
-[node name="Sprite" type="Sprite2D" parent="Content/Posters/Whitesnack"]
+script = ExtResource("20")
 texture = ExtResource("8")
-centered = false
+wall_quad = PackedVector2Array(430, 92, 600, 40, 600, 300, 430, 250)
+wall_size = Vector2(220, 200)
+rect = Rect2(144, 96, 64, 84)
+title_top = "POSTER_WHITESNACK_1"
+title_bottom = "POSTER_WHITESNACK_2"
+title_font = ExtResource("21")
+title_color = Color(0.12, 0.4, 0.1, 1)
+nail = ExtResource("22")
+tape = ExtResource("23")
 
-[node name="Title" type="Label" parent="Content/Posters/Whitesnack"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 84.0
-offset_bottom = 21.0
-scale = Vector2(0.5, 0.5)
-text = "POSTER_WHITESNACK"
-label_settings = SubResource("LabelSettings_title")
-horizontal_alignment = 1
+[node name="ToiletPaperShadow" type="Sprite2D" parent="Content"]
+modulate = Color(0, 0, 0, 0.35)
+position = Vector2(191, 238)
+texture = ExtResource("9")
 
 [node name="ToiletPaper" type="Sprite2D" parent="Content"]
-position = Vector2(186, 244)
+position = Vector2(189, 235)
 texture = ExtResource("9")
 
 [node name="Spray" type="CPUParticles2D" parent="Content"]

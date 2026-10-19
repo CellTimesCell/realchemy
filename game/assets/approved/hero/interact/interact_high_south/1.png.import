@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buwda3vve4dpf"
-path="res://.godot/imported/nightstand_drawer_closed.png-16c75ee68a7b3a7030d41be075e43cc7.ctex"
+uid="uid://c4cmlaqwsrl6y"
+path="res://.godot/imported/1.png-7ccc4efae41cfe4b85b20657b82a49fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/nightstand_drawer_closed.png"
-dest_files=["res://.godot/imported/nightstand_drawer_closed.png-16c75ee68a7b3a7030d41be075e43cc7.ctex"]
+source_file="res://assets/approved/hero/interact/interact_high_south/1.png"
+dest_files=["res://.godot/imported/1.png-7ccc4efae41cfe4b85b20657b82a49fa.ctex"]
 
 [params]
 

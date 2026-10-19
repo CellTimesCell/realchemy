@@ -23,16 +23,18 @@ func _entry(id: String) -> Dictionary:
 func test_data_is_first_person() -> void:
 	assert_eq(_view.data.get("type"), "first_person")
 	for entry: Dictionary in _view.data["hotspots"]:
-		assert_eq((entry["rect"] as Array).size(), 4, "%s has a rect" % entry["id"])
+		assert_true(entry.has("rect") or entry.has("rect_from"), "%s has an area" % entry["id"])
 		assert_gt((entry["verbs"] as Array).size(), 0, "%s has verbs" % entry["id"])
 
 
 func test_scratches_show_after_the_poster_moves() -> void:
-	var r: Array = _entry("scratch_help")["rect"]
-	var point: Vector2 = Vector2(r[0] + 4, r[1] + 4)
+	await wait_process_frames(2)
+	var area: Rect2 = _view._entry_rect(_entry("scratch_help"))
+	var point: Vector2 = area.get_center()
 	assert_eq(_view.hotspot_at(point).get("id"), "poster_bonjovial", "Poster covers the wall")
 	var poster: Dictionary = _entry("poster_bonjovial")
 	_view.run_verb(poster, poster["verbs"][1])
+	await wait_seconds(0.6)
 	assert_eq(_view.hotspot_at(point).get("id"), "scratch_help", "Scratches revealed")
 
 

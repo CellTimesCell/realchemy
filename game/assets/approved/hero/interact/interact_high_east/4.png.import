@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chwvnci1j7t8n"
-path="res://.godot/imported/hand_grab.png-a7eed5f683be2b85772b00f2b0cf5420.ctex"
+uid="uid://bvnou2cmw8act"
+path="res://.godot/imported/4.png-0c2b86bd888b9097f41d18c5e7663dcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/garderobe/hand_grab.png"
-dest_files=["res://.godot/imported/hand_grab.png-a7eed5f683be2b85772b00f2b0cf5420.ctex"]
+source_file="res://assets/approved/hero/interact/interact_high_east/4.png"
+dest_files=["res://.godot/imported/4.png-0c2b86bd888b9097f41d18c5e7663dcc.ctex"]
 
 [params]
 

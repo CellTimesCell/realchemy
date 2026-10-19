@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://phqbu4ec7s4c"
-path="res://.godot/imported/garderobe_bg_b.png-129adf027e77f874cbdd3860c98ae6b8.ctex"
+uid="uid://dpjdj75hjkr4s"
+path="res://.godot/imported/3.png-88468e62505aafd2a605a1a3a4f9c349.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/garderobe/garderobe_bg_b.png"
-dest_files=["res://.godot/imported/garderobe_bg_b.png-129adf027e77f874cbdd3860c98ae6b8.ctex"]
+source_file="res://assets/approved/hero/interact/interact_high_south/3.png"
+dest_files=["res://.godot/imported/3.png-88468e62505aafd2a605a1a3a4f9c349.ctex"]
 
 [params]
 

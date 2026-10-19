@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dargqll3riiaf"
-path="res://.godot/imported/0.png-0d67504c26e7d64220b9500aeac4fac3.ctex"
+uid="uid://umojof6c7mrn"
+path="res://.godot/imported/garderobe_bg.png-889ee4bc88948ebc6f269f8aa6c5d404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/hero/interact/interact_high_east/0.png"
-dest_files=["res://.godot/imported/0.png-0d67504c26e7d64220b9500aeac4fac3.ctex"]
+source_file="res://assets/approved/rooms/garderobe/garderobe_bg.png"
+dest_files=["res://.godot/imported/garderobe_bg.png-889ee4bc88948ebc6f269f8aa6c5d404.ctex"]
 
 [params]
 

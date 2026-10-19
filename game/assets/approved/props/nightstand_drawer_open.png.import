@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgcreaa6i44di"
-path="res://.godot/imported/hand_point.png-f223acb6ddf6fb7885ba6e6dcc373973.ctex"
+uid="uid://dnyluuf5m207"
+path="res://.godot/imported/nightstand_drawer_open.png-bb0f55712f99301681a2ec3096b5a533.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/garderobe/hand_point.png"
-dest_files=["res://.godot/imported/hand_point.png-f223acb6ddf6fb7885ba6e6dcc373973.ctex"]
+source_file="res://assets/approved/props/nightstand_drawer_open.png"
+dest_files=["res://.godot/imported/nightstand_drawer_open.png-bb0f55712f99301681a2ec3096b5a533.ctex"]
 
 [params]
 

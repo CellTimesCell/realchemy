@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drfechrcnwyys"
-path="res://.godot/imported/garderobe_arch_ajar.png-5d98ff73ce1d0322f4d0c81acedc807f.ctex"
+uid="uid://bw1usgdh5pchn"
+path="res://.godot/imported/garderobe_arch_open.png-376639e9c2bdc1249d8281981b2b5474.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_arch_ajar.png"
-dest_files=["res://.godot/imported/garderobe_arch_ajar.png-5d98ff73ce1d0322f4d0c81acedc807f.ctex"]
+source_file="res://assets/approved/props/garderobe_arch_open.png"
+dest_files=["res://.godot/imported/garderobe_arch_open.png-376639e9c2bdc1249d8281981b2b5474.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cok2r4xr018b5"
-path="res://.godot/imported/room_princess_bedroom_garderobe.png-180a805b8e791ef2ac08e1d3dbd9883c.ctex"
+uid="uid://b0knrttm5kgmu"
+path="res://.godot/imported/3.png-34d796321f0e0a13614c05bc2dd3a887.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/rooms/room_princess_bedroom_garderobe.png"
-dest_files=["res://.godot/imported/room_princess_bedroom_garderobe.png-180a805b8e791ef2ac08e1d3dbd9883c.ctex"]
+source_file="res://assets/approved/hero/interact/interact_high_east/3.png"
+dest_files=["res://.godot/imported/3.png-34d796321f0e0a13614c05bc2dd3a887.ctex"]
 
 [params]
 

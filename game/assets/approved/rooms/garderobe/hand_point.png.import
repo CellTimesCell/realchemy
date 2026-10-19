@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c55bdt7tnpxhv"
-path="res://.godot/imported/3.png-9c92e278c47d037d9ebe82281212c0fc.ctex"
+uid="uid://crn0vp33r533"
+path="res://.godot/imported/hand_point.png-601f5135ec2504a6fd6b73f50fd57e67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/hero/interact/interact_high_south/3.png"
-dest_files=["res://.godot/imported/3.png-9c92e278c47d037d9ebe82281212c0fc.ctex"]
+source_file="res://assets/approved/rooms/garderobe/hand_point.png"
+dest_files=["res://.godot/imported/hand_point.png-601f5135ec2504a6fd6b73f50fd57e67.ctex"]
 
 [params]
 

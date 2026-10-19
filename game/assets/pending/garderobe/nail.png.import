@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmusvhpyggefl"
-path="res://.godot/imported/garderobe_arch_open.png-66ecebc18e8501e7c7e39029394649a2.ctex"
+uid="uid://d1mf5arb7ttdt"
+path="res://.godot/imported/nail.png-20567d20700143bfb25fb28fe69b3fa6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_arch_open.png"
-dest_files=["res://.godot/imported/garderobe_arch_open.png-66ecebc18e8501e7c7e39029394649a2.ctex"]
+source_file="res://assets/pending/garderobe/nail.png"
+dest_files=["res://.godot/imported/nail.png-20567d20700143bfb25fb28fe69b3fa6.ctex"]
 
 [params]
 

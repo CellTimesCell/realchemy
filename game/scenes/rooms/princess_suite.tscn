@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/rooms/fx/scroll_region.gd" id="4"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_l.png" id="5"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_r.png" id="6"]
-[ext_resource type="Texture2D" path="res://assets/pending/rooms/room_princess_bedroom_garderobe.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom.png" id="7"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir.png" id="8"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_tracery.png" id="9"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing.png" id="10"]
@@ -59,10 +59,10 @@
 [ext_resource type="Shader" path="res://shaders/iris.gdshader" id="58"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_ajar.png" id="59"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/secretary_princess_ajar.png" id="60"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_arch_ajar.png" id="61"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_arch_open.png" id="62"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_drawer_closed.png" id="63"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/nightstand_drawer_open.png" id="64"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_arch_ajar.png" id="61"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_arch_open.png" id="62"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_drawer_closed.png" id="63"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_drawer_open.png" id="64"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate.png" id="65"]
 [ext_resource type="Script" path="res://components/speech_bubble.gd" id="66"]
 [ext_resource type="PackedScene" path="res://scenes/first_person/garderobe_view.tscn" id="67"]
@@ -524,6 +524,7 @@ first_person_view = NodePath("../../GarderobeView")
 step_in = Vector2(0, -6)
 locked_first_time = true
 locked_line_key = "HS_GARDEROBE_LOCKED"
+entry_pose = "interact_low"
 
 [node name="Door" type="Sprite2D" parent="Props/GarderobeArch"]
 position = Vector2(-58, -180)
