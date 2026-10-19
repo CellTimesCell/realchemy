@@ -169,6 +169,9 @@ python -I tools/anim_cleanup.py game/assets/_incoming/hero_anim/v34            #
 ```
 Настройка — словарь `SETS` (папка, число кадров, лучший кадр); координаты уха/кисти подобраны под героя. Гонять на всех будущих анимациях персонажей. Листы для ручной правки: Aseprite CLI (`Aseprite.exe -b <кадры> --sheet x.png --sheet-type horizontal --save-as x.aseprite`).
 
+### 4.10 Пиксельные шрифты (кандидаты, не утверждено)
+Все — SIL OFL 1.1 (коммерческое использование разрешено, шрифт нельзя продавать отдельно, лицензия кладётся рядом). Скачаны из `github.com/google/fonts/tree/main/ofl/`: `pressstart2p` (Press Start 2P), `pixelifysans` (Pixelify Sans), `tiny5` (Tiny5). Лежат в `game/assets/_incoming/fonts/<family>/` вместе с `OFL.txt`. Сравнение — ART_PIPELINE §6.
+
 ## 5. Настройки проекта Godot (фаза −1)
 | Настройка | Значение |
 |---|---|

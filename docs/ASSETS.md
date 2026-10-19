@@ -22,6 +22,7 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `room_princess_dressing_tracery.png` | from the same | Dressing window tracery layer (1px stone mullion) | |
 | `room_princess_{bedroom,boudoir,dressing}_pillar.png` | crops of the front pillar (rows 140–360) | Foreground occluders drawn over the hero | |
 | `fx/web_*.png` | `_incoming/rooms/hybrid_bedroom/` | Cobweb sprites for the sway shader | |
+| `props/bed_princess.png` + `bed_princess_blanket.png`, `bed_princess_shadow.png`, `nightstand_candle.png` | `_incoming/props/bed/bed_2302_3.png` (blanket on the floor split off as a lower layer, rows 137–151) | Princess bed (variant B) | frame collides, blanket has no collision |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ---
@@ -572,6 +573,29 @@ Prompt: "plain smooth dusty lavender plaster wall continuing seamlessly from the
 | Batch | Seed | Job ID | Prompt | Result |
 |---|---|---|---|---|
 | `bed_2301_{0..3}.png` | 2301 | `90aa4d13-54e3-47a5-853b-91388929ccf6` | owner's prompt: "ornate gothic canopy bed of a fairy-tale princess, dark carved wood, faded pink bedding with ruffles, heavy burgundy canopy drapes tied back, slightly messy, a few pillows; same diorama camera as the room (front view slightly from above), same lighting as the bedroom, transparent background, no floor, no characters. The bed fills most of the canvas width; canopy posts reach the top." | rejected: all four in isometric 3/4 |
-| `bed_2302_{0..3}.png` | 2302 | `ad6834d5-8961-453e-ab0c-17a80e9a5d5e` | "ornate gothic canopy bed of a fairy-tale princess seen strictly from the front, perfectly symmetrical, flat front view slightly from above: the tall carved headboard against the back wall in the middle, the bed and its ruffled foot end facing straight toward the viewer, four carved dark wood posts, heavy burgundy canopy drapes tied back at both front posts, faded pink bedding with ruffles, slightly messy, a few pillows. The bed fills the whole canvas edge to edge. Same lighting as the bedroom. Transparent background, no floor, no characters, no isometric angle." | frontal; a = index 0, b = index 3, c = index 2 |
+| `bed_2302_{0..3}.png` (index 3 = B **APPROVED** → `approved/props/bed_princess.png`; 0 = A and 2 = C **REJECTED**) | 2302 | `ad6834d5-8961-453e-ab0c-17a80e9a5d5e` | "ornate gothic canopy bed of a fairy-tale princess seen strictly from the front, perfectly symmetrical, flat front view slightly from above: the tall carved headboard against the back wall in the middle, the bed and its ruffled foot end facing straight toward the viewer, four carved dark wood posts, heavy burgundy canopy drapes tied back at both front posts, faded pink bedding with ruffles, slightly messy, a few pillows. The bed fills the whole canvas edge to edge. Same lighting as the bedroom. Transparent background, no floor, no characters, no isometric angle." | frontal; a = index 0, b = index 3, c = index 2 |
 Nightstand: `nightstand_2311.png` → `nightstand.png` (flame pixels removed), pixen 32×40, seed 2311, job `17abf558-85c2-4a3d-8e27-ecd9e3124af3`, cost 1, prompt "small gothic dark carved wooden nightstand with a single short white candle in a brass holder on top, unlit candle, front view slightly from above, flat even lighting, no glow, no flame. + style. Avoid: fire, flame, glow, floor, wall, background." Contact shadow `bed_shadow.png` (script, stepped alpha).
 Test scenes `tests/princess_suite_bed_{a,b,c}.tscn`; screenshots `bed_v1_a.png`, `bed_v1_b.png`, `bed_v1_c.png`, `bed_in_room.png`.
+
+---
+
+## 2026-10-18 — Idle fix, bed approved, garderobe design, fonts, wardrobe + skeleton
+
+Spent **31** (balance 1674 → 1643): wardrobe 15, skeleton 10, open wardrobe 6 (a second open-wardrobe edit, seed 2521, failed under load — not charged).
+
+**Hero idle** (0 gen): head and neck locked; `tools/anim_cleanup.py` now locks 19 rows (head + neck) and builds idle from one frame: 2 rest + 2 inhale (collar-to-belt rows +1 px), 2.5 fps (~1.6 s cycle). Compared with whole-sprite bob (`v34/idle_fix/{chest,whole}`, `hero_idle_fix.gif` / `.png`); chest variant chosen. `approved/hero/` updated. walk_south re-checked (no double chin with neck locked).
+
+**Bed B approved** — see the bed table above. Screenshot `_incoming/props/bed/bed_final.png`.
+
+**Window view** (0 gen): small left tower and the frame strip at the left edge painted over with sky/forest in `approved/window_view_tower.png` (rebuilt from `view_tower_2102.png`).
+
+**Fonts** (0 gen): Press Start 2P, Pixelify Sans, Tiny5 — all SIL OFL 1.1, see ART_PIPELINE §6 / TOOLING §4.10. Screenshots `_incoming/fonts/font_test_{1,2,3}.png`. Status: pending.
+
+**Wardrobe + skeleton** (`_incoming/props/wardrobe/`), pending review. style_image = dressing room (`upload:182fb637-93d5-4e77-a6ad-b2b6c7dd43fe`).
+| File | Tool | Seed | Job ID | Cost |
+|---|---|---|---|---|
+| `wardrobe_2501_{0..3}.png` (a = 0, b = 1, c = 3) | `create_image_pro` 112×152, 4 candidates | 2501 | `9bffa212-2140-4bf6-88ca-bda0ccb24c98` | 15 |
+| `skel_2511_{0..15}.png` (a = 0, b = 3) | `create_image_pro` 48×64, 16 candidates | 2511 | `93116553-020f-48e8-a300-d4d609d2df10` | 10 |
+| `wardrobe_open_2522.png` | `edit_image_pro_flash` from `wardrobe_2501_0.png` (`upload:52d29689-228e-4ee2-9354-39328eebb999`) | 2522 | `d6cffbab-7b4a-40ba-aa97-52a44701de39` | 6 |
+Prompts: wardrobe — "large ornate gothic wardrobe, dark carved wood, two tall closed doors, faded pink painted flowers on the doors, slightly dusty, seen strictly from the front, symmetrical, flat front view slightly from above (same diorama camera as the room), same lighting as the dressing room, transparent background, no floor, no characters, no isometric angle. The wardrobe fills the canvas from top to bottom."; skeleton — "a funny cartoon skeleton of an old princess standing upright, not scary, no blood, comedic: tattered faded pink ball gown hanging on the bones, a small tilted golden crown on the skull, big round empty eye sockets with a surprised and offended expression, one bony hand on the hip, seen from the front, same lighting as the dressing room, storybook pixel art, transparent background, no floor."; open — "the same wardrobe with both doors swung wide open to the sides, showing the dark interior: a few old faded dresses on hangers at the left and right sides inside, the center of the interior is empty and dark. Keep the same wardrobe frame, carvings, colors, size, outline and lighting."
+Scene: `components/openable_prop.gd` (closed/open textures, inside node shown when open, Enter in the hotspot opens), wardrobe at (1738, 312) in the dressing room: shadow, y-sort, collision 84×14 at the base, hotspot «Открыть», skeleton as a separate node. Test scenes `tests/wardrobe_closed_{a,b,c}.tscn`, `tests/wardrobe_open_skel_{a,b}.tscn`. Screenshots `wardrobe_closed_{a,b,c}.png`, `wardrobe_open.png`, `skeleton_{a,b}.png` (×6 sprite + in the wardrobe), `wardrobe_in_room_{closed,open}.png`.
