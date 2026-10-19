@@ -12,6 +12,8 @@ const POSE_HOLD: float = 0.25
 
 @export var anim: AnimatedSprite2D
 @export var reactions: ReactionPlayer
+## Where the hero's lines appear (above his emotes).
+@export var bubble: SpeechBubble
 
 ## Set while a pose or a scripted walk plays; input is ignored.
 var acting: bool = false

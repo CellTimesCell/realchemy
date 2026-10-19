@@ -183,6 +183,7 @@ func _set_prompt(key: String) -> void:
 	hotspot.prompt_text = key
 	if hotspot.prompt:
 		hotspot.prompt.text = key
+	hotspot.refresh_prompt()
 
 
 func _dust() -> void:

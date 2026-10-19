@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4g1hn35cs7b"
-path="res://.godot/imported/nightstand_slot.png-aee5a68d317c7bbde21899fe874153b5.ctex"
+uid="uid://juexn7my371l"
+path="res://.godot/imported/nightstand_drawer_open.png-c3ada415c76cbe2571e9c8e2afb2c169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/nightstand_slot.png"
-dest_files=["res://.godot/imported/nightstand_slot.png-aee5a68d317c7bbde21899fe874153b5.ctex"]
+source_file="res://assets/pending/props/nightstand_drawer_open.png"
+dest_files=["res://.godot/imported/nightstand_drawer_open.png-c3ada415c76cbe2571e9c8e2afb2c169.ctex"]
 
 [params]
 

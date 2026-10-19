@@ -12,7 +12,7 @@
 		"fx": "", "line_key": "", "prompt_after": "UI_READ_LETTER"
 	},
 	"nightstand": {
-		"pose": "interact_mid", "anim": "slide", "closable": true,
+		"pose": "interact_mid", "anim": "states", "closable": true,
 		"sfx": {"start": "open", "close": "close"},
 		"item": {"id": "matches", "count": 1, "color": "#d8b070", "letter": "M"},
 		"line_key": "SAY_DRAWER_MATCHES", "empty_line_key": "SAY_DRAWER_EMPTY",
@@ -25,7 +25,7 @@
 	},
 	"orange_tree": {
 		"pose": "interact_high", "anim": "none",
-		"item": {"id": "orange", "count": 3, "color": "#f08a20", "letter": "o"},
+		"item": {"id": "orange", "count": 3, "color": "#f7a21e", "letter": "o"},
 		"line_key": "SAY_ORANGE_TAKEN", "empty_line_key": "SAY_ORANGE_EMPTY",
 		"prompt_after_empty": "UI_INSPECT"
 	},

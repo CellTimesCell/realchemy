@@ -7,7 +7,7 @@
 		"exclaim": {"flip": false, "places": [{"anchor": "head_top", "offset": [0, -13]}]},
 		"double": {"flip": false, "places": [{"anchor": "head_top", "offset": [0, -13]}]},
 		"question": {"flip": false, "places": [{"anchor": "head_top", "offset": [7, -13]}]},
-		"gloom": {"flip": false, "shade": true, "places": [{"anchor": "forehead", "offset": [0, -2]}]},
+		"gloom": {"flip": false, "shade": true, "places": [{"anchor": "forehead", "offset": [0, -9]}]},
 		"sparkle": {"flip": true, "places": [
 			{"anchor": "temple_face", "offset": [12, -10]},
 			{"anchor": "temple_back", "offset": [-10, -4], "frame_shift": 2}
