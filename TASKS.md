@@ -40,7 +40,10 @@
 - [ ] T-25c Мебель покоев: шкаф со скелетом, секретер, туалетный столик, арфа, клетка с канарейкой, апельсиновое дерево (по порядку для мебели, ART_PIPELINE §3.4)
 - [x] T-25f Шкаф (вариант a, approved/props/wardrobe_princess_*)
 - [x] T-25f2 Лежачий скелет на дне шкафа (вариант a, approved/props/skeleton_princess_lying.png)
-- [ ] T-25j Призрак-бабушка v2: create_character v3 64×64 (3 варианта, ждёт выбора; повороты и анимация — после ок); шейдер ghost.gdshader; первое появление [?]
+- [x] T-25j Призрак-бабушка: вариант a, approved/characters/ghost_grandma/ (8 направлений), шейдер ghost.gdshader v2
+- [ ] T-25m Эмоции: анимации бабушки (idle, lecture, angry, startled, thinking, facepalm) и героя (cheer, facepalm, notice, startled, disgust, thinking, dizzy) — ждут ок
+- [ ] T-25n Значки-манпу (9 шт., стиль a/b — ждёт выбора); код готов: emote.gd, reaction_player.gd, data/character_reactions.json
+- [ ] T-25o Первое появление бабушки [?]
 - [x] T-25g Секретер с письмом (вариант a, approved/props/secretary_princess_*; письмо Press Start 2P, approved/ui/letter_princess.png)
 - [x] T-25l Экран письма: поля пергамента, пагинация со стрелкой «далее», скрытие подсказок и блок героя на время UI (EventBus.modal_ui_changed)
 - [ ] T-25h Garderobe за дверью спальни: постеры-пародии, надписи за постером, рулон бумаги (хроматография) — дизайн в CASTLE.md

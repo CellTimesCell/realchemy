@@ -651,3 +651,47 @@ Description: "elderly princess grandmother, adult realistic proportions (not chi
 Files: `ghost_v2_{a,b,c}_south.png`, `ghost_v2_{a,b,c}_south-east.png`, `ghost_v2_{a,b,c}.png` (= south). Screenshots: `ghost_v2_compare.png` (×6 next to the hero and the count), `ghost_v2_in_room.png` (a with `shaders/ghost.gdshader`). Test scenes `tests/ghost_v2_{a,b,c}.tscn` (not committed).
 
 Screenshot: `_incoming/props/secretary/letter_final.png` (letter with margins, hotspot prompts hidden).
+
+---
+
+## 2026-10-19 (3) — Ghost grandma approved, shader v2, emotions, emotes
+
+Spent **34** (balance 1601 → 1567): 13 animations × 1, 21 emote icons × 1 (18 for two styles + 3 re-rolls). Budget proposed: ≤ 50.
+
+**Ghost grandma** — `ghost_v2_a` (`1f0c9d71-e969-423a-ac7e-1a72f77ca386`) **APPROVED** → `approved/characters/ghost_grandma/{south,south-east,east,north-east,north,north-west,west,south-west}.png` + `ghost_frames.tres` (idle = south). `ghost_v2_b` **REJECTED**, `ghost_v2_c` **RESERVE**. Shader `shaders/ghost.gdshader` v2: opacity 0.55, tint 0.8 green, rim light, 2 px halo, hem fade over the bottom 10 px (`fade_end` = UV.y of the hem: 1.0 on a 64 canvas, 0.8636 on the 88 animation canvas). Screenshot `_incoming/characters/ghost_v2/ghost_shader_v2.png`.
+
+**Emotion animations** (pending): `animate_character` mode `v3`, direction south, 1 generation each. Raw frames in `raw/`, cleaned by `tools/emotion_cleanup.py` into `clean/` (no face lock).
+
+| Character | Animation | Frames | Group | Action description |
+|---|---|---|---|---|
+| ghost | idle | 6+1 | `703b4667-6a68-42b7-9541-cfd68001d18a` | floating gently in place with arms folded across the chest, then briefly lifting one hand to straighten the small crown on her head, grumpy face |
+| ghost | lecture | 4+1 | `3a0663f8-e3e2-484a-ab0f-f5708ea40503` | sternly wagging her raised index finger as if lecturing, head nodding slightly, standing in place |
+| ghost | angry | 6+1 | `cdd0b1fd-98ef-4e88-a6ee-c612bafdb3be` | furious, angrily waving both arms up and down and stamping her feet in the air, angry face, staying in place |
+| ghost | startled | 4+1 | `de3fdb53-2331-4eec-a1a0-34433bb7739a` | startled, jumps up in fright with both arms thrown up in the air, eyes wide open, then lands back in place |
+| ghost | thinking | 4+1 | `8f719057-877b-41db-b7dc-94370fa8a6f0` | thinking, one hand raised to her chin, slowly tilting her head from side to side, standing in place |
+| ghost | facepalm | 4+1 | `4341a2b7-3581-4fda-abb0-7fac5dd8da6e` | exasperated facepalm, raises one hand and slaps her own forehead, eyes closed, head drops slightly, standing in place |
+| hero | cheer | 6+1 | `aa328dca-2852-463f-bfe8-f8d6f44bf43e` | happily cheering, pumps one fist up into the air, big joyful smile, standing in place |
+| hero | facepalm | 4+1 | `309c77e8-d471-477b-8e3e-a2cbb472e567` | disappointed facepalm, raises one hand and slaps his own forehead, eyes closed, standing in place |
+| hero | notice | 4+1 | `1436e7d9-21d5-4d23-83ae-ef892ee3faa7` | flinches slightly in surprise, then leans forward to look closely at something on the floor in front of him, curious face, feet stay in place |
+| hero | startled | 4+1 | `7d19c95f-2a7a-44ae-b1f6-ef63f6cf5482` | startled in fright, hops backward with both hands raised, eyes wide open, mouth open, then lands |
+| hero | disgust | 6+1 | `0bc42061-83db-4517-94bc-e19202b487c9` | disgusted by a bad smell, turns his head away grimacing and waves one hand in front of his nose, standing in place |
+| hero | thinking | 4+1 | `d3d31a5a-80a8-4abd-a1aa-befc940096fc` | thinking hard, one hand on his chin, eyes looking up, slight head tilt, standing in place |
+| hero | dizzy | 4+1 | `1d0cd18f-5643-4260-a8ee-a38d1bc75174` | dizzy and confused, body sways unsteadily from side to side, wobbly dazed expression, feet stay in place |
+
+Ghost: character `1f0c9d71-…`, canvas 88×88, `_incoming/characters/ghost_v2/anim/{raw,clean}/<name>/`; idle uses clean frames 3–6 ping-pong (arms folded; the crown adjust did not come out). Cleanup removed red "anger marks" the model drew itself (angry 1, 4, 5). Hero: character `866a2fb0-…` (approved v34 rig), canvas 92×92, `_incoming/hero_emotions/{raw,clean}/<name>/`; cleanup removed a pebble drawn in "notice" and remapped 8–21 px per frame in the slipper rows to hero_v7_a colours. SpriteFrames: `ghost_v2/anim/ghost_frames.tres`, `hero_emotions/hero_frames_emotions.tres` (last frame held ×4). Previews `ghost_v2/ghost_emotions.gif`, `hero_emotions/hero_emotions.gif` (assembled offline from the same frames with the in-game emote timing; the ghost shader is approximated).
+
+**Emote icons** (`_incoming/emotes/`), pending. `create_image_pixen` 24×24, `no_background`, 1 each. Style A: "<symbol>, manga emote icon, bold pure white fill, thick black outline, flat, centered, large and readable" (outline `single color black outline`, detail low, seed 3101; anger red and sweat pale-blue fill). Style B: "<symbol>, cute game emote icon, bright <colour> fill with a small white highlight, dark brown outline, chunky storybook pixel art, centered, large and readable" (outline `single color outline`, detail medium, seed 3201).
+
+| Icon | Style A job | Style B job |
+|---|---|---|
+| dots | `ec0fb364-5e94-42b2-9f0d-7b285f45c0e9` | `41f6594c-99bf-49e0-84c2-13d7f9571748` |
+| exclaim | `8d1de857-645d-4a11-b3b4-f3a49a4bd616` | `03a8c573-8b0f-4b4b-ba12-32a5123ac642` |
+| double | `f336e49e-db84-4eab-81e4-0a027f358652` | `086dee21-6b5c-4865-9222-dda07e182864` |
+| question | `8f64f603-24f8-45ea-933e-5ffefbc126b7` | `fe7a41ff-6a0e-4e27-a341-40476383c679` (v1 `1fb1819a-8953-4f39-8d02-4b11b039357e`) |
+| anger | `9c458f81-fc69-4b4f-8e10-1ae6108e7120` (v1 `5de644f2-b1ee-4af9-8a6a-86d1175e0c0a`) | `9f8c17b5-f441-4c20-9ce6-e25a1b236bb1` |
+| sweat | `9cd3c4ac-67ce-46ca-8734-1166b2af453d` | `5d8fa556-0eeb-4a3b-82ab-4ec4de1c34d0` |
+| gloom | `a590d82a-36b5-43d1-bc80-bd6741e24337` | `5e16cc3b-c596-4432-906e-92171912f8bf` |
+| sparkle | `07918539-bdcf-4f3b-8845-6aec8b5763fa` (v1 `554b79a7-e4f0-402d-8f08-f346dfc7bcd0` had a face) | `1d498b24-068f-408f-b8bd-264b53f0a525` |
+| swirl | `069ea11f-62f6-4ac6-9d08-fcc3045ffa36` | `715ec704-a17c-40f0-ac47-2184bce4b716` |
+
+Frames for style A by `tools/emote_frames.py` → `frames_a/<icon>/`, SpriteFrames `emote_frames_a.tres`. Sheets: `emotes_style_a.png`, `emotes_style_b.png` (×8), `emotes_sheet.png` (style A, all frames ×4).
