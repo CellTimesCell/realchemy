@@ -1,0 +1,43 @@
+{
+	"reactions": {
+		"hero": {
+			"cheer": {"anim": "react_cheer", "emote": "sparkle"},
+			"facepalm": {"anim": "react_facepalm", "emote": "sweat"},
+			"notice": {"anim": "react_notice", "emote": "exclaim"},
+			"scratch_head": {"anim": "emote_scratch_head", "emote": "question"},
+			"startled": {"anim": "react_startled", "emote": "double"},
+			"disgust": {"anim": "react_disgust", "emote": "gloom"},
+			"thinking": {"anim": "react_thinking", "emote": "dots"},
+			"dizzy": {"anim": "react_dizzy", "emote": "swirl"}
+		},
+		"ghost": {
+			"thinking": {"anim": "react_thinking", "emote": "dots"},
+			"lecture": {"anim": "react_lecture", "emote": "exclaim"},
+			"angry": {"anim": "react_angry", "emote": "anger"},
+			"facepalm": {"anim": "react_facepalm", "emote": "gloom"},
+			"sweat": {"anim": "", "emote": "sweat"},
+			"startled": {"anim": "react_startled", "emote": "double"}
+		}
+	},
+	"events": {
+		"hero": {
+			"reaction_completed": "cheer",
+			"reaction_failed": "facepalm",
+			"item_found": "notice",
+			"secret_found": "notice",
+			"player_stuck": "scratch_head",
+			"sudden_event": "startled",
+			"gross_thing_seen": "disgust",
+			"combination_selected": "thinking",
+			"repeated_mistakes": "dizzy"
+		},
+		"ghost": {
+			"hint_requested": "thinking",
+			"hint_given": "lecture",
+			"hint_on_cooldown": "angry",
+			"player_blunder": "facepalm",
+			"combination_failed": "sweat",
+			"loud_event": "startled"
+		}
+	}
+}
