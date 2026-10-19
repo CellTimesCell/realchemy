@@ -68,7 +68,7 @@ POSTER_DEAF_1,DEAF
 POSTER_DEAF_2,LEOPARD
 UI_TAKE_STOCKINGS,Take stockings
 SAY_NIGHTSTAND_L,Another nightstand. This one keeps its secrets to itself.
-SAY_PAINTING_COUNT,The Count. His eyes follow me. I'm choosing to believe it's the painting.
+SAY_PAINTING_COUNT,I could swear he just blinked.
 SAY_PAINTING_MADAM,A stern lady and a tiny dog. Both of them are judging me.
 SAY_TIGER_RUG,A tiger. Flat. Somebody had a very bad day.
 SAY_BEDSIDE_RUG,A bedside rug. It has seen things.
@@ -86,3 +86,8 @@ SAY_BASKET_EMPTY,Just linen now.
 SAY_MIRROR,A full-length mirror. I look tired. The mirror looks older.
 SAY_COAT_STAND,A coat stand in a feather boa. It's more dressed up than I am.
 SAY_WORN_RUG,Generations of princesses walked on this rug. Mostly in circles.
+UI_PICK_UP,Pick up
+SIGN_OUT_OF_ORDER,"OUT OF
+ORDER"
+SAY_MUSIC_STAND,"A music stand. Someone was practicing. Badly, judging by the cello."
+SAY_SHEET_TAKEN,Sheet music. A melody... or a very angry shopping list.

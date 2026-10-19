@@ -31,6 +31,8 @@ const RATTLE_STEP_TIME: float = 0.04
 ## Pose the hero takes in the doorway before the fade (ducking under a low
 ## door: "interact_low").
 @export var entry_pose: String = ""
+## Shown only while the door is closed (a sign hanging on the door).
+@export var closed_decal: CanvasItem
 
 var busy: bool = false
 var _tried: bool = false
@@ -116,6 +118,8 @@ func _rattle() -> void:
 
 
 func _set_state(index: int) -> void:
+	if closed_decal:
+		closed_decal.visible = index == 0
 	if not door_sprite or state_textures.is_empty():
 		return
 	door_sprite.texture = state_textures[index]
