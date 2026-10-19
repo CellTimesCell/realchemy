@@ -6,6 +6,7 @@ extends SceneTree
 ##   [react=scratch_head] [shots=6] [step=6] [scale=2] [call=Props/Node:method]
 ##   [tex=Props/A/Sprite>res://a.png;Props/B/Sprite>res://b.png] (swap textures)
 ##   [face=east|west|north|south] [input=ui_accept] [key=I] (pressed after wait)
+##   [hold=show_all] (action held during the shots) [uivariant=A|B]
 
 var _args: Dictionary = {}
 
@@ -19,6 +20,8 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	if _args.has("uivariant"):
+		UiStyle.variant = _args["uivariant"]
 	var scene: Node = (load(_args["scene"]) as PackedScene).instantiate()
 	root.add_child(scene)
 	var hero: Node2D = scene.get_node_or_null("Hero") as Node2D
@@ -47,6 +50,8 @@ func _run() -> void:
 		_press_key(OS.find_keycode_from_string(_args["key"]))
 	if hero and _args.has("react"):
 		hero.play_reaction(_args["react"])
+	if _args.has("hold"):
+		Input.action_press(_args["hold"])
 	var shots: int = int(_args.get("shots", "1"))
 	var step: int = int(_args.get("step", "6"))
 	var out: String = _args["out"]
