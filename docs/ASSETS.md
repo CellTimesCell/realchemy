@@ -13,9 +13,15 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `hero_v7_a.png` | `_incoming/style_test/round6/hero_v7_a.png` | Hero base, front view | light slightly cooler than the count — align at T-26 |
 | `room_princess_boudoir.png` | `_incoming/rooms/princess_chamber/pano_center_a.png` | Boudoir — center room of the princess suite | |
 | `hero_pose_34.png` | `_incoming/hero_anim/pose34/pose_1802_fixed.png` | Hero base pose: 3/4, lowered arm, slippers recolored to v7 a (rows 57–63 copied from `hero_v7_a.png`) | animations not yet approved |
-| `room_princess_bedroom.png` | `_incoming/rooms/bedroom_v4/bedroom_v4_a_room.png` (rerender A 2001, glass cut out, left mullion restored) | Princess bedroom (left room of the suite) | live layers: `window_view_tower.png`, `window_clouds.png` + flames/lights in scene |
+| `room_princess_bedroom.png` | `_incoming/rooms/bedroom_v4/bedroom_v5_room.png` (rerender A 2001; v2: whole window openings cut, tracery moved to its own layer) | Princess bedroom (left room of the suite) | live layers: `window_view_tower.png`, `window_clouds.png` + flames/lights in scene |
 | `window_view_tower.png` | `_incoming/rooms/bedroom_v4/view_tower_2102.png` (center crop, lit windows painted out) | Shared window view for all suite windows | |
 | `window_clouds.png` | `_incoming/rooms/bedroom_v4/clouds_2022.png` | Scrolling cloud strip behind window glass | |
+| `hero/` | `_incoming/hero_anim/v34/clean/` (+ `emote_scratch_head/`) | Hero animations: idle_south, walk_south/north/east (west = flip), emote_scratch_head; `hero_frames.tres` SpriteFrames; sheets `hero_*.png` + `.aseprite` | cleaned by `tools/anim_cleanup.py` (head lock, ear removed) |
+| `room_princess_bedroom_tracery_{l,r}.png` | from `bedroom_v4_a_2001.png` | Window tracery layers of the bedroom (sky → tracery → room) | |
+| `room_princess_dressing.png` | `_incoming/rooms/dressing/dressing_v1_b_2202.png` + inpaint 2401, glass cut, pink wall dimmed ~30% | Dressing room (right room of the suite) | |
+| `room_princess_dressing_tracery.png` | from the same | Dressing window tracery layer (1px stone mullion) | |
+| `room_princess_{bedroom,boudoir,dressing}_pillar.png` | crops of the front pillar (rows 140–360) | Foreground occluders drawn over the hero | |
+| `fx/web_*.png` | `_incoming/rooms/hybrid_bedroom/` | Cobweb sprites for the sway shader | |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ---
@@ -541,3 +547,31 @@ Rerender (`create_image_pro` 640×360, cost 25 each), reference = sketch (`uploa
 | `dressing_v1_b_2202.png` | 2202 | `82e270f6-28b2-4db3-8cff-c77e3150209c` | 2 torches as asked, window with moonbeam on the floor, gate on the right; darker, closer to the bedroom |
 Prompt (both): "gothic vampire castle dressing room interior at night, diorama view of the back wall facing the viewer. Keep the room layout of the reference. The LEFT edge of the image is open and continues into the next room, no left side wall; a solid stone side wall closes the RIGHT edge. In the right part of the back wall a pointed stone doorway standing on the floor, about one and a half times the height of a person, through it a dark stone spiral staircase winds upward, the doorway is closed by a black wrought iron gate locked with a heavy old padlock. The middle of the back wall between two stone pillars is a large empty wall space for a future wardrobe and writing desk. On the left part of the back wall one small gothic window showing the moonlit night sky, neatly framed by burgundy velvet curtains tied back on both sides. Two lit wall torches mounted symmetrically on the two pillars. Faded torn pink rose wallpaper, dusty lilac-grey stone, dark wood wainscoting, dark wooden plank floor, a few cobwebs in the upper corners. No bows, no ribbons, no furniture, no people, nothing on the floor. Cool lilac moonlight against warm torch light. + §4 style block."
 Live layers: glass cut out (`dressing_v1_{a,b}_room.png`), shared tower view + clouds behind, particle flames + flickering lights over the baked torches, pulsing moonbeam, 2 swaying cobwebs. Scenes `tests/dressing_v1_a.tscn`, `tests/dressing_v1_b.tscn` (room_suite currently uses B). Screenshots `dressing_v1_a.png`, `dressing_v1_b.png`.
+
+---
+
+## 2026-10-18 — Fixes, approvals, princess suite scene, bed test
+
+Spent **37** (balance 1711 → 1674): bed 15 + 15, nightstand 1, dressing inpaint 6.
+
+**APPROVED this session:** hero animations (`approved/hero/`), bedroom v2 with tracery layers, dressing room (variant B, fixed). Variant `dressing_v1_a_2201.png` — rejected.
+
+**0a Hero ear** (0 gen): `tools/anim_cleanup.py` now removes the ear completely on south/idle (everything right of the face outline in the ear rows, outline column closed) and turns the pale ear patch of the profile into hair. `fix_hero_ear.png` (before/after pairs ×6), `hero_cleanup_compare.png` rebuilt.
+
+**0b Bedroom windows** (0 gen): 1-bit glass by flood fill from seeds inside each lancet and the rose, bounded by the frame columns; frame highlights touching the dark outline are kept. Tracery/mullions/curtains inside the window rect moved to `bedroom_tracery_{L,R}.png` (at 331,64 / 539,64), the room image has the whole rect cut. Order sky → tracery → room. `fix_bedroom_window.png`, `bedroom_final_v2.png`.
+
+**0c Dressing window**: glass 1-bit by geometry (two lancets + cross), mullion redrawn as outline | 1px stone | outline; tracery layer `dressing_tracery.png` (at 84,118). Light dithered stone patch under/around the window replaced by inpaint:
+| File | Tool | Seed | Job ID | Cost |
+|---|---|---|---|---|
+| `patch_out_2401.png` | `inpaint_image_pro_flash`, crop 160×160 at (40,92), custom mask `patch_mask.png` (patch pixels only, curtains and window excluded), output "Modify current layer" | 2401 | `99659c21-0743-4696-aeed-b8308f7b7ad2` | 6 |
+Prompt: "plain smooth dusty lavender plaster wall continuing seamlessly from the surrounding wall, same colors and soft shading as the wall around the window, below the stone window sill; no exposed light stone masonry, no checkered dithering, no bricks". Pink wall between the right columns dimmed ~30% by script; dressing torch lights 1.2 → 0.9. Curtains left as they are (narrowing would break the wall behind them). `fix_dressing_window.png`, `dressing_final.png`.
+
+**Princess suite scene** `game/scenes/rooms/princess_suite.tscn` (generated): Background (sky + tracery + room images), LiveLayers (flames, cobwebs), Props (y-sorted), Hero (`components/hero.gd`, CharacterBody2D with a 14×6 feet shape), Foreground (pillar occluders, z_index 1), Walls (floor bounds per room, pillar bases), Camera, Night, Lights.
+
+**Bed test** (`_incoming/props/bed/`, not approved). `create_image_pro` 168×152 transparent, style_image = bedroom (`upload:040aa6dd-5ebf-4eef-b7bb-93dd85fd2e9b`), 4 candidates per call, cost 15.
+| Batch | Seed | Job ID | Prompt | Result |
+|---|---|---|---|---|
+| `bed_2301_{0..3}.png` | 2301 | `90aa4d13-54e3-47a5-853b-91388929ccf6` | owner's prompt: "ornate gothic canopy bed of a fairy-tale princess, dark carved wood, faded pink bedding with ruffles, heavy burgundy canopy drapes tied back, slightly messy, a few pillows; same diorama camera as the room (front view slightly from above), same lighting as the bedroom, transparent background, no floor, no characters. The bed fills most of the canvas width; canopy posts reach the top." | rejected: all four in isometric 3/4 |
+| `bed_2302_{0..3}.png` | 2302 | `ad6834d5-8961-453e-ab0c-17a80e9a5d5e` | "ornate gothic canopy bed of a fairy-tale princess seen strictly from the front, perfectly symmetrical, flat front view slightly from above: the tall carved headboard against the back wall in the middle, the bed and its ruffled foot end facing straight toward the viewer, four carved dark wood posts, heavy burgundy canopy drapes tied back at both front posts, faded pink bedding with ruffles, slightly messy, a few pillows. The bed fills the whole canvas edge to edge. Same lighting as the bedroom. Transparent background, no floor, no characters, no isometric angle." | frontal; a = index 0, b = index 3, c = index 2 |
+Nightstand: `nightstand_2311.png` → `nightstand.png` (flame pixels removed), pixen 32×40, seed 2311, job `17abf558-85c2-4a3d-8e27-ecd9e3124af3`, cost 1, prompt "small gothic dark carved wooden nightstand with a single short white candle in a brass holder on top, unlit candle, front view slightly from above, flat even lighting, no glow, no flame. + style. Avoid: fire, flame, glow, floor, wall, background." Contact shadow `bed_shadow.png` (script, stepped alpha).
+Test scenes `tests/princess_suite_bed_{a,b,c}.tscn`; screenshots `bed_v1_a.png`, `bed_v1_b.png`, `bed_v1_c.png`, `bed_in_room.png`.
