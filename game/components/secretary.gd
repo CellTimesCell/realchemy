@@ -7,7 +7,7 @@ extends OpenableProp
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_open and _hero_near and event.is_action_pressed("ui_accept") and not letter_screen.visible:
+	if is_open and _hero_near and event.is_action_pressed("ui_accept") and not EventBus.modal_ui_active:
 		letter_screen.show_letter(letter_key)
 		get_viewport().set_input_as_handled()
 		return

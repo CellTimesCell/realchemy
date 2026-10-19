@@ -23,6 +23,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if EventBus.modal_ui_active:
+		return
 	if _hero_near and not is_open and event.is_action_pressed("ui_accept"):
 		_set_open(true)
 		opened.emit(self)

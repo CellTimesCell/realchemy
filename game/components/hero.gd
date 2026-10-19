@@ -1,7 +1,8 @@
 class_name Hero
 extends CharacterBody2D
 ## Player character: arrow-key movement, four-direction walk/idle animation
-## (west = east mirrored) and the "scratch head" emote on E.
+## (west = east mirrored) and the "scratch head" emote on E. Frozen while a
+## modal UI (letter, dialogue) is open.
 
 const SPEED: float = 120.0
 
@@ -16,6 +17,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if EventBus.modal_ui_active:
+		return
 	var key: InputEventKey = event as InputEventKey
 	if key and key.pressed and not key.echo and key.physical_keycode == KEY_E:
 		play_emote()
@@ -24,6 +27,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	if _emoting:
 		velocity = Vector2.ZERO
+		return
+	if EventBus.modal_ui_active:
+		velocity = Vector2.ZERO
+		_update_animation(Vector2.ZERO)
 		return
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * SPEED

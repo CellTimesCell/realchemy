@@ -3,6 +3,7 @@ extends Area2D
 ## Interactive spot: shows a prompt while the hero stands inside the area.
 ## Texts are localization keys. If say_key is set, ui_accept shows that line
 ## in place of the prompt for a few seconds (placeholder for real dialogue).
+## Prompts hide and input is ignored while a modal UI is open (EventBus).
 
 signal hero_entered(hotspot: Hotspot)
 signal hero_exited(hotspot: Hotspot)
@@ -19,13 +20,14 @@ var _hero_inside: bool = false
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	EventBus.modal_ui_changed.connect(_on_modal_ui_changed)
 	if prompt:
 		prompt.text = prompt_text
 		prompt.visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if say_key.is_empty() or not _hero_inside or not is_visible_in_tree():
+	if say_key.is_empty() or not _hero_inside or not is_visible_in_tree() or EventBus.modal_ui_active:
 		return
 	if event.is_action_pressed("ui_accept") and prompt:
 		prompt.text = say_key
@@ -38,7 +40,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Hero and is_visible_in_tree():
 		_hero_inside = true
 		if prompt:
-			prompt.visible = true
+			prompt.visible = not EventBus.modal_ui_active
 		hero_entered.emit(self)
 
 
@@ -48,3 +50,8 @@ func _on_body_exited(body: Node2D) -> void:
 		if prompt:
 			prompt.visible = false
 		hero_exited.emit(self)
+
+
+func _on_modal_ui_changed(active: bool) -> void:
+	if prompt:
+		prompt.visible = _hero_inside and not active
