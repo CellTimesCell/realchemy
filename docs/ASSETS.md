@@ -29,6 +29,8 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `hero/emotions/startled/` | `_incoming/hero_emotions/clean/startled/` + landing (frames 5–7 = 2, 1, 0) | Hero startled with landing | approved 19.10.2026 |
 | `props/boudoir/{birdcage,birdcage_bars,orange_tree,harp,vanity}.png` | birdcage_2701_0, orange_tree_2711_0, harp_2721_0, vanity_2731_2 (b) | Boudoir furniture | approved 19.10.2026; other variants rejected; harp and vanity scale kept |
 | `props/boudoir/canary/` + `canary_frames.tres` | canary_2743 + preen / alarm | Canary (sit, preen, alarm) | approved 19.10.2026 |
+| `hero/interact/{interact_low,interact_mid}_{south,east}/` | `_incoming/hero_interact/clean_*` | Hero interaction poses | approved 19.10.2026 (interact_high redone, in pending) |
+| `props/{wardrobe,secretary}_princess_ajar.png` | edit from closed | Half-open state (3 states) | approved 19.10.2026 |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
@@ -36,6 +38,16 @@ Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval 
 
 | File | What | Source |
 |---|---|---|
+| `pending/hero/interact/interact_high_{south,east}/` | interact_high v2: tiptoes, both feet on the floor, arm up | `animate_character` v3 |
+| `pending/props/nightstand_drawer_{closed,open}.png` | nightstand on a 40×48 canvas: closed / drawer pulled out (dark inside) | original padded + `edit_image_pro_flash` |
+| `pending/props/dressing_gate.png` | gate bars cut from the dressing room, rattles | script |
+| `pending/rooms/room_princess_bedroom_garderobe.png` | bedroom: old side door painted over with wall, curtains + small door in the central arch | approved bedroom + 2 inpaints pasted back |
+| `pending/props/garderobe_arch_{ajar,open}.png` | the arch door ajar / open (door area only, crop origin (400,72)) | `edit_image_pro_flash` of the inpainted crop |
+| `pending/garderobe/garderobe_bg_{a,b}.png` | first-person garderobe, 2 variants (a in the scene) | `create_image_pro` 640×360 |
+| `pending/garderobe/posters/poster_*.png` | 6 glam-metal parody posters (no text; names by font) | `create_image_pro` 48×64 |
+| `pending/garderobe/hand_{point,grab}.png`, `toilet_paper.png` | hand cursor (grab mirrored to match), toilet paper | `create_image_pixen` 24×24 |
+
+---|---|---|
 | `pending/props/wardrobe_princess_ajar.png` | wardrobe half-open (state 2 of 3) | `edit_image_pro_flash` from the approved closed wardrobe |
 | `pending/props/secretary_princess_ajar.png` | secretary lid half-open | `edit_image_pro_flash` from the approved closed secretary |
 | `pending/props/garderobe_door_{ajar,open}.png` | garderobe door overlays (only the changed area of a 60×136 crop of the bedroom at (216,136)) | `edit_image_pro_flash` of the crop |
@@ -784,3 +796,39 @@ Spent **34** (balance 1501 → 1467): hero poses 6, wardrobe ajar 6, secretary a
 Found-item icon = placeholder (coloured square + letter, `components/item_pop.gd`); WIP garderobe room = grey rectangles + label.
 
 Screenshots / GIFs: `_incoming/emotes/emotes_placement.png`; `_incoming/feel/{door_transition,iris,wardrobe_open_anim,drawer,look_under_bed,pick_orange}.gif`; `_incoming/layouts/layout_{bedroom,boudoir,dressing}.png`.
+
+## 2026-10-19 (6) — Fixes, text/highlight, first-person garderobe, bedroom arch
+
+Spent **130** (balance 1467 → 1337): fixes 27 (interact_high v2 2, drawer 5, gloom 10, swirl 10); garderobe + bedroom 103 (wall inpaint 6, arch door 6 + 6, arch door ajar/open 12, garderobe backgrounds 2×25, posters 10 + 10, hand 2, toilet paper 1).
+
+**Approved:** interact_low, interact_mid (south, east) → `approved/hero/interact/`; wardrobe/secretary ajar → `approved/props/`; door 3 states, fade, iris, emote placement. The old side-door overlays (`garderobe_door_*`) were deleted with the door.
+
+**Fixes**
+
+| What | Tool | Seed / job | Cost | Result |
+|---|---|---|---|---|
+| interact_high v2 (south + east) | `animate_character` v3, group `cea28a8d-cb6f-435a-9236-57a2eeba46ed`, "standing in place, rises up onto his tiptoes with both feet staying on the floor, stretches one arm straight up above his head reaching for something high, the other arm down at his side, body upright, then holds the pose" | — | 2 | pending |
+| nightstand drawer out | `edit_image_pro_flash` of the nightstand padded to 40×48 (`upload:facd79fc-0d40-4197-b6d8-4b83ed6f7862`): "the same small nightstand with its upper front drawer pulled out forward and slightly down toward the viewer: the drawer front panel with its little knob sticks out of the nightstand, above it the open drawer box shows a dark empty inside with a tiny matchbox lying in it. Keep the same candle, nightstand body, colors, outline and lighting." | 2901 / `6f2c5a9e-2b60-4060-9d24-d3debfaaf6d8` | 5 | pending (the cut-out drawer of the last batch removed) |
+| gloom 16×16 | `create_image_pro` 64 candidates, style = `style_a/question.png`: "manga gloom lines emote: three short wavy vertical white lines hanging down side by side like a sad aura, thick dark outline, white with light grey shading, small and simple, centered, nothing else" | `b7f28b03-374a-4fbb-b54d-d3d52334a78a`, #13 | 10 | approved/ui/emotes (on the forehead/top of the head) |
+| swirl with an open tail | `create_image_pro` 24×24 64 candidates: "dizzy spiral emote: one thick white line curling inward in a spiral from an open loose tail end at the outside to the center, like a snail shell drawn with a single stroke, the outer tail end clearly sticks out and is NOT closed into a circle, NOT a target, NOT concentric rings, no filled disc behind it, thick dark outline, centered, nothing else" | `02285472-141d-4790-a69e-00940d9b7c78`, #24 | 10 | approved/ui/emotes |
+| oranges | script: fruit colours shifted to yellow-orange (the night tint turned them red) | — | 0 | `approved/props/boudoir/orange_tree.png` (before: `_incoming/props/orange_tree/orange_tree_approved_before_recolor.png`) |
+
+**Bedroom arch** (`_incoming/rooms/bedroom_garderobe/`, `upload:186d8156-ad0c-47a9-b2c3-ea93b7027695` = bedroom):
+
+| Output | Tool | Seed / job | Cost |
+|---|---|---|---|
+| `olddoor_inpaint_3001_0.png` | `inpaint_image_pro_flash` on crop (196,120)+96×160, mask (40,8,24,152): "plain castle side wall with no door: continue the faded pink rose wallpaper above and the dark stone wainscoting and stone blocks below, matching the wall on the left, the stone pillar on the right stays. No door, no doorway, no frame." | 3001 / `e7533c7a-b7e9-4760-9757-0bcf5df23d41` | 6 |
+| `arch_door_3011_0.png` (rejected: door fills the whole arch) | inpaint on crop (400,72)+120×192, mask (26,14,62,146): small closed wooden door … above it stone | 3011 / `b83a2d30-adba-4379-a6a2-73c538a52051` | 6 |
+| `arch_door_3012_0.png` (used) | same mask: "inside the pointed stone archway: burgundy velvet curtains tied back with gold tassels on both sides of the archway, and between them, set deep inside, a SMALL LOW old wooden plank door with an iron ring handle standing on the floor; the small door is only half the height of the archway; above the small door the archway is closed with solid dark cut stone blocks. Front view, same lighting as the surrounding wall." | 3012 / `a9c08af5-faf5-4443-91e1-6e514d40cdf6` | 6 |
+| `arch_ajar_3021_0.png`, `arch_open_3022_0.png` | `edit_image_pro_flash` of 3012 (`upload:12aff17e-ec7a-4287-a8df-2520211d0ed9`): "…the small low wooden door between the curtains is slightly ajar: swung open a little, a thin strip of warm candle light shows through the gap…" / "…is wide open: the door leaf swung inward, the small doorway shows a warm candle-lit tiny stone room inside…" | 3021 `d23f6479-…`, 3022 `437fe499-…` | 12 |
+
+**First-person garderobe** (`_incoming/garderobe/`): `create_image_pro` 640×360, style = bedroom, seeds 3101 (`270112de-c265-4ca6-9f4b-8893975625ab`, a) and 3102 (`c13b9459-9aa2-4453-b685-c684d9f35390`, b), 25 each. Prompt: "first-person view looking straight into a cramped medieval castle garderobe: a narrow stone toilet niche at night, rough grey-lilac stone block walls on the left, right and back, a low vaulted stone ceiling. In the middle stands a funny ultra-modern Japanese high-tech toilet: sleek glossy white, shaped like a little spaceship with smooth curves, a soft glowing blue rim light, a side control panel on the right armrest with a few round and square buttons but no text or symbols on them. The back and side walls have large flat bare stone areas left empty (for posters that will be added later). A small wooden shelf on the right wall with a short white candle, warm candle light on the stone. An empty toilet paper holder on the left wall. Old wooden floor. Storybook gothic pixel art, same style, palette and lighting as the reference bedroom. No people, no characters, no text, no letters, no logos, no posters, no pictures on the walls."
+Posters: `create_image_pro` 48×64 — seed 3121 (`3584a2ff-…`, transparent cut-outs without paper, rejected) and 3122 (`ca1f7f2f-240a-4cfe-91a2-71bb69460703`, used #1 Rotley Glue, #2 Buns N' Noses, #5 Squid Row, #7 Bon Jovial, #12 Whitesnack, #15 Deaf Leopard): "a complete rectangular 1980s glam metal concert poster filling the whole canvas edge to edge: a coloured printed paper background (…) and an invented band of two or three made-up rock musicians with huge teased hair, spandex and guitars; slightly faded, creased, a torn corner; a plain empty colour strip at the top for a title. Absolutely no text, no letters, no logos, no real people. Flat front view, storybook pixel art." Hand cursor: `create_image_pixen` 24×24 seeds 3131 (point), 3132 (grab, mirrored). Toilet paper: pixen 24×24 seed 3141. Sound `spray.wav` — synthesized.
+
+Screenshots: `_incoming/feel/{drawer_v2,pick_orange_v2}.gif`, `text_size_{a,b}.png`, `highlight.gif`; `_incoming/emotes/emotes_fix.png`; `_incoming/layouts/layout_{bedroom,boudoir,dressing}_v2.png`; `_incoming/garderobe/{garderobe_a,garderobe_b,garderobe_poster_moved}.png`, `garderobe_spray.gif`.
+
+### Brief — suite furniture by the v2 layouts (NOT generated, waiting for an OK on `layout_*_v2.png`)
+§3.4 order: style image = the room, camera "seen strictly from the front … slightly from above" (3/4 items: "turned three-quarters to the left/right, standing against the side wall"), shadow, y-sort, sole collision, hotspot; 2 variants each, all into `pending/`.
+- Bedroom: `nightstand_2` — mirrored copy of the nightstand (0 generations). `tiger_skin` — "cartoonish tiger skin rug hung on the wall, slightly moth-eaten, comic flat head with a silly expression" (3/4, side wall). `bedside_rug` — "round faded pink rug, flat on the floor, seen from above at the room's camera angle". `chest` — "wooden chest with iron bands and a small brass combination lock with number wheels", 3 states closed / ajar / open (edits). `painting_count` — portrait of the Count, `count_adult_front_b.png` as the character reference, ornate frame; **eyes as a separate sprite** (pupils shift 1–2 px toward the hero's x). `painting_madam` — "stern old lady with a tiny fluffy lapdog in her lap, oil portrait in a gilded frame" (invented person). `still_life` — "still life painting: red apples and a clay jug, small gilded frame".
+- Boudoir: `x_chair` — "X-shaped curule chair, dark wood, faded pink cushion" (3/4); `plush_bear` (separate) — "worn plush teddy bear with tiny felt vampire fangs, sitting"; `cello` — "old cello leaning on its side, two broken strings, dusty" (3/4).
+- Dressing room: `dress_form` — "dress form mannequin wearing an old faded pink ball gown" (3/4); `laundry_basket` — "wicker laundry basket with silk stockings hanging over the edge" (hotspot "Take stockings" → `stockings`, second use: water filter); `full_length_mirror` — "tall full-length standing mirror in a carved frame, dusty glass, no reflection" (3/4, on the right side wall).

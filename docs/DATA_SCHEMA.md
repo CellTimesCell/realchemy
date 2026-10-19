@@ -161,3 +161,39 @@
 - `line_key` / `empty_line_key` / `locked_line_key` — ключи строк (en, `data/i18n/strings.csv`).
 - `prompt_after` — подсказка после открытия; `prompt_after_empty` — когда предметы кончились.
 - Узлы (спрайт, текстуры состояний, выдвижная часть, точка эффекта, содержимое) задаются в сцене экспортами компонента.
+
+### Hotspot (компонент `components/hotspot.gd`, поля в сцене)
+- `prompt_text` — ключ подсказки (UI_OPEN, UI_INSPECT, UI_PLAY…); пусто — подсказки нет.
+- `say_key` — реплика по ui_accept (облачко героя).
+- `prompt` — Label подсказки (переносится на слой `above_night`, плашка по `UiStyle`).
+- `outline_sprite` — спрайт для контура; по умолчанию — дочерний «Sprite» родителя.
+- Двери (`components/door_transition.gd`): `state_textures` (null/приоткрыта/открыта), `locked`, `locked_first_time`, `locked_line_key`, `exit_point` (другая комната) или `first_person_view` (экран от первого лица), `step_in`.
+
+### data/first_person/<id>.json — сцена типа first_person
+```json
+{
+  "type": "first_person",
+  "id": "garderobe",
+  "enter_line_key": "SAY_GARDEROBE_ENTER",
+  "hotspots": [
+    {
+      "id": "poster_deaf",
+      "rect": [520, 72, 48, 64],
+      "needs_moved": "",
+      "once": false,
+      "verbs": [
+        {"verb": "UI_INSPECT", "line_key": "SAY_POSTER_DEAF"},
+        {"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Deaf", "offset": [0, 0], "rotate": 80, "sfx": "creak", "line_key": "SAY_POSTER_MOVED"},
+        {"verb": "UI_PRESS_BUTTON", "action": "fx", "target": "Spray", "sfx": "spray"},
+        {"verb": "UI_TAKE", "action": "take", "target": "ToiletPaper", "item": {"id": "toilet_paper", "color": "#f4f0e8", "letter": "t"}},
+        {"verb": "UI_INSPECT", "action": "closeup", "target": "remote"}
+      ]
+    }
+  ],
+  "closeups": { "remote": [ {"label": "おしり", "action": "fx", "target": "Spray", "sfx": "spray", "line_key": "SAY_TOILET_SPRAY"} ] }
+}
+```
+- `rect` — [x, y, w, h] в картинке 640×360; раньше в списке — выше приоритет (открывшиеся тайники ставить первыми).
+- `needs_moved` — хотспот доступен только после сдвига этого узла; `once` — исчезает после `take`.
+- `action`: `say` (по умолчанию) | `move` (`offset`, `rotate` — градусы вокруг начала узла) | `fx` (CPUParticles2D) | `take` (спрятать узел, ItemPop, `EventBus.item_found`) | `closeup` (кнопки из `closeups`).
+- `target` — путь узла внутри `Content` сцены; `verb`, `line_key` — ключи строк (en). `label` в `closeups` — надпись на предмете, не переводится.

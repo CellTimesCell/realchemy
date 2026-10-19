@@ -175,6 +175,10 @@ python -I tools/anim_cleanup.py game/assets/_incoming/hero_anim/v34            #
 - `tools/placeholder_sfx.py <out>` — синтез звуков-заглушек (чирик, ноты арфы); заменить в T-27.
 - `game/tests/capture_scene.gd` — скриншоты сцены без Godot MCP: `Godot_console.exe --path game --resolution 640x360 -s res://tests/capture_scene.gd -- scene=res://... out=C:/...png hero=x,y [react=..] [shots=N step=K] [call=Node:method] [tex=Node>res://..;...] [face=east] [input=ui_accept] [key=I] [hidehero=1]`. Нужен оконный режим (не `--headless`). Сцены-помощники в `game/tests/` (снимки значков и т.п.) не коммитятся.
 
+### 4.10b Японский пиксельный шрифт: DotGothic16 (19.10.2026)
+- `game/assets/fonts/dotgothic16/DotGothic16-Regular.ttf` + `OFL.txt` (SIL Open Font License 1.1, Fontworks, источник — github.com/google/fonts, `ofl/dotgothic16`). Только для надписей в мире (пульт в garderobe: おしり, ビデ, 止, 乾燥). Размер 16 при масштабе 0,5.
+- Tiny5 (OFL) перенесён в `game/assets/fonts/_reserve/tiny5/` (+ OFL.txt) — подсказки хотспотов в варианте текста A, названия на постерах.
+
 ### 4.10 Пиксельные шрифты (19.10.2026: Press Start 2P — основной, Tiny5 — резерв, Pixelify Sans — отклонён)
 Все — SIL OFL 1.1 (коммерческое использование разрешено, шрифт нельзя продавать отдельно, лицензия кладётся рядом). Скачаны из `github.com/google/fonts/tree/main/ofl/`: `pressstart2p` (Press Start 2P), `pixelifysans` (Pixelify Sans), `tiny5` (Tiny5). Лежат в `game/assets/_incoming/fonts/<family>/` вместе с `OFL.txt`. Сравнение — ART_PIPELINE §6.
 
