@@ -599,3 +599,31 @@ Spent **31** (balance 1674 → 1643): wardrobe 15, skeleton 10, open wardrobe 6 
 | `wardrobe_open_2522.png` | `edit_image_pro_flash` from `wardrobe_2501_0.png` (`upload:52d29689-228e-4ee2-9354-39328eebb999`) | 2522 | `d6cffbab-7b4a-40ba-aa97-52a44701de39` | 6 |
 Prompts: wardrobe — "large ornate gothic wardrobe, dark carved wood, two tall closed doors, faded pink painted flowers on the doors, slightly dusty, seen strictly from the front, symmetrical, flat front view slightly from above (same diorama camera as the room), same lighting as the dressing room, transparent background, no floor, no characters, no isometric angle. The wardrobe fills the canvas from top to bottom."; skeleton — "a funny cartoon skeleton of an old princess standing upright, not scary, no blood, comedic: tattered faded pink ball gown hanging on the bones, a small tilted golden crown on the skull, big round empty eye sockets with a surprised and offended expression, one bony hand on the hip, seen from the front, same lighting as the dressing room, storybook pixel art, transparent background, no floor."; open — "the same wardrobe with both doors swung wide open to the sides, showing the dark interior: a few old faded dresses on hangers at the left and right sides inside, the center of the interior is empty and dark. Keep the same wardrobe frame, carvings, colors, size, outline and lighting."
 Scene: `components/openable_prop.gd` (closed/open textures, inside node shown when open, Enter in the hotspot opens), wardrobe at (1738, 312) in the dressing room: shadow, y-sort, collision 84×14 at the base, hotspot «Открыть», skeleton as a separate node. Test scenes `tests/wardrobe_closed_{a,b,c}.tscn`, `tests/wardrobe_open_skel_{a,b}.tscn`. Screenshots `wardrobe_closed_{a,b,c}.png`, `wardrobe_open.png`, `skeleton_{a,b}.png` (×6 sprite + in the wardrobe), `wardrobe_in_room_{closed,open}.png`.
+
+---
+
+## 2026-10-19 — Wardrobe approved, lying skeleton, ghost grandmother, secretary + letter
+
+Spent **36** (balance 1643 → 1607): lying skeleton 10, ghost 10, secretary 10, open secretary 5, parchment 1.
+
+**Wardrobe** — `wardrobe_2501_0` (a) **APPROVED** → `approved/props/wardrobe_princess_closed.png`, `wardrobe_open_2522` → `wardrobe_princess_open.png`, `wardrobe_shadow` → `wardrobe_princess_shadow.png`. `wardrobe_2501_1` (b), `wardrobe_2501_3` (c) **REJECTED**. Standing skeletons `skel_2511_*` (both a/b) **REJECTED**.
+
+**Fonts** — Press Start 2P **APPROVED** → `game/assets/fonts/press_start_2p/` (+ `OFL.txt`); Tiny5 **RESERVE** (candidate for long text, stays in `_incoming/fonts/tiny5/`); Pixelify Sans **REJECTED**.
+
+All new generations below: **pending** (not in approved/).
+| File | Tool | Size | Seed | Job ID | Cost | Note |
+|---|---|---|---|---|---|---|
+| `_incoming/props/wardrobe/skel_lying_2601_{0..15}.png` | `create_image_pro`, style = dressing room (`upload:9d43bf16-0e7e-4ee1-9fdf-0b594de7f6f5`) | 64×48 ×16 | 2601 | `c44780dc-56ec-418c-9c1a-cf5fa23c27ec` | 10 | a = 0, b = 2 |
+| `_incoming/characters/ghost/ghost_2611_{0..15}.png` | `create_image_pro`, style = `count_adult_front_b` (`upload:64772fd7-ff08-47c2-b3f2-e87b8f52aaa1`) | 64×64 ×16 | 2611 | `dfccc763-6fb4-4970-8b36-915a0e48b2d3` | 10 | a = 0, b = 7, c = 11 (`ghost_{a,b,c}.png`) |
+| `_incoming/props/secretary/secretary_2621_{0..3}.png` | `create_image_pro`, style = dressing room | 80×96 ×4 | 2621 | `d1cad0c3-f1f7-447a-a553-22bdd4af29d7` | 10 | a = 0, b = 1, c = 3 |
+| `_incoming/props/secretary/secretary_open_2641.png` | `edit_image_pro_flash` from `secretary_2621_0` (`upload:7c1aa3e6-f87d-41bb-becd-2cf752aff948`) | 80×96 | 2641 | `c0be970a-8ba9-4789-a9fd-656a8df0240f` | 5 | |
+| `_incoming/rooms/letter_parchment_2631.png` | `create_image_pixen` | 256×192 | 2631 | `0614cbbf-d01c-40fb-b3c3-eaf80a4947f5` | 1 | blank parchment, text is drawn by the font |
+
+Prompts:
+- lying skeleton — "cartoonish skeleton lying slumped at the bottom of an open wardrobe among old dresses, wearing a tattered faded pink ball gown, skull tilted to one side, dusty, not scary, no blood, same diorama camera (front, slightly from above), same lighting as the dressing room, transparent background. Only the slumped skeleton in its gown and a few fallen dresses, no wardrobe frame."
+- ghost — "elderly fairy-tale princess grandmother, small crown on grey hair in a bun, voluminous old-fashioned ball gown, grumpy but kind wrinkled face, floating pose with the gown hem drifting, adult proportions (not chibi), 3/4 view, full figure, transparent background." (opaque sprite; ghostliness via `shaders/ghost.gdshader`)
+- secretary — "small ornate gothic writing desk (secretary) with a fold-down lid closed, dark carved wood, tiny drawers, a dried-up inkwell and a quill on top, a stack of old letters tied with a faded pink ribbon on top, dusty, seen strictly from the front, symmetrical, flat front view slightly from above (same diorama camera as the room), same lighting as the room, transparent background, no floor, no characters, no isometric angle."
+- open secretary — "the same writing desk with the slanted fold-down lid opened down flat into a writing surface, inside are small pigeonhole compartments with rolled papers and scattered old letters lying on the open lid. Keep the same desk body, drawers, inkwell and quill, colors, size, outline and lighting."
+- parchment — "a single sheet of old yellowed parchment paper seen flat from the front, slightly curled corners, faint stains and a small pink wax seal at the bottom, completely blank with no writing, soft even lighting."
+
+Screenshots: `skeleton_lying_{a,b}.png`, `wardrobe_open_with_skeleton.png` (props/wardrobe); `ghost_raw_{a,b,c}.png`, `ghost_in_room.png` (= a), `ghost_in_room_{b,c}.png` (characters/ghost); `secretary_{a,b,c}.png`, `secretary_open.png`, `secretary_in_room.png`, `letter_screen_press_start.png`, `letter_screen_tiny5.png` (props/secretary).
