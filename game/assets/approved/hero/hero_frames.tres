@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=30 format=3]
+[gd_resource type="SpriteFrames" load_steps=72 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/approved/hero/idle_south/0.png" id="1"]
 [ext_resource type="Texture2D" path="res://assets/approved/hero/idle_south/1.png" id="2"]
@@ -29,6 +29,48 @@
 [ext_resource type="Texture2D" path="res://assets/approved/hero/emote_scratch_head/4.png" id="27"]
 [ext_resource type="Texture2D" path="res://assets/approved/hero/emote_scratch_head/5.png" id="28"]
 [ext_resource type="Texture2D" path="res://assets/approved/hero/emote_scratch_head/6.png" id="29"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/0.png" id="30"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/1.png" id="31"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/2.png" id="32"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/3.png" id="33"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/4.png" id="34"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/5.png" id="35"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/cheer/6.png" id="36"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/facepalm/0.png" id="37"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/facepalm/1.png" id="38"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/facepalm/2.png" id="39"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/facepalm/3.png" id="40"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/facepalm/4.png" id="41"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/notice/0.png" id="42"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/notice/1.png" id="43"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/notice/2.png" id="44"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/notice/3.png" id="45"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/notice/4.png" id="46"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/0.png" id="47"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/1.png" id="48"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/2.png" id="49"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/3.png" id="50"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/4.png" id="51"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/5.png" id="69"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/6.png" id="70"]
+[ext_resource type="Texture2D" path="res://assets/pending/hero/startled/7.png" id="71"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/0.png" id="52"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/1.png" id="53"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/2.png" id="54"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/3.png" id="55"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/4.png" id="56"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/5.png" id="57"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/disgust/6.png" id="58"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/thinking/0.png" id="59"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/thinking/1.png" id="60"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/thinking/2.png" id="61"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/thinking/3.png" id="62"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/thinking/4.png" id="63"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/dizzy/0.png" id="64"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/dizzy/1.png" id="65"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/dizzy/2.png" id="66"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/dizzy/3.png" id="67"]
+[ext_resource type="Texture2D" path="res://assets/approved/hero/emotions/dizzy/4.png" id="68"]
 
 [resource]
 animations = [{
@@ -137,10 +179,171 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("29")
 }],
 "loop": false,
 "name": &"emote_scratch_head",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35")
+}, {
+"duration": 4.0,
+"texture": ExtResource("36")
+}],
+"loop": false,
+"name": &"react_cheer",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40")
+}, {
+"duration": 4.0,
+"texture": ExtResource("41")
+}],
+"loop": false,
+"name": &"react_facepalm",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45")
+}, {
+"duration": 4.0,
+"texture": ExtResource("46")
+}],
+"loop": false,
+"name": &"react_notice",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50")
+}, {
+"duration": 2.0,
+"texture": ExtResource("51")
+}, {
+"duration": 2.0,
+"texture": ExtResource("69")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70")
+}, {
+"duration": 2.0,
+"texture": ExtResource("71")
+}],
+"loop": false,
+"name": &"react_startled",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57")
+}, {
+"duration": 4.0,
+"texture": ExtResource("58")
+}],
+"loop": false,
+"name": &"react_disgust",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62")
+}, {
+"duration": 4.0,
+"texture": ExtResource("63")
+}],
+"loop": false,
+"name": &"react_thinking",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67")
+}, {
+"duration": 4.0,
+"texture": ExtResource("68")
+}],
+"loop": false,
+"name": &"react_dizzy",
+"speed": 6.0
 }]
