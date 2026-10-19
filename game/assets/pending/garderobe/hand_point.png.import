@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfki1n5fol2gm"
-path="res://.godot/imported/garderobe_door_ajar.png-141cf05787e70f3fd0dc3a65d8ef0f40.ctex"
+uid="uid://bgcreaa6i44di"
+path="res://.godot/imported/hand_point.png-f223acb6ddf6fb7885ba6e6dcc373973.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/approved/props/garderobe_door_ajar.png"
-dest_files=["res://.godot/imported/garderobe_door_ajar.png-141cf05787e70f3fd0dc3a65d8ef0f40.ctex"]
+source_file="res://assets/pending/garderobe/hand_point.png"
+dest_files=["res://.godot/imported/hand_point.png-f223acb6ddf6fb7885ba6e6dcc373973.ctex"]
 
 [params]
 

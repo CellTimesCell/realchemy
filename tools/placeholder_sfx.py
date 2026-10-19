@@ -6,6 +6,7 @@
   locked.wav         two dull rattles
   pickup.wav         short rising blip
   creak.wav          slow wobbling squeak (old hinge)
+  spray.wav          soft hiss of water (toilet bidet)
 
 Usage: python -I tools/placeholder_sfx.py <out_dir>
 """
@@ -83,6 +84,7 @@ def main():
     save(os.path.join(out, 'locked.wav'), knock(0.09, 140, 120, 4) + [0.0] * 1200 + knock(0.09, 150, 120, 5))
     save(os.path.join(out, 'pickup.wav'), tone(0.14, lambda t: 700 + 900 * t, lambda t: math.sin(math.pi * t)))
     save(os.path.join(out, 'creak.wav'), tone(0.6, lambda t: 420 + 90 * math.sin(t * 25) + 80 * t, lambda t: math.sin(math.pi * t) * 0.6, 0.15, 6))
+    save(os.path.join(out, 'spray.wav'), tone(0.7, lambda t: 2500, lambda t: (min(1, t * 8)) * (1 - t) * 0.5, 2.5, 7))
     print('ok')
 
 

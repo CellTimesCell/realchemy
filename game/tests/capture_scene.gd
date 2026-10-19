@@ -7,6 +7,7 @@ extends SceneTree
 ##   [tex=Props/A/Sprite>res://a.png;Props/B/Sprite>res://b.png] (swap textures)
 ##   [face=east|west|north|south] [input=ui_accept] [key=I] (pressed after wait)
 ##   [hold=show_all] (action held during the shots) [uivariant=A|B]
+##   [fpverb=GarderobeView:hotspot_id:verb_index;...] (after call, waits 30 frames between)
 
 var _args: Dictionary = {}
 
@@ -39,6 +40,18 @@ func _run() -> void:
 		scene.get_node(target[0]).call(target[1])
 	if hero and _args.get("hidehero", "0") == "1":
 		hero.visible = false
+	if _args.has("fpverb"):
+		for i: int in 40:
+			await process_frame
+		for item: String in (_args["fpverb"] as String).split(";"):
+			var parts: PackedStringArray = item.split(":")
+			# Untyped on purpose: typed refs compile before the autoloads exist.
+			var view: Node = scene.get_node(parts[0])
+			for entry: Dictionary in view.get("data")["hotspots"]:
+				if entry["id"] == parts[1]:
+					view.call("run_verb", entry, entry["verbs"][int(parts[2])])
+			for i: int in 30:
+				await process_frame
 	if hero and _args.has("face"):
 		hero.set("_facing", _args["face"])
 		hero.call("_update_animation", Vector2.ZERO)

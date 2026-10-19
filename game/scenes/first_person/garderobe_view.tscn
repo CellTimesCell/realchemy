@@ -1,0 +1,252 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/first_person_view.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/garderobe_bg_a.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_rotley.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_buns.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_bonjovial.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_squid.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_deaf.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/posters/poster_whitesnack.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/toilet_paper.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/hand_point.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/pending/garderobe/hand_grab.png" id="11"]
+[ext_resource type="FontFile" path="res://assets/fonts/dotgothic16/DotGothic16-Regular.ttf" id="12"]
+[ext_resource type="FontFile" path="res://assets/fonts/_reserve/tiny5/Tiny5.ttf" id="13"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("13")
+font_size = 8
+font_color = Color(0.12, 0.05, 0.16, 1)
+line_spacing = -2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_scratch"]
+font = ExtResource("13")
+font_size = 8
+font_color = Color(0.86, 0.82, 0.8, 0.85)
+line_spacing = -1.0
+
+[sub_resource type="Gradient" id="Gradient_spray"]
+colors = PackedColorArray(0.85, 0.95, 1, 1, 0.55, 0.8, 1, 0)
+
+[node name="GarderobeView" type="CanvasLayer" node_paths=PackedStringArray("content", "cursor", "verb_menu", "monologue", "monologue_label", "back_button", "closeup", "closeup_row")]
+layer = 15
+script = ExtResource("1")
+data_path = "res://data/first_person/garderobe.json"
+content = NodePath("Content")
+cursor = NodePath("Cursor")
+cursor_point = ExtResource("10")
+cursor_grab = ExtResource("11")
+verb_menu = NodePath("UI/VerbMenu")
+monologue = NodePath("UI/Monologue")
+monologue_label = NodePath("UI/Monologue/Text")
+back_button = NodePath("UI/Back")
+closeup = NodePath("UI/Closeup")
+closeup_row = NodePath("UI/Closeup/Buttons")
+closeup_font = ExtResource("12")
+
+[node name="Content" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Content"]
+texture = ExtResource("2")
+centered = false
+
+[node name="Scratches" type="Node2D" parent="Content"]
+
+[node name="Help" type="Label" parent="Content/Scratches"]
+offset_left = 270.0
+offset_top = 116.0
+offset_right = 320.0
+offset_bottom = 170.0
+text = "SCRATCH_HELP"
+label_settings = SubResource("LabelSettings_scratch")
+
+[node name="Number" type="Label" parent="Content/Scratches"]
+offset_left = 530.0
+offset_top = 98.0
+offset_right = 576.0
+offset_bottom = 110.0
+text = "SCRATCH_NUMBER"
+label_settings = SubResource("LabelSettings_scratch")
+
+[node name="Posters" type="Node2D" parent="Content"]
+
+[node name="Rotley" type="Node2D" parent="Content/Posters"]
+position = Vector2(104, 84)
+skew = 0.08
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Rotley"]
+texture = ExtResource("3")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Rotley"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_ROTLEY"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Buns" type="Node2D" parent="Content/Posters"]
+position = Vector2(148, 158)
+skew = 0.08
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Buns"]
+texture = ExtResource("4")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Buns"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_BUNS"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Bonjovial" type="Node2D" parent="Content/Posters"]
+position = Vector2(262, 108)
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Bonjovial"]
+texture = ExtResource("5")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Bonjovial"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_BONJOVIAL"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Squid" type="Node2D" parent="Content/Posters"]
+position = Vector2(330, 112)
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Squid"]
+texture = ExtResource("6")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Squid"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_SQUID"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Deaf" type="Node2D" parent="Content/Posters"]
+position = Vector2(520, 72)
+skew = -0.08
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Deaf"]
+texture = ExtResource("7")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Deaf"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_DEAF"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Whitesnack" type="Node2D" parent="Content/Posters"]
+position = Vector2(552, 168)
+skew = -0.08
+
+[node name="Sprite" type="Sprite2D" parent="Content/Posters/Whitesnack"]
+texture = ExtResource("8")
+centered = false
+
+[node name="Title" type="Label" parent="Content/Posters/Whitesnack"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+text = "POSTER_WHITESNACK"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="ToiletPaper" type="Sprite2D" parent="Content"]
+position = Vector2(186, 244)
+texture = ExtResource("9")
+
+[node name="Spray" type="CPUParticles2D" parent="Content"]
+position = Vector2(320, 236)
+emitting = false
+amount = 140
+lifetime = 1.1
+one_shot = true
+explosiveness = 0.15
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+direction = Vector2(0, -1)
+spread = 14.0
+gravity = Vector2(0, 260)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_spray")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 24.0
+focus_mode = 0
+text = "UI_BACK"
+
+[node name="VerbMenu" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 40.0
+
+[node name="Closeup" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 270.0
+offset_right = 430.0
+offset_bottom = 300.0
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Closeup"]
+layout_mode = 2
+alignment = 1
+
+[node name="Monologue" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 316.0
+offset_right = 560.0
+offset_bottom = 350.0
+mouse_filter = 2
+
+[node name="Text" type="Label" parent="UI/Monologue"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Cursor" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("10")
+centered = false
+offset = Vector2(-4, -8)

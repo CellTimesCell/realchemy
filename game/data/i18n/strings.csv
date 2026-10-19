@@ -22,4 +22,43 @@ SAY_DRAWER_EMPTY,Just dust now.
 SAY_UNDER_BED_COIN,"A coin! And a family of dust bunnies."
 SAY_UNDER_BED_EMPTY,Only the dust bunnies are left. They seem happy.
 SAY_GATE_LOCKED,Locked tight. The padlock looks older than the Count.
-WIP_GARDEROBE,garderobe — WIP
+UI_BACK,Back
+UI_MOVE_POSTER,Move poster
+UI_PRESS_BUTTON,Press button
+UI_TAKE,Take
+POSTER_ROTLEY,"ROTLEY
+GLUE"
+POSTER_BUNS,"BUNS N'
+NOSES"
+POSTER_SQUID,"SQUID
+ROW"
+POSTER_BONJOVIAL,"BON
+JOVIAL"
+POSTER_WHITESNACK,"WHITE
+SNACK"
+POSTER_DEAF,"DEAF
+LEOPARD"
+SAY_GARDEROBE_ENTER,A castle with no running water... and THIS.
+SAY_POSTER_ROTLEY,Huh. The princess was a glam metal fan. Never would've guessed.
+SAY_POSTER_BUNS,"Buns N' Noses. Sweet child of... flour?"
+SAY_POSTER_SQUID,"Squid Row. Eight arms, one drummer."
+SAY_POSTER_BONJOVIAL,Bon Jovial. Living on a prayer and a lot of hairspray.
+SAY_POSTER_WHITESNACK,Whitesnack. Here I go snacking again.
+SAY_POSTER_DEAF,Deaf Leopard. Loud enough to wake the Count. Please don't.
+SAY_POSTER_MOVED,There's something scratched on the wall behind it.
+SAY_SCRATCH_HELP,"'HELP'. 'PRINCE where r u?' 'Vampires suck!' She had a lot of time in here."
+SAY_SCRATCH_NUMBER,867-5309. Somebody really didn't want to forget Jenny's number.
+SAY_TOILET_SEAT,It has a heated seat. I'm not even mad.
+SAY_TOILET_SPRAY,Pssssht! ...Okay. Nobody saw that.
+SAY_TOILET_SPRAY_2,Pssssht! Again! Why did I press it again?
+SAY_PANEL,Four buttons. I can't read any of them. That has never stopped me.
+SAY_PANEL_STOP,It stopped. I think.
+SAY_PANEL_DRY,"Warm air. Very warm. Too warm."
+SAY_CANDLE,A candle. The only thing in here from the right century.
+SAY_PAPER_TAKEN,Toilet paper. Possibly the most valuable thing in this castle.
+SCRATCH_HELP,"HELP
+PRINCE
+where r u?
+Vampires
+suck!"
+SCRATCH_NUMBER,867-5309
