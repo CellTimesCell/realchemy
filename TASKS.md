@@ -41,15 +41,16 @@
 - [x] T-25f Шкаф (вариант a, approved/props/wardrobe_princess_*)
 - [x] T-25f2 Лежачий скелет на дне шкафа (вариант a, approved/props/skeleton_princess_lying.png)
 - [x] T-25j Призрак-бабушка: вариант a, approved/characters/ghost_grandma/ (8 направлений), шейдер ghost.gdshader v2
-- [ ] T-25m Эмоции: анимации бабушки (idle, lecture, angry, startled, thinking, facepalm) и героя (cheer, facepalm, notice, startled, disgust, thinking, dizzy) — ждут ок
-- [ ] T-25n Значки-манпу (9 шт., стиль a/b — ждёт выбора); код готов: emote.gd, reaction_player.gd, data/character_reactions.json
+- [x] T-25m Эмоции: бабушка (6) и герой (cheer, facepalm, notice, disgust, thinking, dizzy) утверждены 19.10.2026 → approved/
+  - [ ] T-25m2 Герой startled с приземлением (кадры 2→1→0 после прыжка, pending/hero/startled/) — ждёт ок
+- [x] T-25n Значки-манпу: стиль a утверждён (венка ╬ и спираль перегенерированы), approved/ui/emotes/, слой EmoteLayer над ночным затемнением; в рабочей сцене E → scratch_head + «?»
 - [ ] T-25o Первое появление бабушки [?]
 - [x] T-25g Секретер с письмом (вариант a, approved/props/secretary_princess_*; письмо Press Start 2P, approved/ui/letter_princess.png)
 - [x] T-25l Экран письма: поля пергамента, пагинация со стрелкой «далее», скрытие подсказок и блок героя на время UI (EventBus.modal_ui_changed)
 - [ ] T-25h Garderobe за дверью спальни: постеры-пародии, надписи за постером, рулон бумаги (хроматография) — дизайн в CASTLE.md
 - [x] T-25i Пиксельный шрифт: Press Start 2P (UI), Tiny5 — резерв
 - [x] T-25k Игра только на английском: строки через ключи (data/i18n/strings.csv)
-- [ ] T-26 Будуар: туалетный столик, арфа, клетка с канарейкой, апельсиновое дерево
+- [ ] T-26 Будуар: туалетный столик, арфа, клетка с канарейкой, апельсиновое дерево — сгенерированы (по 2 варианта, pending/boudoir/), стоят в princess_suite.tscn с хотспотами; канарейка живая + датчик опасности. Ждёт выбора вариантов
 - [ ] T-25d Моргание героя (редкое: 1 кадр закрытых глаз раз в 4–6 с)
 - [ ] T-26 Палитра проекта `palette.png` / `.gpl` и сведение к ней всех утверждённых ассетов
 - [ ] T-27 Арт кейса 1, звуки (jsfxr), музыка-заглушка (Furnace)

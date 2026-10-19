@@ -23,7 +23,19 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `room_princess_{bedroom,boudoir,dressing}_pillar.png` | crops of the front pillar (rows 140–360) | Foreground occluders drawn over the hero | |
 | `fx/web_*.png` | `_incoming/rooms/hybrid_bedroom/` | Cobweb sprites for the sway shader | |
 | `props/bed_princess.png` + `bed_princess_blanket.png`, `bed_princess_shadow.png`, `nightstand_candle.png` | `_incoming/props/bed/bed_2302_3.png` (blanket on the floor split off as a lower layer, rows 137–151) | Princess bed (variant B) | frame collides, blanket has no collision |
+| `hero/emotions/{cheer,facepalm,notice,disgust,thinking,dizzy}/` | `_incoming/hero_emotions/clean/` | Hero reaction animations (south), in `hero/hero_frames.tres` as `react_*` | approved 19.10.2026; `startled` is still in `pending/hero/startled/` |
+| `characters/ghost_grandma/emotions/{idle,lecture,angry,startled,thinking,facepalm}/` + `ghost_frames.tres` | `_incoming/characters/ghost_v2/anim/clean/` | Ghost grandma animations; look = `shaders/ghost.gdshader` v2 | approved 19.10.2026 |
+| `ui/emotes/<icon>/` + `emote_frames.tres`, `source/` | `_incoming/emotes/frames_a/`, `style_a/` | Manpu icons, style A (white + dark outline; colour only by meaning: anger red, sweat light blue). Drawn on `EmoteLayer` above the night tint | approved 19.10.2026; style B rejected |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
+
+## Pending review (`game/assets/pending/`, tracked, not approved)
+Files the working scene already uses while they wait for an OK. On approval they move to `approved/`.
+
+| Folder | What | Source |
+|---|---|---|
+| `pending/boudoir/` | birdcage, orange tree, harp, vanity: variant a is in the scene, variant b next to it; `birdcage_*_bars.png` = front bars layer | `_incoming/props/{birdcage,orange_tree,harp,vanity}/` |
+| `pending/boudoir/canary/` | canary sprite + `canary_frames.tres` (sit, preen, alarm) | `_incoming/props/birdcage/` |
+| `pending/hero/startled/` | hero startled with landing (frames 5-7 = frames 2, 1, 0 reused) | `_incoming/hero_emotions/clean/startled/` |
 
 ---
 
@@ -695,3 +707,39 @@ Ghost: character `1f0c9d71-…`, canvas 88×88, `_incoming/characters/ghost_v2/a
 | swirl | `069ea11f-62f6-4ac6-9d08-fcc3045ffa36` | `715ec704-a17c-40f0-ac47-2184bce4b716` |
 
 Frames for style A by `tools/emote_frames.py` → `frames_a/<icon>/`, SpriteFrames `emote_frames_a.tres`. Sheets: `emotes_style_a.png`, `emotes_style_b.png` (×8), `emotes_sheet.png` (style A, all frames ×4).
+
+## 2026-10-19 (4) — Emotions and emotes approved, boudoir furniture, canary
+
+Spent **66** (balance 1567 → 1501): anger vein 10, swirl 10, birdcage 10, orange tree 10, harp 10, vanity 10, canary 4 (2 at 24 px — too big for the cage, 2 at 16 px), canary animations 2.
+
+**Approved:** ghost shader v2 + all 6 ghost emotions; hero cheer, facepalm, notice, disgust, thinking, dizzy; emote style A (B rejected). Hero `startled`: the jump ended in mid-air — landing assembled from existing frames (0 generations): after frame 4 (held 2) come frame 2 (crouch, held 2), 1, 0 (held 2), then idle. Preview `_incoming/hero_emotions/startled_landing.gif`, strip `startled_landing_strip.png`. Pending.
+
+**Emote fixes (style A):**
+
+| Icon | Fix | Tool | Job / pick | Cost |
+|---|---|---|---|---|
+| anger | classic anime cross-popping vein: 4 curved arms meeting in a cross, red | `create_image_pro` 24×24 (64 candidates), style image = `style_a/question.png` (outline, detail, shading) | `db1e1a0d-61bc-4402-9bce-b20ba79f4719`; #9 (alternatives #41, #24) | 10 |
+| swirl | one coiled spiral line, not concentric circles | `create_image_pro` 24×24 (64 candidates), same style image | `6999e98b-c019-4042-ab58-e012c3475ca3`; #21 (alternatives #17, #12) | 10 |
+| dots | source `dots.png` = three identical round dots (the third was a squiggle); in-game frames were already built from the first dot | script | — | 0 |
+| sparkle | in game it is the regenerated star without a face (`sparkle.png` = `frames_a/sparkle/0.png`); the face was only on the old sheet (`sparkle_v1`) | check | — | 0 |
+
+Candidates: `_incoming/emotes/gen_v2/{anger,swirl}/`. Old versions kept as `style_a/{anger_v2,swirl_v1,dots_v1}.png`. New sheet `emotes_sheet_v2.png`, in game `emote_in_game.png`.
+Prompts: anger — "anime anger vein symbol (cross-popping vein mark, "kekkan" manga emote): four short thick curved bulging red veins whose rounded ends point to the center and bend outward, forming a cross shape like the character ╬ with a small gap in the middle, bright red with darker red shading, thick dark outline, centered, nothing else, simple bold icon readable at small size"; swirl — "dizzy spiral symbol: a single white line coiled into a spiral (like a snail shell or the @ swirl), one continuous curling line winding inward from the outside to the center, clearly a spiral and NOT concentric circles or a target, thick dark outline, white with light grey shading, centered, nothing else, simple bold manga emote icon".
+
+**Boudoir furniture** (`_incoming/props/<prop>/`, pending). `create_image_pro`, style image = `approved/room_princess_boudoir.png` (`upload:0c2faaff-5c72-4388-b0f3-b5aab1feaf05`). Every prompt ends with: "seen strictly from the front, symmetrical, flat front view slightly from above (same diorama camera as the room), same lighting as the room, transparent background, no floor, no characters, no isometric angle. The <prop> fills the canvas from top to bottom."
+
+| Files | Canvas | Seed | Job | Cost | Picks |
+|---|---|---|---|---|---|
+| `birdcage/birdcage_2701_{0..8}.png` | 56×100, 9 candidates | 2701 | `a13d211a-ff85-4a66-8a08-1cf3c1f3aaef` | 10 | a = 0, b = 4 |
+| `orange_tree/orange_tree_2711_{0..8}.png` | 64×88, 9 | 2711 | `9d909802-56b2-43f6-a232-403487095132` | 10 | a = 0 (pebble next to the pot removed), b = 4 |
+| `harp/harp_2721_{0..8}.png` | 64×96, 9 | 2721 | `bac7c81d-74b4-4e91-b101-228b9f5dfd43` | 10 | a = 0, b = 2 |
+| `vanity/vanity_2731_{0..3}.png` | 96×104, 4 | 2731 | `e27450b0-4c87-4d50-9cf9-d1058a440050` | 10 | a = 0 (triple mirror), b = 2 (oval mirror) |
+
+Prompts (subject part): birdcage — "ornate gilded birdcage on a tall slender stand with a round base, dome-topped cage with thin golden bars and curled scrollwork, slightly tarnished and dusty gold, inside two thin wooden perches at different heights, a tiny water dish and a few scattered seeds on the cage floor, the cage is EMPTY with no bird"; orange tree — "small potted orange tree in an old cracked ceramic planter with faded blue and white painted pattern, round leafy dark green crown with a few ripe bright oranges hanging, a few fallen dry leaves lying inside the pot on the soil … no leaves on the ground"; harp — "tall gilded concert harp standing upright on the floor, ornate carved golden column and curved neck with scrollwork, a few strings broken and hanging loose, dusty and slightly tarnished gold, a cobweb thread between the column and the strings, seen from the side as a harp is usually shown (its triangular frame facing the viewer)"; vanity — "gothic vanity dressing table of dark carved wood with curved legs, a tall oval mirror in a carved frame on top (the mirror glass is plain dark silvery grey with a soft sheen, no reflection), on the tabletop a round powder box, two small crystal perfume bottles with pink and violet glass, a hairbrush and a few tiny golden hairpins, dusty … no stool".
+Post: `tools/prop_tools.py clean` (detached specks), `bars` (front bars of the cage → `*_bars.png`, drawn over the canary). Shadows reuse `approved/props/wardrobe_princess_shadow.png` scaled.
+
+**Canary** (`_incoming/props/birdcage/`): `create_image_pixen` 16×16, `no_background`, outline black, view side — "tiny yellow canary bird sitting on a perch, side view facing right, round fluffy body, small orange beak, black dot eye, folded wings, short tail, bright lemon yellow feathers with slightly darker wing tips, cute storybook pixel art". Seeds 2743 (picked, `e7ff0b89-3cd1-4958-8475-b9b9ce124c56`), 2744 (`e1016699-8734-4c99-b894-f6e6a35b1c47`, drew its own perch); 24 px tries 2741/2742 too big. `animate_image` from 2743: preen 6 frames "small bird preening: turns its head back and pecks gently at its wing feathers, then looks forward again, stays sitting on the same spot" (seed 2745, `9f92c38e-a41f-4050-bcf5-884bbc905927`, 1); alarm 4 frames "small bird alarmed: flaps both wings quickly up and down while staying in place, feathers ruffled" (seed 2746, `d18acae7-1786-43c0-a5c8-232dffcb90c4`, 1). Hop = code (arc tween + alarm frames + flip).
+
+**Sound placeholders** (`assets/audio/sfx_placeholder/`, synthesized by `tools/placeholder_sfx.py`, 0 generations): `canary_chirp.wav`, `harp_note_{0..3}.wav` (C5 E5 G5 C6). Replace at T-27.
+
+Screenshots: `_incoming/props/{birdcage,orange_tree,harp,vanity}/<prop>_{a,b}.png` (×3, hero for scale), `boudoir_furnished.png` (a), `boudoir_furnished_b.png`, `birdcage/canary.gif` (idle: hops, preening; then alarm).

@@ -169,6 +169,12 @@ python -I tools/anim_cleanup.py game/assets/_incoming/hero_anim/v34            #
 ```
 Настройка — словарь `SETS` (папка, число кадров, лучший кадр); координаты уха/кисти подобраны под героя. Гонять на всех будущих анимациях персонажей. Листы для ручной правки: Aseprite CLI (`Aseprite.exe -b <кадры> --sheet x.png --sheet-type horizontal --save-as x.aseprite`).
 
+### 4.9b Мелкие скрипты арт-конвейера (19.10.2026)
+- `tools/emote_frames.py` — кадры значков-манпу сдвигом/скрытием/поворотом сгенерированных пикселей.
+- `tools/prop_tools.py clean|bars` — убрать оторванные пиксели у спрайта предмета; вырезать «передние прутья» клетки отдельным слоем.
+- `tools/placeholder_sfx.py <out>` — синтез звуков-заглушек (чирик, ноты арфы); заменить в T-27.
+- `game/tests/capture_scene.gd` — скриншоты сцены без Godot MCP: `Godot_console.exe --path game --resolution 640x360 -s res://tests/capture_scene.gd -- scene=res://... out=C:/...png hero=x,y [react=..] [shots=N step=K] [call=Node:method] [tex=Node>res://..;...]`. Нужен оконный режим (не `--headless`).
+
 ### 4.10 Пиксельные шрифты (19.10.2026: Press Start 2P — основной, Tiny5 — резерв, Pixelify Sans — отклонён)
 Все — SIL OFL 1.1 (коммерческое использование разрешено, шрифт нельзя продавать отдельно, лицензия кладётся рядом). Скачаны из `github.com/google/fonts/tree/main/ofl/`: `pressstart2p` (Press Start 2P), `pixelifysans` (Pixelify Sans), `tiny5` (Tiny5). Лежат в `game/assets/_incoming/fonts/<family>/` вместе с `OFL.txt`. Сравнение — ART_PIPELINE §6.
 
