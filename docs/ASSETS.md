@@ -42,52 +42,26 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `rooms/garderobe/posters/poster_*.png`, `nail.png`, `tape.png`, `toilet_paper.png` | posters v2 + fixtures + holder on a bracket | First-person garderobe v3 | approved 20.10.2026 |
 | `props/boudoir/{music_stand,sheet_music,floor_candelabra}.png` | batch 8 pixen | Boudoir music corner (stand, 3 sheets, 5-candle candelabra) | approved 20.10.2026 |
 | `props/painting_madam.png` | — | **reserve** (removed from the bedroom 20.10.2026; only the Count stays, in the arched niche) | not in the scene |
+| `room_princess_bedroom.png` (v4) | v3 + pointed-arch garderobe door (inpaint batch 9) | Bedroom | approved 20.10.2026 (older versions in git history) |
+| `props/garderobe_door_v3_{ajar,open}.png`, `props/garderobe_sign.png` | batch 9 | Pointed garderobe door states, plaque on a chain | approved 20.10.2026 |
+| `props/{bedside_rug_v2,folding_screen_v2}.png` | batch 9 (a) | Bedroom rug with border and fringe, folding screen ~65 px | approved 20.10.2026; b rejected |
+| `props/boudoir/{gramophone,record_crate}.png` | batch 9 (a) | Boudoir music corner | approved 20.10.2026; b rejected |
+| `props/study/{telescope,globe}.png` | batch 9 | Princess study | approved 20.10.2026 |
+| `props/boudoir/floor_candelabra.png` | — | **reserve** (removed from the boudoir 20.10.2026: cut off by the frame at the pillar) | not in the scene |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
-Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → deleted.
+Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → `_incoming/rejected/` (out of git).
 
 | File | What |
 |---|---|
-| `pending/rooms/room_princess_bedroom.png` | bedroom with the **pointed-arch** garderobe door (inpaint batch 9, mask (432,136)+56×110) — replaces `approved/room_princess_bedroom.png` in the scene |
-| `pending/props/garderobe_door_v3_{ajar,open}.png` | the pointed door's states (changed pixels inside the door mask only, 120×192 crop at (400,72)) |
-| `pending/suite/garderobe_sign.png` | wooden plaque on a chain (hangs on the door ring; "OUT OF ORDER" by font on the plank) |
-| `pending/suite/bedside_rug_v2.png` (+`_b`) | round faded pink rug with ornate border and fringe, ×2 |
-| `pending/suite/folding_screen_v2.png` (+`_b`) | folding screen ~65 px (~1.1 hero) |
-| `pending/suite/{bookcase,bookcase34,lab_table,telescope,globe}.png` (+`_b`) | princess study (dressing room, left zone) |
-| `pending/suite/{gramophone,record_crate}.png` (+`_b`) | boudoir music corner |
-| `pending/props/dressing_gate.png` | gate bars (rattles) |
-
----|---|
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
-| `pending/garderobe/posters/poster_*.png` | 6 parody posters v2 (64×84, no text) |
-| `pending/garderobe/{nail,tape}.png` | poster fixtures |
-| `pending/garderobe/toilet_paper.png` | roll on the holder |
-| `pending/suite/<item>.png` + `<item>_b.png` | suite furniture by the layouts (a in the scene, b next to it): painting_count (+ `_eyes`), painting_madam, tiger_skin_rug, bedside_rug, chest (+ `_ajar`, `_open`), folding_screen, harp34, x_chair, plush_bear, cello, oval_rug, floor_candelabra, still_life, dress_form, laundry_basket, full_length_mirror, worn_rug, coat_stand |
+| `pending/suite/lab_table.png` (+`_b`) | lab table (batch 9), moved against the back wall under the window in batch 10 |
+| `pending/suite/bookcase_v2.png` (+`_b`) | tall gothic bookcase 42×96 (~1.6 hero), back wall left of the curtains |
+| `pending/props/trophy_{griffin,unicorn,dragon}.png` (+`_b`) | mounted trophy heads on wooden shields, bedroom walls |
+| `pending/props/chandelier.png` (+`_b`), `chandelier_fallen.png` | boudoir chandelier: hanging (swing = rotation in Godot) / fallen wreck with the intact prism |
+| `pending/items/{ball,key,crystal_prism}.png` | item sprites / icons (ball also lies in the boudoir) |
 
----|---|---|
-| `pending/hero/interact/interact_high_{south,east}/` | interact_high v2: tiptoes, both feet on the floor, arm up | `animate_character` v3 |
-| `pending/props/nightstand_drawer_{closed,open}.png` | nightstand on a 40×48 canvas: closed / drawer pulled out (dark inside) | original padded + `edit_image_pro_flash` |
-| `pending/props/dressing_gate.png` | gate bars cut from the dressing room, rattles | script |
-| `pending/rooms/room_princess_bedroom_garderobe.png` | bedroom: old side door painted over with wall, curtains + small door in the central arch | approved bedroom + 2 inpaints pasted back |
-| `pending/props/garderobe_arch_{ajar,open}.png` | the arch door ajar / open (door area only, crop origin (400,72)) | `edit_image_pro_flash` of the inpainted crop |
-| `pending/garderobe/garderobe_bg_{a,b}.png` | first-person garderobe, 2 variants (a in the scene) | `create_image_pro` 640×360 |
-| `pending/garderobe/posters/poster_*.png` | 6 glam-metal parody posters (no text; names by font) | `create_image_pro` 48×64 |
-| `pending/garderobe/hand_{point,grab}.png`, `toilet_paper.png` | hand cursor (grab mirrored to match), toilet paper | `create_image_pixen` 24×24 |
-
----|---|---|
-| `pending/props/wardrobe_princess_ajar.png` | wardrobe half-open (state 2 of 3) | `edit_image_pro_flash` from the approved closed wardrobe |
-| `pending/props/secretary_princess_ajar.png` | secretary lid half-open | `edit_image_pro_flash` from the approved closed secretary |
-| `pending/props/garderobe_door_{ajar,open}.png` | garderobe door overlays (only the changed area of a 60×136 crop of the bedroom at (216,136)) | `edit_image_pro_flash` of the crop |
-| `pending/props/nightstand_slot.png`, `nightstand_drawer.png` | nightstand with an empty drawer slot + the drawer front (cut from the original pixels) | `edit_image_pro_flash` + script |
-| `pending/props/dressing_gate.png` | gate bars cut from `approved/room_princess_dressing.png` (532,214)–(570,298), rattles | script, 0 generations |
-| `pending/hero/interact/{interact_low,interact_mid,interact_high}_{south,east}/` | hero interaction poses, 5 frames (0 = reference) | `animate_character` v3 + `tools/emotion_cleanup.py` |
-
----|---|---|
-| `pending/boudoir/` | birdcage, orange tree, harp, vanity: variant a is in the scene, variant b next to it; `birdcage_*_bars.png` = front bars layer | `_incoming/props/{birdcage,orange_tree,harp,vanity}/` |
-| `pending/boudoir/canary/` | canary sprite + `canary_frames.tres` (sit, preen, alarm) | `_incoming/props/birdcage/` |
-| `pending/hero/startled/` | hero startled with landing (frames 5-7 = frames 2, 1, 0 reused) | `_incoming/hero_emotions/clean/startled/` |
-
----
+Reserve (out of git): `_incoming/reserve/bookcase34.png` (foreground 3/4 bookcase, removed from the study).
 
 ## 2026-10-18 — Style test, round 1 (T-25)
 
@@ -945,3 +919,22 @@ Spent **94** (balance 1007 → 913). Style images (uploads 19.10/20.10): bedroom
 
 Notes: inpaint keeps unmasked bytes → only the mask rect is pasted into the bedroom; edit states → only pixels that differ from the closed door inside the mask. The pro grid of `bookcase` was fetched as one 4×4 sheet from the gallery asset (job download expired) and split by script.
 Screenshots: `_incoming/batch9/shots/{bedroom_full_v4,boudoir_full_v4,dressing_full_v4,lab_closeup}.png`, `garderobe_door_states.{gif,png}`, `gramophone_canary.gif`; layout `_incoming/layouts/layout_dressing_v3.png`; candidate sheets `_incoming/batch9/*_sheet.png`.
+
+## 2026-10-20 (10) — Batch 10 (budget 75): study scale, trophy heads, chandelier, items
+
+Spent **63** (balance 913 → 850). Style images: dressing `upload:04726783-…`, bedroom `upload:ddc0f33a-…`, boudoir `upload:45874cac-…` (batch 9 uploads). Raw output: `_incoming/batch10/` (candidate sheets `*_sheet.png`).
+
+| Output | Tool | Seed / job | Cost | a / b | Prompt (subject) |
+|---|---|---|---|---|---|
+| `bookcase/` 52×104 (9) | `create_image_pro`, style = dressing | 3801 / `829126c5-2735-483e-95da-1f1b46b4d9b1` | 10 | 0 / 4 | "A very tall narrow gothic bookcase… seen strictly from the front… five shelves full of old leather books, glass jars of dried herbs, a pressed-flower herbarium album lying open… Much taller than wide" |
+| `griffin/` 48×48 (25) | `create_image_pro`, style = bedroom | 3802 / `8773f496-f508-48ba-9776-e2a6cec34cc7` | 10 | 0 / 9 | "A mounted trophy head of a cute cartoon griffin on a wooden shield-shaped wall plaque… strictly from the front… big friendly round eyes… comical not scary… soft shadow under it" |
+| `unicorn/` 48×48 (25) | same | 3803 / `c6b9a418-f1d6-4710-9c47-1b98e1e10156` | 10 | 16 / 1 | "…cute cartoon unicorn… spiral pearly golden horn, pastel pink and lilac mane… slightly offended sad expression… no blood" |
+| `dragon/` 48×48 (25) | same | 3804 / `73b25f0c-ab76-4661-b006-bf7b1b0ba960` | 10 | 12 / 1 | "…cute small cartoon green dragon… two little curved horns… big goofy eyes, the mouth wide open showing a dark empty mouth with small blunt teeth" |
+| `chandelier/` 80×80 (9) | `create_image_pro`, style = boudoir | 3805 / `d1860659-733d-48e3-8ef0-17e76df4fbaf` | 15 | 0 / 8 | "A gothic wrought iron chandelier… six white wax candles… many small clear crystal pendants and teardrop prisms… a short iron chain going up to the top edge" |
+| `fallen_0.png` 80×80 | `edit_image_pro_flash` of chandelier 0 (`upload:e35ff851-…`) | 3809 / `e8ca301f-1835-4aa1-8a28-6deb3851c3ec` | 5 | — | "The same iron chandelier after it fell down: it lies crashed on the floor… bent ring, arms broken off, candles knocked over and snuffed out, crystal shards… One large clear triangular crystal prism lies intact in front" |
+| `key_0.png` 24×24 | `create_image_pixen` | 3806 / `37c0f0da-…` | 1 | — | "a small old iron key with a round ornate bow and a simple bit, slightly rusty" |
+| `prism_0.png` 24×24 | pixen | 3807 / `9fec0680-…` | 1 | — | "a clear glass crystal prism, triangular, faceted, with a tiny rainbow glint" |
+| `ball_0.png` 20×20 | pixen | 3808 / `6d62ee3f-…` | 1 | — | "an old worn brown leather ball with stitched panels, scuffed, round" |
+
+Notes: all picks trimmed to the alpha bbox. Swinging = rotation of the hanging sprite around the ceiling hook (`components/chandelier.gd`), no extra frames. lab_closeup not generated (temporary `bg_mortar_closeup_v3` until 18.11).
+Screenshots: `_incoming/batch10/shots/{dressing_full_v5,bedroom_tidy,boudoir_tidy,dressing_tidy,trophy_heads}.png`, `chandelier_states.{gif,png}`.
