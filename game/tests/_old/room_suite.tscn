@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://m61tl8w2iasj"]
+
+[ext_resource type="Script" uid="uid://wn2kq1k0d0fq" path="res://tests/_old/room_suite.gd" id="1_760eu"]
+[ext_resource type="PackedScene" uid="uid://cncn8av2q5ljf" path="res://tests/_old/bedroom_v4.tscn" id="2_760eu"]
+[ext_resource type="Texture2D" uid="uid://duob16v2e8b0m" path="res://assets/approved/room_princess_boudoir.png" id="3_760eu"]
+[ext_resource type="PackedScene" uid="uid://bnma3mn24fjf2" path="res://tests/_old/dressing_v1_b.tscn" id="4_760eu"]
+[ext_resource type="SpriteFrames" path="res://tests/_old/hero_anim_frames.tres" id="6_i14qy"]
+
+[sub_resource type="Gradient" id="Gradient_0wy33"]
+colors = PackedColorArray(0.05, 0.03, 0.1, 0.6, 0.05, 0.03, 0.1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oks54"]
+gradient = SubResource("Gradient_0wy33")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_7un4x"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lw1bj"]
+gradient = SubResource("Gradient_7un4x")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_wsbpr"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_21v1k"]
+gradient = SubResource("Gradient_wsbpr")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_l7yx2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cfhkc"]
+gradient = SubResource("Gradient_l7yx2")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="RoomSuite" type="Node2D" unique_id=1521159345 node_paths=PackedStringArray("hero", "camera", "hero_anim")]
+script = ExtResource("1_760eu")
+hero = NodePath("Hero")
+camera = NodePath("Camera")
+hero_anim = NodePath("Hero/Anim")
+
+[node name="Bedroom" parent="." unique_id=543311375 instance=ExtResource("2_760eu")]
+
+[node name="Boudoir" type="Sprite2D" parent="." unique_id=1015439632]
+position = Vector2(640, 0)
+texture = ExtResource("3_760eu")
+centered = false
+
+[node name="Dressing" parent="." unique_id=2147051576 instance=ExtResource("4_760eu")]
+position = Vector2(1280, 0)
+
+[node name="Hero" type="Node2D" parent="." unique_id=1882859850]
+position = Vector2(1460, 300)
+
+[node name="Shadow" type="Sprite2D" parent="Hero" unique_id=1675189924]
+scale = Vector2(0.6, 0.22)
+texture = SubResource("GradientTexture2D_oks54")
+
+[node name="Anim" type="AnimatedSprite2D" parent="Hero" unique_id=1352195101]
+position = Vector2(0, -30)
+sprite_frames = ExtResource("6_i14qy")
+animation = &"idle_south"
+
+[node name="Camera" type="Camera2D" parent="." unique_id=556710227]
+position = Vector2(320, 180)
+
+[node name="Night" type="CanvasModulate" parent="." unique_id=1358448349]
+color = Color(0.2901961, 0.26666668, 0.40784314, 1)
+
+[node name="Lights" type="Node2D" parent="." unique_id=1253184547]
+
+[node name="MoonBoudoir" type="PointLight2D" parent="Lights" unique_id=2070492977]
+position = Vector2(1090, 170)
+color = Color(0.7882353, 0.7137255, 1, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_lw1bj")
+texture_scale = 2.0
+
+[node name="SconceBoudoir1" type="PointLight2D" parent="Lights" unique_id=234426999]
+position = Vector2(643, 155)
+color = Color(1, 0.63529414, 0.34117648, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_21v1k")
+texture_scale = 0.7
+
+[node name="SconceBoudoir2" type="PointLight2D" parent="Lights" unique_id=2032147390]
+position = Vector2(852, 155)
+color = Color(1, 0.63529414, 0.34117648, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_cfhkc")
+texture_scale = 0.7

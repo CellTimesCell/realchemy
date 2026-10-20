@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://fohqe0k3b4d0"]
+
+[ext_resource type="Texture2D" uid="uid://bur56m3bm50hb" path="res://assets/approved/window_view_tower.png" id="1_v5ile"]
+[ext_resource type="Texture2D" uid="uid://mmog85gwia5l" path="res://assets/approved/window_clouds.png" id="2_fte1l"]
+[ext_resource type="Script" uid="uid://ctixhav3chr8h" path="res://tests/_old/scroll_region.gd" id="3_lb262"]
+[ext_resource type="Texture2D" uid="uid://b8vftgfu4x2du" path="res://assets/_incoming/rooms/dressing/dressing_v1_a_room.png" id="4_kjyww"]
+[ext_resource type="Material" path="res://tests/_old/cobweb_sway_tr.tres" id="5_3iev4"]
+[ext_resource type="Texture2D" uid="uid://criu0vatqxjfw" path="res://assets/_incoming/rooms/hybrid_bedroom/web_torn.png" id="6_38rg1"]
+[ext_resource type="Material" path="res://tests/_old/cobweb_sway_top.tres" id="7_v5h7g"]
+[ext_resource type="Texture2D" uid="uid://bkyrgqwi8vsgl" path="res://assets/_incoming/rooms/hybrid_bedroom/web_hanging.png" id="8_jcb1e"]
+[ext_resource type="Script" uid="uid://1ae6dmiswhqj" path="res://tests/_old/light_flicker.gd" id="9_0xt6u"]
+
+[sub_resource type="Gradient" id="Gradient_4imv8"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(1, 0.95, 0.6, 1, 1, 0.55, 0.15, 1, 0.8, 0.15, 0.05, 0)
+
+[sub_resource type="Gradient" id="Gradient_ffmbc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c6xl5"]
+gradient = SubResource("Gradient_ffmbc")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_mh8c2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oodk2"]
+gradient = SubResource("Gradient_mh8c2")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Dressing" type="Node2D" unique_id=2147051576]
+
+[node name="SkyBG" type="ColorRect" parent="." unique_id=1416758113]
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 140.0
+offset_bottom = 210.0
+color = Color(0.16862746, 0.14509805, 0.32156864, 1)
+
+[node name="Sky" type="Sprite2D" parent="." unique_id=519924003]
+position = Vector2(36, 125)
+texture = ExtResource("1_v5ile")
+centered = false
+
+[node name="Clouds" type="Sprite2D" parent="." unique_id=493960300]
+position = Vector2(60, 140)
+texture = ExtResource("2_fte1l")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 64)
+script = ExtResource("3_lb262")
+
+[node name="Room" type="Sprite2D" parent="." unique_id=1476975827]
+texture = ExtResource("4_kjyww")
+centered = false
+
+[node name="WebTorn" type="Sprite2D" parent="." unique_id=687514738]
+material = ExtResource("5_3iev4")
+position = Vector2(560, 10)
+texture = ExtResource("6_38rg1")
+centered = false
+flip_h = true
+
+[node name="WebHanging" type="Sprite2D" parent="." unique_id=2022131883]
+material = ExtResource("7_v5h7g")
+position = Vector2(330, 0)
+texture = ExtResource("8_jcb1e")
+centered = false
+
+[node name="Flame1" type="CPUParticles2D" parent="." unique_id=1468847292]
+position = Vector2(295, 152)
+amount = 16
+lifetime = 0.45
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 18.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_4imv8")
+
+[node name="Torch1" type="PointLight2D" parent="Flame1" unique_id=682653655]
+color = Color(1, 0.63529414, 0.34117648, 1)
+texture = SubResource("GradientTexture2D_c6xl5")
+texture_scale = 0.9
+script = ExtResource("9_0xt6u")
+
+[node name="WindowMoon" type="PointLight2D" parent="." unique_id=1284980734]
+position = Vector2(100, 260)
+color = Color(0.7254902, 0.78431374, 1, 1)
+texture = SubResource("GradientTexture2D_oodk2")
+texture_scale = 1.4
+script = ExtResource("9_0xt6u")
+base_energy = 0.5
+amount = 0.12
+speed = 0.8
+irregular = false
+
+[node name="Flame2" type="CPUParticles2D" parent="." unique_id=1982682576]
+position = Vector2(393, 150)
+amount = 16
+lifetime = 0.45
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 18.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_4imv8")
+
+[node name="Torch1" type="PointLight2D" parent="Flame2" unique_id=292773505]
+color = Color(1, 0.63529414, 0.34117648, 1)
+texture = SubResource("GradientTexture2D_c6xl5")
+texture_scale = 0.9
+script = ExtResource("9_0xt6u")
+
+[node name="Flame3" type="CPUParticles2D" parent="." unique_id=1652626940]
+position = Vector2(510, 145)
+amount = 16
+lifetime = 0.45
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 10.0
+initial_velocity_max = 18.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_4imv8")
+
+[node name="Torch1" type="PointLight2D" parent="Flame3" unique_id=2132413044]
+color = Color(1, 0.63529414, 0.34117648, 1)
+texture = SubResource("GradientTexture2D_c6xl5")
+texture_scale = 0.9
+script = ExtResource("9_0xt6u")

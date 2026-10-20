@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d02m5jgbkj2d"]
+
+[ext_resource type="Texture2D" uid="uid://dlikq7ul2f0no" path="res://assets/_incoming/rooms/princess_chamber/center_a.png" id="1_42klm"]
+[ext_resource type="Texture2D" uid="uid://cg52gt1bvwwrr" path="res://assets/_incoming/rooms/princess_chamber/center_b.png" id="2_2noy1"]
+[ext_resource type="Texture2D" uid="uid://epxcg2xwww8l" path="res://assets/_incoming/style_test/round6/hero_v7_a.png" id="3_2noy1"]
+
+[sub_resource type="Gradient" id="Gradient_mak08"]
+colors = PackedColorArray(0.05, 0.03, 0.1, 0.6, 0.05, 0.03, 0.1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bpfu"]
+gradient = SubResource("Gradient_mak08")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_j0gws"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aj8sk"]
+gradient = SubResource("Gradient_j0gws")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pyd22"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cxml7"]
+gradient = SubResource("Gradient_pyd22")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="ScaleCheck" type="Node2D" unique_id=1737565894]
+
+[node name="ShellA" type="Sprite2D" parent="." unique_id=631140]
+visible = false
+texture = ExtResource("1_42klm")
+centered = false
+
+[node name="ShellB" type="Sprite2D" parent="." unique_id=1352493178]
+texture = ExtResource("2_2noy1")
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1602813742]
+position = Vector2(404, 260)
+scale = Vector2(0.6, 0.22)
+texture = SubResource("GradientTexture2D_4bpfu")
+
+[node name="Hero" type="Sprite2D" parent="." unique_id=1438579097]
+position = Vector2(404, 230)
+texture = ExtResource("3_2noy1")
+
+[node name="Night" type="CanvasModulate" parent="." unique_id=651923489]
+color = Color(0.22745098, 0.20784314, 0.34509805, 1)
+
+[node name="MoonLight" type="PointLight2D" parent="." unique_id=465471170]
+position = Vector2(540, 200)
+color = Color(0.7882353, 0.7137255, 1, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_aj8sk")
+texture_scale = 2.2
+
+[node name="CandleLight" type="PointLight2D" parent="." unique_id=85235378]
+position = Vector2(378, 242)
+color = Color(1, 0.63529414, 0.34117648, 1)
+energy = 1.3
+texture = SubResource("GradientTexture2D_cxml7")
+texture_scale = 0.7
