@@ -3,13 +3,15 @@ extends AnimatedSprite2D
 ## The canary in the boudoir cage. Lives on its own: sits, preens, chirps and
 ## hops between perches. It is the "danger sensor": when the player starts a
 ## reaction with a dangerous by-product (EventBus.danger_reaction_started) it
-## flaps in alarm and chirps fast - a warning, never a goal.
+## flaps in alarm and chirps fast - a warning, never a goal. While the
+## gramophone plays (EventBus.music_played) it sings along: bobs and chirps.
 ## Position = a perch; `perches` are the perch points in the parent's space.
 
 const HOP_HEIGHT: float = 4.0
 const HOP_TIME: float = 0.35
 const ALARM_TIME: float = 3.0
 const ALARM_CHIRP_GAP: float = 0.25
+const SING_GAP: float = 0.3
 
 @export var perches: Array[Vector2] = []
 @export var chirp: AudioStreamPlayer2D
@@ -19,12 +21,14 @@ const ALARM_CHIRP_GAP: float = 0.25
 @export var debug_keys: bool = false
 
 var alarmed: bool = false
+var singing: bool = false
 var _perch: int = 0
 var _busy: bool = false
 
 
 func _ready() -> void:
 	EventBus.danger_reaction_started.connect(func(_id: String) -> void: alarm())
+	EventBus.music_played.connect(sing_along)
 	if not perches.is_empty():
 		position = perches[0]
 	play("sit")
@@ -55,10 +59,28 @@ func alarm() -> void:
 	alarmed = false
 
 
+## Sings while the music plays: bobs a pixel and chirps on every beat.
+func sing_along(playing: bool) -> void:
+	if singing == playing:
+		return
+	singing = playing
+	if not playing:
+		return
+	var base: Vector2 = position
+	var up: bool = false
+	while singing and is_inside_tree():
+		if not alarmed:
+			up = not up
+			position = base + (Vector2(0, -1) if up else Vector2.ZERO)
+			_chirp(randf_range(1.1, 1.5))
+		await get_tree().create_timer(SING_GAP).timeout
+	position = base
+
+
 func _live() -> void:
 	while is_inside_tree():
 		await get_tree().create_timer(randf_range(min_pause, max_pause)).timeout
-		if alarmed:
+		if alarmed or singing:
 			continue
 		var roll: float = randf()
 		if roll < 0.35:

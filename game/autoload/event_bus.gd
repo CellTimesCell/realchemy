@@ -35,6 +35,9 @@ signal danger_reaction_started(reaction_id: String)
 ## A harp string was played (index into the harp's notes). Groundwork for a
 ## music puzzle.
 signal harp_note_played(note_index: int)
+## The boudoir gramophone started (true) or stopped (false) playing. The canary
+## sings along.
+signal music_played(playing: bool)
 
 ## A player setting changed (SaveManager), e.g. "text_size".
 signal settings_changed(key: String)

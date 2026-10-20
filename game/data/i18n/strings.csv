@@ -91,3 +91,15 @@ SIGN_OUT_OF_ORDER,"OUT OF
 ORDER"
 SAY_MUSIC_STAND,"A music stand. Someone was practicing. Badly, judging by the cello."
 SAY_SHEET_TAKEN,Sheet music. A melody... or a very angry shopping list.
+UI_USE,Use
+UI_LOOK,Look
+UI_WIND_UP,Wind up
+SAY_BOOKCASE,"""Chemistry for Bored Princesses"", volume three."
+SAY_BOOKCASE_HERBS,"Jars of dried herbs. Every label says ""Do not eat"" in a different handwriting."
+SAY_TELESCOPE,Ninety-seven years of stargazing. And not one prince.
+SAY_GLOBE,"The castle isn't on the map. Someone drew it in by hand, with a little heart."
+SAY_LAB_TABLE,She was doing chemistry up here. For ninety years.
+SAY_LAB_MORTAR,A mortar and pestle. Crushing things to powder: the oldest trick in chemistry.
+SAY_LAB_CANDLE,A candle burner. Gentle heat for patient chemists.
+SAY_RECORDS,Squid Row. Bon Jovial. Deaf Leopard. The princess had... a very specific taste in music.
+SAY_GRAMOPHONE,Even the canary knows the words.
