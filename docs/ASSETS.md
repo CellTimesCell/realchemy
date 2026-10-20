@@ -39,16 +39,23 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `props/{painting_count(+_eyes),painting_madam,tiger_skin_rug,bedside_rug,chest(+_ajar,_open),folding_screen,harp34,x_chair,plush_bear,cello,oval_rug,still_life,dress_form,laundry_basket,full_length_mirror,worn_rug,coat_stand}.png` | suite furniture picks (a/b per Alexander) + fixes: portrait regenerated 60×72, tiger regenerated 136×56, bedside rug b muted, basket b darker | Suite furniture | approved 19.10.2026; other variants rejected |
 | `bg_mortar_closeup_v3.png` | `_incoming/style_test/round2/bg_mortar_closeup_v3.png` | Close-up reference: rendering and light | **sleeves must be redone** (pink bathrobe → striped pajamas) |
 
+| `rooms/garderobe/posters/poster_*.png`, `nail.png`, `tape.png`, `toilet_paper.png` | posters v2 + fixtures + holder on a bracket | First-person garderobe v3 | approved 20.10.2026 |
+| `props/boudoir/{music_stand,sheet_music,floor_candelabra}.png` | batch 8 pixen | Boudoir music corner (stand, 3 sheets, 5-candle candelabra) | approved 20.10.2026 |
+| `props/painting_madam.png` | — | **reserve** (removed from the bedroom 20.10.2026; only the Count stays, in the arched niche) | not in the scene |
+
 ## Pending review (`game/assets/pending/`, tracked, not approved)
 Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → deleted.
 
 | File | What |
 |---|---|
-| `pending/rooms/room_princess_bedroom.png` | bedroom with the big ornate garderobe door (inpaint) — replaces `approved/room_princess_bedroom.png` in the scene |
-| `pending/props/garderobe_door_v2_{ajar,open}.png` | the ornate door's states (door area only) |
+| `pending/rooms/room_princess_bedroom.png` | bedroom with the **pointed-arch** garderobe door (inpaint batch 9, mask (432,136)+56×110) — replaces `approved/room_princess_bedroom.png` in the scene |
+| `pending/props/garderobe_door_v3_{ajar,open}.png` | the pointed door's states (changed pixels inside the door mask only, 120×192 crop at (400,72)) |
+| `pending/suite/garderobe_sign.png` | wooden plaque on a chain (hangs on the door ring; "OUT OF ORDER" by font on the plank) |
+| `pending/suite/bedside_rug_v2.png` (+`_b`) | round faded pink rug with ornate border and fringe, ×2 |
+| `pending/suite/folding_screen_v2.png` (+`_b`) | folding screen ~65 px (~1.1 hero) |
+| `pending/suite/{bookcase,bookcase34,lab_table,telescope,globe}.png` (+`_b`) | princess study (dressing room, left zone) |
+| `pending/suite/{gramophone,record_crate}.png` (+`_b`) | boudoir music corner |
 | `pending/props/dressing_gate.png` | gate bars (rattles) |
-| `pending/garderobe/posters/*`, `nail.png`, `tape.png`, `toilet_paper.png` (holder on a bracket + roll + hanging end) | garderobe |
-| `pending/suite/{floor_candelabra,music_stand,sheet_music}.png` | boudoir music corner + 5-candle candelabra |
 
 ---|---|
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
@@ -916,3 +923,25 @@ Spent **38** (balance 1045 → 1007). After this: pause until 18.11.2026 (CLAUDE
 
 Script work: Count eye band (rows 33–37) as the eyes overlay; bedside rug b desaturated/darkened; basket b darkened; door pasted into the bedroom, state overlays = door area only. Old small-door overlays (`approved/props/garderobe_arch_*`) deleted.
 Screenshots: `_incoming/garderobe/garderobe_v3.png`; `_incoming/batch8/shots/{bedroom_full_v3,boudoir_full_v3,dressing_full_v3}.png`, `eyes_follow_v2.gif`; `_incoming/layouts/layout_boudoir_v3.png`.
+
+## 2026-10-20 (9) — Batch 9 (budget 100): bedroom fixes, princess study, gramophone
+
+Spent **94** (balance 1007 → 913). Style images (uploads 19.10/20.10): bedroom `upload:ddc0f33a-a66e-42f1-b669-51c389de8e81` (pending bedroom), dressing `upload:04726783-8c93-40f0-ba81-a5a924200e76`, boudoir `upload:45874cac-497a-4865-99d7-266d7cf5e7d8`. Raw output: `_incoming/batch9/`. Variants a (in the scene) / b (next to it in `pending/suite/`).
+
+| Output | Tool | Seed / job | Cost | a / b | Prompt (subject) |
+|---|---|---|---|---|---|
+| `arch_door_pointed_0.png` | `inpaint_image_pro_flash` on the arch crop (400,72)+120×192 (`upload:36976264-…`), mask (32,64,56,110) | 3701 / `cd65dd7d-d063-49ba-a351-97cfc65dff77` | 6 | — | "Between the tied-back red velvet curtains: a narrow ornate closed door with a POINTED gothic arch top that follows the shape of the surrounding stone arch, standing on the floor; dark carved wood with gilded trim, gold scrollwork along the pointed edge and a big gold ring handle… fits fully between the curtains and does not overlap them… No sign, no plaque, no text. Front view, same lighting." |
+| `arch_door_pointed_{ajar,open}.png` | `edit_image_pro_flash` of the door (`upload:0e42c99e-…`) | 3711 `216a4b51-…`, 3712 `1901eff2-…` | 12 | — | "…slightly ajar: the right half of the door leaf swung a little inward, a narrow dark gap with a thin line of warm candle light" / "…wide open… the pointed doorway shows a warm candle-lit tiny stone room inside" |
+| `sign/sign_0.png` 28×28 | `create_image_pixen` | 3713 / `4fbcb104-…` | 1 | — | "a small rectangular old wooden plaque sign hanging from a short thin iron chain shaped like an upside-down V… blank… no text"; plank widened by 8 px (script) |
+| `bedside_rug/` 104×40 (4) | `create_image_pro`, style = bedroom | 3702 / `139b7b9e-079a-487d-b9da-c1b7f5efdf07` | 10 | 1 / 2 | "A large round faded pink rug lying completely flat… ornate darker rose border with a woven floral pattern ring, a medallion pattern in the middle, short cream fringe all around… not a plate, not a dish" |
+| `folding_screen/` 60×84 (9) | `create_image_pro`, style = bedroom | 3703 / `5af40a59-f8dd-460f-8b1b-437431e84ffd` | 15 | 0 / 8 | "A tall gothic three-panel folding screen… slim panels with pointed arched tops… painted with faded pink roses and small birds, turned three-quarters to the right" |
+| `bookcase/` 48×84 (16) | `create_image_pro`, style = dressing | 3704 / `0eda8672-9e6b-45aa-b105-e87d2e730015` | 10 | 5 / 11 | "A tall narrow gothic bookcase… seen strictly from the front… old leather books, glass jars of dried herbs, a pressed-flower herbarium album lying open… dusty, a cobweb" |
+| `bookcase34/` 52×84 (16) | `create_image_pro`, style = dressing | 3705 / `5f2819c6-82ba-4943-bd8b-4b4a7f9a3468` | 15 | 3 / 9 | same, "turned three-quarters to the right (we see its front and its left side panel)" |
+| `lab_table/` 64×48 (16) | `create_image_pro`, style = dressing | 3706 / `913c11d9-d0c3-4652-80ed-42d1dbe0d300` | 10 | 2 / 9 | "A small old wooden work table… glass flasks with coloured liquids, a stone mortar and pestle, a tiny copper alembic, small brass scales, a little candle burner, scattered handwritten notes" |
+| `gramophone/` 48×64 (16) | `create_image_pro`, style = boudoir | 3707 / `9b0cdd99-8521-4e49-b7d5-b69ed44091c3` | 10 | 0 / 12 | "An antique gramophone with a large flared brass horn on a small square wooden cabinet… crank handle… turned three-quarters to the left" |
+| `telescope/` 48×72 | pixen | 3708 / `f911bb03-…` | 1 | — | "an antique brass telescope on a tall wooden tripod, the long brass tube tilted up…" (flip_h in the scene to aim at the window) |
+| `globe_0.png` 32×48 | pixen | 3714 / `8c69481d-…` | 1 | — | "an antique world globe on a carved wooden floor stand with three curved legs and a brass meridian ring" |
+| `record_crate/` 32×32 ×3 | pixen | 3715 `a57678cd-…`, 3716 `ae3e3f40-…`, 3717 `ed3e5403-…` | 3 | 2 / 1 | #0, #1 read as a chest with a lid; #2: "a wooden slatted crate made of horizontal planks, open top, no lid, no hinges, full of vinyl record sleeves standing upright…" |
+
+Notes: inpaint keeps unmasked bytes → only the mask rect is pasted into the bedroom; edit states → only pixels that differ from the closed door inside the mask. The pro grid of `bookcase` was fetched as one 4×4 sheet from the gallery asset (job download expired) and split by script.
+Screenshots: `_incoming/batch9/shots/{bedroom_full_v4,boudoir_full_v4,dressing_full_v4,lab_closeup}.png`, `garderobe_door_states.{gif,png}`, `gramophone_canary.gif`; layout `_incoming/layouts/layout_dressing_v3.png`; candidate sheets `_incoming/batch9/*_sheet.png`.
