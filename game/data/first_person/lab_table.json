@@ -1,0 +1,12 @@
+{
+	"_doc": "First-person close-up: the princess's lab table in the study (dressing room, left zone). The work place for reactions in the suite (Squeeze orange etc. come with L-4). Placeholder picture: approved/bg_mortar_closeup_v3.png (480x270) centred at (80, 45). Rects are [x, y, w, h] in the 640x360 screen. See docs/DATA_SCHEMA.md.",
+	"type": "first_person",
+	"id": "lab_table",
+	"enter_line_key": "SAY_LAB_TABLE",
+	"hotspots": [
+		{"id": "mortar", "rect": [258, 168, 230, 117],
+			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_LAB_MORTAR"}]},
+		{"id": "candle", "rect": [80, 165, 34, 105],
+			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_LAB_CANDLE"}]}
+	]
+}

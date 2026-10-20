@@ -1,0 +1,85 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/first_person_view.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/approved/bg_mortar_closeup_v3.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/approved/rooms/garderobe/hand_point.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/approved/rooms/garderobe/hand_grab.png" id="11"]
+
+[node name="LabTableView" type="CanvasLayer" node_paths=PackedStringArray("content", "cursor", "verb_menu", "monologue", "monologue_label", "back_button", "closeup", "closeup_row")]
+layer = 15
+script = ExtResource("1")
+data_path = "res://data/first_person/lab_table.json"
+content = NodePath("Content")
+cursor = NodePath("Cursor")
+cursor_point = ExtResource("10")
+cursor_grab = ExtResource("11")
+verb_menu = NodePath("UI/VerbMenu")
+monologue = NodePath("UI/Monologue")
+monologue_label = NodePath("UI/Monologue/Text")
+back_button = NodePath("UI/Back")
+closeup = NodePath("UI/Closeup")
+closeup_row = NodePath("UI/Closeup/Buttons")
+
+[node name="Content" type="Node2D" parent="."]
+
+[node name="Frame" type="ColorRect" parent="Content"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.06, 0.04, 0.08, 1)
+
+[node name="Background" type="Sprite2D" parent="Content"]
+position = Vector2(80, 45)
+texture = ExtResource("2")
+centered = false
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 24.0
+focus_mode = 0
+text = "UI_BACK"
+
+[node name="VerbMenu" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 40.0
+
+[node name="Closeup" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 270.0
+offset_right = 430.0
+offset_bottom = 300.0
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Closeup"]
+layout_mode = 2
+alignment = 1
+
+[node name="Monologue" type="PanelContainer" parent="UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 316.0
+offset_right = 560.0
+offset_bottom = 350.0
+mouse_filter = 2
+
+[node name="Text" type="Label" parent="UI/Monologue"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Cursor" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("10")
+centered = false
+offset = Vector2(-4, -8)
