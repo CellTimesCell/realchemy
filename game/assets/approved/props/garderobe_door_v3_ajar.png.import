@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nwvrih4fe12g"
-path="res://.godot/imported/bookcase34.png-bd608daaf3906470625d19f8fcafb42a.ctex"
+uid="uid://dkc3orephrysd"
+path="res://.godot/imported/garderobe_door_v3_ajar.png-999007c5d97a5ed50502287d7c9af514.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/bookcase34.png"
-dest_files=["res://.godot/imported/bookcase34.png-bd608daaf3906470625d19f8fcafb42a.ctex"]
+source_file="res://assets/approved/props/garderobe_door_v3_ajar.png"
+dest_files=["res://.godot/imported/garderobe_door_v3_ajar.png-999007c5d97a5ed50502287d7c9af514.ctex"]
 
 [params]
 

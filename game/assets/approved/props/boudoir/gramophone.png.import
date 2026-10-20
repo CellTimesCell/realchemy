@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fcofyqq5ra3"
-path="res://.godot/imported/bedside_rug_v2.png-1c017b63d6bb16360df40a1b06c712b7.ctex"
+uid="uid://cbgscwat11tn"
+path="res://.godot/imported/gramophone.png-67f13fc36becd3675e7fb96f7f5231b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/bedside_rug_v2.png"
-dest_files=["res://.godot/imported/bedside_rug_v2.png-1c017b63d6bb16360df40a1b06c712b7.ctex"]
+source_file="res://assets/approved/props/boudoir/gramophone.png"
+dest_files=["res://.godot/imported/gramophone.png-67f13fc36becd3675e7fb96f7f5231b6.ctex"]
 
 [params]
 

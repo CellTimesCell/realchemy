@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq2neehj0wryy"
-path="res://.godot/imported/bedside_rug_v2_b.png-9db467c7212132646be0733e63b4ebab.ctex"
+uid="uid://b8tulmuhk1nwp"
+path="res://.godot/imported/globe.png-8326fb9dfb63395117e089ad716aec04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/bedside_rug_v2_b.png"
-dest_files=["res://.godot/imported/bedside_rug_v2_b.png-9db467c7212132646be0733e63b4ebab.ctex"]
+source_file="res://assets/approved/props/study/globe.png"
+dest_files=["res://.godot/imported/globe.png-8326fb9dfb63395117e089ad716aec04.ctex"]
 
 [params]
 

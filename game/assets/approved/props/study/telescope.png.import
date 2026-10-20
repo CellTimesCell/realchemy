@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtcbc7q4wj0fj"
-path="res://.godot/imported/garderobe_door_v3_ajar.png-e09c6f7d270c6eca6db9835023ea08c6.ctex"
+uid="uid://cvca1qijbvh6v"
+path="res://.godot/imported/telescope.png-1e84f380dca28af5cf23fa570afadec7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_door_v3_ajar.png"
-dest_files=["res://.godot/imported/garderobe_door_v3_ajar.png-e09c6f7d270c6eca6db9835023ea08c6.ctex"]
+source_file="res://assets/approved/props/study/telescope.png"
+dest_files=["res://.godot/imported/telescope.png-1e84f380dca28af5cf23fa570afadec7.ctex"]
 
 [params]
 

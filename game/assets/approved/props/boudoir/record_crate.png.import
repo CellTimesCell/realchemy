@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://keaq14jbncpm"
-path="res://.godot/imported/room_princess_bedroom.png-c285bad4a6c80bba8351cfa07e0bdda7.ctex"
+uid="uid://cjyx5yx13cyeh"
+path="res://.godot/imported/record_crate.png-b36c02516100e4ed6164372322a40afe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/rooms/room_princess_bedroom.png"
-dest_files=["res://.godot/imported/room_princess_bedroom.png-c285bad4a6c80bba8351cfa07e0bdda7.ctex"]
+source_file="res://assets/approved/props/boudoir/record_crate.png"
+dest_files=["res://.godot/imported/record_crate.png-b36c02516100e4ed6164372322a40afe.ctex"]
 
 [params]
 

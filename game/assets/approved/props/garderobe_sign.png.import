@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yhc332xfkhv"
-path="res://.godot/imported/globe.png-f9bb26a339278ba0d560d6bbe1f6a859.ctex"
+uid="uid://xksor7a2ugap"
+path="res://.godot/imported/garderobe_sign.png-78ebb5be51afb08a594aaffa78f3d439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/globe.png"
-dest_files=["res://.godot/imported/globe.png-f9bb26a339278ba0d560d6bbe1f6a859.ctex"]
+source_file="res://assets/approved/props/garderobe_sign.png"
+dest_files=["res://.godot/imported/garderobe_sign.png-78ebb5be51afb08a594aaffa78f3d439.ctex"]
 
 [params]
 

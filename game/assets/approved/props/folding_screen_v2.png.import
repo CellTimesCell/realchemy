@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfuiogf52niox"
-path="res://.godot/imported/bookcase34_b.png-bc525e3e80453738bfdadecac283110c.ctex"
+uid="uid://bq116y6yqf1s0"
+path="res://.godot/imported/folding_screen_v2.png-4b253de8c343da68b8c5aadaaf01b613.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/bookcase34_b.png"
-dest_files=["res://.godot/imported/bookcase34_b.png-bc525e3e80453738bfdadecac283110c.ctex"]
+source_file="res://assets/approved/props/folding_screen_v2.png"
+dest_files=["res://.godot/imported/folding_screen_v2.png-4b253de8c343da68b8c5aadaaf01b613.ctex"]
 
 [params]
 

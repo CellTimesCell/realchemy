@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24g007xbx8m"
-path="res://.godot/imported/garderobe_sign.png-6f61654d89297999143e503963f91ad4.ctex"
+uid="uid://bs3ct2f2e0w3g"
+path="res://.godot/imported/bedside_rug_v2.png-8d1f5665ea3f0f424dd69042cf5a5bb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/garderobe_sign.png"
-dest_files=["res://.godot/imported/garderobe_sign.png-6f61654d89297999143e503963f91ad4.ctex"]
+source_file="res://assets/approved/props/bedside_rug_v2.png"
+dest_files=["res://.godot/imported/bedside_rug_v2.png-8d1f5665ea3f0f424dd69042cf5a5bb0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg3b3v7j20cg6"
-path="res://.godot/imported/garderobe_door_v3_open.png-8d0f9cd4331cb31758ce911e98b0c69e.ctex"
+uid="uid://juhwavsapw0o"
+path="res://.godot/imported/garderobe_door_v3_open.png-6692015b2619063bde5ad0a521c07010.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_door_v3_open.png"
-dest_files=["res://.godot/imported/garderobe_door_v3_open.png-8d0f9cd4331cb31758ce911e98b0c69e.ctex"]
+source_file="res://assets/approved/props/garderobe_door_v3_open.png"
+dest_files=["res://.godot/imported/garderobe_door_v3_open.png-6692015b2619063bde5ad0a521c07010.ctex"]
 
 [params]
 
