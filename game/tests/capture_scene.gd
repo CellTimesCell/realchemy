@@ -7,6 +7,7 @@ extends SceneTree
 ##   [tex=Props/A/Sprite>res://a.png;Props/B/Sprite>res://b.png] (swap textures)
 ##   [face=east|west|north|south] [input=ui_accept] [key=I] (pressed after wait)
 ##   [hold=show_all] (action held during the shots) [uivariant=A|B]
+##   [hide=Props/A/B;Props/C] [show=Props/D] (hide / show nodes)
 ##   [fpverb=GarderobeView:hotspot_id:verb_index;...] (after call, waits 30 frames between)
 
 var _args: Dictionary = {}
@@ -38,6 +39,12 @@ func _run() -> void:
 	if _args.has("call"):
 		var target: PackedStringArray = (_args["call"] as String).split(":")
 		scene.get_node(target[0]).call(target[1])
+	if _args.has("hide"):
+		for path: String in (_args["hide"] as String).split(";"):
+			(scene.get_node(path) as CanvasItem).visible = false
+	if _args.has("show"):
+		for path: String in (_args["show"] as String).split(";"):
+			(scene.get_node(path) as CanvasItem).visible = true
 	if hero and _args.get("hidehero", "0") == "1":
 		hero.visible = false
 	if _args.has("fpverb"):
