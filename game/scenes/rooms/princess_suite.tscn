@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/rooms/fx/scroll_region.gd" id="4"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_l.png" id="5"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom_tracery_r.png" id="6"]
-[ext_resource type="Texture2D" path="res://assets/pending/rooms/room_princess_bedroom.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/approved/room_princess_bedroom.png" id="7"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_boudoir.png" id="8"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing_tracery.png" id="9"]
 [ext_resource type="Texture2D" path="res://assets/approved/room_princess_dressing.png" id="10"]
@@ -59,8 +59,8 @@
 [ext_resource type="Shader" path="res://shaders/iris.gdshader" id="58"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_ajar.png" id="59"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/secretary_princess_ajar.png" id="60"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_door_v3_ajar.png" id="61"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/garderobe_door_v3_open.png" id="62"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_door_v3_ajar.png" id="61"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_door_v3_open.png" id="62"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_drawer_closed.png" id="63"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_drawer_open.png" id="64"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate.png" id="65"]
@@ -84,7 +84,6 @@
 [ext_resource type="Texture2D" path="res://assets/approved/props/plush_bear.png" id="81"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/cello.png" id="82"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/oval_rug.png" id="83"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/floor_candelabra.png" id="84"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/still_life.png" id="85"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/dress_form.png" id="86"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/laundry_basket.png" id="87"]
@@ -93,19 +92,26 @@
 [ext_resource type="Texture2D" path="res://assets/approved/props/coat_stand.png" id="90"]
 [ext_resource type="Script" path="res://components/following_eyes.gd" id="91"]
 
-[ext_resource type="Texture2D" path="res://assets/pending/suite/bedside_rug_v2.png" id="b9_bedside_rug_v2"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/folding_screen_v2.png" id="b9_folding_screen_v2"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/garderobe_sign.png" id="b9_garderobe_sign"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/bookcase.png" id="b9_bookcase"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/bookcase34.png" id="b9_bookcase34"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/bedside_rug_v2.png" id="b9_bedside_rug_v2"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/folding_screen_v2.png" id="b9_folding_screen_v2"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_sign.png" id="b9_garderobe_sign"]
 [ext_resource type="Texture2D" path="res://assets/pending/suite/lab_table.png" id="b9_lab_table"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/telescope.png" id="b9_telescope"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/globe.png" id="b9_globe"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/gramophone.png" id="b9_gramophone"]
-[ext_resource type="Texture2D" path="res://assets/pending/suite/record_crate.png" id="b9_record_crate"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/study/telescope.png" id="b9_telescope"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/study/globe.png" id="b9_globe"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/gramophone.png" id="b9_gramophone"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/boudoir/record_crate.png" id="b9_record_crate"]
 [ext_resource type="Script" path="res://components/gramophone.gd" id="b9_gramophone_gd"]
 [ext_resource type="Script" path="res://components/closeup_prop.gd" id="b9_closeup_gd"]
 [ext_resource type="PackedScene" path="res://scenes/first_person/lab_table_view.tscn" id="b9_lab_view"]
+
+[ext_resource type="Texture2D" path="res://assets/pending/suite/bookcase_v2.png" id="b10_bookcase_v2"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/trophy_griffin.png" id="b10_trophy_griffin"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/trophy_unicorn.png" id="b10_trophy_unicorn"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/trophy_dragon.png" id="b10_trophy_dragon"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/chandelier.png" id="b10_chandelier"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/chandelier_fallen.png" id="b10_chandelier_fallen"]
+[ext_resource type="Texture2D" path="res://assets/pending/items/ball.png" id="b10_ball"]
+[ext_resource type="Script" path="res://components/chandelier.gd" id="b10_chandelier_gd"]
 
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -358,6 +364,24 @@ size = Vector2(22, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b9_RecordCrate_hs"]
 size = Vector2(46, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b10_TrophyGriffin_hs"]
+size = Vector2(58, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b10_TrophyUnicorn_hs"]
+size = Vector2(55, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b10_TrophyDragon_hs"]
+size = Vector2(53, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b9_Ball_hs"]
+size = Vector2(32, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b9_Bookcase_body"]
+size = Vector2(34, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b9_Bookcase_hs"]
+size = Vector2(58, 26)
+
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
 y_sort_enabled = true
 script = ExtResource("1")
@@ -526,7 +550,7 @@ material = SubResource("ShaderMaterial_9")
 [node name="Rugs" type="Node2D" parent="."]
 
 [node name="TigerSkinRug" type="Node2D" parent="Rugs"]
-position = Vector2(470, 348)
+position = Vector2(474, 348)
 
 [node name="Sprite" type="Sprite2D" parent="Rugs/TigerSkinRug"]
 texture = ExtResource("73")
@@ -553,7 +577,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="BedsideRug" type="Node2D" parent="Rugs"]
-position = Vector2(196, 330)
+position = Vector2(112, 330)
 
 [node name="Sprite" type="Sprite2D" parent="Rugs/BedsideRug"]
 texture = ExtResource("b9_bedside_rug_v2")
@@ -607,7 +631,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="WornRug" type="Node2D" parent="Rugs"]
-position = Vector2(1664, 346)
+position = Vector2(1738, 346)
 
 [node name="Sprite" type="Sprite2D" parent="Rugs/WornRug"]
 texture = ExtResource("89")
@@ -730,13 +754,13 @@ text = "UI_PICK_UP"
 y_sort_enabled = true
 
 [node name="BedBlanket" type="Sprite2D" parent="Props"]
-position = Vector2(132, 250)
+position = Vector2(112, 250)
 centered = false
 offset = Vector2(-84, -104)
 texture = ExtResource("16")
 
 [node name="Bed" type="Node2D" parent="Props"]
-position = Vector2(132, 298)
+position = Vector2(112, 298)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Bed"]
 position = Vector2(0, -6)
@@ -773,7 +797,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="BedUnder" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
-position = Vector2(160, 298)
+position = Vector2(140, 298)
 script = ExtResource("20")
 interactable_id = "bed_under"
 hotspot = NodePath("Hotspot")
@@ -801,7 +825,7 @@ autowrap_mode = 3
 text = "UI_LOOK_UNDER"
 
 [node name="Nightstand" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "sprite", "fx_point")]
-position = Vector2(212, 268)
+position = Vector2(192, 268)
 script = ExtResource("20")
 interactable_id = "nightstand"
 hotspot = NodePath("Hotspot")
@@ -1020,7 +1044,7 @@ autowrap_mode = 3
 text = "UI_OPEN"
 
 [node name="Birdcage" type="Node2D" parent="Props"]
-position = Vector2(1000, 264)
+position = Vector2(986, 264)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Birdcage"]
 position = Vector2(0, -2)
@@ -1080,7 +1104,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="OrangeTree" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "fx_point")]
-position = Vector2(1206, 264)
+position = Vector2(1210, 264)
 script = ExtResource("20")
 interactable_id = "orange_tree"
 hotspot = NodePath("Hotspot")
@@ -1124,7 +1148,7 @@ autowrap_mode = 3
 text = "UI_PICK_ORANGE"
 
 [node name="Harp" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "player")]
-position = Vector2(1094, 268)
+position = Vector2(1099, 268)
 script = ExtResource("50")
 hotspot = NodePath("Hotspot")
 player = NodePath("Strings")
@@ -1243,7 +1267,7 @@ autowrap_mode = 3
 text = "UI_OPEN"
 
 [node name="PaintingCount" type="Node2D" parent="Props"]
-position = Vector2(110, 148)
+position = Vector2(112, 148)
 
 [node name="Sprite" type="Sprite2D" parent="Props/PaintingCount"]
 texture = ExtResource("70")
@@ -1277,7 +1301,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="NightstandL" type="Node2D" parent="Props"]
-position = Vector2(55, 268)
+position = Vector2(36, 268)
 
 [node name="Sprite" type="Sprite2D" parent="Props/NightstandL"]
 texture = ExtResource("63")
@@ -1509,95 +1533,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="FloorCandelabra" type="Node2D" parent="Props"]
-position = Vector2(946, 368)
-
-[node name="Sprite" type="Sprite2D" parent="Props/FloorCandelabra"]
-texture = ExtResource("84")
-centered = false
-offset = Vector2(-21, -69)
-
-[node name="Flame0" type="CPUParticles2D" parent="Props/FloorCandelabra"]
-position = Vector2(-15, -51)
-amount = 5
-lifetime = 0.3
-direction = Vector2(0, -1)
-spread = 6.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-color_ramp = SubResource("Gradient_6")
-
-[node name="Flame1" type="CPUParticles2D" parent="Props/FloorCandelabra"]
-position = Vector2(-8, -63)
-amount = 5
-lifetime = 0.3
-direction = Vector2(0, -1)
-spread = 6.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-color_ramp = SubResource("Gradient_6")
-
-[node name="Flame2" type="CPUParticles2D" parent="Props/FloorCandelabra"]
-position = Vector2(0, -68)
-amount = 5
-lifetime = 0.3
-direction = Vector2(0, -1)
-spread = 6.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-color_ramp = SubResource("Gradient_6")
-
-[node name="Flame3" type="CPUParticles2D" parent="Props/FloorCandelabra"]
-position = Vector2(14, -58)
-amount = 5
-lifetime = 0.3
-direction = Vector2(0, -1)
-spread = 6.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-color_ramp = SubResource("Gradient_6")
-
-[node name="Flame4" type="CPUParticles2D" parent="Props/FloorCandelabra"]
-position = Vector2(10, -48)
-amount = 5
-lifetime = 0.3
-direction = Vector2(0, -1)
-spread = 6.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-color_ramp = SubResource("Gradient_6")
-
-[node name="Light" type="PointLight2D" parent="Props/FloorCandelabra"]
-position = Vector2(0, -60)
-color = Color(1, 0.72, 0.42, 1)
-energy = 1.1
-texture = SubResource("GradientTexture2D_2")
-texture_scale = 0.7
-
-[node name="Hotspot" type="Area2D" parent="Props/FloorCandelabra" node_paths=PackedStringArray("prompt")]
-script = ExtResource("15")
-prompt = NodePath("Prompt")
-prompt_text = "UI_INSPECT"
-say_key = "SAY_CANDELABRA"
-
-[node name="Shape" type="CollisionShape2D" parent="Props/FloorCandelabra/Hotspot"]
-position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_63")
-
-[node name="Prompt" type="Label" parent="Props/FloorCandelabra/Hotspot"]
-offset_left = -90.0
-offset_top = -110.0
-offset_right = 90.0
-offset_bottom = -86.0
-horizontal_alignment = 1
-autowrap_mode = 3
-text = "UI_INSPECT"
-
 [node name="StillLife" type="Node2D" parent="Props"]
 position = Vector2(862, 206)
 
@@ -1825,91 +1760,8 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="Bookcase" type="Node2D" parent="Props"]
-position = Vector2(1303, 247)
-
-[node name="Shadow" type="Sprite2D" parent="Props/Bookcase"]
-position = Vector2(0, -2)
-scale = Vector2(0.35, 0.45)
-texture = ExtResource("23")
-
-[node name="Sprite" type="Sprite2D" parent="Props/Bookcase"]
-texture = ExtResource("b9_bookcase")
-centered = false
-offset = Vector2(-23, -84)
-
-[node name="Body" type="StaticBody2D" parent="Props/Bookcase"]
-
-[node name="Collision" type="CollisionShape2D" parent="Props/Bookcase/Body"]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_b9_Bookcase_body")
-
-[node name="Hotspot" type="Area2D" parent="Props/Bookcase" node_paths=PackedStringArray("prompt")]
-script = ExtResource("15")
-prompt = NodePath("Prompt")
-prompt_text = "UI_INSPECT"
-say_key = "SAY_BOOKCASE"
-
-[node name="Shape" type="CollisionShape2D" parent="Props/Bookcase/Hotspot"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_b9_Bookcase_hs")
-
-[node name="Prompt" type="Label" parent="Props/Bookcase/Hotspot"]
-offset_left = -90.0
-offset_top = -114.0
-offset_right = 90.0
-offset_bottom = -90.0
-horizontal_alignment = 1
-autowrap_mode = 3
-text = "UI_INSPECT"
-
-[node name="BookcaseSide" type="Node2D" parent="Props"]
-position = Vector2(1300, 346)
-
-[node name="Shadow" type="Sprite2D" parent="Props/BookcaseSide"]
-position = Vector2(0, -2)
-scale = Vector2(0.28, 0.45)
-texture = ExtResource("23")
-
-[node name="Sprite" type="Sprite2D" parent="Props/BookcaseSide"]
-texture = ExtResource("b9_bookcase34")
-centered = false
-offset = Vector2(-18, -70)
-
-[node name="Glow" type="PointLight2D" parent="Props/BookcaseSide"]
-position = Vector2(0, -35)
-color = Color(1, 0.78, 0.55, 1)
-energy = 0.45
-texture = SubResource("GradientTexture2D_2")
-texture_scale = 0.22
-
-[node name="Body" type="StaticBody2D" parent="Props/BookcaseSide"]
-
-[node name="Collision" type="CollisionShape2D" parent="Props/BookcaseSide/Body"]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_b9_BookcaseSide_body")
-
-[node name="Hotspot" type="Area2D" parent="Props/BookcaseSide" node_paths=PackedStringArray("prompt")]
-script = ExtResource("15")
-prompt = NodePath("Prompt")
-prompt_text = "UI_INSPECT"
-say_key = "SAY_BOOKCASE_HERBS"
-
-[node name="Shape" type="CollisionShape2D" parent="Props/BookcaseSide/Hotspot"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_b9_BookcaseSide_hs")
-
-[node name="Prompt" type="Label" parent="Props/BookcaseSide/Hotspot"]
-offset_left = -90.0
-offset_top = -100.0
-offset_right = 90.0
-offset_bottom = -76.0
-horizontal_alignment = 1
-autowrap_mode = 3
-text = "UI_INSPECT"
-
 [node name="LabTable" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "view")]
-position = Vector2(1392, 302)
+position = Vector2(1388, 250)
 script = ExtResource("b9_closeup_gd")
 hotspot = NodePath("Hotspot")
 view = NodePath("../../LabTableView")
@@ -1956,7 +1808,7 @@ autowrap_mode = 3
 text = "UI_USE"
 
 [node name="Telescope" type="Node2D" parent="Props"]
-position = Vector2(1421, 244)
+position = Vector2(1440, 244)
 
 [node name="Sprite" type="Sprite2D" parent="Props/Telescope"]
 texture = ExtResource("b9_telescope")
@@ -1990,7 +1842,7 @@ autowrap_mode = 3
 text = "UI_LOOK"
 
 [node name="Globe" type="Node2D" parent="Props"]
-position = Vector2(1455, 268)
+position = Vector2(1302, 346)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Globe"]
 position = Vector2(0, -2)
@@ -2117,6 +1969,189 @@ offset_bottom = -38.0
 horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
+
+[node name="TrophyGriffin" type="Node2D" parent="Props"]
+position = Vector2(53, 146)
+
+[node name="Sprite" type="Sprite2D" parent="Props/TrophyGriffin"]
+texture = ExtResource("b10_trophy_griffin")
+centered = false
+offset = Vector2(-19, -44)
+
+[node name="Hotspot" type="Area2D" parent="Props/TrophyGriffin" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_TROPHY_GRIFFIN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/TrophyGriffin/Hotspot"]
+position = Vector2(0, 124)
+shape = SubResource("RectangleShape2D_b10_TrophyGriffin_hs")
+
+[node name="Prompt" type="Label" parent="Props/TrophyGriffin/Hotspot"]
+offset_left = -90.0
+offset_top = -74.0
+offset_right = 90.0
+offset_bottom = -50.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="TrophyUnicorn" type="Node2D" parent="Props"]
+position = Vector2(171, 146)
+
+[node name="Sprite" type="Sprite2D" parent="Props/TrophyUnicorn"]
+texture = ExtResource("b10_trophy_unicorn")
+centered = false
+offset = Vector2(-17, -44)
+
+[node name="Hotspot" type="Area2D" parent="Props/TrophyUnicorn" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_TROPHY_UNICORN"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/TrophyUnicorn/Hotspot"]
+position = Vector2(0, 124)
+shape = SubResource("RectangleShape2D_b10_TrophyUnicorn_hs")
+
+[node name="Prompt" type="Label" parent="Props/TrophyUnicorn/Hotspot"]
+offset_left = -90.0
+offset_top = -74.0
+offset_right = 90.0
+offset_bottom = -50.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="TrophyDragon" type="Node2D" parent="Props"]
+position = Vector2(221, 146)
+
+[node name="Sprite" type="Sprite2D" parent="Props/TrophyDragon"]
+texture = ExtResource("b10_trophy_dragon")
+centered = false
+offset = Vector2(-16, -39)
+
+[node name="Hotspot" type="Area2D" parent="Props/TrophyDragon" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_TROPHY_DRAGON"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/TrophyDragon/Hotspot"]
+position = Vector2(0, 124)
+shape = SubResource("RectangleShape2D_b10_TrophyDragon_hs")
+
+[node name="Prompt" type="Label" parent="Props/TrophyDragon/Hotspot"]
+offset_left = -90.0
+offset_top = -69.0
+offset_right = 90.0
+offset_bottom = -45.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Ball" type="Node2D" parent="Props"]
+position = Vector2(760, 306)
+
+[node name="Sprite" type="Sprite2D" parent="Props/Ball"]
+texture = ExtResource("b10_ball")
+centered = false
+offset = Vector2(-8, -15)
+
+[node name="Hotspot" type="Area2D" parent="Props/Ball" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BALL"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Ball/Hotspot"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_b9_Ball_hs")
+
+[node name="Prompt" type="Label" parent="Props/Ball/Hotspot"]
+offset_left = -90.0
+offset_top = -43.0
+offset_right = 90.0
+offset_bottom = -19.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="ChandelierFallen" type="Node2D" parent="Props"]
+position = Vector2(1100, 318)
+
+[node name="Sprite" type="Sprite2D" parent="Props/ChandelierFallen"]
+texture = ExtResource("b10_chandelier_fallen")
+centered = false
+offset = Vector2(-37, -49)
+
+[node name="Bookcase" type="Node2D" parent="Props"]
+position = Vector2(1306, 248)
+
+[node name="Shadow" type="Sprite2D" parent="Props/Bookcase"]
+position = Vector2(0, -2)
+scale = Vector2(0.32, 0.45)
+texture = ExtResource("23")
+
+[node name="Sprite" type="Sprite2D" parent="Props/Bookcase"]
+texture = ExtResource("b10_bookcase_v2")
+centered = false
+offset = Vector2(-21, -96)
+
+[node name="Glow" type="PointLight2D" parent="Props/Bookcase"]
+position = Vector2(0, -48)
+color = Color(1, 0.78, 0.55, 1)
+energy = 0.45
+texture = SubResource("GradientTexture2D_2")
+texture_scale = 0.22
+
+[node name="Body" type="StaticBody2D" parent="Props/Bookcase"]
+
+[node name="Collision" type="CollisionShape2D" parent="Props/Bookcase/Body"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_b9_Bookcase_body")
+
+[node name="Hotspot" type="Area2D" parent="Props/Bookcase" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BOOKCASE"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Bookcase/Hotspot"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_b9_Bookcase_hs")
+
+[node name="Prompt" type="Label" parent="Props/Bookcase/Hotspot"]
+offset_left = -90.0
+offset_top = -126.0
+offset_right = 90.0
+offset_bottom = -102.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Chandelier" type="Node2D" parent="." node_paths=PackedStringArray("hanging", "fallen")]
+z_index = 3
+position = Vector2(1100, 0)
+script = ExtResource("b10_chandelier_gd")
+hanging = NodePath("Hanging")
+fallen = NodePath("../Props/ChandelierFallen")
+floor_y = 318.0
+
+[node name="Hanging" type="Node2D" parent="Chandelier"]
+
+[node name="Sprite" type="Sprite2D" parent="Chandelier/Hanging"]
+texture = ExtResource("b10_chandelier")
+centered = false
+offset = Vector2(-30, 0)
+
+[node name="Light" type="PointLight2D" parent="Chandelier/Hanging"]
+position = Vector2(0, 40)
+color = Color(1, 0.72, 0.42, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_2")
+texture_scale = 0.6
 
 [node name="LetterScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("text_label", "next_arrow")]
 layer = 10
