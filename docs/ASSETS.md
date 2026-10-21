@@ -11,7 +11,7 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 |---|---|---|---|
 | `count_adult_front_b.png` | `_incoming/style_test/round3/count_adult_front_b.png` | Count, front view; **style reference for all characters** | |
 | `hero_v7_a.png` | `_incoming/style_test/round6/hero_v7_a.png` | Hero base, front view | light slightly cooler than the count — align at T-26 |
-| `room_princess_boudoir.png` | `_incoming/rooms/princess_chamber/pano_center_a.png` | Boudoir — center room of the princess suite | |
+| `room_princess_boudoir.png` | `_incoming/rooms/princess_chamber/pano_center_a.png` | Boudoir — center room of the princess suite | **legacy** (21.10.2026): enfilade background, used in `princess_suite.tscn` until the one-room-per-screen rooms replace it |
 | `hero_pose_34.png` | `_incoming/hero_anim/pose34/pose_1802_fixed.png` | Hero base pose: 3/4, lowered arm, slippers recolored to v7 a (rows 57–63 copied from `hero_v7_a.png`) | animations not yet approved |
 | `room_princess_bedroom.png` | `_incoming/rooms/bedroom_v4/bedroom_v5_room.png` (rerender A 2001; v2: whole window openings cut, tracery moved to its own layer) | Princess bedroom (left room of the suite) | live layers: `window_view_tower.png`, `window_clouds.png` + flames/lights in scene |
 | `window_view_tower.png` | `_incoming/rooms/bedroom_v4/view_tower_2102.png` (center crop, lit windows painted out) | Shared window view for all suite windows | |
@@ -979,3 +979,7 @@ Spent **50** (balance 840 → 790). Style image: dressing `upload:d2494b67-…`.
 
 Notes: no scaling anywhere (the 75 % head copies from pass 2 are deleted). Eyes / lids drawn by script on the portrait's own palette (3×2 whites, 1 px pupil; lids = skin + lash line). Yawn overlays keep only the face pixels that changed and are opaque (the animated frames lost the painting's dark background inside the frame).
 Screenshots / GIFs: `_incoming/batch11/shots/`.
+
+## 2026-10-21 — Suite v2: one room per screen
+- **Legacy** (used only in `scenes/rooms/princess_suite.tscn` until the 5 new rooms are ready): `room_princess_bedroom*.png` (incl. `_v5`, tracery, pillar), `room_princess_boudoir*.png` (incl. `_v2`), `room_princess_dressing*.png`.
+- **Reused** in the new rooms: all approved furniture and props (`approved/props/**`, `items/**`, `creatures/**`, characters).
