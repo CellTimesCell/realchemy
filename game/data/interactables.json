@@ -51,6 +51,12 @@
 		"line_key": "SAY_STOCKINGS_TAKEN", "empty_line_key": "SAY_BASKET_EMPTY",
 		"prompt_after_empty": "UI_INSPECT"
 	},
+	"trophy_dragon": {
+		"pose": "interact_high", "anim": "none",
+		"item": {"id": "coin", "count": 1, "color": "#f0d040", "letter": "c"},
+		"line_key": "SAY_DRAGON_COIN", "empty_line_key": "SAY_TROPHY_DRAGON",
+		"prompt_after_empty": "UI_INSPECT"
+	},
 	"sheet_music": {
 		"pose": "interact_low", "anim": "none", "hide_when_empty": true,
 		"item": {"id": "sheet_music", "count": 1, "color": "#efe2bf", "letter": "n"},

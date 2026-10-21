@@ -51,3 +51,11 @@ func test_batch10_lines_exist() -> void:
 	for key: String in ["SAY_TROPHY_GRIFFIN", "SAY_TROPHY_UNICORN", "SAY_TROPHY_DRAGON",
 			"UI_REACH_IN", "SAY_DRAGON_COIN", "SAY_BALL", "SAY_CHANDELIER"]:
 		assert_true(text.contains("\n" + key + ","), key)
+
+
+func test_dragon_head_holds_a_coin() -> void:
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/interactables.json"))
+	var dragon: Dictionary = data["trophy_dragon"]
+	assert_eq(dragon["pose"], "interact_high")
+	assert_eq(dragon["item"]["id"], "coin")
+	assert_eq(dragon["line_key"], "SAY_DRAGON_COIN")
