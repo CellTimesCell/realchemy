@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/emote.gd" id="30"]
+[ext_resource type="Script" path="res://components/reaction_player.gd" id="31"]
+[ext_resource type="Script" path="res://components/hero.gd" id="35"]
+[ext_resource type="SpriteFrames" path="res://assets/approved/hero/hero_frames.tres" id="36"]
+[ext_resource type="SpriteFrames" path="res://assets/approved/ui/emotes/emote_frames.tres" id="41"]
+[ext_resource type="Script" path="res://components/speech_bubble.gd" id="66"]
+
+[sub_resource type="Gradient" id="Gradient_3"]
+colors = PackedColorArray(0.05, 0.03, 0.1, 0.6, 0.05, 0.03, 0.1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4"]
+gradient = SubResource("Gradient_3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_19"]
+size = Vector2(14, 6)
+
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("anim", "reactions", "bubble")]
+motion_mode = 1
+script = ExtResource("35")
+anim = NodePath("Anim")
+reactions = NodePath("Reactions")
+bubble = NodePath("Bubble")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.22)
+texture = SubResource("GradientTexture2D_4")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
+sprite_frames = ExtResource("36")
+animation = &"idle_south"
+
+[node name="Feet" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_19")
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="Head_Top" type="Marker2D" parent="Head"]
+position = Vector2(-8, -62)
+
+[node name="Forehead" type="Marker2D" parent="Head"]
+position = Vector2(-6, -53)
+
+[node name="Temple_L" type="Marker2D" parent="Head"]
+position = Vector2(-17, -52)
+
+[node name="Temple_R" type="Marker2D" parent="Head"]
+position = Vector2(0, -52)
+
+[node name="Emote" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("head", "body")]
+sprite_frames = ExtResource("41")
+animation = &"question"
+script = ExtResource("30")
+character = "hero"
+head = NodePath("../Head")
+body = NodePath("../Anim")
+
+[node name="Bubble" type="PanelContainer" parent="." node_paths=PackedStringArray("anchor")]
+script = ExtResource("66")
+anchor = NodePath("../Head/Head_Top")
+
+[node name="Reactions" type="Node" parent="." node_paths=PackedStringArray("anim", "emote")]
+script = ExtResource("31")
+character = "hero"
+anim = NodePath("../Anim")
+emote = NodePath("../Emote")
+idle_animation = "idle_south"
