@@ -312,3 +312,9 @@
 - L-5: верстак (сок, соль), ржавчина как процесс реального времени с табличкой над замком, шпилька (DEX), открытая решётка → тёмный проход, свеча → «To be continued»; ключ → garderobe; код 5309 → сундук → рюкзак + Кодекс; бабушка в шкафу, знакомство, 3 загадки; кнопки пульта — 3 джингла-заглушки с подписями пародий.
 - L-6: веб-сборка (Compatibility, однопоточная), `tools/build_web.py`, проверена в Chrome через `python -m http.server`; zip `build/realchemy_web.zip`.
 - Проверено: GUT 75/75 (новые: test_inventory, test_stats_hints, test_save, test_throw, test_suite_chain — вся цепочка с сохранением посередине). GIF/PNG — `_incoming/batchD/shots/`.
+
+## 2026-10-21 · Покои v2: документы + спальня R1
+- Документы: «одна комната = один экран» (ART_PIPELINE §3.4), карта покоев v2 (CASTLE §1), GAME_DESIGN §3.3a, PUZZLES v2.0 (адреса), TASKS «Покои v2», CLAUDE.md п. 15, ASSETS (legacy-фоны).
+- R1 спальни: 4 × pixen — все с колонной посередине; 2 × pro (стиль будуара + эскиз раскладки) — цельные комнаты. Варианты a / b / c в `pending/rooms/v2/`.
+- Сцена `scenes/rooms/v2/bedroom.tscn`: Background (коробка + слой неба за ней), LiveLayers, Props (пусто), Doors (3 заглушки с подписью и хотспотом), Hero (новая сцена `scenes/characters/hero.tscn` — копия героя из старой сцены), Walls (пол-трапеция), Camera, Night, Lights (две луны + тёплый), AboveNight. Старая `princess_suite.tscn` не тронута.
+- Расход: 54 генерации (790 → 736).

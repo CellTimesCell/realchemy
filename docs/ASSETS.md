@@ -983,3 +983,16 @@ Screenshots / GIFs: `_incoming/batch11/shots/`.
 ## 2026-10-21 — Suite v2: one room per screen
 - **Legacy** (used only in `scenes/rooms/princess_suite.tscn` until the 5 new rooms are ready): `room_princess_bedroom*.png` (incl. `_v5`, tracery, pillar), `room_princess_boudoir*.png` (incl. `_v2`), `room_princess_dressing*.png`.
 - **Reused** in the new rooms: all approved furniture and props (`approved/props/**`, `items/**`, `creatures/**`, characters).
+
+## 2026-10-21 (R1) — Bedroom v2: empty shell (budget 60)
+
+Spent **54** (balance 790 → 736). Raw output: `_incoming/v2/bedroom/`. Variants (pending, one file each): `pending/rooms/v2/bedroom_shell_{a,b,c}.png`.
+
+| Output | Tool | Seed / job | Cost | Note |
+|---|---|---|---|---|
+| `shell_px_1..4.png` 640×360 | `create_image_pixen` | 2026102101–04 / `1cbd2f2a-…`, `712eaac9-…`, `71ba4b8f-…`, `8cb61604-…` | 4 × 1 | all four split the frame into two bays with a central pier (the §3.5 pixen habit) → **c** = #4 kept only for comparison |
+| `shell_pro_1.png` → **a** | `create_image_pro`, style = `approved/room_princess_boudoir.png`, reference = own flat layout sketch (`layout_sketch.png`, "layout and composition only") | 2026102111 / `bb43f68b-b430-49e5-8444-08e9d3f4c39b` | 25 | one room, arcade of slim pilasters, torn wallpaper |
+| `shell_pro_2.png` → **b** | same | 2026102112 / `008db344-564d-4dc4-8ce6-e4572f7bbb67` | 25 | one room, wide plain centre wall with wallpaper panels (recommended) |
+
+Prompt (pixen, Alexander's): "bare empty stone room shell of a gothic castle tower chamber, single cohesive room filling a wide 16:9 frame, back wall facing the viewer straight-on, two tall pointed gothic windows placed symmetrically with night sky and moonlight, empty plain center of the back wall, faded torn pink rose wallpaper panels between stone pilasters, a small pointed arched wooden door in the back wall right of center, open arched doorways in the left and right side walls, wide dark wooden plank floor across the whole foreground, ribbed vaulted ceiling, cobwebs only in the upper corners, diorama camera slightly from above, completely empty: no furniture, no bed, no fireplace, no rug, no candles, no curtains, no characters, nothing on the floor". Pro: the same + "ONE single cohesive room … no pillars or columns in the middle of the image … no torches, no paintings".
+Lesson: for one-room shells pixen keeps drawing two bays; a flat-colour layout sketch as a pro reference (composition only) fixes the composition.
