@@ -1,0 +1,21 @@
+{
+	"_doc": "Items the hero can carry (systems/items/item_db.gd). name_key / desc_key are i18n keys (desc = the hero's line on Inspect). icon: approved sprite or empty -> placeholder square in `color` with `letter` (CLAUDE.md §8). stack: several in one slot. special: picked up but not stored (backpack grows the pockets, handbook opens the Codex). tags feed ChemistryEngine. See docs/DATA_SCHEMA.md.",
+	"matches": {"name_key": "ITEM_MATCHES", "desc_key": "DESC_MATCHES", "color": "#d8b070", "letter": "M", "tags": ["fire_source", "tool"]},
+	"coin": {"name_key": "ITEM_COIN", "desc_key": "DESC_COIN", "color": "#f0d040", "letter": "c", "stack": true, "tags": ["metal"]},
+	"orange": {"name_key": "ITEM_ORANGE", "desc_key": "DESC_ORANGE", "color": "#f7a21e", "letter": "o", "stack": true, "tags": ["fruit", "acid_source"]},
+	"orange_juice": {"name_key": "ITEM_ORANGE_JUICE", "desc_key": "DESC_ORANGE_JUICE", "color": "#ffb340", "letter": "j", "tags": ["liquid", "acid", "rust_remover"]},
+	"salted_juice": {"name_key": "ITEM_SALTED_JUICE", "desc_key": "DESC_SALTED_JUICE", "color": "#ffd890", "letter": "J", "tags": ["liquid", "acid", "rust_remover", "abrasive"]},
+	"salt": {"name_key": "ITEM_SALT", "desc_key": "DESC_SALT", "color": "#f2f2f2", "letter": "s", "tags": ["mineral", "abrasive"]},
+	"hairpin": {"name_key": "ITEM_HAIRPIN", "desc_key": "DESC_HAIRPIN", "color": "#e0c060", "letter": "h", "tags": ["metal", "tool", "lockpick"]},
+	"stockings": {"name_key": "ITEM_STOCKINGS", "desc_key": "DESC_STOCKINGS", "color": "#e8b0c8", "letter": "s", "tags": ["cloth", "filter"]},
+	"sheet_music": {"name_key": "ITEM_SHEET_MUSIC", "desc_key": "DESC_SHEET_MUSIC", "color": "#efe2bf", "letter": "n", "stack": true, "tags": ["paper"]},
+	"toilet_paper": {"name_key": "ITEM_TOILET_PAPER", "desc_key": "DESC_TOILET_PAPER", "color": "#f4f0e8", "letter": "t", "tags": ["paper"]},
+	"ball": {"name_key": "ITEM_BALL", "desc_key": "DESC_BALL", "icon": "res://assets/approved/items/ball.png", "color": "#8a5a30", "letter": "b", "tags": ["throwable"]},
+	"key": {"name_key": "ITEM_KEY", "desc_key": "DESC_KEY", "icon": "res://assets/approved/items/key.png", "color": "#9a9aa8", "letter": "k", "tags": ["metal", "key"]},
+	"crystal_prism": {"name_key": "ITEM_CRYSTAL_PRISM", "desc_key": "DESC_CRYSTAL_PRISM", "icon": "res://assets/approved/items/crystal_prism.png", "color": "#c8f0ff", "letter": "p", "tags": ["glass", "optics"]},
+	"candle": {"name_key": "ITEM_CANDLE", "desc_key": "DESC_CANDLE", "color": "#f0ead0", "letter": "C", "tags": ["wax", "flammable"]},
+	"lit_candle": {"name_key": "ITEM_LIT_CANDLE", "desc_key": "DESC_LIT_CANDLE", "color": "#ffd070", "letter": "L", "tags": ["light", "fire_source"]},
+	"silver_spoon": {"name_key": "ITEM_SILVER_SPOON", "desc_key": "DESC_SILVER_SPOON", "color": "#d8dce4", "letter": "S", "tags": ["metal", "silver"]},
+	"backpack": {"name_key": "ITEM_BACKPACK", "desc_key": "DESC_BACKPACK", "color": "#7a5a3a", "letter": "B", "special": "backpack"},
+	"handbook": {"name_key": "ITEM_HANDBOOK", "desc_key": "DESC_HANDBOOK", "color": "#5a3a6a", "letter": "H", "special": "codex"}
+}

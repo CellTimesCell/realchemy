@@ -10,8 +10,11 @@ const HOP_HEIGHT: float = 12.0
 const HOP_TIME: float = 0.3
 const HOLD_TIME: float = 0.35
 const FLY_TIME: float = 0.45
-## Screen point the item flies to (base resolution 640x360).
+## Screen point the item flies to (base resolution 640x360); the HUD sets
+## it to its bag button.
 const CORNER: Vector2 = Vector2(620, 18)
+
+static var target: Vector2 = CORNER
 
 var color: Color = Color(1, 0.6, 0.2)
 var letter: String = "?"
@@ -53,7 +56,7 @@ func play() -> void:
 	await hop.finished
 	await get_tree().create_timer(HOLD_TIME).timeout
 	# The layer follows the camera: turn the screen corner into world coords.
-	var corner: Vector2 = get_viewport().get_canvas_transform().affine_inverse() * CORNER
+	var corner: Vector2 = get_viewport().get_canvas_transform().affine_inverse() * target
 	var fly: Tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	fly.tween_property(self, "global_position", corner, FLY_TIME)
 	fly.parallel().tween_property(self, "scale", Vector2(0.5, 0.5), FLY_TIME)

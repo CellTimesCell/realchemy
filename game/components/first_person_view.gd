@@ -146,13 +146,22 @@ func run_verb(entry: Dictionary, verb: Dictionary) -> void:
 				fx.restart()
 				fx.emitting = true
 			AudioManager.play_sfx(verb.get("sfx", ""))
+		"react":
+			# The workbench: chemistry from the hero's things (ChemistryEngine).
+			var result: Dictionary = ChemistryEngine.run(verb.get("reaction", ""))
+			if result["ok"]:
+				AudioManager.play_sfx(verb.get("sfx", ""))
+			say(result["line_key"])
+			return
 		"take":
 			var item_node: CanvasItem = content.get_node_or_null(verb.get("target", "")) as CanvasItem
 			if item_node and item_node.visible:
-				item_node.visible = false
 				var item: Dictionary = verb.get("item", {})
+				if not GameManager.give_item(item.get("id", "")):
+					say(GameManager.POCKETS_FULL_KEY)
+					return
+				item_node.visible = false
 				ItemPop.spawn(get_tree(), (item_node as Node2D).global_position, Color(item.get("color", "#ffffff")), item.get("letter", "?"))
-				EventBus.item_found.emit(item.get("id", ""))
 				_used[entry.get("id", "")] = true
 	say(verb.get("line_key", ""))
 

@@ -21,6 +21,10 @@ var _facing: String = "south"
 
 
 func _ready() -> void:
+	EventBus.hero_line_requested.connect(func(key: String) -> void:
+		if bubble and not key.is_empty():
+			bubble.say(key))
+	EventBus.hero_pose_requested.connect(func(pose: String) -> void: play_pose(pose))
 	if reactions:
 		reactions.reaction_finished.connect(func(_name: String) -> void: _facing = "south")
 

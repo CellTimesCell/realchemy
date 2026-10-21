@@ -113,3 +113,79 @@ SAY_CHANDELIER,"Iron, crystals and two hundred years of dust. Hanging right abov
 SAY_BATS_MISSED,Missed. Obviously.
 SAY_MOUSE,Even the mice want out.
 SAY_PORTRAIT_YAWN,Did that painting just... yawn?
+ITEM_MATCHES,Matches
+DESC_MATCHES,Matches. A few left. Don't waste them.
+ITEM_COIN,Coin
+DESC_COIN,A gold coin. The castle tips well.
+ITEM_ORANGE,Orange
+DESC_ORANGE,"Ripe, round and very sour."
+ITEM_ORANGE_JUICE,Orange juice
+DESC_ORANGE_JUICE,Fresh orange juice. Sour enough to scare rust.
+ITEM_SALTED_JUICE,Salted juice
+DESC_SALTED_JUICE,Orange juice with salt. A crime against breakfast.
+ITEM_SALT,Salt
+DESC_SALT,A pinch of salt from Grandma.
+ITEM_HAIRPIN,Hairpin
+DESC_HAIRPIN,A princess's hairpin. Bent just right.
+ITEM_STOCKINGS,Stockings
+DESC_STOCKINGS,Silk stockings. Very clean. Hopefully.
+ITEM_SHEET_MUSIC,Sheet music
+DESC_SHEET_MUSIC,A page of harp music.
+ITEM_TOILET_PAPER,Toilet paper
+DESC_TOILET_PAPER,Royal toilet paper. Soft. Scented.
+ITEM_BALL,Ball
+DESC_BALL,An old leather ball. Bouncy enough.
+ITEM_KEY,Key
+DESC_KEY,A small iron key. It fell out of the chandelier.
+ITEM_CRYSTAL_PRISM,Crystal prism
+DESC_CRYSTAL_PRISM,A crystal prism. Rainbows included.
+ITEM_CANDLE,Candle
+DESC_CANDLE,A wax candle. Needs a flame.
+ITEM_LIT_CANDLE,Lit candle
+DESC_LIT_CANDLE,A lit candle. Mind the pajamas.
+ITEM_SILVER_SPOON,Silver spoon
+DESC_SILVER_SPOON,Grandma's silver spoon. Vampires hate it.
+ITEM_BACKPACK,Backpack
+DESC_BACKPACK,My backpack! What's it doing in a princess's chest?
+ITEM_HANDBOOK,Adventurer's Handbook
+DESC_HANDBOOK,The Adventurer's Handbook. My notes are in it.
+UI_POCKETS,Pockets
+UI_BACKPACK,Backpack
+UI_LEFT_HAND,Left hand
+UI_RIGHT_HAND,Right hand
+UI_PUT_AWAY,Put away
+UI_SWAP,Swap hands
+UI_COMBINE,Combine
+UI_UNLOCK,Unlock
+UI_POUR,Pour
+UI_PICK_LOCK,Pick the lock
+UI_GO_IN,Go in
+UI_GUILD_CARD,Guild card
+UI_RANK,Rank
+UI_HEALTH,Health
+UI_ENERGY,Energy
+UI_CODEX,Handbook notes:
+STAT_INT,INT
+STAT_INT_DESC,thinks aloud sooner
+STAT_STR,STR
+STAT_STR_DESC,moves heavy things faster
+STAT_DEX,DEX
+STAT_DEX_DESC,"nimble fingers, quicker locks"
+STAT_WIT,WIT
+STAT_WIT_DESC,quick tongue (later)
+STAT_LUCK,LUCK
+STAT_LUCK_DESC,who knows (later)
+SAY_POCKETS_FULL,Pajamas. Two pockets. Life is hard.
+SAY_COMBINE_FAIL,These two don't go together.
+SAY_CANDLE_LIT,Let there be light. A small one.
+SAY_PRINCESS_LOGIC,Locked from the inside... with a keyhole on the outside. Princess logic.
+SAY_JUICE_ON_LOCK,Sour juice on rusty iron. Now we wait.
+SAY_SALTED_JUICE_ON_LOCK,"Sour, salty, scrubby. Now we wait. Less."
+SAY_GATE_RUSTED,It's rusted solid.
+SAY_GATE_PICKED,Click. Who needs keys.
+SAY_INTO_THE_DARK,Here goes nothing.
+SAY_CANDLE_UNLIT,A candle. Unlit. Brilliant.
+SAY_JUICE_SQUEEZED,Orange juice. Mostly in the glass.
+SAY_NEED_ORANGE,Squeeze what? I need an orange.
+SAY_JUICE_SALTED,Salty orange juice. Not for drinking.
+SAY_NEED_JUICE_AND_SALT,I'd need juice and salt for that.

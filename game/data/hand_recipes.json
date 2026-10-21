@@ -1,0 +1,7 @@
+{
+	"_doc": "Combine with both hands (systems/inventory/inventory.gd): mechanical, instant, no chemistry (that is the workbench, ChemistryEngine). Order of a/b does not matter. consume: which of the two are used up (a tool stays). The result goes into the hand that held `a`. line_key: the hero's line. fail_line_key: any pair not listed.",
+	"fail_line_key": "SAY_COMBINE_FAIL",
+	"recipes": [
+		{"a": "candle", "b": "matches", "result": "lit_candle", "consume": ["candle"], "line_key": "SAY_CANDLE_LIT"}
+	]
+}

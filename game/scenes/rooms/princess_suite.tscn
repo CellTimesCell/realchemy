@@ -127,6 +127,9 @@
 [ext_resource type="Script" path="res://components/wardrobe_glimmer.gd" id="b11_glimmer_gd"]
 [ext_resource type="Shader" path="res://shaders/curtain_sway.gdshader" id="b11_curtain"]
 
+[ext_resource type="Script" path="res://components/pickup.gd" id="d1_pickup_gd"]
+[ext_resource type="Script" path="res://components/ui/hud.gd" id="d1_hud_gd"]
+
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -2056,8 +2059,11 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="Ball" type="Node2D" parent="Props"]
+[node name="Ball" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot")]
 position = Vector2(760, 306)
+script = ExtResource("d1_pickup_gd")
+item_id = "ball"
+hotspot = NodePath("Hotspot")
 
 [node name="Sprite" type="Sprite2D" parent="Props/Ball"]
 texture = ExtResource("b10_ball")
@@ -2067,8 +2073,7 @@ offset = Vector2(-8, -15)
 [node name="Hotspot" type="Area2D" parent="Props/Ball" node_paths=PackedStringArray("prompt")]
 script = ExtResource("15")
 prompt = NodePath("Prompt")
-prompt_text = "UI_INSPECT"
-say_key = "SAY_BALL"
+prompt_text = "UI_TAKE"
 
 [node name="Shape" type="CollisionShape2D" parent="Props/Ball/Hotspot"]
 position = Vector2(0, 8)
@@ -2081,7 +2086,7 @@ offset_right = 90.0
 offset_bottom = -19.0
 horizontal_alignment = 1
 autowrap_mode = 3
-text = "UI_INSPECT"
+text = "UI_TAKE"
 
 [node name="ChandelierFallen" type="Node2D" parent="Props"]
 position = Vector2(1100, 318)
@@ -2722,3 +2727,6 @@ transition = NodePath("../ScreenTransition")
 
 [node name="LongPressShowAll" type="Node" parent="."]
 script = ExtResource("69")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+script = ExtResource("d1_hud_gd")

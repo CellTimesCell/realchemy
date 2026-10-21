@@ -10,7 +10,8 @@ extends SceneTree
 ##   [hide=Props/A/B;Props/C] [show=Props/D] (hide / show nodes)
 ##   [fpverb=GarderobeView:hotspot_id:verb_index;...] (after call, waits 30 frames between)
 ##   [calls=0@Props/A:method;40@Hero:walk_to:30|330,2.0] (during the shots, at a frame
-##    counted from the first shot; args: numbers, x|y = Vector2)
+##    counted from the first shot; args: int, float, x|y = Vector2, else String;
+##    an absolute path reaches autoloads: /root/GameManager:give_item:key)
 
 var _args: Dictionary = {}
 
@@ -106,8 +107,12 @@ func _parse_calls(spec: String) -> Array:
 				if arg.contains("|"):
 					var xy: PackedStringArray = arg.split("|")
 					call_args.append(Vector2(float(xy[0]), float(xy[1])))
-				else:
+				elif arg.is_valid_int():
+					call_args.append(int(arg))
+				elif arg.is_valid_float():
 					call_args.append(float(arg))
+				else:
+					call_args.append(arg)
 		result.append([int(at[0]), parts[0], parts[1], call_args])
 	return result
 

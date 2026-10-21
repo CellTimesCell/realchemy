@@ -76,8 +76,15 @@ func _wants_input() -> bool:
 
 
 func use() -> void:
-	if config.get("locked", false):
+	# Locked until a flag opens it (the gate after the lock is picked).
+	var unlock_flag: String = config.get("unlock_flag", "")
+	if config.get("locked", false) and (unlock_flag.is_empty() or not GameManager.has_flag(unlock_flag)):
 		await rattle()
+		return
+	# Out of reach until a flag (the chair under the orange tree).
+	var needs: String = config.get("requires_flag", "")
+	if not needs.is_empty() and not GameManager.has_flag(needs):
+		hotspot.say(config.get("blocked_line_key", ""))
 		return
 	if is_open and config.get("closable", false):
 		await close()
@@ -170,11 +177,12 @@ func _open_animation() -> void:
 
 func _give_item() -> void:
 	var item: Dictionary = config["item"]
+	if not GameManager.give_item(item.get("id", "")):
+		return
 	_items_left -= 1
 	if _items_left == 0 and config.has("prompt_after_empty"):
 		hotspot.prompt_text = config["prompt_after_empty"]
 	var from: Vector2 = fx_point.global_position if fx_point else global_position + Vector2(0, -20)
-	EventBus.item_found.emit(item.get("id", ""))
 	# The line comes after the item has flown to the corner, so the item never
 	# crosses the speech bubble.
 	if _items_left == 0 and config.get("hide_when_empty", false):
