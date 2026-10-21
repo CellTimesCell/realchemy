@@ -203,3 +203,22 @@
 - `WallPoster` (сцена): `wall_quad` (4 точки стены на экране: TL, TR, BR, BL), `wall_size` (размер стены в «стенных» пикселях), `rect` (место постера на стене), `texture`, `title_top` / `title_bottom` (ключи строк), `body_text` (нацарапанное), `nail`, `tape`, `has_shadow`.
 - `interactables.json`: `chest` (заперт, `locked_line_key`), `laundry_basket` (`item` stockings).
 - `user://settings.cfg` (`SaveManager`): `[ui] text_size = "small" | "large"`; по умолчанию small на ПК, large на Android.
+
+## v1.3 — заход 2: предметы, руки, правила, подсказки, сохранение (21.10.2026)
+
+| Файл | Кто читает | Что |
+|---|---|---|
+| `data/items.json` | `systems/items/item_db.gd` | id → `name_key`, `desc_key` (реплика при осмотре), `icon` (утверждённый спрайт) или плейсхолдер `color` + `letter`, `stack`, `special` (`backpack` — карманы 6 → 36, `codex` — Кодекс), `tags` (для ChemistryEngine, «throwable») |
+| `data/hand_recipes.json` | `systems/inventory/inventory.gd` | Combine двумя руками: `a`, `b` (порядок неважен), `result`, `consume`, `line_key`; `fail_line_key` |
+| `data/use_rules.json` | `GameManager.rule_for / apply_rule` | предмет в руке → цель (`Hotspot.target_id`): `verb`, `requires` / `forbid` / `blocked_line_key`, `hide_if`, `consume`, `set_flags` / `clear_flags`, `give`, `start_process {reaction, id}`, `event` (EventBus.puzzle_event), `codex`, `xp_stat` / `xp`, `pose`, `line_key` |
+| `data/reactions.json` | `autoload/chemistry_engine.gd` | схема §reactions + `duration.modes` (секунды по режимам; 0 = мгновенно), `speedup {item: множитель}`, `on_finish_flags`, `line_key` / `missing_line_key`, `codex`; `inputs` — id или `tag:x` |
+| `data/codex.json` | ChemistryEngine, GuildCard | факты Кодекса: `title`, `text` ({lang}), `verified` |
+| `data/hero_stats.json` | `systems/stats/hero_stats.gd` | статы (`start`), `order`, `xp_per_level`, `max_level`, `rank`, `health_max`, `energy_max`, `effects {stat: {what_base, what_per_point, what_min}}` |
+| `data/hints.json` | `systems/hints/hints.gd` | шаги графа по флагам (`need` / `forbid`), `thought_key` (мысль героя, INT), `hints` (3 уровня бабушки), `cooldown` по режимам |
+| `data/riddles.json` | `components/ui/riddle_panel.gd` | загадки: `question_key`, `options`, `answer`, `reward`, `grumble_key`; `option_keys` для вариантов-не-предметов |
+| `data/dialogues.json` | `components/ui/dialogue_box.gd` | сценки: список `{speaker: ghost|hero, key}` |
+| `data/interactables.json` | `components/interactable.gd` | + `unlock_flag` (заперто до флага), `requires_flag` / `blocked_line_key` (недосягаемо до флага), `code` (кодовый замок, 4 колёсика), `extra_items` |
+
+**Флаги** (`GameManager.flags`, сохраняются): сюжетные (`chair_under_tree`, `lock_juiced`, `lock_rust_gone`, `gate_unlocked`, `garderobe_unlocked`, `chest_unlocked`, `ghost_met`, `riddle_<id>_solved`, `has_backpack`, `has_handbook`, `suite_done`), служебные (`had_<item>` — предмет был получен; `taken_<node>` / `shown_<node>` — подбираемые предметы; `chandelier_hits`, `throw_misses`, `hint_level_<step>`, `hint_time`).
+
+**Сохранение** `user://save.json` (версия 1): `{"version", "saved_at" (Unix), "game": GameManager.to_dict() — mode, flags, inventory {capacity, slots [{id, count}], hands [L, R], last_hand}, stats {xp, health, energy}, codex, room, hero [x, y]; "time": процессы {id: {reaction, item, started_at, ends_at, done}}; "nodes": {путь от сцены: save_state()}}`. Узлы группы `persist`: Interactable (open, items_left, fx_done), DoorTransition (tried), FirstPersonView (used, entered). После загрузки — `EventBus.game_loaded`.

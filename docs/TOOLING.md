@@ -226,3 +226,34 @@ python -I tools/anim_cleanup.py game/assets/_incoming/hero_anim/v34            #
 
 ## 9. Публикация (справка)
 Steam — $100 за игру, обязательна анкета об использовании ИИ-контента. Google Play — $25 разово, target API 36. iOS — $99/год + Mac, отложено.
+
+## 10. Веб-сборка для itch.io (L-6, 21.10.2026)
+
+- Godot 4.7.2, рендерер **Compatibility**, экспорт **однопоточный** (`variant/thread_support=false`): работает на itch.io без заголовков COOP/COEP (SharedArrayBuffer не нужен).
+- **Шаблоны:** первый раз `python tools/build_web.py --fetch` — из официального `Godot_v4.7.2-stable_export_templates.tpz` (1,2 ГБ) по HTTP Range берутся только `web_nothreads_release.zip`, `web_nothreads_debug.zip` и `version.txt` (~20 МБ) в `%APPDATA%\Godot\export_templates\4.7.2.stable\`.
+- **Сборка:** `python tools/build_web.py` → `build/web/` (index.html, .js, .wasm ~38 МБ, .pck ~2,4 МБ) и `build/realchemy_web.zip` (~12 МБ, index.html в корне архива). `build/` в `.gitignore`.
+- **Проверка локально:** `cd build/web; python -m http.server 8060 --bind 127.0.0.1` → http://127.0.0.1:8060/ (в консоли браузера: «single-threaded, no GDExtension support»). Открывать через сервер, не file://.
+- **itch.io:** Kind of project = HTML; загрузить zip, отметить «This file will be played in the browser»; Viewport 1280×720 (целый масштаб ×2), Fullscreen button — да; SharedArrayBuffer support — не нужно.
+- Главная сцена: `run/main_scene = res://scenes/rooms/princess_suite.tscn`; растяжение `canvas_items`, aspect **keep** (на широком окне — чёрные поля, а не соседние комнаты), масштаб целый.
+- Плагин godot-ai сам вырезает autoload `_mcp_game_helper` при экспорте (проверено: в .pck его нет).
+- **Пресет** `game/export_presets.cfg` в git не попадает (там потом будут пароли ключа Android). Его содержимое для Web:
+
+```ini
+[preset.0]
+name="Web"
+platform="Web"
+runnable=true
+export_filter="all_resources"
+include_filter="*.json"
+exclude_filter="addons/godot_ai/*, addons/gut/*, tests/*, assets/_incoming/*, assets/fonts/_reserve/*.txt"
+export_path="../build/web/index.html"
+
+[preset.0.options]
+variant/extensions_support=false
+variant/thread_support=false
+vram_texture_compression/for_desktop=true
+vram_texture_compression/for_mobile=false
+html/canvas_resize_policy=2
+html/focus_canvas_on_start=true
+progressive_web_app/enabled=false
+```

@@ -66,6 +66,8 @@ Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval 
 | `pending/rooms/room_princess_boudoir_v2.png` | boudoir without the pink bow above the middle window (inpaint of that patch only) |
 | `pending/props/count/{painting_count_eyes_v2,count_lids,count_yawn}.png` | portrait: crisper eyes (3×2 whites + 1 px pupil), eyelids 2 frames, yawn mouth 3 frames (changed face pixels only) |
 | `pending/creatures/{bat_fly,mouse_run,spider}.png` | bat 5-frame flap strip 24 px, mouse 4-frame run strip 20 px, spider 14×15 |
+| `pending/props/dressing_gate_open.png` 38×84 | open gate: the arch kept, the opening filled with darkness (flood-fill from the stone edge), a 3 px strip of the leaf at the hinge — no generation (the bars are painted into the room picture) |
+| `pending/props/boudoir/chandelier_fallen_empty.png` 75×49 | the wreck with the prism pixels cleared (after the prism is taken) — no generation |
 | `pending/props/garderobe_sign_wide.png` 46×33 | approved plaque widened by 9-slice (no new art) so "OUT OF / ORDER" fits at native font size |
 
 Reserve (out of git): `_incoming/reserve/bookcase34.png` (foreground 3/4 bookcase, removed from the study).
