@@ -8,17 +8,28 @@ extends RefCounted
 ##       on a 1280x720+ window it is half as big and just as crisp.
 ## The player picks it as Text size (Small = B, Large = A); SaveManager sets
 ## `variant` and tells listeners through EventBus.settings_changed.
+## Small needs a window of at least 1280x720: on a smaller window half-scale
+## text is mush, so Small is shown as Large there (SaveManager keeps
+## `window_size` up to date).
 
 const TINY5: String = "res://assets/fonts/_reserve/tiny5/Tiny5.ttf"
 const PROMPT_BG: Color = Color(0.04, 0.02, 0.08, 0.6)
 const BUBBLE_BG: Color = Color(0.07, 0.05, 0.12, 0.92)
 const BUBBLE_BORDER: Color = Color(0.92, 0.88, 0.96, 1)
 
+const SMALL_MIN_WINDOW: Vector2i = Vector2i(1280, 720)
+
 static var variant: String = ""
+## Current window size; zero = unknown (no automatic switch).
+static var window_size: Vector2i = Vector2i.ZERO
 
 
 static func get_variant() -> String:
-	return "A" if variant.is_empty() else variant
+	if variant.is_empty():
+		return "A"
+	if variant == "B" and window_size != Vector2i.ZERO 			and (window_size.x < SMALL_MIN_WINDOW.x or window_size.y < SMALL_MIN_WINDOW.y):
+		return "A"
+	return variant
 
 
 ## Scale of in-world text nodes (B draws at half size).

@@ -14,6 +14,8 @@ var _config: ConfigFile = ConfigFile.new()
 func _ready() -> void:
 	_config.load(SETTINGS_PATH)
 	_apply_text_size()
+	get_window().size_changed.connect(_on_window_resized)
+	_on_window_resized()
 
 
 static func default_text_size() -> String:
@@ -35,3 +37,12 @@ func set_text_size(value: String) -> void:
 
 func _apply_text_size() -> void:
 	UiStyle.variant = "B" if get_text_size() == TEXT_SIZE_SMALL else "A"
+
+
+## Small text turns into Large on a window under 1280x720 (UiStyle); tell
+## the prompts and bubbles when a resize crosses that line.
+func _on_window_resized() -> void:
+	var before: String = UiStyle.get_variant()
+	UiStyle.window_size = get_window().size
+	if UiStyle.get_variant() != before:
+		EventBus.settings_changed.emit("text_size")

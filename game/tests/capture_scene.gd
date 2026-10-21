@@ -9,6 +9,8 @@ extends SceneTree
 ##   [hold=show_all] (action held during the shots) [uivariant=A|B]
 ##   [hide=Props/A/B;Props/C] [show=Props/D] (hide / show nodes)
 ##   [fpverb=GarderobeView:hotspot_id:verb_index;...] (after call, waits 30 frames between)
+##   [calls=0@Props/A:method;40@Hero:walk_to:30|330,2.0] (during the shots, at a frame
+##    counted from the first shot; args: numbers, x|y = Vector2)
 
 var _args: Dictionary = {}
 
@@ -75,8 +77,14 @@ func _run() -> void:
 	var shots: int = int(_args.get("shots", "1"))
 	var step: int = int(_args.get("step", "6"))
 	var out: String = _args["out"]
+	var timed: Array = _parse_calls(_args.get("calls", ""))
+	var frame_no: int = 0
 	for shot: int in shots:
 		for i: int in step:
+			for entry: Array in timed:
+				if entry[0] == frame_no:
+					scene.get_node(entry[1]).callv(entry[2], entry[3])
+			frame_no += 1
 			await process_frame
 		var image: Image = root.get_texture().get_image()
 		var scale: int = int(_args.get("scale", "1"))
@@ -85,6 +93,23 @@ func _run() -> void:
 		var path: String = out if shots == 1 else out.replace(".png", "_%02d.png" % shot)
 		image.save_png(path)
 	quit()
+
+
+func _parse_calls(spec: String) -> Array:
+	var result: Array = []
+	for item: String in spec.split(";", false):
+		var at: PackedStringArray = item.split("@", true, 1)
+		var parts: PackedStringArray = at[1].split(":")
+		var call_args: Array = []
+		if parts.size() > 2:
+			for arg: String in parts[2].split(","):
+				if arg.contains("|"):
+					var xy: PackedStringArray = arg.split("|")
+					call_args.append(Vector2(float(xy[0]), float(xy[1])))
+				else:
+					call_args.append(float(arg))
+		result.append([int(at[0]), parts[0], parts[1], call_args])
+	return result
 
 
 func _press_action(action: String) -> void:

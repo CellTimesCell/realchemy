@@ -110,3 +110,6 @@ UI_REACH_IN,Reach in
 SAY_DRAGON_COIN,"Sorry, big guy. Finders keepers."
 SAY_BALL,An old leather ball. Somebody played football indoors. In a castle.
 SAY_CHANDELIER,"Iron, crystals and two hundred years of dust. Hanging right above my head."
+SAY_BATS_MISSED,Missed. Obviously.
+SAY_MOUSE,Even the mice want out.
+SAY_PORTRAIT_YAWN,Did that painting just... yawn?

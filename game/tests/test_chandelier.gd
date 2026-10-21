@@ -12,6 +12,7 @@ func _make_chandelier() -> Chandelier:
 	chandelier.fallen = Node2D.new()
 	add_child_autofree(chandelier.fallen)
 	chandelier.floor_y = 120.0
+	chandelier.idle_sway = false
 	add_child_autofree(chandelier)
 	return chandelier
 
@@ -59,3 +60,11 @@ func test_dragon_head_holds_a_coin() -> void:
 	assert_eq(dragon["pose"], "interact_high")
 	assert_eq(dragon["item"]["id"], "coin")
 	assert_eq(dragon["line_key"], "SAY_DRAGON_COIN")
+
+
+func test_idle_sway_stays_under_a_degree() -> void:
+	var chandelier: Chandelier = _make_chandelier()
+	chandelier.idle_sway = true
+	for i: int in 300:
+		chandelier._process(0.05)
+		assert_lt(absf(chandelier.hanging.rotation_degrees), Chandelier.IDLE_MAX + 0.001)
