@@ -21,6 +21,9 @@ var card: GuildCard
 var _root: Control
 var _hand_menu: VBoxContainer
 var _menu_hand: Inventory.Hand = Inventory.Hand.LEFT
+var _aim_hint: Label
+var _toast: Label
+var _toast_token: int = 0
 
 
 static func make_label(text_value: String) -> Label:
@@ -86,6 +89,15 @@ func _ready() -> void:
 	card.position = Vector2(200, 70)
 	_root.add_child(card)
 	_root.add_child(GhostVoice.new())
+	_aim_hint = make_label("UI_AIM_HINT")
+	_aim_hint.position = Vector2(250, BAR_Y - 13)
+	_aim_hint.visible = false
+	_root.add_child(_aim_hint)
+	_toast = make_label("")
+	_toast.position = Vector2(6, 6)
+	_toast.visible = false
+	_root.add_child(_toast)
+	EventBus.codex_unlocked.connect(_on_codex_unlocked)
 	_hand_menu = VBoxContainer.new()
 	_hand_menu.visible = false
 	_root.add_child(_hand_menu)
@@ -114,6 +126,23 @@ func refresh() -> void:
 	energy_orb.set_value(GameManager.stats.energy, HeroStats.energy_max())
 	# The crown appears once the ghost grandmother has been met.
 	hint_button.visible = GameManager.has_flag("ghost_met")
+	var throwable: bool = false
+	for id: String in inventory.active_items():
+		throwable = throwable or ItemDb.has_tag(id, "throwable")
+	_aim_hint.visible = throwable
+
+
+## A new science fact (shown once the Handbook is found).
+func _on_codex_unlocked(entry_id: String) -> void:
+	if not GameManager.has_flag("has_handbook"):
+		return
+	_toast_token += 1
+	var token: int = _toast_token
+	_toast.text = "%s %s" % [tr("UI_CODEX_NEW"), ChemistryEngine.codex_title(entry_id)]
+	_toast.visible = true
+	await get_tree().create_timer(3.0).timeout
+	if token == _toast_token:
+		_toast.visible = false
 
 
 func close_all() -> void:

@@ -6,6 +6,8 @@ extends Node2D
 ## the save remembers). Things that appear later start hidden and drop in
 ## with drop_to().
 
+signal taken
+
 const DROP_TIME: float = 0.35
 
 @export var item_id: String = ""
@@ -42,6 +44,7 @@ func take() -> bool:
 		return false
 	visible = false
 	GameManager.set_flag(taken_flag)
+	taken.emit()
 	ItemPop.spawn(get_tree(), global_position + Vector2(0, -6), ItemDb.color(item_id), ItemDb.letter(item_id))
 	EventBus.hero_pose_requested.emit("interact_low")
 	EventBus.autosave_requested.emit()

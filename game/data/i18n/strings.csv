@@ -226,3 +226,9 @@ HINT_DARK_2,"I asked you about something that weeps wax tears, remember?"
 HINT_DARK_3,"Take my candle, dear, and light it. The matches are in the nightstand."
 GHOST_HINT_COOLDOWN,"Patience, dear. Even ghosts need a minute."
 GHOST_HINT_NONE,"Nothing to tell you, dear. You're doing fine."
+SAY_CHANDELIER_KEY,Something fell out! A key?
+SAY_CHANDELIER_CRASH,That was... not on purpose. Mostly.
+GHOST_COUNT_UP_HERE,Do you want the Count up here?!
+GHOST_NOT_THAT_GAME,"Dear, this isn't THAT kind of game."
+UI_AIM_HINT,Press on yourself and pull back to kick
+UI_CODEX_NEW,New Handbook note:
