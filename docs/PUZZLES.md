@@ -1,4 +1,4 @@
-# PUZZLES — граф загадок (v1.0, 20.10.2026)
+# PUZZLES — граф загадок (v1.1, 20.10.2026)
 
 Источник правды для загадок. Реализация — заход 2 (L-1…L-5), все данные — в `game/data/*.json` (предметы, рецепты рук, реакции, загадки бабушки, подсказки), ни одной строки в коде. Строки игры — только английский (ключи `SAY_*` / `HINT_*` / `RIDDLE_*` в `data/i18n/strings.csv`).
 
@@ -53,7 +53,7 @@ flowchart TD
 | 1 | hairpin | Будуар, туалетный столик | Inspect → взять | шпилька в инвентаре; на ржавом замке: «It's rusted solid.» | — (берётся сама) | — | — |
 | 2 | x_chair | Будуар, туалетный уголок | Push к апельсиновому дереву (STR ускоряет) | кресло под деревом | «Some oranges are only for tall princesses. Or clever ones.» → «That chair isn't nailed down, dear.» → «Push the chair under the tree and climb up.» | «The oranges are too high... I need something to stand on.» | — |
 | 3 | orange | Будуар, апельсиновое дерево | Встать на кресло (interact_high) → Pick an orange | orange | (вместе с шагом 2) | — | — |
-| 4 | orange → orange_juice | Кабинет, lab_table | Use → крупный план → «Squeeze orange» | orange_juice (+ salt рядом — таймер следующего шага ×0.5) | см. «замок» ниже | «Rust... iron... maybe something sour?» | «Oranges are full of citric acid — that's what makes them sour.» |
+| 4 | orange → orange_juice | Кабинет, алхимический верстак (lab_table) | Use → крупный план → «Squeeze orange» | orange_juice (+ salt рядом — таймер следующего шага ×0.5) | см. «замок» ниже | «Rust... iron... maybe something sour?» | «Oranges are full of citric acid — that's what makes them sour.» |
 | 5 | orange_juice | Гардеробная, замок решётки | Use → процесс `rust_dissolving` на реальном времени (cozy 2 мин / classic 15 мин / real 2 ч), видно в панели процессов; можно ходить по покоям | замок «размякает» | **замок:** «Rust is just iron that gave up. Cheer it up with something sour.» → «Sour... like that orange tree nobody waters but me.» → «Squeeze the orange on the lock, dear. And then wait. Patience is a princess virtue.» | «Rust... iron... maybe something sour?» | «Citric acid slowly dissolves rust — that's how many store-bought rust removers work. Salt is a mild abrasive that helps scrub it off.» (`verified: false`) |
 | 6 | hairpin | Гардеробная, замок | Use (DEX ускоряет анимацию) | решётка открыта; первая запись Кодекса — после реакции с ржавчиной (если рюкзак уже найден; иначе — при находке) | «A lock is just a puzzle that rusted.» → «Your hairpin, dear. It's not just for hair.» → «Use the hairpin on the lock. Now.» | «Now the hairpin might actually work.» | — |
 | 7 | candle | Гардеробная, за решёткой | Нужна свеча: без неё «I'm not walking into that dark without a light.» | с candle → «To be continued: the castle stairs» | «It's dark. Even ghosts don't like the dark.» → «I asked you about something that weeps wax tears, remember?» → «Solve my second riddle and take the candle, dear.» | «Too dark. I need a light.» | — |
@@ -99,7 +99,7 @@ flowchart TD
 |---|---|---|---|
 | Люстра рушится | попадания №2–5 мячом | `crystal_prism` | после 3-го попадания, если бабушка знакома: «Do you want the Count up here?!»; science_note: «A glass prism bends each colour of light by a different amount — that's how it splits white light into a rainbow.» |
 | Арфа | 3 листа `sheet_music` → сыграть мелодию на арфе | потайной ящик туалетного столика: coin + `princess_diary` (реализовать позже) | — |
-| Монеты | под кроватью; в пасти драконьей головы («Reach in»: «Sorry, big guy. Finders keepers.»); внутри глобуса | coin ×3 | — |
+| Монеты | под кроватью; в пасти драконьей головы (гардеробная, над шкафом; «Reach in», поза interact_high: «Sorry, big guy. Finders keepers.»); внутри глобуса | coin ×3 | — |
 | Промахи | ~10 промахов подряд мячом | — | бабушка: «Dear, this isn't THAT kind of game.» |
 | Кол | взять кол (позже, лестница/склеп) | — | бабушка: «Not in MY castle, young man!» |
 
@@ -120,3 +120,7 @@ flowchart TD
 - 3 уровня на каждую загадку; повторный вызов даёт следующий уровень. Кулдаун по реальному времени (cozy короче, real дольше).
 - Бабушка иногда сначала ворчит не по делу, но **никогда не врёт**.
 - До знакомства с бабушкой и между вызовами — мысли героя при застревании (INT): чем выше INT, тем раньше и точнее.
+
+## История
+- v1.0 (20.10.2026) — утверждено Александром, включая тексты.
+- v1.1 (20.10.2026) — трофейные головы перенесены в гардеробную (монета в пасти дракона), lab_table — большой алхимический верстак.

@@ -48,6 +48,10 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 | `props/boudoir/{gramophone,record_crate}.png` | batch 9 (a) | Boudoir music corner | approved 20.10.2026; b rejected |
 | `props/study/{telescope,globe}.png` | batch 9 | Princess study | approved 20.10.2026 |
 | `props/boudoir/floor_candelabra.png` | — | **reserve** (removed from the boudoir 20.10.2026: cut off by the frame at the pillar) | not in the scene |
+| `props/study/bookcase.png` | batch 10 (a, #0) | Tall gothic bookcase 42×96, study back wall left | approved 20.10.2026; b rejected |
+| `props/trophies/trophy_{griffin,unicorn,dragon}.png` | batch 10 (a: #0 / #16 / #12) | Trophy heads, masters (the scene uses the 75 % wall copies in `pending/`) | approved 20.10.2026; b rejected |
+| `props/boudoir/{chandelier,chandelier_fallen}.png` | batch 10 (a, #0 + edit) | Boudoir chandelier: hanging / fallen | approved 20.10.2026; b rejected |
+| `items/{ball,key,crystal_prism}.png` | batch 10 pixen | Item sprites / icons | approved 20.10.2026 |
 
 ## Pending review (`game/assets/pending/`, tracked, not approved)
 Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval → `approved/`, rejected → `_incoming/rejected/` (out of git).
@@ -55,11 +59,9 @@ Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval 
 | File | What |
 |---|---|
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
-| `pending/suite/lab_table.png` (+`_b`) | lab table (batch 9), moved against the back wall under the window in batch 10 |
-| `pending/suite/bookcase_v2.png` (+`_b`) | tall gothic bookcase 42×96 (~1.6 hero), back wall left of the curtains |
-| `pending/props/trophy_{griffin,unicorn,dragon}.png` (+`_b`) | mounted trophy heads on wooden shields, bedroom walls |
-| `pending/props/chandelier.png` (+`_b`), `chandelier_fallen.png` | boudoir chandelier: hanging (swing = rotation in Godot) / fallen wreck with the intact prism |
-| `pending/items/{ball,key,crystal_prism}.png` | item sprites / icons (ball also lies in the boudoir) |
+| `pending/suite/workbench.png` (a) 103×69, `workbench_b.png` 102×67 | large alchemist workbench (batch 10 pass 2), study back wall under the window; replaces the small lab table (rejected) |
+| `pending/props/trophy_{griffin,dragon,unicorn}_wall.png` | 75 % copies of the approved heads (box filter + the master's palette): the three must fit the 88 px pink bay above the wardrobe |
+| `pending/props/garderobe_sign_wide.png` 46×33 | approved plaque widened by 9-slice (no new art) so "OUT OF / ORDER" fits at native font size |
 
 Reserve (out of git): `_incoming/reserve/bookcase34.png` (foreground 3/4 bookcase, removed from the study).
 
@@ -938,3 +940,14 @@ Spent **63** (balance 913 → 850). Style images: dressing `upload:04726783-…`
 
 Notes: all picks trimmed to the alpha bbox. Swinging = rotation of the hanging sprite around the ceiling hook (`components/chandelier.gd`), no extra frames. lab_closeup not generated (temporary `bg_mortar_closeup_v3` until 18.11).
 Screenshots: `_incoming/batch10/shots/{dressing_full_v5,bedroom_tidy,boudoir_tidy,dressing_tidy,trophy_heads}.png`, `chandelier_states.{gif,png}`.
+
+### Pass 2 (20.10.2026): workbench (approved budget 15)
+
+Spent **10** (850 → 840). Style image: dressing re-uploaded `upload:d2494b67-16ec-426e-af24-2cea562f44f5`.
+
+| Output | Tool | Seed / job | Cost | a / b | Prompt (subject) |
+|---|---|---|---|---|---|
+| `workbench/` 136×72 (4) | `create_image_pro`, style = dressing | 2026102010 / `e70ab435-66a6-4e4d-bc11-a54c9c4ca59c` | 10 | 2 / 3 | "large wooden alchemist workbench, long rectangular table with thick dark oak top at waist height and sturdy carved legs, cluttered with glass flasks and retorts, a stone mortar and pestle, a small copper alembic, brass scales, a candle burner with a small flame, jars and scattered parchment notes, gothic castle furniture, front view slightly from above, warm candle light from the left…" |
+
+Notes: the model drew the bench ~103 px wide on the 136 px canvas (asked 120–140); not scaled. All four candidates came out in a 3/4 view, not strictly frontal.
+Screenshots: `_incoming/batch10/shots/{bedroom_v6,dressing_v6,workbench_a,workbench_b,sign_v6,trophy_wall_v6}.png`.
