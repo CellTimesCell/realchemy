@@ -232,3 +232,39 @@ GHOST_COUNT_UP_HERE,Do you want the Count up here?!
 GHOST_NOT_THAT_GAME,"Dear, this isn't THAT kind of game."
 UI_AIM_HINT,Press on yourself and pull back to kick
 UI_CODEX_NEW,New Handbook note:
+UI_SQUEEZE_ORANGE,Squeeze an orange
+UI_ADD_SALT,Stir in salt
+UI_TALK,Talk
+UI_NEXT,Next
+UI_OPEN_LOCK,Open
+UI_CANCEL,Cancel
+UI_HERO,Me:
+UI_CODE_LOCK,Four little wheels. A combination lock.
+UI_RUST_SOAKING,Rust soaking
+UI_RUST_SOFT,The rust is soft!
+UI_TO_BE_CONTINUED,To be continued: the castle stairs
+SAY_CHEST_EMPTY,Empty. Except for the smell of mothballs.
+SAY_CODE_WRONG,Nope. Still locked.
+SAY_DARK_NO_LIGHT,I'm not walking into that dark without a light.
+SAY_PICKING,Easy... easy...
+GHOST_INTRO_1,Hey! Peeking into a lady's wardrobe? Shameless!
+HERO_INTRO_2,Sorry! I come in peace. I was... kidnapped by a vampire.
+GHOST_INTRO_3,"Ugh, that old fool. Mixed up the windows again, didn't he? He's blind as a bat. Literally."
+GHOST_INTRO_4,"I could help you... but I'm a ghost. Ghosts are lazy. Tell you what - solve my riddles, and I'll give you something for each one."
+RIDDLE_SALT,"Without me, soup is sad - and yet I'm in every tear you cry."
+RIDDLE_CANDLE,"I eat my own body to give you light, and weep wax tears all night."
+RIDDLE_SPOON,Vampires hate my shine. I stirred a princess's tea for ninety years.
+OPTION_SUGAR,Sugar
+OPTION_WATER,Water
+OPTION_MOTH,A moth
+OPTION_FIREPLACE,A fireplace
+OPTION_GARLIC,Garlic
+OPTION_MIRROR,A mirror
+GHOST_GRUMBLE_SALT,Sugar in tears? What kind of sad sweet life did YOU have?
+GHOST_GRUMBLE_CANDLE,"A fireplace doesn't weep, dear. It just smokes. Like the Count."
+GHOST_GRUMBLE_SPOON,Garlic doesn't stir tea. I tried.
+GHOST_RIDDLE_RIGHT,"Clever. Take it, it's yours."
+GHOST_RIDDLES_DONE,"That's all my riddles, dear. Now shoo. The crown is there if you're stuck."
+TRACK_1,Whitesnack - Here I Go Snackin' Again
+TRACK_2,Deaf Leopard - Pour Some Sugar on My Tea
+TRACK_3,Bonjovial - Livin' on a Spare Roll

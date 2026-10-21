@@ -138,6 +138,12 @@
 [ext_resource type="Texture2D" path="res://assets/approved/items/key.png" id="d4_key"]
 [ext_resource type="Texture2D" path="res://assets/pending/props/boudoir/chandelier_fallen_empty.png" id="d4_fallen_empty"]
 
+[ext_resource type="Script" path="res://components/ghost_encounter.gd" id="d5_ghost_gd"]
+[ext_resource type="Script" path="res://components/suite_puzzles.gd" id="d5_suite_gd"]
+[ext_resource type="Script" path="res://components/process_badge.gd" id="d5_badge_gd"]
+
+[ext_resource type="Texture2D" path="res://assets/pending/props/dressing_gate_open.png" id="d5_gate_open"]
+
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -426,6 +432,12 @@ size = Vector2(30, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4_hit"]
 size = Vector2(56, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5_talk"]
+size = Vector2(44, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5_dark"]
+size = Vector2(36, 22)
 
 [node name="PrincessSuite" type="Node2D" node_paths=PackedStringArray("hero", "camera")]
 y_sort_enabled = true
@@ -1323,6 +1335,7 @@ script = ExtResource("20")
 interactable_id = "dressing_gate"
 hotspot = NodePath("Hotspot")
 sprite = NodePath("Bars")
+state_textures = Array[Texture2D]([ExtResource("65"), ExtResource("d5_gate_open")])
 
 [node name="Bars" type="Sprite2D" parent="Props/DressingGate"]
 z_index = -1
@@ -2455,6 +2468,29 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_TAKE"
 
+[node name="DarkPassage" type="Node2D" parent="Props"]
+position = Vector2(1831, 300)
+
+[node name="Hotspot" type="Area2D" parent="Props/DarkPassage" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_GO_IN"
+say_key = "SAY_DARK_NO_LIGHT"
+target_id = "dark_passage"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/DarkPassage/Hotspot"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_d5_dark")
+
+[node name="Prompt" type="Label" parent="Props/DarkPassage/Hotspot"]
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -76.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_GO_IN"
+
 [node name="LetterScreen" type="CanvasLayer" parent="." node_paths=PackedStringArray("text_label", "next_arrow")]
 layer = 10
 script = ExtResource("28")
@@ -2490,7 +2526,7 @@ color = Color(0.24, 0.14, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 8, 0, 4, 5)
 
 [node name="Ghost" type="Node2D" parent="Props" node_paths=PackedStringArray("anim", "reactions")]
-position = Vector2(430, 322)
+position = Vector2(1738, 318)
 script = ExtResource("33")
 anim = NodePath("Anim")
 reactions = NodePath("Reactions")
@@ -2524,6 +2560,24 @@ script = ExtResource("30")
 character = "ghost"
 head = NodePath("../Head")
 body = NodePath("../Anim")
+
+[node name="Talk" type="Area2D" parent="Props/Ghost" node_paths=PackedStringArray("prompt")]
+script = ExtResource("15")
+prompt = NodePath("Prompt")
+prompt_text = "UI_TALK"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Ghost/Talk"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_d5_talk")
+
+[node name="Prompt" type="Label" parent="Props/Ghost/Talk"]
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 90.0
+offset_bottom = -76.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_TALK"
 
 [node name="Reactions" type="Node" parent="Props/Ghost" node_paths=PackedStringArray("anim", "emote")]
 script = ExtResource("31")
@@ -2830,3 +2884,19 @@ script = ExtResource("d4_throw_gd")
 hero = NodePath("../Hero")
 ball_pickup = NodePath("../Props/Ball")
 demo_target = NodePath("../Chandelier")
+
+[node name="RustBadge" type="Node2D" parent="."]
+position = Vector2(1831, 206)
+script = ExtResource("d5_badge_gd")
+
+[node name="SuitePuzzles" type="Node" parent="." node_paths=PackedStringArray("hero", "gate", "dark_passage")]
+script = ExtResource("d5_suite_gd")
+hero = NodePath("../Hero")
+gate = NodePath("../Props/DressingGate")
+dark_passage = NodePath("../Props/DarkPassage")
+
+[node name="GhostEncounter" type="Node" parent="." node_paths=PackedStringArray("wardrobe", "ghost", "talk_hotspot")]
+script = ExtResource("d5_ghost_gd")
+wardrobe = NodePath("../Props/Wardrobe")
+ghost = NodePath("../Props/Ghost")
+talk_hotspot = NodePath("../Props/Ghost/Talk")

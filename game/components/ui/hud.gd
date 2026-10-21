@@ -50,6 +50,7 @@ static func make_button(text_value: String, on_press: Callable) -> Button:
 func _ready() -> void:
 	layer = 20
 	_root = Control.new()
+	_root.name = "Root"
 	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_root)
@@ -88,7 +89,9 @@ func _ready() -> void:
 	card = GuildCard.new()
 	card.position = Vector2(200, 70)
 	_root.add_child(card)
-	_root.add_child(GhostVoice.new())
+	for panel_node: Control in [GhostVoice.new(), CodeLock.new(), DialogueBox.new(), RiddlePanel.new()]:
+		panel_node.name = (panel_node.get_script() as Script).get_global_name()
+		_root.add_child(panel_node)
 	_aim_hint = make_label("UI_AIM_HINT")
 	_aim_hint.position = Vector2(250, BAR_Y - 13)
 	_aim_hint.visible = false

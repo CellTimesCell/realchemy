@@ -4,45 +4,246 @@
 	"id": "garderobe",
 	"enter_line_key": "SAY_GARDEROBE_ENTER",
 	"hotspots": [
-		{"id": "scratch_help", "rect_from": "Scratches/Help", "needs_moved": "Posters/Bonjovial",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_SCRATCH_HELP"}]},
-		{"id": "scratch_number", "rect_from": "Scratches/Number", "needs_moved": "Posters/Deaf",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_SCRATCH_NUMBER"}]},
-		{"id": "poster_rotley", "rect_from": "Posters/Rotley",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_ROTLEY"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Rotley", "rotate": 70}]},
-		{"id": "poster_buns", "rect_from": "Posters/Buns",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_BUNS"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Buns", "rotate": 70}]},
-		{"id": "poster_bonjovial", "rect_from": "Posters/Bonjovial",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_BONJOVIAL"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Bonjovial", "rotate": 80, "line_key": "SAY_POSTER_MOVED"}]},
-		{"id": "poster_squid", "rect_from": "Posters/Squid",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_SQUID"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Squid", "rotate": 70}]},
-		{"id": "poster_deaf", "rect_from": "Posters/Deaf",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_DEAF"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Deaf", "rotate": 80, "line_key": "SAY_POSTER_MOVED"}]},
-		{"id": "poster_whitesnack", "rect_from": "Posters/Whitesnack",
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_POSTER_WHITESNACK"},
-				{"verb": "UI_MOVE_POSTER", "action": "move", "target": "Posters/Whitesnack", "rotate": 70}]},
-		{"id": "toilet_paper", "rect": [176, 222, 28, 28], "once": true,
-			"verbs": [{"verb": "UI_TAKE", "action": "take", "target": "ToiletPaper",
-				"item": {"id": "toilet_paper", "color": "#f4f0e8", "letter": "t"}, "line_key": "SAY_PAPER_TAKEN"}]},
-		{"id": "remote", "rect": [360, 234, 30, 36],
-			"verbs": [{"verb": "UI_INSPECT", "action": "closeup", "target": "remote", "line_key": "SAY_PANEL"}]},
-		{"id": "toilet", "rect": [272, 200, 96, 140],
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_TOILET_SEAT"},
-				{"verb": "UI_PRESS_BUTTON", "action": "fx", "target": "Spray", "sfx": "spray", "line_key": "SAY_TOILET_SPRAY"}]},
-		{"id": "candle", "rect": [452, 160, 34, 52],
-			"verbs": [{"verb": "UI_INSPECT", "line_key": "SAY_CANDLE"}]}
+		{
+			"id": "scratch_help",
+			"rect_from": "Scratches/Help",
+			"needs_moved": "Posters/Bonjovial",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_SCRATCH_HELP"
+				}
+			]
+		},
+		{
+			"id": "scratch_number",
+			"rect_from": "Scratches/Number",
+			"needs_moved": "Posters/Deaf",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_SCRATCH_NUMBER"
+				}
+			]
+		},
+		{
+			"id": "poster_rotley",
+			"rect_from": "Posters/Rotley",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_ROTLEY"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Rotley",
+					"rotate": 70
+				}
+			]
+		},
+		{
+			"id": "poster_buns",
+			"rect_from": "Posters/Buns",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_BUNS"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Buns",
+					"rotate": 70
+				}
+			]
+		},
+		{
+			"id": "poster_bonjovial",
+			"rect_from": "Posters/Bonjovial",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_BONJOVIAL"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Bonjovial",
+					"rotate": 80,
+					"line_key": "SAY_POSTER_MOVED"
+				}
+			]
+		},
+		{
+			"id": "poster_squid",
+			"rect_from": "Posters/Squid",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_SQUID"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Squid",
+					"rotate": 70
+				}
+			]
+		},
+		{
+			"id": "poster_deaf",
+			"rect_from": "Posters/Deaf",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_DEAF"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Deaf",
+					"rotate": 80,
+					"line_key": "SAY_POSTER_MOVED"
+				}
+			]
+		},
+		{
+			"id": "poster_whitesnack",
+			"rect_from": "Posters/Whitesnack",
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_POSTER_WHITESNACK"
+				},
+				{
+					"verb": "UI_MOVE_POSTER",
+					"action": "move",
+					"target": "Posters/Whitesnack",
+					"rotate": 70
+				}
+			]
+		},
+		{
+			"id": "toilet_paper",
+			"rect": [
+				176,
+				222,
+				28,
+				28
+			],
+			"once": true,
+			"verbs": [
+				{
+					"verb": "UI_TAKE",
+					"action": "take",
+					"target": "ToiletPaper",
+					"item": {
+						"id": "toilet_paper",
+						"color": "#f4f0e8",
+						"letter": "t"
+					},
+					"line_key": "SAY_PAPER_TAKEN"
+				}
+			]
+		},
+		{
+			"id": "remote",
+			"rect": [
+				360,
+				234,
+				30,
+				36
+			],
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"action": "closeup",
+					"target": "remote",
+					"line_key": "SAY_PANEL"
+				}
+			]
+		},
+		{
+			"id": "toilet",
+			"rect": [
+				272,
+				200,
+				96,
+				140
+			],
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_TOILET_SEAT"
+				},
+				{
+					"verb": "UI_PRESS_BUTTON",
+					"action": "fx",
+					"target": "Spray",
+					"sfx": "spray",
+					"line_key": "SAY_TOILET_SPRAY"
+				}
+			]
+		},
+		{
+			"id": "candle",
+			"rect": [
+				452,
+				160,
+				34,
+				52
+			],
+			"verbs": [
+				{
+					"verb": "UI_INSPECT",
+					"line_key": "SAY_CANDLE"
+				}
+			]
+		}
 	],
 	"closeups": {
 		"remote": [
-			{"label": "おしり", "action": "fx", "target": "Spray", "sfx": "spray", "line_key": "SAY_TOILET_SPRAY"},
-			{"label": "ビデ", "action": "fx", "target": "Spray", "sfx": "spray", "line_key": "SAY_TOILET_SPRAY_2"},
-			{"label": "止", "line_key": "SAY_PANEL_STOP"},
-			{"label": "乾燥", "line_key": "SAY_PANEL_DRY"}
+			{
+				"label": "おしり",
+				"action": "fx",
+				"target": "Spray",
+				"sfx": "spray",
+				"line_key": "SAY_TOILET_SPRAY"
+			},
+			{
+				"label": "ビデ",
+				"action": "fx",
+				"target": "Spray",
+				"sfx": "spray",
+				"line_key": "SAY_TOILET_SPRAY_2"
+			},
+			{
+				"label": "止",
+				"line_key": "SAY_PANEL_STOP"
+			},
+			{
+				"label": "乾燥",
+				"line_key": "SAY_PANEL_DRY"
+			},
+			{
+				"label": "曲1",
+				"action": "fx",
+				"sfx": "jingle_1",
+				"line_key": "TRACK_1"
+			},
+			{
+				"label": "曲2",
+				"action": "fx",
+				"sfx": "jingle_2",
+				"line_key": "TRACK_2"
+			},
+			{
+				"label": "曲3",
+				"action": "fx",
+				"sfx": "jingle_3",
+				"line_key": "TRACK_3"
+			}
 		]
 	}
 }

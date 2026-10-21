@@ -14,6 +14,9 @@ const SFX: Dictionary = {
 	"chirp": "canary_chirp.wav",
 	"spray": "spray.wav",
 	"squeak": "squeak.wav",
+	"jingle_1": "jingle_1.wav",
+	"jingle_2": "jingle_2.wav",
+	"jingle_3": "jingle_3.wav",
 }
 
 var _streams: Dictionary = {}

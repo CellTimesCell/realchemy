@@ -36,15 +36,19 @@
 		"line_key": "SAY_HAIRPIN_TAKEN", "empty_line_key": "SAY_VANITY"
 	},
 	"dressing_gate": {
-		"pose": "interact_mid", "anim": "none", "locked": true,
-		"sfx": {"locked": "locked"},
-		"locked_line_key": "SAY_GATE_LOCKED"
+		"pose": "interact_mid", "anim": "states", "locked": true, "unlock_flag": "gate_unlocked",
+		"sfx": {"locked": "locked", "start": "creak", "end": "open"},
+		"locked_line_key": "SAY_GATE_LOCKED", "prompt_after": ""
 	},
 	"chest": {
-		"pose": "interact_low", "anim": "states", "locked": true,
+		"pose": "interact_low", "anim": "states", "locked": true, "unlock_flag": "chest_unlocked",
+		"code": "5309",
 		"sfx": {"locked": "locked", "start": "creak", "end": "open"},
 		"locked_line_key": "SAY_CHEST_LOCKED",
-		"_note": "[?] combination 867-5309 / 5309 (garderobe); unlocking is game logic, later"
+		"item": {"id": "backpack", "count": 1, "color": "#7a5a3a", "letter": "B"},
+		"extra_items": ["handbook"],
+		"line_key": "DESC_BACKPACK", "empty_line_key": "SAY_CHEST_EMPTY",
+		"_note": "code from the garderobe wall (867 / 5309, PUZZLES.md §5): a 4-wheel lock UI"
 	},
 	"laundry_basket": {
 		"pose": "interact_low", "anim": "none",

@@ -1,0 +1,51 @@
+{
+	"_doc": "The ghost grandmother's riddles (components/ghost_encounter.gd, docs/PUZZLES.md §4). Asked in order at the wardrobe after she is met. options: item ids shown as answers (names from items.json, or option_keys). A wrong answer: her grumble, try again, no penalty. The right one gives `reward` and sets riddle_<id>_solved.",
+	"right_line_key": "GHOST_RIDDLE_RIGHT",
+	"done_line_key": "GHOST_RIDDLES_DONE",
+	"riddles": [
+		{
+			"id": "salt",
+			"question_key": "RIDDLE_SALT",
+			"options": [
+				"salt",
+				"sugar",
+				"water"
+			],
+			"answer": "salt",
+			"reward": "salt",
+			"grumble_key": "GHOST_GRUMBLE_SALT"
+		},
+		{
+			"id": "candle",
+			"question_key": "RIDDLE_CANDLE",
+			"options": [
+				"candle",
+				"moth",
+				"fireplace"
+			],
+			"answer": "candle",
+			"reward": "candle",
+			"grumble_key": "GHOST_GRUMBLE_CANDLE"
+		},
+		{
+			"id": "spoon",
+			"question_key": "RIDDLE_SPOON",
+			"options": [
+				"silver_spoon",
+				"garlic",
+				"mirror"
+			],
+			"answer": "silver_spoon",
+			"reward": "silver_spoon",
+			"grumble_key": "GHOST_GRUMBLE_SPOON"
+		}
+	],
+	"option_keys": {
+		"sugar": "OPTION_SUGAR",
+		"water": "OPTION_WATER",
+		"moth": "OPTION_MOTH",
+		"fireplace": "OPTION_FIREPLACE",
+		"garlic": "OPTION_GARLIC",
+		"mirror": "OPTION_MIRROR"
+	}
+}

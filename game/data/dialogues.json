@@ -1,0 +1,21 @@
+{
+	"_doc": "Short scripted dialogues (components/ui/dialogue_box.gd): lines in order, speaker = ghost | hero; text = i18n key. ghost_intro plays when the wardrobe is opened for the first time (PUZZLES.md §3).",
+	"ghost_intro": [
+		{
+			"speaker": "ghost",
+			"key": "GHOST_INTRO_1"
+		},
+		{
+			"speaker": "hero",
+			"key": "HERO_INTRO_2"
+		},
+		{
+			"speaker": "ghost",
+			"key": "GHOST_INTRO_3"
+		},
+		{
+			"speaker": "ghost",
+			"key": "GHOST_INTRO_4"
+		}
+	]
+}

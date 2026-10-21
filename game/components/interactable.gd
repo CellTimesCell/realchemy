@@ -6,7 +6,9 @@ extends Node2D
 ## placeholder sound (AudioManager), a found item (ItemPop flies to the corner,
 ## EventBus.item_found) and a line in place of the prompt.
 ## Behaviour is data: data/interactables.json keyed by `interactable_id`;
-## the scene only gives the nodes. Locked props rattle instead.
+## the scene only gives the nodes. Locked props rattle instead; a lock can
+## open by a flag ("unlock_flag") or ask for a combination ("code": the
+## 4-wheel lock UI, then puzzle_event "unlocked_<id>" opens it).
 
 signal opened(prop: Interactable)
 signal closed(prop: Interactable)
@@ -55,6 +57,9 @@ func _ready() -> void:
 	if config.is_empty():
 		push_warning("Interactable: no entry '%s' in %s" % [interactable_id, TABLE_PATH])
 	_items_left = int(config.get("item", {}).get("count", 0))
+	EventBus.puzzle_event.connect(func(event_name: String) -> void:
+		if event_name == "unlocked_%s" % interactable_id and not is_open:
+			use())
 	_first_prompt = hotspot.prompt_text
 	if inside:
 		inside.visible = false
@@ -114,7 +119,10 @@ func use() -> void:
 	# Locked until a flag opens it (the gate after the lock is picked).
 	var unlock_flag: String = config.get("unlock_flag", "")
 	if config.get("locked", false) and (unlock_flag.is_empty() or not GameManager.has_flag(unlock_flag)):
-		await rattle()
+		if config.has("code"):
+			EventBus.code_lock_requested.emit(interactable_id, String(config["code"]))
+		else:
+			await rattle()
 		return
 	# Out of reach until a flag (the chair under the orange tree).
 	var needs: String = config.get("requires_flag", "")
@@ -214,6 +222,8 @@ func _give_item() -> void:
 	var item: Dictionary = config["item"]
 	if not GameManager.give_item(item.get("id", "")):
 		return
+	for extra: String in config.get("extra_items", []):
+		GameManager.give_item(extra)
 	_items_left -= 1
 	if _items_left == 0 and config.has("prompt_after_empty"):
 		hotspot.prompt_text = config["prompt_after_empty"]

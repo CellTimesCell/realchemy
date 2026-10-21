@@ -66,6 +66,16 @@ signal ghost_line_requested(key: String)
 signal autosave_requested
 ## A save was loaded: nodes re-read their flags and states.
 signal game_loaded
+## A locked prop with a combination (data/interactables.json "code") wants
+## the 4-wheel lock UI; on the right code the UI sets the prop's unlock flag
+## and fires puzzle_event "unlocked_<id>".
+signal code_lock_requested(target_id: String, code: String)
+## Play a scripted dialogue from data/dialogues.json; dialogue_finished after.
+signal dialogue_requested(dialogue_id: String)
+signal dialogue_finished(dialogue_id: String)
+## The ghost asks her next riddle (data/riddles.json); riddle_closed after.
+signal riddle_requested
+signal riddle_closed
 
 var modal_ui_active: bool = false
 

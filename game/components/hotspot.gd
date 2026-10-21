@@ -119,12 +119,19 @@ func is_focused() -> bool:
 	var best: Hotspot = self
 	var best_d: float = _distance_to_hero()
 	for other: Hotspot in _inside:
-		if other != self and is_instance_valid(other) and other._hero_inside and other.is_visible_in_tree():
+		if other != self and is_instance_valid(other) and other._hero_inside and other.is_visible_in_tree() \
+				and other.wants_focus():
 			var d: float = other._distance_to_hero()
 			if d < best_d - 0.01 or (absf(d - best_d) <= 0.01 and other.get_instance_id() < best.get_instance_id()):
 				best = other
 				best_d = d
 	return best == self
+
+
+## Only hotspots with something to show compete for the focus (an opened
+## wardrobe with no prompt left does not hide the ghost's "Talk").
+func wants_focus() -> bool:
+	return not prompt_text.is_empty() or not _item_prompt.is_empty() or not say_key.is_empty()
 
 
 ## Sets the plain prompt (no item in hand) and shows it at once.
