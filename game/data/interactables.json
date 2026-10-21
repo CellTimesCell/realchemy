@@ -25,6 +25,7 @@
 	},
 	"orange_tree": {
 		"pose": "interact_high", "anim": "none",
+		"requires_flag": "chair_under_tree", "blocked_line_key": "SAY_ORANGES_TOO_HIGH",
 		"item": {"id": "orange", "count": 3, "color": "#f7a21e", "letter": "o"},
 		"line_key": "SAY_ORANGE_TAKEN", "empty_line_key": "SAY_ORANGE_EMPTY",
 		"prompt_after_empty": "UI_INSPECT"

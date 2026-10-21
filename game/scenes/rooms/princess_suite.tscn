@@ -130,6 +130,10 @@
 [ext_resource type="Script" path="res://components/pickup.gd" id="d1_pickup_gd"]
 [ext_resource type="Script" path="res://components/ui/hud.gd" id="d1_hud_gd"]
 
+[ext_resource type="Script" path="res://components/push_prop.gd" id="d2_push_gd"]
+[ext_resource type="Script" path="res://components/stuck_watcher.gd" id="d2_stuck_gd"]
+[ext_resource type="Script" path="res://components/hint_giver.gd" id="d2_hint_gd"]
+
 [sub_resource type="Gradient" id="Gradient_1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -1499,8 +1503,12 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_INSPECT"
 
-[node name="XChair" type="Node2D" parent="Props"]
+[node name="XChair" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "riders")]
 position = Vector2(726, 298)
+script = ExtResource("d2_push_gd")
+hotspot = NodePath("Hotspot")
+target = Vector2(1208, 296)
+riders = [NodePath("../PlushBear")]
 
 [node name="Shadow" type="Sprite2D" parent="Props/XChair"]
 position = Vector2(0, -2)
@@ -1572,7 +1580,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="Cello" type="Node2D" parent="Props"]
-position = Vector2(1178, 304)
+position = Vector2(1170, 304)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Cello"]
 position = Vector2(0, -2)
@@ -1807,7 +1815,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="MusicStand" type="Node2D" parent="Props"]
-position = Vector2(1160, 300)
+position = Vector2(1152, 300)
 
 [node name="Shadow" type="Sprite2D" parent="Props/MusicStand"]
 position = Vector2(0, -2)
@@ -1969,7 +1977,7 @@ autowrap_mode = 3
 text = "UI_INSPECT"
 
 [node name="Gramophone" type="Node2D" parent="Props" node_paths=PackedStringArray("hotspot", "player", "sprite")]
-position = Vector2(1243, 322)
+position = Vector2(1247, 322)
 script = ExtResource("b9_gramophone_gd")
 hotspot = NodePath("Hotspot")
 player = NodePath("Music")
@@ -2730,3 +2738,9 @@ script = ExtResource("69")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("d1_hud_gd")
+
+[node name="StuckWatcher" type="Node" parent="."]
+script = ExtResource("d2_stuck_gd")
+
+[node name="HintGiver" type="Node" parent="."]
+script = ExtResource("d2_hint_gd")

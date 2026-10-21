@@ -29,11 +29,16 @@ func _make_interactable(id: String) -> Interactable:
 
 
 func test_orange_tree_gives_oranges_until_empty() -> void:
+	GameManager.reset()
 	var prop: Interactable = _make_interactable("orange_tree")
+	prop._unhandled_input(_accept)
+	assert_eq(prop.hotspot.prompt.text, "SAY_ORANGES_TOO_HIGH", "Out of reach without the chair")
+	GameManager.set_flag("chair_under_tree")
 	watch_signals(EventBus)
 	for i: int in 4:
 		prop._unhandled_input(_accept)
 	assert_signal_emit_count(EventBus, "item_found", 3, "Three oranges, then none")
+	assert_eq(GameManager.inventory.count_of("orange"), 3)
 	assert_eq(prop.hotspot.prompt.text, "SAY_ORANGE_EMPTY")
 	assert_eq(prop.hotspot.prompt_text, "UI_INSPECT", "Prompt changes once empty")
 

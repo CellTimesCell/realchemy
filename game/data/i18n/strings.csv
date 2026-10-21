@@ -189,3 +189,40 @@ SAY_JUICE_SQUEEZED,Orange juice. Mostly in the glass.
 SAY_NEED_ORANGE,Squeeze what? I need an orange.
 SAY_JUICE_SALTED,Salty orange juice. Not for drinking.
 SAY_NEED_JUICE_AND_SALT,I'd need juice and salt for that.
+UI_PUSH,Push
+UI_GRANDMA,Grandma:
+SAY_CHAIR_PUSHED,Under the tree. Perfect.
+SAY_ORANGES_TOO_HIGH,The oranges are too high... I need something to stand on.
+THINK_ORANGES_HIGH,The oranges are too high... I need something to stand on.
+THINK_ORANGES_REACH,The chair is under the tree. Up I go.
+THINK_RUST_SOUR,Rust... iron... maybe something sour?
+THINK_WHILE_WAITING,While the rust soaks... that chandelier looks loose.
+THINK_GARDEROBE,A key. And a locked garderobe. Hm.
+THINK_WAIT_RUST,Rust takes its time. So can I.
+THINK_HAIRPIN_NOW,Now the hairpin might actually work.
+THINK_TOO_DARK,Too dark. I need a light.
+HINT_CHAIR_1,Some oranges are only for tall princesses. Or clever ones.
+HINT_CHAIR_2,"That chair isn't nailed down, dear."
+HINT_CHAIR_3,Push the chair under the tree and climb up.
+HINT_ORANGE_3,"Stand on the chair and pick an orange, dear."
+HINT_LOCK_1,Rust is just iron that gave up. Cheer it up with something sour.
+HINT_LOCK_2,Sour... like that orange tree nobody waters but me.
+HINT_LOCK_3,"Squeeze the orange on the lock, dear. And then wait. Patience is a princess virtue."
+HINT_JUICE_3,"Squeeze the orange at the workbench in the study, dear. The juice goes on the lock."
+HINT_CHANDELIER_1,That chandelier has been hiding something for years.
+HINT_CHANDELIER_2,"Things fall when you hit them, dear. Physics."
+HINT_CHANDELIER_3,Kick the ball. Off the wall. At the chandelier.
+HINT_CHEST_1,Someone in the garderobe had a lot of time to write things on walls.
+HINT_CHEST_2,"Behind the posters, dear."
+HINT_CHEST_3,The last four digits. Honestly.
+HINT_WAIT_1,Rust doesn't hurry. Neither should you.
+HINT_WAIT_2,Go and poke around the suite. The lock will keep.
+HINT_WAIT_3,"Just wait, dear. Come back when the rust is soft."
+HINT_PICK_1,A lock is just a puzzle that rusted.
+HINT_PICK_2,"Your hairpin, dear. It's not just for hair."
+HINT_PICK_3,Use the hairpin on the lock. Now.
+HINT_DARK_1,It's dark. Even ghosts don't like the dark.
+HINT_DARK_2,"I asked you about something that weeps wax tears, remember?"
+HINT_DARK_3,"Take my candle, dear, and light it. The matches are in the nightstand."
+GHOST_HINT_COOLDOWN,"Patience, dear. Even ghosts need a minute."
+GHOST_HINT_NONE,"Nothing to tell you, dear. You're doing fine."

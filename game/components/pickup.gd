@@ -19,7 +19,7 @@ var taken_flag: String = ""
 func _ready() -> void:
 	taken_flag = "taken_%s" % (name as String).to_snake_case()
 	if hotspot:
-		hotspot.prompt_text = "UI_TAKE"
+		hotspot.set_prompt("UI_TAKE")
 		hotspot.say_key = ""
 	visible = not start_hidden and not GameManager.has_flag(taken_flag)
 	if GameManager.has_flag("shown_%s" % (name as String).to_snake_case()) and not GameManager.has_flag(taken_flag):

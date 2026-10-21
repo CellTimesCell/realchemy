@@ -38,6 +38,7 @@ func _rebuild() -> void:
 	if not is_node_ready():
 		return
 	for child: Node in _column.get_children():
+		_column.remove_child(child)
 		child.queue_free()
 	var stats: HeroStats = GameManager.stats
 	_column.add_child(Hud.make_label("%s  -  %s %s" % [tr("UI_GUILD_CARD"), tr("UI_RANK"), HeroStats.rank()]))
@@ -59,4 +60,11 @@ func _rebuild() -> void:
 			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			line.custom_minimum_size = Vector2(230, 0)
 			_column.add_child(line)
+	_fit.call_deferred()
+
+
+func _fit() -> void:
+	size = Vector2.ZERO
 	reset_size()
+	var view: Vector2 = get_viewport().get_visible_rect().size
+	position = Vector2(floorf((view.x - size.x) * 0.5), maxf(4.0, floorf((Hud.BAR_Y - 4.0 - size.y) * 0.5)))

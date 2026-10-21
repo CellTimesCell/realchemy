@@ -94,6 +94,8 @@ func give_item(id: String, count: int = 1) -> bool:
 	if not inventory.add(id, count):
 		EventBus.hero_line_requested.emit(POCKETS_FULL_KEY)
 		return false
+	# had_<item>: the puzzle graph knows the hero got it once (data/hints.json).
+	set_flag("had_%s" % id)
 	EventBus.item_found.emit(id)
 	return true
 
@@ -104,6 +106,11 @@ func equip(id: String, hand: int) -> bool:
 		if inventory.slots[i].get("id", "") == id:
 			return inventory.equip(i, hand as Inventory.Hand)
 	return false
+
+
+## Xp for a stat (an action well done); true on a level up.
+func add_xp(stat: String, amount: int) -> bool:
+	return stats.add_xp(stat, amount)
 
 
 func unlock_codex(entry_id: String) -> void:

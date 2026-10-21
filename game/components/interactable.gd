@@ -195,10 +195,7 @@ func _give_item() -> void:
 
 
 func _set_prompt(key: String) -> void:
-	hotspot.prompt_text = key
-	if hotspot.prompt:
-		hotspot.prompt.text = key
-	hotspot.refresh_prompt()
+	hotspot.set_prompt(key)
 
 
 func _dust() -> void:

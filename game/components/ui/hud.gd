@@ -85,6 +85,7 @@ func _ready() -> void:
 	card = GuildCard.new()
 	card.position = Vector2(200, 70)
 	_root.add_child(card)
+	_root.add_child(GhostVoice.new())
 	_hand_menu = VBoxContainer.new()
 	_hand_menu.visible = false
 	_root.add_child(_hand_menu)
