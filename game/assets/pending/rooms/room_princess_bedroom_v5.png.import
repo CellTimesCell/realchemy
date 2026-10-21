@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dns0qe2peacgj"
-path="res://.godot/imported/trophy_dragon_wall.png-07df829cb9a6f46e5c027f4bf1601175.ctex"
+uid="uid://c34pmh2oho7j3"
+path="res://.godot/imported/room_princess_bedroom_v5.png-87da55e164ff1f1f7639f2e59a12cc11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_dragon_wall.png"
-dest_files=["res://.godot/imported/trophy_dragon_wall.png-07df829cb9a6f46e5c027f4bf1601175.ctex"]
+source_file="res://assets/pending/rooms/room_princess_bedroom_v5.png"
+dest_files=["res://.godot/imported/room_princess_bedroom_v5.png-87da55e164ff1f1f7639f2e59a12cc11.ctex"]
 
 [params]
 

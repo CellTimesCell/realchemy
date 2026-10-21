@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drqluek57nq7q"
-path="res://.godot/imported/trophy_griffin_wall.png-3f36aa0c1721215ca04dda1ad0a2775d.ctex"
+uid="uid://hvxffdno1cp3"
+path="res://.godot/imported/count_yawn.png-6a9d1339338be851f1e5bfe5e4daecc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_griffin_wall.png"
-dest_files=["res://.godot/imported/trophy_griffin_wall.png-3f36aa0c1721215ca04dda1ad0a2775d.ctex"]
+source_file="res://assets/pending/props/count/count_yawn.png"
+dest_files=["res://.godot/imported/count_yawn.png-6a9d1339338be851f1e5bfe5e4daecc5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bltb1bdu75ii2"
-path="res://.godot/imported/trophy_unicorn_wall.png-2d7eea8d7e1dbffe8db713057e831238.ctex"
+uid="uid://dbf88h2n2h25s"
+path="res://.godot/imported/room_princess_boudoir_v2.png-389f12ce6f744b6941bd9a1178dfa6e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_unicorn_wall.png"
-dest_files=["res://.godot/imported/trophy_unicorn_wall.png-2d7eea8d7e1dbffe8db713057e831238.ctex"]
+source_file="res://assets/pending/rooms/room_princess_boudoir_v2.png"
+dest_files=["res://.godot/imported/room_princess_boudoir_v2.png-389f12ce6f744b6941bd9a1178dfa6e0.ctex"]
 
 [params]
 
