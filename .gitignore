@@ -21,3 +21,4 @@ __pycache__/
 *.keystore
 # Raw AI-generated art (approved style references get whitelisted with !path)
 game/assets/_incoming/*
+build/
