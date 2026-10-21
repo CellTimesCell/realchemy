@@ -996,3 +996,14 @@ Spent **54** (balance 790 → 736). Raw output: `_incoming/v2/bedroom/`. Variant
 
 Prompt (pixen, Alexander's): "bare empty stone room shell of a gothic castle tower chamber, single cohesive room filling a wide 16:9 frame, back wall facing the viewer straight-on, two tall pointed gothic windows placed symmetrically with night sky and moonlight, empty plain center of the back wall, faded torn pink rose wallpaper panels between stone pilasters, a small pointed arched wooden door in the back wall right of center, open arched doorways in the left and right side walls, wide dark wooden plank floor across the whole foreground, ribbed vaulted ceiling, cobwebs only in the upper corners, diorama camera slightly from above, completely empty: no furniture, no bed, no fireplace, no rug, no candles, no curtains, no characters, nothing on the floor". Pro: the same + "ONE single cohesive room … no pillars or columns in the middle of the image … no torches, no paintings".
 Lesson: for one-room shells pixen keeps drawing two bays; a flat-colour layout sketch as a pro reference (composition only) fixes the composition.
+
+## 2026-10-21 (R1-bis) — Bedroom v2: windowless shell (budget 50)
+
+Spent **50** (balance 736 → 686). Variants: `pending/rooms/v2/bedroom_shell_{d,e}.png` (a/b/c with windows are superseded).
+
+| Output | Tool | Seed / job | Cost |
+|---|---|---|---|
+| `shell_pro_nowin_1.png` → **d** | `create_image_pro`, style = `pending/rooms/v2/bedroom_shell_a.png`, reference = own flat layout sketch `layout_sketch_nowin.png` (composition only) | 2026102121 / `111db883-3422-4cee-972d-63683010cab0` | 25 |
+| `shell_pro_nowin_2.png` → **e** | same | 2026102122 / `d127fa1e-d872-4388-9512-b4e7fbe2e3fd` | 25 |
+
+Prompt (Alexander's): "bare empty stone room shell of a windowless gothic castle chamber, single cohesive room filling a wide 16:9 frame, back wall facing the viewer straight-on, NO windows, faded torn pink rose wallpaper panels between stone pilasters, a small pointed arched wooden door in the back wall right of center, a built-in stone fireplace with carved gargoyles on the left part of the wall (empty hearth, no fire), an open arched doorway in the right side wall, wide dark wooden plank floor across the whole foreground, ribbed vaulted ceiling, cobwebs only in the upper corners, warm dim lighting, no moonlight, diorama camera slightly from above, completely empty: no furniture, no bed, no rug, no candles, no characters, nothing on the floor".
