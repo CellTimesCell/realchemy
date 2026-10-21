@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6odys8yfttgv"
-path="res://.godot/imported/garderobe_sign_wide.png-139e21779e6b2142b78229e2e46fefc3.ctex"
+uid="uid://dc34dodrvpiig"
+path="res://.godot/imported/mouse_run.png-2c2254f4e872bc58042dfffc4fb0caf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_sign_wide.png"
-dest_files=["res://.godot/imported/garderobe_sign_wide.png-139e21779e6b2142b78229e2e46fefc3.ctex"]
+source_file="res://assets/approved/creatures/mouse_run.png"
+dest_files=["res://.godot/imported/mouse_run.png-2c2254f4e872bc58042dfffc4fb0caf3.ctex"]
 
 [params]
 

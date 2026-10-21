@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7w4jmqiy85n0"
-path="res://.godot/imported/spider.png-42b97e1086e2ae4053c3273118022ea9.ctex"
+uid="uid://ca0epoiv3yis3"
+path="res://.godot/imported/garderobe_door_v4_open.png-fe8c4266499c2265c71f6a53f1f8b73c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/creatures/spider.png"
-dest_files=["res://.godot/imported/spider.png-42b97e1086e2ae4053c3273118022ea9.ctex"]
+source_file="res://assets/approved/props/garderobe_door_v4_open.png"
+dest_files=["res://.godot/imported/garderobe_door_v4_open.png-fe8c4266499c2265c71f6a53f1f8b73c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2gqr1br67d5a"
-path="res://.godot/imported/count_lids.png-7edf465f4acf3e1600b2c08a95948548.ctex"
+uid="uid://cs7usmk8iftdf"
+path="res://.godot/imported/garderobe_door_v4_ajar.png-e1706904a196454ee942baf7640feaf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/count/count_lids.png"
-dest_files=["res://.godot/imported/count_lids.png-7edf465f4acf3e1600b2c08a95948548.ctex"]
+source_file="res://assets/approved/props/garderobe_door_v4_ajar.png"
+dest_files=["res://.godot/imported/garderobe_door_v4_ajar.png-e1706904a196454ee942baf7640feaf2.ctex"]
 
 [params]
 

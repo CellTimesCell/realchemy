@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clu4u7p6pcxqc"
-path="res://.godot/imported/workbench.png-eb2779bed8ee0b391a2b3f0afd2b4831.ctex"
+uid="uid://c2gqr1br67d5a"
+path="res://.godot/imported/count_lids.png-7ed8e11a7064fdde6068e719e832ed14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/workbench.png"
-dest_files=["res://.godot/imported/workbench.png-eb2779bed8ee0b391a2b3f0afd2b4831.ctex"]
+source_file="res://assets/approved/props/count/count_lids.png"
+dest_files=["res://.godot/imported/count_lids.png-7ed8e11a7064fdde6068e719e832ed14.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8c8q01usi82g"
-path="res://.godot/imported/workbench_b.png-b6c1ac083df71a44d5f12d7fca26f964.ctex"
+uid="uid://7w4jmqiy85n0"
+path="res://.godot/imported/spider.png-b510ba83ff983603cc578bca2e9a8683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/workbench_b.png"
-dest_files=["res://.godot/imported/workbench_b.png-b6c1ac083df71a44d5f12d7fca26f964.ctex"]
+source_file="res://assets/approved/creatures/spider.png"
+dest_files=["res://.godot/imported/spider.png-b510ba83ff983603cc578bca2e9a8683.ctex"]
 
 [params]
 

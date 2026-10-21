@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs7usmk8iftdf"
-path="res://.godot/imported/garderobe_door_v4_ajar.png-a95d214aa9f0341ac969573bde1c8253.ctex"
+uid="uid://ca7ny2340d4h2"
+path="res://.godot/imported/trophy_dragon_large.png-eda1f6c5270304810a426fb179c0e094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/garderobe_door_v4_ajar.png"
-dest_files=["res://.godot/imported/garderobe_door_v4_ajar.png-a95d214aa9f0341ac969573bde1c8253.ctex"]
+source_file="res://assets/approved/props/trophy_dragon_large.png"
+dest_files=["res://.godot/imported/trophy_dragon_large.png-eda1f6c5270304810a426fb179c0e094.ctex"]
 
 [params]
 
