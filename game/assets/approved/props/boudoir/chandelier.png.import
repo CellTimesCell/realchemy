@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjrg1pgguvmfg"
-path="res://.godot/imported/trophy_dragon.png-4d8fc164bd88354c5ab819cbd5855647.ctex"
+uid="uid://duw3bwdugscgp"
+path="res://.godot/imported/chandelier.png-19d5d2e118c7a85569fa6780d2906259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_dragon.png"
-dest_files=["res://.godot/imported/trophy_dragon.png-4d8fc164bd88354c5ab819cbd5855647.ctex"]
+source_file="res://assets/approved/props/boudoir/chandelier.png"
+dest_files=["res://.godot/imported/chandelier.png-19d5d2e118c7a85569fa6780d2906259.ctex"]
 
 [params]
 

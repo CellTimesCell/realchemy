@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpobnt1xyua4"
-path="res://.godot/imported/crystal_prism.png-60a2331d35621740ff55459df29b06dd.ctex"
+uid="uid://dns0qe2peacgj"
+path="res://.godot/imported/trophy_dragon_wall.png-07df829cb9a6f46e5c027f4bf1601175.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/items/crystal_prism.png"
-dest_files=["res://.godot/imported/crystal_prism.png-60a2331d35621740ff55459df29b06dd.ctex"]
+source_file="res://assets/pending/props/trophy_dragon_wall.png"
+dest_files=["res://.godot/imported/trophy_dragon_wall.png-07df829cb9a6f46e5c027f4bf1601175.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0xvjfmnlqoet"
-path="res://.godot/imported/chandelier_b.png-48729b64a11e6bfc102ea645cba74c43.ctex"
+uid="uid://b8c8q01usi82g"
+path="res://.godot/imported/workbench_b.png-b6c1ac083df71a44d5f12d7fca26f964.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/chandelier_b.png"
-dest_files=["res://.godot/imported/chandelier_b.png-48729b64a11e6bfc102ea645cba74c43.ctex"]
+source_file="res://assets/pending/suite/workbench_b.png"
+dest_files=["res://.godot/imported/workbench_b.png-b6c1ac083df71a44d5f12d7fca26f964.ctex"]
 
 [params]
 

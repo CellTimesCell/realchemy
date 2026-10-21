@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duw3bwdugscgp"
-path="res://.godot/imported/chandelier.png-e0e496e03c9c398afc701459db4e63c6.ctex"
+uid="uid://dkgvc0rkiwdxv"
+path="res://.godot/imported/chandelier_fallen.png-a46f537a0225f762e3dbeebb6971bbd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/chandelier.png"
-dest_files=["res://.godot/imported/chandelier.png-e0e496e03c9c398afc701459db4e63c6.ctex"]
+source_file="res://assets/approved/props/boudoir/chandelier_fallen.png"
+dest_files=["res://.godot/imported/chandelier_fallen.png-a46f537a0225f762e3dbeebb6971bbd4.ctex"]
 
 [params]
 

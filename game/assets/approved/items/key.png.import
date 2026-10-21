@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqty187yf87wh"
-path="res://.godot/imported/trophy_dragon_b.png-27f7c1c6614a70511605537daead6c89.ctex"
+uid="uid://c2s3nd2wf2vft"
+path="res://.godot/imported/key.png-3ce2074075edc099b0e2e0e81d1fe017.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_dragon_b.png"
-dest_files=["res://.godot/imported/trophy_dragon_b.png-27f7c1c6614a70511605537daead6c89.ctex"]
+source_file="res://assets/approved/items/key.png"
+dest_files=["res://.godot/imported/key.png-3ce2074075edc099b0e2e0e81d1fe017.ctex"]
 
 [params]
 

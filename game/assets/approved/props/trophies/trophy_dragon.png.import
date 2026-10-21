@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfa6ymq3j1fuu"
-path="res://.godot/imported/bookcase_v2_b.png-fbf3b086b0bd735a4ea5ec2dd1a529de.ctex"
+uid="uid://bjrg1pgguvmfg"
+path="res://.godot/imported/trophy_dragon.png-8a4d2f0aff889259866310d67aa08500.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/suite/bookcase_v2_b.png"
-dest_files=["res://.godot/imported/bookcase_v2_b.png-fbf3b086b0bd735a4ea5ec2dd1a529de.ctex"]
+source_file="res://assets/approved/props/trophies/trophy_dragon.png"
+dest_files=["res://.godot/imported/trophy_dragon.png-8a4d2f0aff889259866310d67aa08500.ctex"]
 
 [params]
 

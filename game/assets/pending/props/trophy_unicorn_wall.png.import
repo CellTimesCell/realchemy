@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwt7p6v5rbmtr"
-path="res://.godot/imported/trophy_unicorn_b.png-0ece6b1c30dca9395c9b0a7106f8bbf5.ctex"
+uid="uid://bltb1bdu75ii2"
+path="res://.godot/imported/trophy_unicorn_wall.png-2d7eea8d7e1dbffe8db713057e831238.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_unicorn_b.png"
-dest_files=["res://.godot/imported/trophy_unicorn_b.png-0ece6b1c30dca9395c9b0a7106f8bbf5.ctex"]
+source_file="res://assets/pending/props/trophy_unicorn_wall.png"
+dest_files=["res://.godot/imported/trophy_unicorn_wall.png-2d7eea8d7e1dbffe8db713057e831238.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c37bsj00p7kb6"
-path="res://.godot/imported/ball.png-1ebe7017b8f4b77d72531a17ed6ba540.ctex"
+uid="uid://drqluek57nq7q"
+path="res://.godot/imported/trophy_griffin_wall.png-3f36aa0c1721215ca04dda1ad0a2775d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/items/ball.png"
-dest_files=["res://.godot/imported/ball.png-1ebe7017b8f4b77d72531a17ed6ba540.ctex"]
+source_file="res://assets/pending/props/trophy_griffin_wall.png"
+dest_files=["res://.godot/imported/trophy_griffin_wall.png-3f36aa0c1721215ca04dda1ad0a2775d.ctex"]
 
 [params]
 

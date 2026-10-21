@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds2tv1guhwkyp"
-path="res://.godot/imported/trophy_griffin.png-bdc51c1637527759963a303c75ab7aad.ctex"
+uid="uid://juxmadxki0b8"
+path="res://.godot/imported/trophy_unicorn.png-1bb0fc7533f2da33ccde605e144c553b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/trophy_griffin.png"
-dest_files=["res://.godot/imported/trophy_griffin.png-bdc51c1637527759963a303c75ab7aad.ctex"]
+source_file="res://assets/approved/props/trophies/trophy_unicorn.png"
+dest_files=["res://.godot/imported/trophy_unicorn.png-1bb0fc7533f2da33ccde605e144c553b.ctex"]
 
 [params]
 

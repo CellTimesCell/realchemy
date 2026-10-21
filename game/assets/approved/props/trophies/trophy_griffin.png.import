@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkgvc0rkiwdxv"
-path="res://.godot/imported/chandelier_fallen.png-e11f516e84e43e947f7153c35717b9a8.ctex"
+uid="uid://ds2tv1guhwkyp"
+path="res://.godot/imported/trophy_griffin.png-8637d4d4c99ac0f7a272a74858325496.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/chandelier_fallen.png"
-dest_files=["res://.godot/imported/chandelier_fallen.png-e11f516e84e43e947f7153c35717b9a8.ctex"]
+source_file="res://assets/approved/props/trophies/trophy_griffin.png"
+dest_files=["res://.godot/imported/trophy_griffin.png-8637d4d4c99ac0f7a272a74858325496.ctex"]
 
 [params]
 
