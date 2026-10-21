@@ -1,0 +1,42 @@
+{
+	"_doc": "Reactions (autoload/chemistry_engine.gd), docs/DATA_SCHEMA.md. Abstracted on purpose (CLAUDE.md §6): no amounts, temperatures or step-by-step methods. zone: where it happens (workbench = the study's alchemist workbench; rusty_lock = the dressing-room gate). duration.modes: real seconds per difficulty (0 = instant); speedup: a faster variant when the given item is used. on_finish_flags: GameManager flags set when a process ends. codex: the Codex entry it unlocks (data/codex.json).",
+	"squeeze_orange": {
+		"inputs": ["orange"],
+		"zone": "workbench",
+		"outputs": ["orange_juice"],
+		"consumes": ["orange"],
+		"duration": {"real_note": "a minute by hand", "modes": {"cozy": 0, "classic": 0, "real": 0}},
+		"fx": "organic",
+		"line_key": "SAY_JUICE_SQUEEZED",
+		"missing_line_key": "SAY_NEED_ORANGE",
+		"codex": "citric_acid",
+		"science_note": {"en": "Oranges are full of citric acid - that's what makes them sour."},
+		"verified": true
+	},
+	"salt_juice": {
+		"inputs": ["orange_juice", "salt"],
+		"zone": "workbench",
+		"outputs": ["salted_juice"],
+		"consumes": ["orange_juice", "salt"],
+		"duration": {"real_note": "stirred in at once", "modes": {"cozy": 0, "classic": 0, "real": 0}},
+		"fx": "organic",
+		"line_key": "SAY_JUICE_SALTED",
+		"missing_line_key": "SAY_NEED_JUICE_AND_SALT",
+		"codex": "salt_abrasive",
+		"science_note": {"en": "Salt crystals are a mild abrasive: they help scrub loosened rust away."},
+		"verified": true
+	},
+	"rust_dissolving": {
+		"inputs": ["tag:rust_remover"],
+		"zone": "rusty_lock",
+		"outputs": [],
+		"consumes": [],
+		"duration": {"real_note": "hours to a day for a real rusty lock", "modes": {"cozy": 120, "classic": 900, "real": 7200}},
+		"speedup": {"salted_juice": 0.5},
+		"on_finish_flags": ["lock_rust_gone"],
+		"fx": "fizz",
+		"codex": "rust_citric",
+		"science_note": {"en": "Citric acid slowly dissolves rust - that's how many store-bought rust removers work. Salt is a mild abrasive that helps scrub it off."},
+		"verified": false
+	}
+}

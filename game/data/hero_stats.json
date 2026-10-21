@@ -1,0 +1,21 @@
+{
+	"_doc": "Hero stats (systems/stats/hero_stats.gd), guild card of an F-rank adventurer. Stats give extra ways and bonuses but NEVER block progress (GAME_DESIGN §12). value = start + level; a level comes from xp earned by actions (use_rules.json xp_stat / xp). effects: how a stat changes a puzzle (seconds; clamped by min). Rank F -> E: structure only for now.",
+	"stats": {
+		"int": {"name_key": "STAT_INT", "desc_key": "STAT_INT_DESC", "start": 2},
+		"str": {"name_key": "STAT_STR", "desc_key": "STAT_STR_DESC", "start": 1},
+		"dex": {"name_key": "STAT_DEX", "desc_key": "STAT_DEX_DESC", "start": 2},
+		"wit": {"name_key": "STAT_WIT", "desc_key": "STAT_WIT_DESC", "start": 2},
+		"luck": {"name_key": "STAT_LUCK", "desc_key": "STAT_LUCK_DESC", "start": 3}
+	},
+	"order": ["int", "str", "dex", "wit", "luck"],
+	"xp_per_level": [10, 25, 45, 70],
+	"max_level": 4,
+	"rank": {"current": "F", "next": "E", "xp_to_next": 200},
+	"health_max": 10,
+	"energy_max": 10,
+	"effects": {
+		"int": {"thought_delay_base": 75.0, "thought_delay_per_point": -12.0, "thought_delay_min": 20.0},
+		"str": {"push_time_base": 2.6, "push_time_per_point": -0.45, "push_time_min": 0.8},
+		"dex": {"pick_time_base": 3.0, "pick_time_per_point": -0.5, "pick_time_min": 0.8}
+	}
+}

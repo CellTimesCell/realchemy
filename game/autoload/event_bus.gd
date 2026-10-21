@@ -42,6 +42,29 @@ signal music_played(playing: bool)
 ## A player setting changed (SaveManager), e.g. "text_size".
 signal settings_changed(key: String)
 
+# --- Game state (GameManager, TimeManager, inventory) -------------------------
+## A story / puzzle flag was set or cleared (GameManager.flags).
+signal flag_changed(flag: String, value: Variant)
+## Pockets, hands or capacity changed.
+signal inventory_changed
+## Something the hero has to say (a key): the hero's bubble shows it.
+signal hero_line_requested(key: String)
+## The hero should play an interaction pose ("interact_mid"...).
+signal hero_pose_requested(pose: String)
+## A named puzzle event for scene scripts (data/use_rules.json "event").
+signal puzzle_event(event_name: String)
+## A Codex entry (science fact) was unlocked.
+signal codex_unlocked(entry_id: String)
+## A real-time process started / finished (TimeManager).
+signal process_started(process_id: String)
+signal process_finished(process_id: String)
+## Stats / xp changed (HeroStats).
+signal stats_changed
+## The ghost grandmother says something (a key); shown by the ghost's voice.
+signal ghost_line_requested(key: String)
+## Ask the game to save now (room change, puzzle step, quit).
+signal autosave_requested
+
 var modal_ui_active: bool = false
 
 

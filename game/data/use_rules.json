@@ -1,0 +1,21 @@
+{
+	"_doc": "An item in hand used on a target (GameManager.rule_for / apply_rule). target = Hotspot.target_id. verb: prompt key, shown as 'Verb (Item)'. requires / forbid: flags; when not met the hero says blocked_line_key and nothing happens. hide_if: flags that make the rule disappear (already done). consume: the held item is used up. set_flags / clear_flags, give [{id, count}], start_process {reaction, id}, event (EventBus.puzzle_event for the scene), codex, xp_stat / xp, pose, line_key. Puzzle graph: docs/PUZZLES.md.",
+	"rules": [
+		{"target": "garderobe_door", "item": "key", "verb": "UI_UNLOCK", "hide_if": ["garderobe_unlocked"],
+			"set_flags": ["garderobe_unlocked"], "event": "garderobe_unlocked", "xp_stat": "wit", "xp": 5,
+			"line_key": "SAY_PRINCESS_LOGIC"},
+		{"target": "dressing_gate", "item": "orange_juice", "verb": "UI_POUR", "hide_if": ["lock_juiced"],
+			"consume": true, "set_flags": ["lock_juiced"], "start_process": {"reaction": "rust_dissolving", "id": "rust_lock"},
+			"xp_stat": "int", "xp": 10, "line_key": "SAY_JUICE_ON_LOCK"},
+		{"target": "dressing_gate", "item": "salted_juice", "verb": "UI_POUR", "hide_if": ["lock_juiced"],
+			"consume": true, "set_flags": ["lock_juiced"], "start_process": {"reaction": "rust_dissolving", "id": "rust_lock"},
+			"xp_stat": "int", "xp": 15, "line_key": "SAY_SALTED_JUICE_ON_LOCK"},
+		{"target": "dressing_gate", "item": "hairpin", "verb": "UI_PICK_LOCK", "hide_if": ["gate_unlocked"],
+			"requires": ["lock_rust_gone"], "blocked_line_key": "SAY_GATE_RUSTED",
+			"set_flags": ["gate_unlocked"], "event": "gate_pick", "xp_stat": "dex", "xp": 10, "pose": "interact_mid",
+			"line_key": "SAY_GATE_PICKED"},
+		{"target": "dark_passage", "item": "lit_candle", "verb": "UI_GO_IN", "set_flags": ["passage_lit"],
+			"event": "to_be_continued", "pose": "", "line_key": "SAY_INTO_THE_DARK"},
+		{"target": "dark_passage", "item": "candle", "verb": "UI_GO_IN", "pose": "", "line_key": "SAY_CANDLE_UNLIT"}
+	]
+}

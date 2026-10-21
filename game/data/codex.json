@@ -1,0 +1,8 @@
+{
+	"_doc": "Codex (the Adventurer's Handbook) science facts, unlocked by reactions and puzzles (GameManager.unlock_codex). title / text: {lang: str}; English only for now. verified: false = waits for a human check (CLAUDE.md §6).",
+	"citric_acid": {"title": {"en": "Citric acid"}, "text": {"en": "Oranges are full of citric acid - that's what makes them sour."}, "verified": true},
+	"salt_abrasive": {"title": {"en": "Salt scrubs"}, "text": {"en": "Salt crystals are a mild abrasive: they help scrub loosened rust away."}, "verified": true},
+	"rust_citric": {"title": {"en": "Rust and acid"}, "text": {"en": "Citric acid slowly dissolves rust - that's how many store-bought rust removers work. Salt is a mild abrasive that helps scrub it off."}, "verified": false},
+	"bounce_angle": {"title": {"en": "Angle of reflection"}, "text": {"en": "The angle a ball hits a wall at equals the angle it bounces off (minus a little for spin and squish)."}, "verified": true},
+	"prism": {"title": {"en": "Prism"}, "text": {"en": "A glass prism bends each colour of light by a different amount - that's how it splits white light into a rainbow."}, "verified": true}
+}
