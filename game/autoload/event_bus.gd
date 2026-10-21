@@ -64,6 +64,8 @@ signal stats_changed
 signal ghost_line_requested(key: String)
 ## Ask the game to save now (room change, puzzle step, quit).
 signal autosave_requested
+## A save was loaded: nodes re-read their flags and states.
+signal game_loaded
 
 var modal_ui_active: bool = false
 

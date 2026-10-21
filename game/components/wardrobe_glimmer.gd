@@ -18,6 +18,9 @@ func _ready() -> void:
 	energy = 0.0
 	if wardrobe:
 		wardrobe.opened.connect(func(_prop: Interactable) -> void: stop())
+	EventBus.game_loaded.connect(func() -> void:
+		if GameManager.has_flag("ghost_met") or (wardrobe and wardrobe.is_open):
+			stop())
 	_wait = randf_range(interval_min, interval_max)
 
 

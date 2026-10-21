@@ -21,9 +21,13 @@ func _ready() -> void:
 	if hotspot:
 		hotspot.set_prompt("UI_TAKE")
 		hotspot.say_key = ""
-	visible = not start_hidden and not GameManager.has_flag(taken_flag)
-	if GameManager.has_flag("shown_%s" % (name as String).to_snake_case()) and not GameManager.has_flag(taken_flag):
-		visible = true
+	EventBus.game_loaded.connect(_sync)
+	_sync()
+
+
+func _sync() -> void:
+	var shown: bool = GameManager.has_flag("shown_%s" % (name as String).to_snake_case())
+	visible = (shown or not start_hidden) and not GameManager.has_flag(taken_flag)
 
 
 func _unhandled_input(event: InputEvent) -> void:

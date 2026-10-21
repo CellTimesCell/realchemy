@@ -40,6 +40,7 @@ var _say_token: int = 0
 
 
 func _ready() -> void:
+	add_to_group(&"persist")
 	visible = false
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(data_path))
 	data = parsed if parsed is Dictionary else {}
@@ -51,6 +52,34 @@ func _ready() -> void:
 	monologue.add_theme_stylebox_override("panel", UiStyle.bubble_box())
 	back_button.text = "UI_BACK"
 	back_button.pressed.connect(close)
+
+
+func save_state() -> Dictionary:
+	return {"used": _used.keys(), "entered": _entered_once}
+
+
+## Moved posters stay moved, taken things stay gone.
+func load_state(state: Dictionary) -> void:
+	_entered_once = bool(state.get("entered", false))
+	for key: String in state.get("used", []):
+		_used[key] = true
+		var node: Node = content.get_node_or_null(key)
+		if node is WallPoster:
+			(node as WallPoster).swing(_rotation_for(key), 0.0)
+		for entry: Dictionary in _hotspots:
+			if entry.get("id", "") == key:
+				for verb: Dictionary in entry.get("verbs", []):
+					var target: CanvasItem = content.get_node_or_null(verb.get("target", "")) as CanvasItem
+					if verb.get("action", "") == "take" and target:
+						target.visible = false
+
+
+func _rotation_for(target: String) -> float:
+	for entry: Dictionary in _hotspots:
+		for verb: Dictionary in entry.get("verbs", []):
+			if verb.get("action", "") == "move" and verb.get("target", "") == target:
+				return float(verb.get("rotate", 0.0))
+	return 0.0
 
 
 func open() -> void:

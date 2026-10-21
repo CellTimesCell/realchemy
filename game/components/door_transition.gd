@@ -27,6 +27,8 @@ const RATTLE_STEP_TIME: float = 0.04
 ## Rattle on the first try only ("Locked. From the inside?"), then open.
 @export var locked_first_time: bool = false
 @export var locked_line_key: String = ""
+## Locked until this GameManager flag is set (the key from the chandelier).
+@export var unlock_flag: String = ""
 @export var first_person_view: FirstPersonView
 ## Pose the hero takes in the doorway before the fade (ducking under a low
 ## door: "interact_low").
@@ -39,14 +41,24 @@ var _tried: bool = false
 
 
 func _ready() -> void:
+	add_to_group(&"persist")
 	_set_state(0)
+
+
+func save_state() -> Dictionary:
+	return {"tried": _tried}
+
+
+func load_state(state: Dictionary) -> void:
+	_tried = bool(state.get("tried", false))
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if busy or not hotspot.is_active() or not event.is_action_pressed("ui_accept"):
 		return
 	get_viewport().set_input_as_handled()
-	if locked or (locked_first_time and not _tried):
+	var flag_locked: bool = not unlock_flag.is_empty() and not GameManager.has_flag(unlock_flag)
+	if locked or flag_locked or (locked_first_time and not _tried):
 		_tried = true
 		_rattle()
 	elif first_person_view:

@@ -25,6 +25,8 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	# Screenshots start from a fresh game, never from the player's save.
+	root.get_node("SaveManager").set("load_on_start", false)
 	if _args.has("uivariant"):
 		UiStyle.variant = _args["uivariant"]
 	var scene: Node = (load(_args["scene"]) as PackedScene).instantiate()

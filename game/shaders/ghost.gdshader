@@ -22,14 +22,9 @@ void vertex() {
 	VERTEX.y += floor(sin(TIME * float_speed) * float_px + 0.5);
 }
 
-float ring(sampler2D tex, vec2 uv, vec2 step) {
-	float a = 0.0;
-	a = max(a, texture(tex, uv + vec2(step.x, 0.0)).a);
-	a = max(a, texture(tex, uv - vec2(step.x, 0.0)).a);
-	a = max(a, texture(tex, uv + vec2(0.0, step.y)).a);
-	a = max(a, texture(tex, uv - vec2(0.0, step.y)).a);
-	return a;
-}
+// Max alpha of the four neighbours `step` away (inlined: TEXTURE cannot be
+// passed to a function - the shader compiler rejects it).
+#define RING(step) max(max(texture(TEXTURE, UV + vec2(step.x, 0.0)).a, texture(TEXTURE, UV - vec2(step.x, 0.0)).a), max(texture(TEXTURE, UV + vec2(0.0, step.y)).a, texture(TEXTURE, UV - vec2(0.0, step.y)).a))
 
 void fragment() {
 	vec4 col = texture(TEXTURE, UV);
@@ -47,9 +42,9 @@ void fragment() {
 			rgb = mix(rgb, glow_color.rgb, rim_amount);
 		}
 		COLOR = vec4(rgb, opacity * pulse * fade);
-	} else if (ring(TEXTURE, UV, px) > 0.5) {
+	} else if (RING(px) > 0.5) {
 		COLOR = vec4(glow_color.rgb, glow_alpha * pulse * fade);
-	} else if (ring(TEXTURE, UV, px * 2.0) > 0.5) {
+	} else if (RING((px * 2.0)) > 0.5) {
 		COLOR = vec4(glow_color.rgb, glow_alpha * 0.45 * pulse * fade);
 	} else {
 		COLOR = vec4(0.0);

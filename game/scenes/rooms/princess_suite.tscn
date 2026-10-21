@@ -942,8 +942,8 @@ state_textures = Array[Texture2D]([null, ExtResource("61"), ExtResource("62")])
 transition = NodePath("../../ScreenTransition")
 first_person_view = NodePath("../../GarderobeView")
 step_in = Vector2(0, -6)
-locked_first_time = true
 locked_line_key = "HS_GARDEROBE_LOCKED"
+unlock_flag = "garderobe_unlocked"
 
 [node name="Sign" type="Node2D" parent="Props/GarderobeArch"]
 position = Vector2(-1, -70)
@@ -973,6 +973,7 @@ centered = false
 
 [node name="Hotspot" type="Area2D" parent="Props/GarderobeArch" node_paths=PackedStringArray("prompt")]
 script = ExtResource("15")
+target_id = "garderobe_door"
 prompt = NodePath("Prompt")
 prompt_text = "UI_OPEN"
 

@@ -22,7 +22,13 @@ var _plain_prompt: String = ""
 
 func _ready() -> void:
 	_plain_prompt = hotspot.prompt_text
+	EventBus.game_loaded.connect(_sync)
+	_sync()
+
+
+func _sync() -> void:
 	if GameManager.has_flag(done_flag):
+		hotspot.set_prompt(_plain_prompt)
 		_move_to(target)
 	else:
 		hotspot.set_prompt(push_prompt)

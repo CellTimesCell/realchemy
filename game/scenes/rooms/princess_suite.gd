@@ -9,6 +9,7 @@ extends Node2D
 const ROOM_WIDTH: float = 640.0
 const ROOM_HEIGHT: float = 360.0
 const CAMERA_SLIDE_TIME: float = 0.4
+const ROOM_IDS: Array[String] = ["bedroom", "boudoir", "dressing"]
 
 @export var hero: Hero
 @export var camera: Camera2D
@@ -19,6 +20,7 @@ var _tween: Tween
 
 
 func _ready() -> void:
+	SaveManager.register_scene(self)
 	_update_room(true)
 
 
@@ -33,7 +35,11 @@ func _update_room(instant: bool) -> void:
 	if index == _room_index:
 		return
 	var row_changed: bool = index.y != _room_index.y
+	var first: bool = _room_index.x < 0
 	_room_index = index
+	GameManager.room = ROOM_IDS[index.x]
+	if not first:
+		EventBus.autosave_requested.emit()
 	var center: Vector2 = Vector2(ROOM_WIDTH * (index.x + 0.5), ROOM_HEIGHT * (index.y + 0.5))
 	if _tween:
 		_tween.kill()

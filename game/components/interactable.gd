@@ -50,6 +50,7 @@ static func load_table() -> Dictionary:
 
 
 func _ready() -> void:
+	add_to_group(&"persist")
 	config = load_table().get(interactable_id, {})
 	if config.is_empty():
 		push_warning("Interactable: no entry '%s' in %s" % [interactable_id, TABLE_PATH])
@@ -59,6 +60,40 @@ func _ready() -> void:
 		inside.visible = false
 	if sprite and not state_textures.is_empty():
 		sprite.texture = state_textures[0]
+
+
+func save_state() -> Dictionary:
+	return {"open": is_open, "items_left": _items_left, "fx_done": _fx_done}
+
+
+## Puts the prop straight into a saved state (no animation, no sound).
+func load_state(state: Dictionary) -> void:
+	_items_left = int(state.get("items_left", _items_left))
+	_fx_done = bool(state.get("fx_done", false))
+	if bool(state.get("open", false)) and not is_open:
+		match config.get("anim", "none"):
+			"states":
+				if sprite and not state_textures.is_empty():
+					sprite.texture = state_textures[state_textures.size() - 1]
+			"slide":
+				if sprite and state_textures.size() >= 2:
+					sprite.texture = state_textures[1]
+				if moving_part:
+					moving_part.position += slide_offset
+		if inside:
+			inside.visible = true
+		is_open = true
+		if not config.get("prompt_after", "").is_empty():
+			_set_prompt(config["prompt_after"])
+		elif not config.get("closable", false):
+			_set_prompt("")
+	if _items_left == 0 and config.get("item", {}).size() > 0:
+		if config.has("prompt_after_empty"):
+			_set_prompt(config["prompt_after_empty"])
+		if config.get("hide_when_empty", false):
+			if sprite:
+				sprite.visible = false
+			_set_prompt("")
 
 
 func _unhandled_input(event: InputEvent) -> void:
