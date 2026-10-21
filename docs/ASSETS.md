@@ -60,7 +60,12 @@ Rule (CLAUDE.md §5.12): in git, used by scenes, waiting for an OK; on approval 
 |---|---|
 | `pending/props/dressing_gate.png` | gate bars cut from the dressing room (rattles) |
 | `pending/suite/workbench.png` (a) 103×69, `workbench_b.png` 102×67 | large alchemist workbench (batch 10 pass 2), study back wall under the window; replaces the small lab table (rejected) |
-| `pending/props/trophy_{griffin,dragon,unicorn}_wall.png` | 75 % copies of the approved heads (box filter + the master's palette): the three must fit the 88 px pink bay above the wardrobe |
+| `pending/props/trophy_dragon_large.png` 62×72 (a), `_b` 65×69 | large dragon head between the dressing-room torches (batch 11); griffin and unicorn use the approved masters at native size |
+| `pending/rooms/room_princess_bedroom_v5.png` | bedroom with the garderobe door re-inpainted crisp (only the door leaves) |
+| `pending/props/garderobe_door_v4_{ajar,open}.png` | door states edited from the new closed door (changed pixels inside the door frame only) |
+| `pending/rooms/room_princess_boudoir_v2.png` | boudoir without the pink bow above the middle window (inpaint of that patch only) |
+| `pending/props/count/{painting_count_eyes_v2,count_lids,count_yawn}.png` | portrait: crisper eyes (3×2 whites + 1 px pupil), eyelids 2 frames, yawn mouth 3 frames (changed face pixels only) |
+| `pending/creatures/{bat_fly,mouse_run,spider}.png` | bat 5-frame flap strip 24 px, mouse 4-frame run strip 20 px, spider 14×15 |
 | `pending/props/garderobe_sign_wide.png` 46×33 | approved plaque widened by 9-slice (no new art) so "OUT OF / ORDER" fits at native font size |
 
 Reserve (out of git): `_incoming/reserve/bookcase34.png` (foreground 3/4 bookcase, removed from the study).
@@ -951,3 +956,24 @@ Spent **10** (850 → 840). Style image: dressing re-uploaded `upload:d2494b67-1
 
 Notes: the model drew the bench ~103 px wide on the 136 px canvas (asked 120–140); not scaled. All four candidates came out in a 3/4 view, not strictly frontal.
 Screenshots: `_incoming/batch10/shots/{bedroom_v6,dressing_v6,workbench_a,workbench_b,sign_v6,trophy_wall_v6}.png`.
+
+## 2026-10-20 (11) — Batch 11 (budget 50): heads, door, bow, ambient life
+
+Spent **50** (balance 840 → 790). Style image: dressing `upload:d2494b67-…`. Raw output: `_incoming/batch11/`.
+
+| Output | Tool | Seed / job | Cost | Pick | Prompt (subject) |
+|---|---|---|---|---|---|
+| `dragon/` 80×72 (9) | `create_image_pro`, style = dressing, ref = approved small dragon | 2026102011 / `b37894fd-7624-4a59-ba58-41c4e26778c6` | 15 | a #0 / b #2 | "large mounted dragon head trophy on a big wooden shield-shaped wall plaque, cute cartoonish small green dragon, two curved horns, big goofy friendly eyes, open toothy mouth… not scary… strictly from the front, soft shadow under it" |
+| `bow_inpaint.png` 128×128 | `inpaint_image_pro_flash`, boudoir crop (392,0), mask (44,26,46,38) | 2026102012 / `c624f641-b9e7-4f1f-ba20-19126fd14f0e` | 6 | — | "Remove the pink ribbon bow: plain dark stone brick wall of the arch recess above the gothic window…" |
+| `yawn.png` 60×72 | `edit_image_pro_flash` of the portrait | 2026102013 / `c9a56630-dfd5-4b49-932b-451462fc7549` | 5 | — | "…he is yawning: mouth wide open in a big sleepy yawn showing two white vampire fangs, eyes squeezed shut…" |
+| `yawn_anim/` 4 frames | `animate_image`, first = portrait, last = yawn | 2026102018 / `8ec53131-9224-4a7f-aec2-16e7cf781991` | 1 | frames 1, 2 | "the painted vampire slowly opens his mouth into a big yawn; only the mouth moves" |
+| `bat.png` 24×24 | `create_image_pixen` | 2026102014 / `7cd13d3a-…` | 1 | — | "a small cute dark purple bat flying, wings spread wide, seen from the front, tiny fangs" |
+| `bat_fly/` 4 frames | `animate_image` | 2026102016 / `96f0c519-…` | 1 | 0–4 ping-pong | "bat flapping its wings up and down in flight, a smooth looping wing beat" |
+| `mouse.png` 20×20 | pixen | 2026102015 / `6d4b4969-…` | 1 | — | "a small grey mouse running, side view facing right, long thin pink tail, round ears" |
+| `mouse_run/` 4 frames | `animate_image` | 2026102017 / `b2c65a01-…` | 1 | 1–4 | "mouse running fast to the right, legs scurrying, tail swaying, looping run cycle in place" |
+| `spider.png` 16×16 | pixen | 2026102019 / `2a8350b6-…` | 1 | — | "a tiny black house spider hanging, seen from above, eight thin legs" |
+| `door_inpaint.png` 120×192 | `inpaint_image_pro_flash`, bedroom crop (400,72), mask (38,60,44,106) | 2026102020 / `7987b37e-8a12-4864-8f1b-e44fd4fd0bf6` | 6 | — | "A closed narrow double door of dark carved wood with a pointed gothic top, drawn as clean crisp pixel art with large simple readable shapes and few colours… No noise, no dithering" |
+| `door_ajar.png`, `door_open.png` | `edit_image_pro_flash` of the new door crop | 2026102021 / `52b97c7d-…`, 2026102022 / `e1d1ae48-…` | 6 + 6 | — | "…now slightly ajar: the right door leaf has swung inward a little…" / "…now wide open: both door leaves have swung inward out of sight…" |
+
+Notes: no scaling anywhere (the 75 % head copies from pass 2 are deleted). Eyes / lids drawn by script on the portrait's own palette (3×2 whites, 1 px pupil; lids = skin + lash line). Yawn overlays keep only the face pixels that changed and are opaque (the animated frames lost the painting's dark background inside the frame).
+Screenshots / GIFs: `_incoming/batch11/shots/`.
