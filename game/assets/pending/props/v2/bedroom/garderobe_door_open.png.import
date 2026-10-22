@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df2g0fhqeh5w6"
-path="res://.godot/imported/folding_screen_dress.png-dbc633fc24ce879a5f9e17f0054066ca.ctex"
+uid="uid://ccowm1wlqwpjm"
+path="res://.godot/imported/garderobe_door_open.png-a0d23118f55d184f0548b5ea9cf2bfd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pending/props/v2/folding_screen_dress.png"
-dest_files=["res://.godot/imported/folding_screen_dress.png-dbc633fc24ce879a5f9e17f0054066ca.ctex"]
+source_file="res://assets/pending/props/v2/bedroom/garderobe_door_open.png"
+dest_files=["res://.godot/imported/garderobe_door_open.png-a0d23118f55d184f0548b5ea9cf2bfd7.ctex"]
 
 [params]
 
