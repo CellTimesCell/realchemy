@@ -1018,3 +1018,9 @@ Spent **50** (balance 686 → 636). Variants: `pending/rooms/v2/bedroom_shell_{f
 | `shell_pro_v3_2.png` → **g** | same | 2026102132 / `414f5922-95a2-4b38-9504-d2644951b6c7` | 25 |
 
 Prompt: Alexander's R1-ter prompt (one wide continuous back wall with pilasters only at the corners, door near the right end, fireplace with gargoyles and chimney breast on the LEFT side wall, doorway on the RIGHT side wall, muted lilac-grey stone, no windows, completely empty). Both shells came with baked wall sconces with lit candles (f: 3, g: 2) despite "no candles".
+
+## 2026-10-21 (R2) — Bedroom v2: big furniture
+
+- `approved/rooms/v2/bedroom_shell.png` = shell **g** (approved 21.10.2026); f → `_incoming/reserve/`, a–d → `_incoming/rejected/v2/`.
+- Spent **5** (636 → 631): `pending/props/v2/folding_screen_dress.png` 40×65 — `edit_image_pro_flash` of `approved/props/folding_screen_v2.png` (padded to 40×68), seed 2026102141 / `ac43f383-59ca-434d-a5d4-03bd6b9b62bb`: "The same folding screen with a frilly pale pink princess ball gown draped over its top edge, hanging down the front of the left and middle panels, soft folds and a little lace; keep the screen's frame, panels, colours, size, outline and lighting exactly the same".
+- Reused (approved): bed_princess (+blanket, shadow), nightstand_drawer_closed ×2, painting_count + count/eyes_v2, chest, tiger_skin_rug, bedside_rug_v2.
