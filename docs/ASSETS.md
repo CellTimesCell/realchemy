@@ -1007,3 +1007,14 @@ Spent **50** (balance 736 → 686). Variants: `pending/rooms/v2/bedroom_shell_{d
 | `shell_pro_nowin_2.png` → **e** | same | 2026102122 / `d127fa1e-d872-4388-9512-b4e7fbe2e3fd` | 25 |
 
 Prompt (Alexander's): "bare empty stone room shell of a windowless gothic castle chamber, single cohesive room filling a wide 16:9 frame, back wall facing the viewer straight-on, NO windows, faded torn pink rose wallpaper panels between stone pilasters, a small pointed arched wooden door in the back wall right of center, a built-in stone fireplace with carved gargoyles on the left part of the wall (empty hearth, no fire), an open arched doorway in the right side wall, wide dark wooden plank floor across the whole foreground, ribbed vaulted ceiling, cobwebs only in the upper corners, warm dim lighting, no moonlight, diorama camera slightly from above, completely empty: no furniture, no bed, no rug, no candles, no characters, nothing on the floor".
+
+## 2026-10-21 (R1-ter) — Bedroom v2 by Alexander's scheme (budget 50)
+
+Spent **50** (balance 686 → 636). Variants: `pending/rooms/v2/bedroom_shell_{f,g}.png`; `e` → `_incoming/reserve/bedroom_shell_e.png` (out of git).
+
+| Output | Tool | Seed / job | Cost |
+|---|---|---|---|
+| `shell_pro_v3_1.png` → **f** | `create_image_pro`, style = `approved/room_princess_boudoir.png` (palette), reference = own flat layout sketch `layout_sketch_v3.png` (fireplace on the left side wall, one continuous back wall, door near its right end, doorway on the right wall; composition only) | 2026102131 / `06cae986-1e32-468a-bc92-e46343092554` | 25 |
+| `shell_pro_v3_2.png` → **g** | same | 2026102132 / `414f5922-95a2-4b38-9504-d2644951b6c7` | 25 |
+
+Prompt: Alexander's R1-ter prompt (one wide continuous back wall with pilasters only at the corners, door near the right end, fireplace with gargoyles and chimney breast on the LEFT side wall, doorway on the RIGHT side wall, muted lilac-grey stone, no windows, completely empty). Both shells came with baked wall sconces with lit candles (f: 3, g: 2) despite "no candles".
