@@ -269,3 +269,11 @@ TRACK_1,Whitesnack - Here I Go Snackin' Again
 TRACK_2,Deaf Leopard - Pour Some Sugar on My Tea
 TRACK_3,Bonjovial - Livin' on a Spare Roll
 SAY_DOOR_NOT_YET,This way isn't built yet. Come back later.
+BANNER_WELCOME,"WELCOME, MY NEW PRINCESS!"
+SAY_BANNER,Welcome... who?
+SAY_FIREPLACE,Warm. At least something in this castle is.
+SAY_WALL_CLOCK,It stopped at 3:09. Someone really wanted me to notice that.
+SAY_BOOK,A diary. Every page: 'He will come for me.' Charming.
+SAY_SCROLLS,Invitations. 'Wedding of the century. Bride: to be announced.'
+SAY_FLASK,Perfume. Smells like roses and desperation.
+SAY_BEDROOM_WALL,No windows. Cozy. And a little terrifying.

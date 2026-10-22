@@ -2,18 +2,41 @@
 
 [ext_resource type="Texture2D" path="res://assets/approved/rooms/v2/bedroom_shell.png" id="shell"]
 [ext_resource type="PackedScene" path="res://scenes/characters/hero.tscn" id="hero"]
+[ext_resource type="PackedScene" path="res://scenes/ui/screen_transition.tscn" id="transition"]
+[ext_resource type="PackedScene" path="res://scenes/first_person/garderobe_view.tscn" id="garderobe_view"]
 [ext_resource type="Script" path="res://components/hotspot.gd" id="hotspot"]
+[ext_resource type="Script" path="res://components/fire_light.gd" id="fire_light"]
+[ext_resource type="Script" path="res://components/sway.gd" id="sway"]
+[ext_resource type="Script" path="res://components/room_exit.gd" id="room_exit"]
+[ext_resource type="Script" path="res://components/door_transition.gd" id="door_gd"]
+[ext_resource type="Script" path="res://components/count_portrait.gd" id="portrait_gd"]
+[ext_resource type="Script" path="res://components/following_eyes.gd" id="eyes_gd"]
+[ext_resource type="FontFile" path="res://assets/fonts/_reserve/tiny5/Tiny5.ttf" id="tiny5"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess.png" id="bed"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess_blanket.png" id="blanket"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/bed_princess_shadow.png" id="bed_shadow"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/nightstand_drawer_closed.png" id="nightstand"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/painting_count.png" id="portrait"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/count/painting_count_eyes_v2.png" id="eyes"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/count/count_lids.png" id="lids"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/count/count_yawn.png" id="yawn"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/chest.png" id="chest"]
-[ext_resource type="Texture2D" path="res://assets/pending/props/v2/folding_screen_dress.png" id="screen"]
 [ext_resource type="Texture2D" path="res://assets/approved/props/tiger_skin_rug.png" id="tiger"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/bedside_rug_v2.png" id="rug"]
-[ext_resource type="Texture2D" path="res://assets/approved/props/wardrobe_princess_shadow.png" id="shadow"]
+[ext_resource type="Texture2D" path="res://assets/approved/props/garderobe_sign_wide.png" id="sign"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/folding_screen_dress.png" id="screen"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/nightstand.png" id="nightstand"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/wall_clock.png" id="clock"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/clock_pendulum.png" id="pendulum"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/rug_main.png" id="rug"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/banner_welcome.png" id="banner"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/garland.png" id="garland"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/firewood.png" id="logs"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/wall_candelabra.png" id="candelabra"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/scrolls.png" id="scrolls"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/book.png" id="book"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/flask.png" id="flask"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/garderobe_door_ajar.png" id="door_ajar"]
+[ext_resource type="Texture2D" path="res://assets/pending/props/v2/bedroom/garderobe_door_open.png" id="door_open"]
 
 [sub_resource type="Gradient" id="Gradient_light"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -25,6 +48,30 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_flame"]
+offsets = PackedFloat32Array(0, 0.35, 0.75, 1)
+colors = PackedColorArray(1.9, 1.45, 0.55, 1, 2, 0.85, 0.2, 1, 1.5, 0.32, 0.1, 0.85, 0.5, 0.12, 0.08, 0)
+
+[sub_resource type="Curve" id="Curve_shrink"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.25), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_spark"]
+offsets = PackedFloat32Array(0, 0.7, 1)
+colors = PackedColorArray(2.4, 2, 1, 1, 2, 0.8, 0.2, 1, 1, 0.3, 0.1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Wall_PortraitCount"]
+size = Vector2(30, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Wall_BannerWelcome"]
+size = Vector2(30, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Wall_WallClock"]
+size = Vector2(28, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Wall_Fireplace"]
+size = Vector2(64, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_Bed_body"]
 size = Vector2(140, 40)
@@ -41,11 +88,20 @@ size = Vector2(38, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_Chest_body"]
 size = Vector2(32, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_door0"]
-size = Vector2(66, 22)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Props_Book"]
+size = Vector2(30, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_door1"]
-size = Vector2(58, 22)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Props_Scrolls"]
+size = Vector2(34, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Props_Flask"]
+size = Vector2(24, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Doors_GarderobeDoor"]
+size = Vector2(60, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs_Doors_StudyExit"]
+size = Vector2(46, 26)
 
 [node name="Bedroom" type="Node2D"]
 y_sort_enabled = true
@@ -57,27 +113,326 @@ z_index = -10
 texture = ExtResource("shell")
 centered = false
 
-[node name="LiveLayers" type="Node2D" parent="."]
-z_index = -5
+[node name="Wall" type="Node2D" parent="."]
+z_index = -6
+
+[node name="PortraitCount" type="Node2D" parent="Wall" node_paths=PackedStringArray("eyes", "lids", "yawn_overlay", "hotspot")]
+position = Vector2(333, 130)
+script = ExtResource("portrait_gd")
+eyes = NodePath("Eyes")
+lids = NodePath("Lids")
+yawn_overlay = NodePath("Yawn")
+hotspot = NodePath("Hotspot")
+
+[node name="Sprite" type="Sprite2D" parent="Wall/PortraitCount"]
+texture = ExtResource("portrait")
+centered = false
+offset = Vector2(-30, -72)
+
+[node name="Eyes" type="Sprite2D" parent="Wall/PortraitCount" node_paths=PackedStringArray("target")]
+texture = ExtResource("eyes")
+centered = false
+offset = Vector2(-30, -72)
+script = ExtResource("eyes_gd")
+target = NodePath("../../../Hero")
+
+[node name="Lids" type="Sprite2D" parent="Wall/PortraitCount"]
+texture = ExtResource("lids")
+centered = false
+offset = Vector2(-30, -72)
+hframes = 2
+
+[node name="Yawn" type="Sprite2D" parent="Wall/PortraitCount"]
+texture = ExtResource("yawn")
+centered = false
+offset = Vector2(-30, -72)
+hframes = 3
+
+[node name="Hotspot" type="Area2D" parent="Wall/PortraitCount" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_PAINTING_COUNT"
+
+[node name="Shape" type="CollisionShape2D" parent="Wall/PortraitCount/Hotspot"]
+position = Vector2(28, 202)
+shape = SubResource("RectangleShape2D_hs_Wall_PortraitCount")
+
+[node name="Prompt" type="Label" parent="Wall/PortraitCount/Hotspot"]
+offset_left = -90.0
+offset_top = -102.0
+offset_right = 90.0
+offset_bottom = -78.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="BannerWelcome" type="Node2D" parent="Wall"]
+position = Vector2(333, 131)
+
+[node name="Sprite" type="Sprite2D" parent="Wall/BannerWelcome"]
+texture = ExtResource("banner")
+centered = false
+offset = Vector2(-89, 0)
+
+[node name="Text" type="Label" parent="Wall/BannerWelcome"]
+offset_left = -80.0
+offset_top = 6.0
+offset_right = 80.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.26, 0.02, 0.08, 1)
+theme_override_fonts/font = ExtResource("tiny5")
+theme_override_font_sizes/font_size = 8
+text = "BANNER_WELCOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hotspot" type="Area2D" parent="Wall/BannerWelcome" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BANNER"
+
+[node name="Shape" type="CollisionShape2D" parent="Wall/BannerWelcome/Hotspot"]
+position = Vector2(-28, 201)
+shape = SubResource("RectangleShape2D_hs_Wall_BannerWelcome")
+
+[node name="Prompt" type="Label" parent="Wall/BannerWelcome/Hotspot"]
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = -6.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="GarlandL" type="Node2D" parent="Wall"]
+position = Vector2(222, 94)
+script = ExtResource("sway")
+amplitude = 0.8
+period = 4.5
+
+[node name="Sprite" type="Sprite2D" parent="Wall/GarlandL"]
+texture = ExtResource("garland")
+centered = false
+offset = Vector2(-40, 0)
+
+[node name="GarlandR" type="Node2D" parent="Wall"]
+position = Vector2(444, 94)
+script = ExtResource("sway")
+amplitude = 0.8
+period = 4.5
+
+[node name="Sprite" type="Sprite2D" parent="Wall/GarlandR"]
+texture = ExtResource("garland")
+centered = false
+offset = Vector2(-40, 0)
+
+[node name="WallClock" type="Node2D" parent="Wall"]
+position = Vector2(204, 150)
+
+[node name="Sprite" type="Sprite2D" parent="Wall/WallClock"]
+texture = ExtResource("clock")
+centered = false
+offset = Vector2(-12, 0)
+
+[node name="Pendulum" type="Node2D" parent="Wall/WallClock"]
+position = Vector2(0, 32)
+script = ExtResource("sway")
+amplitude = 12.0
+period = 1.6
+random_phase = false
+
+[node name="Sprite" type="Sprite2D" parent="Wall/WallClock/Pendulum"]
+texture = ExtResource("pendulum")
+centered = false
+offset = Vector2(-3, 0)
+
+[node name="Hotspot" type="Area2D" parent="Wall/WallClock" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_WALL_CLOCK"
+
+[node name="Shape" type="CollisionShape2D" parent="Wall/WallClock/Hotspot"]
+position = Vector2(0, 130)
+shape = SubResource("RectangleShape2D_hs_Wall_WallClock")
+
+[node name="Prompt" type="Label" parent="Wall/WallClock/Hotspot"]
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = -6.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="CandelabraL" type="Node2D" parent="Wall"]
+position = Vector2(243, 170)
+
+[node name="Sprite" type="Sprite2D" parent="Wall/CandelabraL"]
+texture = ExtResource("candelabra")
+centered = false
+offset = Vector2(-11, 0)
+
+[node name="Flame" type="CPUParticles2D" parent="Wall/CandelabraL"]
+position = Vector2(0, 4)
+amount = 10
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(8.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
+
+[node name="CandelabraR" type="Node2D" parent="Wall"]
+position = Vector2(423, 170)
+
+[node name="Sprite" type="Sprite2D" parent="Wall/CandelabraR"]
+texture = ExtResource("candelabra")
+centered = false
+offset = Vector2(-11, 0)
+
+[node name="Flame" type="CPUParticles2D" parent="Wall/CandelabraR"]
+position = Vector2(0, 4)
+amount = 10
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(8.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
+
+[node name="Fireplace" type="Node2D" parent="Wall"]
+position = Vector2(108, 270)
+
+[node name="Firewood" type="Sprite2D" parent="Wall/Fireplace"]
+texture = ExtResource("logs")
+centered = false
+offset = Vector2(-14, -21)
+
+[node name="Flames" type="CPUParticles2D" parent="Wall/Fireplace"]
+position = Vector2(0, -12)
+amount = 70
+lifetime = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(11, 2)
+direction = Vector2(0, -1)
+spread = 8.0
+gravity = Vector2(0, -38)
+initial_velocity_min = 14.0
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_shrink")
+color_ramp = SubResource("Gradient_flame")
+
+[node name="FlamesSparks" type="CPUParticles2D" parent="Wall/Fireplace"]
+position = Vector2(0, -12)
+amount = 3
+lifetime = 2.2
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 18.0
+initial_velocity_max = 34.0
+color_ramp = SubResource("Gradient_spark")
+
+[node name="MantelCandelabra" type="Sprite2D" parent="Wall/Fireplace"]
+texture = ExtResource("candelabra")
+centered = false
+offset = Vector2(-19, -125)
+
+[node name="MantelFlame" type="CPUParticles2D" parent="Wall/Fireplace"]
+position = Vector2(-8, -121)
+amount = 10
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(8.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
+
+[node name="Hotspot" type="Area2D" parent="Wall/Fireplace" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_FIREPLACE"
+
+[node name="Shape" type="CollisionShape2D" parent="Wall/Fireplace/Hotspot"]
+position = Vector2(6, 64)
+shape = SubResource("RectangleShape2D_hs_Wall_Fireplace")
+
+[node name="Prompt" type="Label" parent="Wall/Fireplace/Hotspot"]
+offset_left = -90.0
+offset_top = -142.0
+offset_right = 90.0
+offset_bottom = -118.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="SconceL" type="Node2D" parent="Wall"]
+position = Vector2(152, 163)
+
+[node name="Flame" type="CPUParticles2D" parent="Wall/SconceL"]
+position = Vector2(0, 0)
+amount = 6
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(1.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
+
+[node name="SconceR" type="Node2D" parent="Wall"]
+position = Vector2(533, 163)
+
+[node name="Flame" type="CPUParticles2D" parent="Wall/SconceR"]
+position = Vector2(0, 0)
+amount = 6
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(1.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
 
 [node name="Rugs" type="Node2D" parent="."]
 z_index = -4
 
+[node name="RugMain" type="Node2D" parent="Rugs"]
+position = Vector2(333, 336)
+
+[node name="Sprite" type="Sprite2D" parent="Rugs/RugMain"]
+texture = ExtResource("rug")
+centered = false
+offset = Vector2(-84, -48)
+
 [node name="TigerRug" type="Node2D" parent="Rugs"]
-position = Vector2(210, 334)
+position = Vector2(206, 356)
 
 [node name="Sprite" type="Sprite2D" parent="Rugs/TigerRug"]
 texture = ExtResource("tiger")
 centered = false
 offset = Vector2(-84, -56)
-
-[node name="RugMain" type="Node2D" parent="Rugs"]
-position = Vector2(333, 348)
-
-[node name="Sprite" type="Sprite2D" parent="Rugs/RugMain"]
-texture = ExtResource("rug")
-centered = false
-offset = Vector2(-45, -37)
 
 [node name="Props" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -108,17 +463,18 @@ centered = false
 offset = Vector2(-84, -153)
 
 [node name="NightstandL" type="Node2D" parent="Props"]
-position = Vector2(245, 268)
+position = Vector2(244, 278)
 
 [node name="Shadow" type="Sprite2D" parent="Props/NightstandL"]
 position = Vector2(0, -2)
-scale = Vector2(0.26, 0.45)
+scale = Vector2(0.24, 0.42)
 texture = ExtResource("shadow")
 
 [node name="Sprite" type="Sprite2D" parent="Props/NightstandL"]
 texture = ExtResource("nightstand")
 centered = false
-offset = Vector2(-22, -42)
+flip_h = true
+offset = Vector2(-15, -47)
 
 [node name="Body" type="StaticBody2D" parent="Props/NightstandL"]
 
@@ -126,18 +482,40 @@ offset = Vector2(-22, -42)
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_NightstandL_body")
 
+[node name="Flame" type="CPUParticles2D" parent="Props/NightstandL"]
+position = Vector2(-1, -48)
+amount = 6
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(1.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
+
+[node name="Glow" type="PointLight2D" parent="Props/NightstandL"]
+position = Vector2(-1, -46)
+color = Color(1, 0.72, 0.45, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.42
+script = ExtResource("fire_light")
+flicker = 0.15
+
 [node name="NightstandR" type="Node2D" parent="Props"]
-position = Vector2(422, 268)
+position = Vector2(422, 278)
 
 [node name="Shadow" type="Sprite2D" parent="Props/NightstandR"]
 position = Vector2(0, -2)
-scale = Vector2(0.26, 0.45)
+scale = Vector2(0.24, 0.42)
 texture = ExtResource("shadow")
 
 [node name="Sprite" type="Sprite2D" parent="Props/NightstandR"]
 texture = ExtResource("nightstand")
 centered = false
-offset = Vector2(-22, -42)
+offset = Vector2(-15, -47)
 
 [node name="Body" type="StaticBody2D" parent="Props/NightstandR"]
 
@@ -145,18 +523,27 @@ offset = Vector2(-22, -42)
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_NightstandR_body")
 
-[node name="PortraitCount" type="Node2D" parent="Props"]
-position = Vector2(333, 155)
+[node name="Flame" type="CPUParticles2D" parent="Props/NightstandR"]
+position = Vector2(0, -48)
+amount = 6
+lifetime = 0.32
+emission_shape = 3
+emission_rect_extents = Vector2(1.0, 0.5)
+direction = Vector2(0, -1)
+spread = 6.0
+gravity = Vector2(0, -6)
+initial_velocity_min = 5.0
+initial_velocity_max = 9.0
+color_ramp = SubResource("Gradient_flame")
 
-[node name="Sprite" type="Sprite2D" parent="Props/PortraitCount"]
-texture = ExtResource("portrait")
-centered = false
-offset = Vector2(-30, -72)
-
-[node name="Eyes" type="Sprite2D" parent="Props/PortraitCount"]
-texture = ExtResource("eyes")
-centered = false
-offset = Vector2(-30, -72)
+[node name="Glow" type="PointLight2D" parent="Props/NightstandR"]
+position = Vector2(0, -46)
+color = Color(1, 0.72, 0.45, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.42
+script = ExtResource("fire_light")
+flicker = 0.15
 
 [node name="Screen" type="Node2D" parent="Props"]
 position = Vector2(513, 266)
@@ -178,7 +565,7 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_Screen_body")
 
 [node name="Chest" type="Node2D" parent="Props"]
-position = Vector2(522, 318)
+position = Vector2(192, 262)
 
 [node name="Shadow" type="Sprite2D" parent="Props/Chest"]
 position = Vector2(0, -2)
@@ -196,73 +583,173 @@ offset = Vector2(-28, -52)
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_Chest_body")
 
+[node name="Book" type="Node2D" parent="Props"]
+position = Vector2(176, 304)
+
+[node name="Sprite" type="Sprite2D" parent="Props/Book"]
+texture = ExtResource("book")
+centered = false
+offset = Vector2(-11, -17)
+
+[node name="Hotspot" type="Area2D" parent="Props/Book" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_BOOK"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Book/Hotspot"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hs_Props_Book")
+
+[node name="Prompt" type="Label" parent="Props/Book/Hotspot"]
+offset_left = -90.0
+offset_top = -45.0
+offset_right = 90.0
+offset_bottom = -21.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Scrolls" type="Node2D" parent="Props"]
+position = Vector2(276, 316)
+
+[node name="Sprite" type="Sprite2D" parent="Props/Scrolls"]
+texture = ExtResource("scrolls")
+centered = false
+offset = Vector2(-13, -22)
+
+[node name="Hotspot" type="Area2D" parent="Props/Scrolls" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_SCROLLS"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Scrolls/Hotspot"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hs_Props_Scrolls")
+
+[node name="Prompt" type="Label" parent="Props/Scrolls/Hotspot"]
+offset_left = -90.0
+offset_top = -50.0
+offset_right = 90.0
+offset_bottom = -26.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
+[node name="Flask" type="Node2D" parent="Props"]
+position = Vector2(432, 300)
+
+[node name="Sprite" type="Sprite2D" parent="Props/Flask"]
+texture = ExtResource("flask")
+centered = false
+offset = Vector2(-8, -11)
+
+[node name="Hotspot" type="Area2D" parent="Props/Flask" node_paths=PackedStringArray("prompt")]
+script = ExtResource("hotspot")
+prompt = NodePath("Prompt")
+prompt_text = "UI_INSPECT"
+say_key = "SAY_FLASK"
+
+[node name="Shape" type="CollisionShape2D" parent="Props/Flask/Hotspot"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hs_Props_Flask")
+
+[node name="Prompt" type="Label" parent="Props/Flask/Hotspot"]
+offset_left = -90.0
+offset_top = -39.0
+offset_right = 90.0
+offset_bottom = -15.0
+horizontal_alignment = 1
+autowrap_mode = 3
+text = "UI_INSPECT"
+
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="DoorBack" type="Node2D" parent="Doors"]
+[node name="GarderobeDoor" type="Node2D" parent="Doors" node_paths=PackedStringArray("hotspot", "door_sprite", "transition", "first_person_view", "closed_decal")]
 position = Vector2(463, 250)
+script = ExtResource("door_gd")
+hotspot = NodePath("Hotspot")
+door_sprite = NodePath("Door")
+state_textures = Array[Texture2D]([null, ExtResource("door_ajar"), ExtResource("door_open")])
+transition = NodePath("../../ScreenTransition")
+first_person_view = NodePath("../../GarderobeView")
+closed_decal = NodePath("Sign")
+step_in = Vector2(0, -6)
+locked_line_key = "HS_GARDEROBE_LOCKED"
+unlock_flag = "garderobe_unlocked"
 
-[node name="Caption" type="Label" parent="Doors/DoorBack"]
-offset_left = -40.0
-offset_top = -107.0
-offset_right = 40.0
-offset_bottom = -95.0
-horizontal_alignment = 1
+[node name="Door" type="Sprite2D" parent="Doors/GarderobeDoor"]
+z_index = -9
+position = Vector2(-59, -110)
+centered = false
+
+[node name="Sign" type="Node2D" parent="Doors/GarderobeDoor"]
+position = Vector2(2, -62)
+
+[node name="Plaque" type="Sprite2D" parent="Doors/GarderobeDoor/Sign"]
+texture = ExtResource("sign")
+centered = false
+offset = Vector2(-23, 0)
+
+[node name="Text" type="Label" parent="Doors/GarderobeDoor/Sign"]
+offset_left = -21.0
+offset_top = 13.0
+offset_right = 21.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("tiny5")
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(1, 0.85, 0.4, 0.8)
-text = "-> garderobe"
+theme_override_colors/font_color = Color(1, 0.88, 0.6, 1)
+theme_override_constants/line_spacing = -1
+text = "SIGN_OUT_OF_ORDER"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Hotspot" type="Area2D" parent="Doors/DoorBack" node_paths=PackedStringArray("prompt")]
+[node name="Hotspot" type="Area2D" parent="Doors/GarderobeDoor" node_paths=PackedStringArray("prompt")]
 script = ExtResource("hotspot")
 prompt = NodePath("Prompt")
 prompt_text = "UI_OPEN"
-say_key = "SAY_DOOR_NOT_YET"
-target_id = "doorback"
+target_id = "garderobe_door"
 
-[node name="Shape" type="CollisionShape2D" parent="Doors/DoorBack/Hotspot"]
+[node name="Shape" type="CollisionShape2D" parent="Doors/GarderobeDoor/Hotspot"]
 position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_door0")
+shape = SubResource("RectangleShape2D_hs_Doors_GarderobeDoor")
 
-[node name="Prompt" type="Label" parent="Doors/DoorBack/Hotspot"]
+[node name="Prompt" type="Label" parent="Doors/GarderobeDoor/Hotspot"]
 offset_left = -90.0
-offset_top = -125.0
+offset_top = -124.0
 offset_right = 90.0
-offset_bottom = -101.0
+offset_bottom = -100.0
 horizontal_alignment = 1
 autowrap_mode = 3
 text = "UI_OPEN"
 
-[node name="DoorRight" type="Node2D" parent="Doors"]
+[node name="StudyExit" type="Node2D" parent="Doors" node_paths=PackedStringArray("hotspot", "transition")]
 position = Vector2(582, 296)
+script = ExtResource("room_exit")
+hotspot = NodePath("Hotspot")
+transition = NodePath("../../ScreenTransition")
+step_in = Vector2(10, -10)
+return_point = Vector2(-34, 8)
 
-[node name="Caption" type="Label" parent="Doors/DoorRight"]
-offset_left = -40.0
-offset_top = -192.0
-offset_right = 40.0
-offset_bottom = -180.0
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(1, 0.85, 0.4, 0.8)
-text = "-> study"
-
-[node name="Hotspot" type="Area2D" parent="Doors/DoorRight" node_paths=PackedStringArray("prompt")]
+[node name="Hotspot" type="Area2D" parent="Doors/StudyExit" node_paths=PackedStringArray("prompt")]
 script = ExtResource("hotspot")
 prompt = NodePath("Prompt")
-prompt_text = "UI_OPEN"
-say_key = "SAY_DOOR_NOT_YET"
-target_id = "doorright"
+prompt_text = "UI_GO_IN"
+target_id = "study_exit"
 
-[node name="Shape" type="CollisionShape2D" parent="Doors/DoorRight/Hotspot"]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_door1")
+[node name="Shape" type="CollisionShape2D" parent="Doors/StudyExit/Hotspot"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_hs_Doors_StudyExit")
 
-[node name="Prompt" type="Label" parent="Doors/DoorRight/Hotspot"]
+[node name="Prompt" type="Label" parent="Doors/StudyExit/Hotspot"]
 offset_left = -90.0
-offset_top = -210.0
+offset_top = -208.0
 offset_right = 90.0
-offset_bottom = -186.0
+offset_bottom = -184.0
 horizontal_alignment = 1
 autowrap_mode = 3
-text = "UI_OPEN"
+text = "UI_GO_IN"
 
 [node name="Hero" parent="." instance=ExtResource("hero")]
 position = Vector2(333, 330)
@@ -277,24 +764,88 @@ polygon = PackedVector2Array(168, 250, 505, 250, 632, 356, 30, 356, 30, 324, 162
 position = Vector2(320, 180)
 
 [node name="Night" type="CanvasModulate" parent="."]
-color = Color(0.64, 0.62, 0.74, 1)
+color = Color(0.5, 0.48, 0.62, 1)
 
 [node name="Lights" type="Node2D" parent="."]
 
+[node name="HearthCore" type="PointLight2D" parent="Lights"]
+position = Vector2(110, 252)
+color = Color(1, 0.6, 0.3, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.55
+script = ExtResource("fire_light")
+flicker = 0.25
+
 [node name="Hearth" type="PointLight2D" parent="Lights"]
-position = Vector2(98, 248)
-color = Color(1, 0.72, 0.5, 1)
+position = Vector2(112, 240)
+color = Color(1, 0.64, 0.36, 1)
+energy = 0.95
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 1.9
+script = ExtResource("fire_light")
+flicker = 0.18
+
+[node name="HearthFloor" type="PointLight2D" parent="Lights"]
+position = Vector2(140, 300)
+color = Color(1, 0.6, 0.32, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 1.1
+script = ExtResource("fire_light")
+flicker = 0.22
+
+[node name="SconceL" type="PointLight2D" parent="Lights"]
+position = Vector2(152, 160)
+color = Color(1, 0.72, 0.45, 1)
 energy = 0.6
 texture = SubResource("GradientTexture2D_light")
-texture_scale = 1.8
+texture_scale = 0.55
+script = ExtResource("fire_light")
+flicker = 0.15
 
-[node name="Warm" type="PointLight2D" parent="Lights"]
-position = Vector2(330, 280)
-color = Color(1, 0.9, 0.8, 1)
-energy = 0.22
+[node name="SconceR" type="PointLight2D" parent="Lights"]
+position = Vector2(533, 160)
+color = Color(1, 0.72, 0.45, 1)
+energy = 0.7
 texture = SubResource("GradientTexture2D_light")
-texture_scale = 2.4
+texture_scale = 0.7
+script = ExtResource("fire_light")
+flicker = 0.15
+
+[node name="CandelabraL" type="PointLight2D" parent="Lights"]
+position = Vector2(243, 172)
+color = Color(1, 0.72, 0.45, 1)
+energy = 0.6
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.6
+script = ExtResource("fire_light")
+flicker = 0.15
+
+[node name="CandelabraR" type="PointLight2D" parent="Lights"]
+position = Vector2(423, 172)
+color = Color(1, 0.72, 0.45, 1)
+energy = 0.6
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.6
+script = ExtResource("fire_light")
+flicker = 0.15
+
+[node name="Ambient" type="PointLight2D" parent="Lights"]
+position = Vector2(333, 300)
+color = Color(0.9, 0.82, 0.95, 1)
+energy = 0.18
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 2.6
+script = ExtResource("fire_light")
+flicker = 0.0
 
 [node name="AboveNight" type="CanvasLayer" parent="." groups=["above_night"]]
 layer = 2
 follow_viewport_enabled = true
+
+[node name="ScreenTransition" parent="." node_paths=PackedStringArray("iris_target") instance=ExtResource("transition")]
+iris_target = NodePath("../Hero")
+
+[node name="GarderobeView" parent="." node_paths=PackedStringArray("transition") instance=ExtResource("garderobe_view")]
+transition = NodePath("../ScreenTransition")
