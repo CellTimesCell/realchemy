@@ -6,6 +6,11 @@ Cost is in PixelLab Tier 1 subscription generations (2000/month, resets on the 1
 
 `game/assets/_incoming/` is git-ignored. Approved assets are copied to `game/assets/approved/` and committed.
 
+## References
+| File | Source | Use |
+|---|---|---|
+| `docs/reference/bedroom_ref_alexander.png` | **Alexander, his own generation** (21.10.2026) | style / composition reference for bedroom props (may be fed to generators; ART_PIPELINE §3.4) |
+
 ## Approved (`game/assets/approved/`)
 | File | Source | Role | Note |
 |---|---|---|---|
@@ -1024,3 +1029,17 @@ Prompt: Alexander's R1-ter prompt (one wide continuous back wall with pilasters 
 - `approved/rooms/v2/bedroom_shell.png` = shell **g** (approved 21.10.2026); f → `_incoming/reserve/`, a–d → `_incoming/rejected/v2/`.
 - Spent **5** (636 → 631): `pending/props/v2/folding_screen_dress.png` 40×65 — `edit_image_pro_flash` of `approved/props/folding_screen_v2.png` (padded to 40×68), seed 2026102141 / `ac43f383-59ca-434d-a5d4-03bd6b9b62bb`: "The same folding screen with a frilly pale pink princess ball gown draped over its top edge, hanging down the front of the left and middle panels, soft folds and a little lace; keep the screen's frame, panels, colours, size, outline and lighting exactly the same".
 - Reused (approved): bed_princess (+blanket, shadow), nightstand_drawer_closed ×2, painting_count + count/eyes_v2, chest, tiger_skin_rug, bedside_rug_v2.
+
+## 2026-10-21 (R3) — Bedroom v2: decor, fire, doors (budget 60)
+
+Spent **51** (631 → 580). Reference for style / look: `docs/reference/bedroom_ref_alexander.png` (Alexander's own generation), style image = approved bedroom shell. All in `pending/props/v2/bedroom/` (variants b next to a).
+
+| File | Tool | Seed / job | Cost | Prompt (subject) |
+|---|---|---|---|---|
+| `nightstand.png` 30×47 (#2), `nightstand_b.png` (#13) | `create_image_pro` 44×56 (25), ref = Alexander's bedroom | 2026102151 / `2cbecc84-3671-4e6c-b8e3-bb47947abe0c` | 10 | "a gothic bedside nightstand: small dark carved wooden cabinet with one drawer, curved wrought iron legs, a single tall white wax candle in a small brass candlestick on top (unlit)…" |
+| `wall_clock.png` 24×55 (#15) | same, 36×64 | 2026102152 / `6584d954-47c0-4694-89a9-13696a5d455b` | 10 | "a gothic wooden wall clock with a long pendulum case… round cream clock face with roman numerals but NO clock hands… an EMPTY pendulum space"; hands at 3:09 drawn by script (2 short lines, like the portrait lids) |
+| `rug_main.png` 168×48 (#1), `rug_main_b.png` (#0) | same, 168×48 | 2026102153 / `63385e89-ac56-44e0-90ef-1f94a1f19e60` | 10 | "a large rectangular faded burgundy and rose oriental rug with an ornate patterned border and short fringe… flat on the floor in floor perspective" |
+| `firewood.png`, `banner_welcome.png` (no text), `garland.png`, `clock_pendulum.png`, `wall_candelabra.png`, `scrolls.png`, `book.png`, `flask.png` | `create_image_pixen` ×9 (one garland redone: the first came with a background scene) | 2026102154–62 | 9 | firewood logs; pale pink cloth banner, gold fringe, NO text; pink-gold tinsel garland arc; brass pendulum; iron wall candelabra 3 candles; scrolls; leather book; fallen perfume flask |
+| `garderobe_door_{ajar,open}.png` 120×124 overlays | `edit_image_pro_flash` of the shell crop (404,140) | 2026102171 / `e06f4499-…`, 2026102172 / `2a826e4a-…` | 12 | "…slightly ajar: the door leaf has swung inward a little…" / "…wide open: … dark narrow doorway…"; only the doorway pixels kept (mask from the dark opening) |
+
+Round rug `approved/props/bedside_rug_v2.png` → not used in the bedroom any more (reserve).

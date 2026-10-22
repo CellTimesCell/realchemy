@@ -332,3 +332,10 @@
 ## 2026-10-21 · Спальня R2: крупная мебель
 - Коробка g утверждена → `approved/rooms/v2/bedroom_shell.png`. Мебель — отдельные узлы (Props, y-sort, тень, коллизия по подошве): Bed + BedBlanket по оси центральной арки (x 333), NightstandL / NightstandR вплотную к кровати симметрично (±88), PortraitCount над балдахином по оси, Screen (новая ширма с платьем, 5 ген.) в правом заднем углу у двери, Chest перед ней, Rugs/TigerRug у камина, Rugs/RugMain по центру перед кроватью ниже тигра. Пол обходит плиту очага.
 - Расход: 5 генераций (636 → 631).
+
+## 2026-10-21 · Спальня R3: декор, огонь, двери
+- Правило референсов: собственные генерации Александра можно подавать в генератор (ART_PIPELINE §3.4, ASSETS «References»).
+- Новые узлы: Wall/{PortraitCount (следящие глаза, моргание, зевок), BannerWelcome (текст Label Tiny5), GarlandL/R (Sway), WallClock 3:09 + маятник (Sway), CandelabraL/R, Fireplace (дрова, пламя-частицы, искры, канделябр на полке), SconceL/R (огонь на запечённых бра)}, Props/{NightstandL (flip) / R с горящими свечами, Chest у камина, Book, Scrolls, Flask}, Rugs/RugMain (большой), Doors/{GarderobeDoor (3 состояния, табличка, экран garderobe), StudyExit (RoomExit — заглушка с fade)}, ScreenTransition (новая сцена `scenes/ui/screen_transition.tscn`), GarderobeView.
+- Компоненты: `fire_light.gd` (мерцание PointLight2D), `sway.gd`, `room_exit.gd`.
+- Свет: ночь лиловая (0.5, 0.48, 0.62), тёплое только от огня: очаг (ядро + общий + отблеск на полу), свечи тумб, канделябры, бра; слабый общий лиловый.
+- Расход: 51 генерация (631 → 580).
